@@ -1,0 +1,29 @@
+{
+  timezone: "Asia/Tokyo",
+  baseBranches: ["main"],
+  extends: ["config:base", ":semanticCommitTypeAll(chore)"],
+  enabledManagers: ["npm", "github-actions"], // "docker-compose", "dockerfile"
+  dependencyDashboard: true,
+  schedule: ["before 11am on monday"],
+  automergeSchedule: ["after 1pm on monday"],
+  labels: ["dependencies"],
+  rangeStrategy: "bump",
+  lockFileMaintenance: {
+    enabled: true,
+    automerge: true,
+  },
+  vulnerabilityAlerts: {
+    labels: ["security"],
+    automerge: true,
+  },
+  packageRules: [
+    {
+      matchManagers: ["npm"],
+      matchUpdateTypes: ["patch", "minor"],
+      matchPackagePatterns: ["*"],
+      matchDepTypes: ["dependencies", "devDependencies", "peerDependencies"],
+      groupName: "patch-minor",
+      automerge: true,
+    },
+  ],
+}
