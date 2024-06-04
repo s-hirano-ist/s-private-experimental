@@ -1,22 +1,30 @@
 {
-  "name": "dump-to-github",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
-    "next": "14.2.3"
-  },
-  "devDependencies": {
-    "typescript": "5.4.5",
-    "@types/node": "20.0.0",
-    "@types/react": "18.2.0",
-    "@types/react-dom": "18.2.0"
-  }
+	"name": "dump-to-github",
+	"version": "0.1.0",
+	"author": "s-hirano-ist",
+	"engines": {
+		"node": "20.13.1",
+		"pnpm": "9.1.0"
+	},
+	"packageManager": "pnpm@9.1.0",
+	"scripts": {
+		"corepack": "corepack enable pnpm",
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"check": "biome check --write *"
+	},
+	"dependencies": {
+		"@biomejs/biome": "1.8.0",
+		"next": "14.2.3",
+		"react": "18.0.0",
+		"react-dom": "18.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "20.0.0",
+		"@types/react": "18.2.0",
+		"@types/react-dom": "18.2.0",
+		"typescript": "5.4.5"
+	}
 }
