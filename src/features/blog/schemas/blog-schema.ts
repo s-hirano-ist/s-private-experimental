@@ -3,6 +3,7 @@ import { FORM_ERROR_MESSAGES } from "../constants";
 
 export const blogSchema = z.object({
 	// TODO: sanitizing
+	newsId: z.number(),
 	title: z
 		.string()
 		.min(1, { message: FORM_ERROR_MESSAGES.REQUIRED })

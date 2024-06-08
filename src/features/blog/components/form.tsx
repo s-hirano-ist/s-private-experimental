@@ -1,6 +1,13 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useEffect } from "react";
@@ -13,7 +20,15 @@ const initialState: SubmitBlogState = {
 	message: "",
 };
 
-export function Form({ children }: { children: ReactNode }) {
+type Category = {
+	id: number;
+	heading: string;
+};
+
+export function Form({
+	children,
+	categories,
+}: { children: ReactNode; categories: Category[] }) {
 	const { toast } = useToast();
 
 	const [state, formAction] = useFormState(submitBlog, initialState);
@@ -28,6 +43,21 @@ export function Form({ children }: { children: ReactNode }) {
 
 	return (
 		<form action={formAction} className="p-4 space-y-4">
+			<div className="space-y-1">
+				<Label htmlFor="category">カテゴリー</Label>
+				<Select name="category">
+					<SelectTrigger>
+						<SelectValue />
+					</SelectTrigger>
+					<SelectContent>
+						{categories.map((category) => (
+							<SelectItem value={String(category.id)} key={category.id}>
+								{category.heading}
+							</SelectItem>
+						))}
+					</SelectContent>
+				</Select>
+			</div>
 			<div className="space-y-1">
 				<Label htmlFor="title">タイトル</Label>
 				<Input id="title" name="title" required />

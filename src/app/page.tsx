@@ -25,7 +25,7 @@ import { GitHubLogoIcon, PlusIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 export default async function Home() {
-	const newsDetail = await prisma.newsDetail.findMany({
+	const newsDetails = await prisma.newsDetail.findMany({
 		where: {
 			exported: false,
 		},
@@ -40,13 +40,20 @@ export default async function Home() {
 			},
 		},
 	});
-	const data = newsDetail.map((d) => {
+	const data = newsDetails.map((d) => {
 		return {
 			title: d.title,
 			quote: d.quote,
 			url: d.url,
 			category: d.news?.heading ?? "",
 		};
+	});
+
+	const newsCategories = await prisma.news.findMany({
+		select: {
+			id: true,
+			heading: true,
+		},
 	});
 
 	return (
@@ -79,7 +86,7 @@ export default async function Home() {
 								ブログに登録するデータを入力してください。
 							</DrawerDescription>
 						</DrawerHeader>
-						<Form>
+						<Form categories={newsCategories}>
 							<DrawerFooter>
 								<div className="grid grid-cols-2 gap-4">
 									<DrawerClose asChild>
