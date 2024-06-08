@@ -1,6 +1,6 @@
 {
 	"name": "dump-to-github",
-	"version": "1.0.0",
+	"version": "0.0.2",
 	"author": "s-hirano-ist",
 	"engines": {
 		"node": "20.14.0",
