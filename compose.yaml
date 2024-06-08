@@ -1,0 +1,16 @@
+services:
+  db:
+    container_name: blog-db
+    build:
+      context: .
+    volumes:
+      - blog-db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${USERNAME}
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_DB: blog-db
+
+volumes:
+  blog-db-data:

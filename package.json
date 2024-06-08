@@ -16,13 +16,23 @@
 		"check:ci": "biome ci *",
 		"check": "biome check --write --changed",
 		"check:all": "biome check --write *",
+		"prisma:seed": "prisma db seed",
+		"prisma:generate": "prisma generate",
+		"prisma:migrate": "prisma migrate dev",
+		"prisma:dev": "run-s -l prisma:generate prisma:migrate prisma:seed",
+		"prisma:studio": "prisma studio",
+		"postinstall": "prisma generate",
 		"release:patch": "standard-version --release-as patch",
 		"release:minor": "standard-version --release-as minor",
 		"release:major": "standard-version --release-as major",
 		"commit": "git-cz"
 	},
+	"prisma": {
+		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+	},
 	"dependencies": {
 		"@biomejs/biome": "1.8.0",
+		"@prisma/client": "5.15.0",
 		"@radix-ui/react-checkbox": "1.0.4",
 		"@radix-ui/react-dialog": "1.0.5",
 		"@radix-ui/react-dropdown-menu": "2.0.6",
@@ -47,12 +57,15 @@
 		"@types/node": "20.14.2",
 		"@types/react": "18.3.3",
 		"@types/react-dom": "18.3.0",
-		"eslint": "9.4.0",
+		"eslint": "8.56.0",
 		"eslint-config-next": "14.2.3",
 		"git-cz": "4.9.0",
+		"npm-run-all2": "6.2.0",
 		"postcss": "8.4.38",
+		"prisma": "5.15.0",
 		"standard-version": "9.5.0",
 		"tailwindcss": "3.4.4",
+		"ts-node": "10.9.2",
 		"typescript": "5.4.5"
 	}
 }
