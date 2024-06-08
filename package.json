@@ -1,6 +1,6 @@
 {
 	"name": "dump-to-github",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"author": "s-hirano-ist",
 	"engines": {
 		"node": "20.14.0",
@@ -15,7 +15,11 @@
 		"lint": "next lint",
 		"check:ci": "biome ci *",
 		"check": "biome check --write --changed",
-		"check:all": "biome check --write *"
+		"check:all": "biome check --write *",
+		"release:patch": "standard-version --release-as patch",
+		"release:minor": "standard-version --release-as minor",
+		"release:major": "standard-version --release-as major",
+		"commit": "git-cz"
 	},
 	"dependencies": {
 		"@biomejs/biome": "1.8.0",
@@ -45,7 +49,9 @@
 		"@types/react-dom": "18.3.0",
 		"eslint": "9.4.0",
 		"eslint-config-next": "14.2.3",
+		"git-cz": "4.9.0",
 		"postcss": "8.4.38",
+		"standard-version": "9.5.0",
 		"tailwindcss": "3.4.4",
 		"typescript": "5.4.5"
 	}
