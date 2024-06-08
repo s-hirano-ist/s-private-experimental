@@ -48,12 +48,12 @@ export function MainTab() {
 
 	return (
 		<div>
-			<Tabs defaultValue="queue">
+			<Tabs defaultValue="queued">
 				<TabsList className="grid w-full grid-cols-2">
-					<TabsTrigger value="queue">Queue</TabsTrigger>
-					<TabsTrigger value="done">Done</TabsTrigger>
+					<TabsTrigger value="queued">Queued</TabsTrigger>
+					<TabsTrigger value="exported">Exported</TabsTrigger>
 				</TabsList>
-				<TabsContent value="queue">
+				<TabsContent value="queued">
 					<Card>
 						<CardHeader>
 							<CardTitle>登録待ち</CardTitle>
@@ -69,7 +69,7 @@ export function MainTab() {
 						</CardFooter>
 					</Card>
 				</TabsContent>
-				<TabsContent value="done">
+				<TabsContent value="exported">
 					<Card>
 						<CardHeader>
 							<CardTitle>登録完了</CardTitle>
