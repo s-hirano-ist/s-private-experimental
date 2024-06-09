@@ -40,16 +40,7 @@ export default async function Home() {
 			},
 		},
 	});
-	const data = newsDetails.map((d) => {
-		return {
-			title: d.title,
-			quote: d.quote,
-			url: d.url,
-			category: d.category?.category ?? "",
-		};
-	});
-
-	const newsCategories = await prisma.category.findMany({
+	const categories = await prisma.category.findMany({
 		select: {
 			id: true,
 			category: true,
@@ -63,7 +54,16 @@ export default async function Home() {
 				<CardDescription>LocalのGitへ書き込み待ちのデータ一覧</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<QueuedTable data={data} />
+				<QueuedTable
+					data={newsDetails.map((d) => {
+						return {
+							title: d.title,
+							quote: d.quote,
+							url: d.url,
+							category: d.category?.category ?? "",
+						};
+					})}
+				/>
 			</CardContent>
 			<CardFooter className="flex justify-between">
 				<Drawer>
@@ -86,7 +86,7 @@ export default async function Home() {
 								ブログに登録するデータを入力してください。
 							</DrawerDescription>
 						</DrawerHeader>
-						<Form categories={newsCategories}>
+						<Form categories={categories}>
 							<DrawerFooter>
 								<div className="grid grid-cols-2 gap-4">
 									<DrawerClose asChild>
