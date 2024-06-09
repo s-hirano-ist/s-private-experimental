@@ -27,9 +27,11 @@ export async function submitBlog(_: SubmitBlogState, formData: FormData) {
 			data: validatedFields.data,
 		});
 
+		console.log("Successfully added:", validatedFields.data);
+
 		return { success: true, message: "正常に登録できました。" };
 	} catch (error) {
-		console.error("error: ", error);
+		console.error("Unexpected error:", error);
 		return {
 			success: false,
 			message: "予期せぬエラーが発生しました。",
