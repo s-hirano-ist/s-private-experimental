@@ -63,7 +63,7 @@ export function Form({
 				<Input id="title" name="title" required />
 			</div>
 			<div className="space-y-1">
-				<Label htmlFor="current">ひとこと</Label>
+				<Label htmlFor="quote">ひとこと</Label>
 				<Textarea id="quote" name="quote" />
 			</div>
 			<div className="space-y-1">
