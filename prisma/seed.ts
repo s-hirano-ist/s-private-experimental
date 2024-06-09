@@ -9,45 +9,41 @@ const prisma = new PrismaClient();
 async function main() {
 	try {
 		// UPSERT: if already exists then update, otherwise create
-		await prisma.news.upsert({
+		await prisma.category.upsert({
 			where: { id: 1 },
 			update: {},
 			create: {
-				heading: data1.heading,
-				description: data1.description,
+				category: data1.category,
 				newsDetail: {
 					create: data1.body,
 				},
 			},
 		});
-		await prisma.news.upsert({
+		await prisma.category.upsert({
 			where: { id: 2 },
 			update: {},
 			create: {
-				heading: data2.heading,
-				description: data2.description,
+				category: data2.category,
 				newsDetail: {
 					create: data2.body,
 				},
 			},
 		});
-		await prisma.news.upsert({
+		await prisma.category.upsert({
 			where: { id: 3 },
 			update: {},
 			create: {
-				heading: data3.heading,
-				description: data3.description,
+				category: data3.category,
 				newsDetail: {
 					create: data3.body,
 				},
 			},
 		});
-		await prisma.news.upsert({
+		await prisma.category.upsert({
 			where: { id: 4 },
 			update: {},
 			create: {
-				heading: data4.heading,
-				description: data4.description,
+				category: data4.category,
 				newsDetail: {
 					create: data4.body,
 				},
