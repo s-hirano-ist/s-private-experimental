@@ -24,6 +24,8 @@ import prisma from "@/server/db";
 import { GitHubLogoIcon, PlusIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
 	const newsDetails = await prisma.newsDetail.findMany({
 		where: {
