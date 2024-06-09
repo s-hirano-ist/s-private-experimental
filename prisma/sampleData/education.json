@@ -1,6 +1,5 @@
 {
-	"heading": "education",
-	"description": "教育について",
+	"category": "education",
 	"body": [
 		{
 			"title": "家庭内プロジェクトマネジメント",

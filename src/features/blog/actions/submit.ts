@@ -11,7 +11,7 @@ export async function submitBlog(_: SubmitBlogState, formData: FormData) {
 	try {
 		console.log("submit form", formData);
 		const validatedFields = blogSchema.safeParse({
-			newsId: Number(formData.get("category")),
+			categoryId: Number(formData.get("category")),
 			title: formData.get("title"),
 			quote: formData.get("quote"),
 			url: formData.get("url"),

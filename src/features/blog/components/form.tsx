@@ -22,7 +22,7 @@ const initialState: SubmitBlogState = {
 
 type Category = {
 	id: number;
-	heading: string;
+	category: string;
 };
 
 export function Form({
@@ -52,7 +52,7 @@ export function Form({
 					<SelectContent>
 						{categories.map((category) => (
 							<SelectItem value={String(category.id)} key={category.id}>
-								{category.heading}
+								{category.category}
 							</SelectItem>
 						))}
 					</SelectContent>

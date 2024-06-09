@@ -1,6 +1,5 @@
 {
-	"heading": "AI",
-	"description": "AIについて",
+	"category": "AI",
 	"body": [
 		{
 			"title": "曲作り with ChatGPT",

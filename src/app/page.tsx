@@ -33,9 +33,9 @@ export default async function Home() {
 			title: true,
 			quote: true,
 			url: true,
-			news: {
+			category: {
 				select: {
-					heading: true,
+					category: true,
 				},
 			},
 		},
@@ -45,14 +45,14 @@ export default async function Home() {
 			title: d.title,
 			quote: d.quote,
 			url: d.url,
-			category: d.news?.heading ?? "",
+			category: d.category?.category ?? "",
 		};
 	});
 
-	const newsCategories = await prisma.news.findMany({
+	const newsCategories = await prisma.category.findMany({
 		select: {
 			id: true,
-			heading: true,
+			category: true,
 		},
 	});
 
