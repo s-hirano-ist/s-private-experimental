@@ -1,5 +1,5 @@
-import { SubmitButton } from "@/components/form/submit-button";
-import { Button } from "@/components/ui/button";
+import { ButtonSpinner } from "@/components/button-spinner";
+import { LoadingTable } from "@/components/table/loading-table";
 import {
 	Card,
 	CardContent,
@@ -8,47 +8,13 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import {
-	Drawer,
-	DrawerClose,
-	DrawerContent,
-	DrawerDescription,
-	DrawerFooter,
-	DrawerHeader,
-	DrawerTitle,
-	DrawerTrigger,
-} from "@/components/ui/drawer";
-import { Form } from "@/features/blog/components/form";
-import { QueuedTable } from "@/features/blog/components/queued-table";
-import prisma from "@/server/db";
-import { GitHubLogoIcon, PlusIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
+import { QueueDrawer } from "@/features/blog/components/queue-drawer";
+import { QueuedList } from "@/features/blog/components/queued-list";
+import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-	const newsDetails = await prisma.newsDetail.findMany({
-		where: {
-			exported: false,
-		},
-		select: {
-			title: true,
-			quote: true,
-			url: true,
-			category: {
-				select: {
-					category: true,
-				},
-			},
-		},
-	});
-	const categories = await prisma.category.findMany({
-		select: {
-			id: true,
-			category: true,
-		},
-	});
-
 	return (
 		<Card className="w-full">
 			<CardHeader>
@@ -56,50 +22,14 @@ export default async function Home() {
 				<CardDescription>LocalのGitへ書き込み待ちのデータ一覧</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<QueuedTable
-					data={newsDetails.map((d) => {
-						return {
-							title: d.title,
-							quote: d.quote,
-							url: d.url,
-							category: d.category?.category ?? "",
-						};
-					})}
-				/>
+				<Suspense fallback={<LoadingTable />}>
+					<QueuedList />
+				</Suspense>
 			</CardContent>
 			<CardFooter className="flex justify-between">
-				<Drawer>
-					<div className="grid grid-cols-2 gap-4 w-full">
-						<DrawerTrigger asChild>
-							<Button variant="outline">
-								<PlusIcon />
-							</Button>
-						</DrawerTrigger>
-						<Link href={process.env.GITHUB_LINK ?? ""} target="_blank">
-							<Button variant="outline" className="w-full">
-								<GitHubLogoIcon />
-							</Button>
-						</Link>
-					</div>
-					<DrawerContent>
-						<DrawerHeader>
-							<DrawerTitle>新規登録</DrawerTitle>
-							<DrawerDescription>
-								ブログに登録するデータを入力してください。
-							</DrawerDescription>
-						</DrawerHeader>
-						<Form categories={categories}>
-							<DrawerFooter>
-								<div className="grid grid-cols-2 gap-4">
-									<DrawerClose asChild>
-										<Button variant="outline">キャンセル</Button>
-									</DrawerClose>
-									<SubmitButton label="保存" />
-								</div>
-							</DrawerFooter>
-						</Form>
-					</DrawerContent>
-				</Drawer>
+				<Suspense fallback={<ButtonSpinner numberOfRows={2} />}>
+					<QueueDrawer />
+				</Suspense>
 			</CardFooter>
 		</Card>
 	);
