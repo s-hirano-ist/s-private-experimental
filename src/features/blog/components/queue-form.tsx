@@ -25,7 +25,7 @@ type Category = {
 	category: string;
 };
 
-export function Form({
+export function QueueForm({
 	children,
 	categories,
 }: { children: ReactNode; categories: Category[] }) {
