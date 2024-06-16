@@ -8,13 +8,13 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { QueueDrawer } from "@/features/blog/components/queue-drawer";
-import { QueuedList } from "@/features/blog/components/queued-list";
+import { QueueFooter } from "@/features/blog/components/queue-footer";
+import { QueuedContents } from "@/features/blog/components/queued-contents";
 import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 
-export default async function Home() {
+export default function Home() {
 	return (
 		<Card className="w-full">
 			<CardHeader>
@@ -23,12 +23,12 @@ export default async function Home() {
 			</CardHeader>
 			<CardContent>
 				<Suspense fallback={<LoadingTable />}>
-					<QueuedList />
+					<QueuedContents />
 				</Suspense>
 			</CardContent>
 			<CardFooter className="flex justify-between">
 				<Suspense fallback={<ButtonSpinner numberOfRows={2} />}>
-					<QueueDrawer />
+					<QueueFooter />
 				</Suspense>
 			</CardFooter>
 		</Card>

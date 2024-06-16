@@ -10,8 +10,9 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import type { Category } from "@prisma/client";
 import { useEffect } from "react";
-import type { ReactNode } from "react";
+import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { useFormState } from "react-dom";
 import { type SubmitBlogState, submitBlog } from "../actions/submit";
 
@@ -20,15 +21,13 @@ const initialState: SubmitBlogState = {
 	message: "",
 };
 
-type Category = {
-	id: number;
-	category: string;
+type Props = {
+	children: ReactNode;
+	categories: Category[];
+	setDialogOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-export function QueueForm({
-	children,
-	categories,
-}: { children: ReactNode; categories: Category[] }) {
+export function QueueForm({ children, categories, setDialogOpen }: Props) {
 	const { toast } = useToast();
 
 	const [state, formAction] = useFormState(submitBlog, initialState);
@@ -39,7 +38,8 @@ export function QueueForm({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
 		});
-	}, [state, toast]);
+		setDialogOpen(false);
+	}, [state, toast, setDialogOpen]);
 
 	return (
 		<form action={formAction} className="p-4 space-y-4">
