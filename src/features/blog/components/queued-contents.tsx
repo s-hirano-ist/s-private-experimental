@@ -1,7 +1,7 @@
 import prisma from "@/server/db";
 import { QueuedTable } from "./queued-table";
 
-export async function QueuedList() {
+export async function QueuedContents() {
 	const newsDetails = await prisma.newsDetail.findMany({
 		where: { exported: false },
 		select: {
@@ -11,9 +11,10 @@ export async function QueuedList() {
 			category: { select: { category: true } },
 		},
 	});
+
 	return (
 		<QueuedTable
-			data={newsDetails.map((d) => {
+			newsDetails={newsDetails.map((d) => {
 				return {
 					title: d.title,
 					quote: d.quote,

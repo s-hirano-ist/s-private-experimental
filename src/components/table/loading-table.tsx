@@ -41,7 +41,7 @@ export function LoadingTable() {
 					})}
 				</TableBody>
 			</Table>
-			<TableFooter />
+			<TableFooter numberOfRows={0} />
 		</div>
 	);
 }

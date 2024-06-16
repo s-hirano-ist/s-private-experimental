@@ -32,7 +32,7 @@ import {
 } from "@tanstack/react-table";
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
-import * as React from "react";
+import { useEffect, useReducer, useState } from "react";
 
 type NewsDetail = {
 	title: string;
@@ -100,15 +100,20 @@ const columns: ColumnDef<NewsDetail>[] = [
 ];
 
 type Props = {
-	data: NewsDetail[];
+	newsDetails: NewsDetail[];
 };
-export function QueuedTable({ data }: Props) {
-	const [sorting, setSorting] = React.useState<SortingState>([]);
-	const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-		[],
-	);
-	const [columnVisibility, setColumnVisibility] =
-		React.useState<VisibilityState>({});
+export function QueuedTable({ newsDetails }: Props) {
+	const [data, setData] = useState(newsDetails);
+
+	const rerender = useReducer(() => ({}), {})[1];
+
+	useEffect(() => {
+		setData(newsDetails);
+	}, [newsDetails]);
+
+	const [sorting, setSorting] = useState<SortingState>([]);
+	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+	const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
 	const table = useReactTable({
 		data,
@@ -164,7 +169,11 @@ export function QueuedTable({ data }: Props) {
 					)}
 				</TableBody>
 			</Table>
+			<Button onClick={() => rerender()} className="border p-2">
+				Rerender
+			</Button>
 			<TableFooter
+				numberOfRows={table.getFilteredRowModel().rows.length}
 				onClickPrevious={() => table.previousPage()}
 				previousButtonDisabled={!table.getCanPreviousPage()}
 				onClickNext={() => table.nextPage()}
