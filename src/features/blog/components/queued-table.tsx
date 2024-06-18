@@ -18,6 +18,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import { queuedContentsContext } from "@/features/blog/stores/queued-contents-context";
 import {
 	type ColumnDef,
 	type ColumnFiltersState,
@@ -33,15 +34,10 @@ import {
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useReducer, useState } from "react";
+import { useRecoilState } from "recoil";
+import type { QueuedContent } from "../stores/queued-contents-context";
 
-type NewsDetail = {
-	title: string;
-	quote: string | null;
-	url: string;
-	category: string;
-};
-
-const columns: ColumnDef<NewsDetail>[] = [
+const columns: ColumnDef<QueuedContent>[] = [
 	{
 		accessorKey: "category",
 		header: ({ column }) => {
@@ -100,16 +96,17 @@ const columns: ColumnDef<NewsDetail>[] = [
 ];
 
 type Props = {
-	newsDetails: NewsDetail[];
+	queuedContents: QueuedContent[];
 };
-export function QueuedTable({ newsDetails }: Props) {
-	const [data, setData] = useState(newsDetails);
 
+export function QueuedTable({ queuedContents }: Props) {
+	const [data, setData] = useRecoilState(queuedContentsContext);
 	const rerender = useReducer(() => ({}), {})[1];
 
 	useEffect(() => {
-		setData(newsDetails);
-	}, [newsDetails]);
+		console.log("update data or newsDetail");
+		setData(queuedContents);
+	}, [queuedContents, setData]);
 
 	const [sorting, setSorting] = useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
