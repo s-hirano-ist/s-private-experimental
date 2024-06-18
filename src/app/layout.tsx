@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import AppProvider from "@/components/app-provider";
 import { Toaster } from "@/components/ui/toaster";
 import type { ReactNode } from "react";
 
@@ -17,10 +18,12 @@ export default function RootLayout({
 	return (
 		<html lang="ja">
 			<body className={inter.className}>
-				<main className="flex min-h-screen flex-col items-center justify-between p-4">
-					{children}
-				</main>
-				<Toaster />
+				<AppProvider>
+					<main className="flex min-h-screen flex-col items-center justify-between p-4">
+						{children}
+					</main>
+					<Toaster />
+				</AppProvider>
 			</body>
 		</html>
 	);
