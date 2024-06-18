@@ -33,7 +33,7 @@ import {
 } from "@tanstack/react-table";
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import type { QueuedContent } from "../stores/queued-contents-context";
 
@@ -101,7 +101,6 @@ type Props = {
 
 export function QueuedTable({ queuedContents }: Props) {
 	const [data, setData] = useRecoilState(queuedContentsContext);
-	const rerender = useReducer(() => ({}), {})[1];
 
 	useEffect(() => {
 		console.log("update data or newsDetail");
@@ -166,9 +165,6 @@ export function QueuedTable({ queuedContents }: Props) {
 					)}
 				</TableBody>
 			</Table>
-			<Button onClick={() => rerender()} className="border p-2">
-				Rerender
-			</Button>
 			<TableFooter
 				numberOfRows={table.getFilteredRowModel().rows.length}
 				onClickPrevious={() => table.previousPage()}

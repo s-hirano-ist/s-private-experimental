@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 
 type Props = {
 	numberOfRows: number;
-	// rerender: React.DispatchWithoutAction;
 	onClickPrevious?: () => void;
 	previousButtonDisabled?: boolean;
 	onClickNext?: () => void;
@@ -22,9 +21,6 @@ export function TableFooter({
 			<div>
 				<span className="font-bold text-3xl">{numberOfRows}</span>個の項目
 			</div>
-			{/* <Button onClick={() => rerender()} className="border p-2">
-				Rerender
-			</Button> */}
 			<div className="space-x-2 py-4">
 				<Button
 					variant="outline"
