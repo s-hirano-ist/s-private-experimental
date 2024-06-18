@@ -14,7 +14,9 @@ import type { Category } from "@prisma/client";
 import { useEffect } from "react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { useFormState } from "react-dom";
+import { useSetRecoilState } from "recoil";
 import { type SubmitBlogState, submitBlog } from "../actions/submit";
+import { queuedContentsContext } from "../stores/queued-contents-context";
 
 const initialState: SubmitBlogState = {
 	success: undefined,
@@ -31,6 +33,7 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 	const { toast } = useToast();
 
 	const [state, formAction] = useFormState(submitBlog, initialState);
+	const setQueuedContents = useSetRecoilState(queuedContentsContext);
 
 	useEffect(() => {
 		if (state.success === undefined) return;
@@ -39,7 +42,11 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 			description: state.message,
 		});
 		setDialogOpen(false);
-	}, [state, toast, setDialogOpen]);
+
+		const data = state.data;
+		if (!data) throw new Error("State has no data error.");
+		setQueuedContents((previousData) => [...previousData, data]);
+	}, [state, toast, setDialogOpen, setQueuedContents]);
 
 	return (
 		<form action={formAction} className="p-4 space-y-4">

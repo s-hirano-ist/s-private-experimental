@@ -14,7 +14,7 @@ export async function QueuedContents() {
 
 	return (
 		<QueuedTable
-			newsDetails={newsDetails.map((d) => {
+			queuedContents={newsDetails.map((d) => {
 				return {
 					title: d.title,
 					quote: d.quote,

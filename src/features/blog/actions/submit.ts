@@ -1,13 +1,18 @@
 "use server";
 import prisma from "@/server/db";
 import { blogSchema } from "../schemas/blog-schema";
+import type { QueuedContent } from "../stores/queued-contents-context";
 
 export type SubmitBlogState = {
 	success: boolean | undefined;
 	message: string;
+	data?: QueuedContent;
 };
 
-export async function submitBlog(_: SubmitBlogState, formData: FormData) {
+export async function submitBlog(
+	_: SubmitBlogState,
+	formData: FormData,
+): Promise<SubmitBlogState> {
 	try {
 		console.log("submit form", formData);
 		const validatedFields = blogSchema.safeParse({
@@ -23,13 +28,29 @@ export async function submitBlog(_: SubmitBlogState, formData: FormData) {
 				message: "無効なフォーマットで入力されています。",
 			};
 		}
-		await prisma.newsDetail.create({
+		const createNewsDetail = await prisma.newsDetail.create({
 			data: validatedFields.data,
+			include: {
+				category: true,
+			},
 		});
+		const category = createNewsDetail.category?.category;
+		if (!category) throw new Error("Category undefined error.");
+
+		const data = {
+			title: validatedFields.data.title,
+			quote: validatedFields.data.quote,
+			url: validatedFields.data.url,
+			category,
+		};
 
 		console.log("Successfully added:", validatedFields.data);
 
-		return { success: true, message: "正常に登録できました。" };
+		return {
+			success: true,
+			message: "正常に登録できました。",
+			data,
+		};
 	} catch (error) {
 		console.error("Unexpected error:", error);
 		return {
