@@ -2,6 +2,7 @@
   timezone: "Asia/Tokyo",
   baseBranches: ["main"],
   extends: ["config:base", ":semanticCommitTypeAll(chore)"],
+  reviewers: ["s-hirano-ist"],
   enabledManagers: ["npm", "github-actions"], // "docker-compose", "dockerfile"
   dependencyDashboard: true,
   schedule: ["before 11am on monday"],
