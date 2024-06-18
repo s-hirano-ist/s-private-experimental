@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AppProvider from "@/components/app-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from "@vercel/analytics/react";
 import type { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,6 +23,7 @@ export default function RootLayout({
 					<main className="flex min-h-screen flex-col items-center justify-between p-4">
 						{children}
 					</main>
+					<Analytics debug={false} />
 					<Toaster />
 				</AppProvider>
 			</body>
