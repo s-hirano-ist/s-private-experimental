@@ -19,10 +19,10 @@ export function LoadingTable() {
 				<TableHeader>
 					<TableRow>
 						<TableHead>
-							<Skeleton className="w-full h-8" />
+							<Skeleton className="h-8 w-full" />
 						</TableHead>
 						<TableHead>
-							<Skeleton className="w-full h-8" />
+							<Skeleton className="h-8 w-full" />
 						</TableHead>
 					</TableRow>
 				</TableHeader>
@@ -31,10 +31,10 @@ export function LoadingTable() {
 						return (
 							<TableRow key={String(key)}>
 								<TableCell className="h-12">
-									<Skeleton className="w-full h-full" />
+									<Skeleton className="size-full" />
 								</TableCell>
 								<TableCell className="h-12">
-									<Skeleton className="w-full h-full" />
+									<Skeleton className="size-full" />
 								</TableCell>
 							</TableRow>
 						);

@@ -26,7 +26,7 @@ export function QueueDrawer({ categories }: Props) {
 
 	return (
 		<Drawer open={open} onOpenChange={setOpen}>
-			<div className="grid grid-cols-2 gap-4 w-full">
+			<div className="grid w-full grid-cols-2 gap-4">
 				<DrawerTrigger asChild>
 					<Button variant="outline">
 						<PlusIcon />

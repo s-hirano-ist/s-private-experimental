@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function Page() {
 	return (
 		<main>
-			<div className="text-center h-screen w-screen flex flex-col justify-center items-center space-y-4">
-				<span className="block font-extrabold text-2xl">Not Found</span>
+			<div className="flex h-screen w-screen flex-col items-center justify-center space-y-4 text-center">
+				<span className="block text-2xl font-extrabold">Not Found</span>
 				<Button variant="outline" asChild>
 					<Link href="/">HOMEへ戻る</Link>
 				</Button>

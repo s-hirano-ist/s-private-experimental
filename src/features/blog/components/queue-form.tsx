@@ -49,7 +49,7 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 	}, [state, toast, setDialogOpen, setQueuedContents]);
 
 	return (
-		<form action={formAction} className="p-4 space-y-4">
+		<form action={formAction} className="space-y-4 p-4">
 			<div className="space-y-1">
 				<Label htmlFor="category">カテゴリー</Label>
 				<Select name="category">

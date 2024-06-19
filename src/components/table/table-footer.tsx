@@ -17,9 +17,9 @@ export function TableFooter({
 	nextButtonDisabled = true,
 }: Props) {
 	return (
-		<div className="flex justify-between items-center">
+		<div className="flex items-center justify-between">
 			<div>
-				<span className="font-bold text-3xl">{numberOfRows}</span>個の項目
+				<span className="text-3xl font-bold">{numberOfRows}</span>個の項目
 			</div>
 			<div className="space-x-2 py-4">
 				<Button
