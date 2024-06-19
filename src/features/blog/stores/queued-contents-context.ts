@@ -1,6 +1,7 @@
 import { atom } from "recoil";
 
 export type QueuedContent = {
+	id: number;
 	title: string;
 	quote: string | null;
 	url: string;
