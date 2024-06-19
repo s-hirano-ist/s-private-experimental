@@ -41,15 +41,18 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
 		});
-		setDialogOpen(false);
-
 		const data = state.data;
 		if (!data) throw new Error("State has no data error.");
 		setQueuedContents((previousData) => [data, ...previousData]);
-	}, [state, toast, setDialogOpen, setQueuedContents]);
+	}, [state, toast, setQueuedContents]);
+
+	const action = (formdata: FormData) => {
+		setDialogOpen(false);
+		formAction(formdata);
+	};
 
 	return (
-		<form action={formAction} className="space-y-4 p-4">
+		<form action={action} className="space-y-4 p-4">
 			<div className="space-y-1">
 				<Label htmlFor="category">カテゴリー</Label>
 				<Select name="category">
