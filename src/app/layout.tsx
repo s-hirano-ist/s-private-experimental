@@ -9,7 +9,7 @@ import type { ReactNode } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "%s | Dump",
+	title: "Dump",
 	description: "Dump blog data to GitHub",
 };
 
