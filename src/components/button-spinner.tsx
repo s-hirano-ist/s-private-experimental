@@ -8,7 +8,7 @@ type Props = {
 
 export const ButtonSpinner: FC<Props> = ({ numberOfRows }) => {
 	return (
-		<div className="grid grid-cols-2 gap-4 w-full">
+		<div className="grid w-full grid-cols-2 gap-4">
 			{[...Array(numberOfRows)].map((_, key) => {
 				return (
 					<Button key={String(key)} variant="outline">
