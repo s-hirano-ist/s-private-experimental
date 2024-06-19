@@ -39,6 +39,21 @@ import type { QueuedContent } from "../stores/queued-contents-context";
 
 const columns: ColumnDef<QueuedContent>[] = [
 	{
+		accessorKey: "id",
+		header: ({ column }) => {
+			return (
+				<Button
+					variant="ghost"
+					onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+				>
+					ID
+					<ArrowUpDown className="ml-2 size-4" />
+				</Button>
+			);
+		},
+		cell: ({ row }) => <div className="capitalize">{row.getValue("id")}</div>,
+	},
+	{
 		accessorKey: "category",
 		header: ({ column }) => {
 			return (
@@ -92,7 +107,6 @@ const columns: ColumnDef<QueuedContent>[] = [
 			</Link>
 		),
 	},
-	// TODO: more settings at https://ui.shadcn.com/docs/components/data-table
 ];
 
 type Props = {

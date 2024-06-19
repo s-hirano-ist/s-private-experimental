@@ -45,7 +45,7 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 
 		const data = state.data;
 		if (!data) throw new Error("State has no data error.");
-		setQueuedContents((previousData) => [...previousData, data]);
+		setQueuedContents((previousData) => [data, ...previousData]);
 	}, [state, toast, setDialogOpen, setQueuedContents]);
 
 	return (

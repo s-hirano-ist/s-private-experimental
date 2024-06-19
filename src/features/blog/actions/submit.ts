@@ -38,6 +38,7 @@ export async function submitBlog(
 		if (!category) throw new Error("Category undefined error.");
 
 		const data = {
+			id: createNewsDetail.id,
 			title: validatedFields.data.title,
 			quote: validatedFields.data.quote,
 			url: validatedFields.data.url,
