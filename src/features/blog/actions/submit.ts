@@ -1,9 +1,10 @@
 "use server";
 import prisma from "@/server/db";
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "../constants";
 import { blogSchema } from "../schemas/blog-schema";
 import type { QueuedContent } from "../stores/queued-contents-context";
 
-export type SubmitBlogState = {
+type SubmitBlogState = {
 	success: boolean | undefined;
 	message: string;
 	data?: QueuedContent;
@@ -19,9 +20,10 @@ export async function submitBlog(formData: FormData): Promise<SubmitBlogState> {
 		});
 
 		if (!validatedFields.success) {
+			console.error("Invalid format.");
 			return {
 				success: false,
-				message: "無効なフォーマットで入力されています。",
+				message: ERROR_MESSAGES.INVALID_FORMAT,
 			};
 		}
 		const createNewsDetail = await prisma.newsDetail.create({
@@ -45,14 +47,14 @@ export async function submitBlog(formData: FormData): Promise<SubmitBlogState> {
 
 		return {
 			success: true,
-			message: "正常に登録できました。",
+			message: SUCCESS_MESSAGES.SUCCESS,
 			data,
 		};
 	} catch (error) {
 		console.error("Unexpected error:", error);
 		return {
 			success: false,
-			message: "予期せぬエラーが発生しました。",
+			message: ERROR_MESSAGES.UNEXPECTED,
 		};
 	}
 }
