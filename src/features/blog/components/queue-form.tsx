@@ -14,13 +14,9 @@ import type { Category } from "@prisma/client";
 import { useEffect, useState } from "react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { useSetRecoilState } from "recoil";
-import { type SubmitBlogState, submitBlog } from "../actions/submit";
+import { submitBlog } from "../actions/submit";
+import { ERROR_MESSAGES } from "../constants";
 import { queuedContentsContext } from "../stores/queued-contents-context";
-
-const initialState: SubmitBlogState = {
-	success: undefined,
-	message: "",
-};
 
 type Props = {
 	children: ReactNode;
@@ -40,20 +36,36 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 	};
 
 	useEffect(() => {
-		if (formData !== undefined) {
-			const submit = async () => {
-				const state = await submitBlog(formData);
-				if (state.success === undefined) return;
-				const data = state.data;
-				if (!data) throw new Error("State has no data error.");
-				setQueuedContents((previousData) => [data, ...previousData]);
-				toast({
-					variant: state.success ? "default" : "destructive",
-					description: state.message,
-				});
-				setFormData(undefined);
-			};
-			submit();
+		try {
+			if (formData !== undefined) {
+				const submit = async () => {
+					const state = await submitBlog(formData);
+					if (!state.success) {
+						// undefined or false
+						toast({
+							variant: "destructive",
+							description: state.message,
+						});
+						setFormData(undefined);
+						return;
+					}
+					const data = state.data;
+					if (!data) throw new Error("State has no data error.");
+					setQueuedContents((previousData) => [data, ...previousData]);
+					toast({
+						variant: "default",
+						description: state.message,
+					});
+					setFormData(undefined);
+				};
+				submit();
+			}
+		} catch (error) {
+			console.error("Unexpected error.");
+			toast({
+				variant: "destructive",
+				description: ERROR_MESSAGES.UNEXPECTED,
+			});
 		}
 	}, [formData, toast, setQueuedContents]);
 
@@ -61,7 +73,7 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 		<form action={action} className="space-y-4 p-4">
 			<div className="space-y-1">
 				<Label htmlFor="category">カテゴリー</Label>
-				<Select name="category">
+				<Select name="category" required>
 					<SelectTrigger>
 						<SelectValue />
 					</SelectTrigger>
