@@ -1,4 +1,3 @@
-import { ButtonSpinner } from "@/components/button-spinner";
 import { LoadingTable } from "@/components/table/loading-table";
 import {
 	Card,
@@ -27,9 +26,7 @@ export default function Home() {
 				</Suspense>
 			</CardContent>
 			<CardFooter className="flex justify-between">
-				<Suspense fallback={<ButtonSpinner numberOfRows={2} />}>
-					<QueueFooter />
-				</Suspense>
+				<QueueFooter />
 			</CardFooter>
 		</Card>
 	);
