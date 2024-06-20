@@ -9,12 +9,8 @@ export type SubmitBlogState = {
 	data?: QueuedContent;
 };
 
-export async function submitBlog(
-	_: SubmitBlogState,
-	formData: FormData,
-): Promise<SubmitBlogState> {
+export async function submitBlog(formData: FormData): Promise<SubmitBlogState> {
 	try {
-		console.log("submit form", formData);
 		const validatedFields = blogSchema.safeParse({
 			categoryId: Number(formData.get("category")),
 			title: formData.get("title"),

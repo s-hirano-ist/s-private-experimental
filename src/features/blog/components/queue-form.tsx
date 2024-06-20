@@ -11,9 +11,8 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import type { Category } from "@prisma/client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
-import { useFormState } from "react-dom";
 import { useSetRecoilState } from "recoil";
 import { type SubmitBlogState, submitBlog } from "../actions/submit";
 import { queuedContentsContext } from "../stores/queued-contents-context";
@@ -32,24 +31,31 @@ type Props = {
 export function QueueForm({ children, categories, setDialogOpen }: Props) {
 	const { toast } = useToast();
 
-	const [state, formAction] = useFormState(submitBlog, initialState);
+	const [formData, setFormData] = useState<FormData>();
 	const setQueuedContents = useSetRecoilState(queuedContentsContext);
 
-	useEffect(() => {
-		if (state.success === undefined) return;
-		toast({
-			variant: state.success ? "default" : "destructive",
-			description: state.message,
-		});
-		const data = state.data;
-		if (!data) throw new Error("State has no data error.");
-		setQueuedContents((previousData) => [data, ...previousData]);
-	}, [state, toast, setQueuedContents]);
-
-	const action = (formdata: FormData) => {
+	const action = (_formData: FormData) => {
 		setDialogOpen(false);
-		formAction(formdata);
+		setFormData(_formData);
 	};
+
+	useEffect(() => {
+		if (formData !== undefined) {
+			const submit = async () => {
+				const state = await submitBlog(formData);
+				if (state.success === undefined) return;
+				const data = state.data;
+				if (!data) throw new Error("State has no data error.");
+				setQueuedContents((previousData) => [data, ...previousData]);
+				toast({
+					variant: state.success ? "default" : "destructive",
+					description: state.message,
+				});
+				setFormData(undefined);
+			};
+			submit();
+		}
+	}, [formData, toast, setQueuedContents]);
 
 	return (
 		<form action={action} className="space-y-4 p-4">
@@ -80,9 +86,6 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 				<Label htmlFor="url">URL</Label>
 				<Input id="url" name="url" type="url" required />
 			</div>
-			<p aria-live="polite" className="sr-only">
-				{state?.message}
-			</p>
 			{children}
 		</form>
 	);
