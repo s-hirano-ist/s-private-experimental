@@ -117,7 +117,6 @@ export function QueuedTable({ queuedContents }: Props) {
 	const [data, setData] = useRecoilState(queuedContentsContext);
 
 	useEffect(() => {
-		console.log("update data or newsDetail");
 		setData(queuedContents);
 	}, [queuedContents, setData]);
 

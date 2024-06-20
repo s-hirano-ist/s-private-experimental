@@ -50,8 +50,8 @@ async function main() {
 			},
 		});
 		console.log("added sample data to the database");
-	} catch (e) {
-		console.error(e);
+	} catch (error) {
+		console.error(error);
 		process.exit(1);
 	} finally {
 		await prisma.$disconnect();

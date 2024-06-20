@@ -11,8 +11,8 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import type { Category } from "@prisma/client";
-import { useEffect, useState } from "react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
+import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { submitBlog } from "../actions/submit";
 import { ERROR_MESSAGES } from "../constants";
@@ -61,7 +61,7 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 				submit();
 			}
 		} catch (error) {
-			console.error("Unexpected error.");
+			console.error("Unexpected error.", error);
 			toast({
 				variant: "destructive",
 				description: ERROR_MESSAGES.UNEXPECTED,
