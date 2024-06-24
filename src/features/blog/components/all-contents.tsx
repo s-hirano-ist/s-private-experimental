@@ -1,11 +1,10 @@
 import ErrorView from "@/components/error-view";
 import prisma from "@/server/db";
-import { QueuedStack } from "./queued-stack";
+import { AllTable } from "./all-table";
 
-export async function QueuedContents() {
+export async function AllContents() {
 	try {
 		const newsDetails = await prisma.newsDetail.findMany({
-			where: { exported: false },
 			select: {
 				id: true,
 				title: true,
@@ -13,13 +12,10 @@ export async function QueuedContents() {
 				url: true,
 				category: { select: { category: true } },
 			},
-			orderBy: {
-				id: "desc",
-			},
 		});
 		return (
-			<QueuedStack
-				queuedContents={newsDetails.map((d) => {
+			<AllTable
+				data={newsDetails.map((d) => {
 					return {
 						id: d.id,
 						title: d.title,
