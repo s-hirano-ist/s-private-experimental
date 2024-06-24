@@ -18,7 +18,6 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { queuedContentsContext } from "@/features/blog/stores/queued-contents-context";
 import {
 	type ColumnDef,
 	type ColumnFiltersState,
@@ -33,8 +32,7 @@ import {
 } from "@tanstack/react-table";
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useState } from "react";
 import type { QueuedContent } from "../stores/queued-contents-context";
 
 const columns: ColumnDef<QueuedContent>[] = [
@@ -110,16 +108,10 @@ const columns: ColumnDef<QueuedContent>[] = [
 ];
 
 type Props = {
-	queuedContents: QueuedContent[];
+	data: QueuedContent[];
 };
 
-export function QueuedTable({ queuedContents }: Props) {
-	const [data, setData] = useRecoilState(queuedContentsContext);
-
-	useEffect(() => {
-		setData(queuedContents);
-	}, [queuedContents, setData]);
-
+export function AllTable({ data }: Props) {
 	const [sorting, setSorting] = useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 	const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
