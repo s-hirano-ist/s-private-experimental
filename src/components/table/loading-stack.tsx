@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Skeleton } from "../ui/skeleton";
 
-const NUMBER_OF_ROWS = 4;
+const NUMBER_OF_ROWS = 32;
 
 export function LoadingStack() {
 	return (
