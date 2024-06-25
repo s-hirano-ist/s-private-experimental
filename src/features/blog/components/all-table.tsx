@@ -130,7 +130,7 @@ export function AllTable({ data }: Props) {
 	});
 
 	return (
-		<div className="w-full">
+		<div className="p-4">
 			<Table>
 				<TableHeader>
 					{table.getHeaderGroups().map((headerGroup) => (
