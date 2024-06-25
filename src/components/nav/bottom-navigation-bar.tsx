@@ -56,8 +56,7 @@ export function BottomNavigationBar({ categories }: Props) {
 					</DrawerTrigger>
 
 					<Button variant="navSide" size="navSide" type="button">
-						{/* TODO: add submit button */}
-						<Link href="/test">
+						<Link href="/submit">
 							<CheckIcon className="size-6" />
 							<span className="sr-only">Submit</span>
 						</Link>
