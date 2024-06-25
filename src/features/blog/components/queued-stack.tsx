@@ -39,7 +39,9 @@ export function QueuedStack({ queuedContents }: Props) {
 							</CardHeader>
 							<CardContent>
 								<CardTitle>{d.title}</CardTitle>
-								<CardDescription>{d.quote}</CardDescription>
+								<CardDescription className="truncate">
+									{d.quote ? d.quote : "　"}
+								</CardDescription>
 							</CardContent>
 						</Card>
 					</Link>
