@@ -18,18 +18,23 @@ model Category {
   id         Int          @id @default(autoincrement())
   category   String       @unique
   newsDetail NewsDetail[]
+  createdAt  DateTime     @default(now()) @map("created_at")
+  updatedAt  DateTime     @updatedAt @map("updated_at")
 
   @@map("category")
 }
 
 model NewsDetail {
-  id         Int       @id @default(autoincrement())
-  title      String
-  url        String
-  quote      String?
-  exported   Boolean   @default(false)
-  category   Category? @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  categoryId Int       @map("category_id")
+  id              Int       @id @default(autoincrement())
+  title           String
+  url             String
+  quote           String?
+  exported        Boolean   @default(false)
+  updatedRecently Boolean   @default(false) @map("updated_recently")
+  category        Category? @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  categoryId      Int       @map("category_id")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
 
   @@map("news_detail")
 }
