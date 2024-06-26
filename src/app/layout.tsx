@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import AppProvider from "@/components/app-provider";
-import { BottomNavigationBar } from "@/components/nav/bottom-navigation-bar";
+import { Footer } from "@/components/nav/footer";
 import { Toaster } from "@/components/ui/toaster";
-import prisma from "@/server/db";
 import { Analytics } from "@vercel/analytics/react";
 import { ViewTransitions } from "next-view-transitions";
-import type { ReactNode } from "react";
+import { type ReactNode, Suspense } from "react";
 
 const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
 
@@ -20,9 +19,6 @@ export default async function RootLayout({
 	children,
 }: Readonly<{ children: ReactNode }>) {
 	try {
-		const categories = await prisma.category.findMany({
-			select: { id: true, category: true },
-		});
 		return (
 			<ViewTransitions>
 				<html lang="ja">
@@ -30,7 +26,9 @@ export default async function RootLayout({
 						<AppProvider>
 							<main className="flex h-screen flex-col justify-between">
 								<div className="grow pb-4">{children}</div>
-								<BottomNavigationBar categories={categories} />
+								<Suspense fallback={<div />}>
+									<Footer />
+								</Suspense>
 							</main>
 							<Analytics debug={false} />
 							<Toaster />

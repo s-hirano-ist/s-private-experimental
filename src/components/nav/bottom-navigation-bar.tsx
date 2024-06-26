@@ -32,42 +32,40 @@ export function BottomNavigationBar({ categories }: Props) {
 
 	return (
 		<Drawer open={open} onOpenChange={setOpen}>
-			<div className="sticky bottom-4 z-50 mx-auto h-16 w-full max-w-lg rounded-full border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700">
-				<div className="mx-auto grid h-full max-w-lg grid-cols-5">
-					<Button variant="navSide" size="navSide" className="rounded-s-full">
-						<Link href="/">
-							<HomeIcon className="size-6" />
-							<span className="sr-only">Home</span>
-						</Link>
-					</Button>
-					<Button variant="navSide" size="navSide" type="button">
-						<Link href="/all">
-							<TableIcon className="size-6" />
-							<span className="sr-only">All</span>
-						</Link>
-					</Button>
-					<DrawerTrigger asChild>
-						<div className="flex items-center justify-center">
-							<Button variant="navCenter" size="navCenter" type="button">
-								<PlusIcon className="size-6 text-white" />
-								<span className="sr-only">Add</span>
-							</Button>
-						</div>
-					</DrawerTrigger>
+			<div className="mx-auto grid  h-16 max-w-lg grid-cols-5">
+				<Button variant="navSide" size="navSide" className="rounded-s-full">
+					<Link href="/">
+						<HomeIcon className="size-6" />
+						<span className="sr-only">Home</span>
+					</Link>
+				</Button>
+				<Button variant="navSide" size="navSide" type="button">
+					<Link href="/all">
+						<TableIcon className="size-6" />
+						<span className="sr-only">All</span>
+					</Link>
+				</Button>
+				<DrawerTrigger asChild>
+					<div className="flex items-center justify-center">
+						<Button variant="navCenter" size="navCenter" type="button">
+							<PlusIcon className="size-6 text-white" />
+							<span className="sr-only">Add</span>
+						</Button>
+					</div>
+				</DrawerTrigger>
 
-					<Button variant="navSide" size="navSide" type="button">
-						<Link href="/submit">
-							<CheckIcon className="size-6" />
-							<span className="sr-only">Submit</span>
-						</Link>
-					</Button>
-					<Button variant="navSide" size="navSide" className="rounded-e-full">
-						<Link href={process.env.GITHUB_LINK ?? ""} target="_blank">
-							<GitHubLogoIcon className="size-6" />
-							<span className="sr-only">GitHub</span>
-						</Link>
-					</Button>
-				</div>
+				<Button variant="navSide" size="navSide" type="button">
+					<Link href="/submit">
+						<CheckIcon className="size-6" />
+						<span className="sr-only">Submit</span>
+					</Link>
+				</Button>
+				<Button variant="navSide" size="navSide" className="rounded-e-full">
+					<Link href={process.env.GITHUB_LINK ?? ""} target="_blank">
+						<GitHubLogoIcon className="size-6" />
+						<span className="sr-only">GitHub</span>
+					</Link>
+				</Button>
 			</div>
 			<DrawerContent>
 				<DrawerHeader>
