@@ -12,6 +12,7 @@ import {
 	DrawerTrigger,
 } from "@/components/ui/drawer";
 import { QueueForm } from "@/features/blog/components/queue-form";
+import { cn } from "@/lib/utils";
 import type { Category } from "@prisma/client";
 import {
 	CheckIcon,
@@ -21,6 +22,7 @@ import {
 	TableIcon,
 } from "@radix-ui/react-icons";
 import { Link } from "next-view-transitions";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 type Props = {
@@ -29,22 +31,37 @@ type Props = {
 
 export function BottomNavigationBar({ categories }: Props) {
 	const [open, setOpen] = useState(false);
+	const pathname = usePathname();
 
 	return (
 		<Drawer open={open} onOpenChange={setOpen}>
-			<div className="mx-auto grid  h-16 max-w-lg grid-cols-5">
-				<Button variant="navSide" size="navSide" className="rounded-s-full">
-					<Link href="/">
+			<div className="mx-auto grid h-16 max-w-lg grid-cols-5">
+				<Link href="/">
+					<Button
+						variant="navSide"
+						size="navSide"
+						className={cn(
+							"rounded-s-full",
+							pathname === "/" ? "bg-primary/10" : "",
+						)}
+					>
 						<HomeIcon className="size-6" />
 						<span className="sr-only">Home</span>
-					</Link>
-				</Button>
-				<Button variant="navSide" size="navSide" type="button">
-					<Link href="/all">
+					</Button>
+				</Link>
+
+				<Link href="/all" className=" ">
+					<Button
+						variant="navSide"
+						size="navSide"
+						type="button"
+						className={pathname === "/all" ? "bg-primary/10" : ""}
+					>
 						<TableIcon className="size-6" />
 						<span className="sr-only">All</span>
-					</Link>
-				</Button>
+					</Button>
+				</Link>
+
 				<DrawerTrigger asChild>
 					<div className="flex items-center justify-center">
 						<Button variant="navCenter" size="navCenter" type="button">
@@ -54,18 +71,24 @@ export function BottomNavigationBar({ categories }: Props) {
 					</div>
 				</DrawerTrigger>
 
-				<Button variant="navSide" size="navSide" type="button">
-					<Link href="/submit">
+				<Link href="/submit">
+					<Button
+						variant="navSide"
+						size="navSide"
+						type="button"
+						className={pathname === "/submit" ? "bg-primary/10" : ""}
+					>
 						<CheckIcon className="size-6" />
 						<span className="sr-only">Submit</span>
-					</Link>
-				</Button>
-				<Button variant="navSide" size="navSide" className="rounded-e-full">
-					<Link href={process.env.GITHUB_LINK ?? ""} target="_blank">
+					</Button>
+				</Link>
+
+				<Link href={process.env.GITHUB_LINK ?? ""} target="_blank">
+					<Button variant="navSide" size="navSide" className="rounded-e-full">
 						<GitHubLogoIcon className="size-6" />
 						<span className="sr-only">GitHub</span>
-					</Link>
-				</Button>
+					</Button>
+				</Link>
 			</div>
 			<DrawerContent>
 				<DrawerHeader>
