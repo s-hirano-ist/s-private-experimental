@@ -131,7 +131,7 @@ export function AllTable({ data }: Props) {
 
 	return (
 		<div className="p-4">
-			<Table>
+			<Table className="min-w-[1080px] overflow-x-scroll">
 				<TableHeader>
 					{table.getHeaderGroups().map((headerGroup) => (
 						<TableRow key={headerGroup.id}>
