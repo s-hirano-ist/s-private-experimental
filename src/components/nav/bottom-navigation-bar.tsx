@@ -24,7 +24,7 @@ import { Link } from "next-view-transitions";
 import { useState } from "react";
 
 type Props = {
-	categories: Category[];
+	categories: Omit<Category, "createdAt" | "updatedAt">[];
 };
 
 export function BottomNavigationBar({ categories }: Props) {
