@@ -32,7 +32,7 @@ export function BottomNavigationBar({ categories }: Props) {
 
 	return (
 		<Drawer open={open} onOpenChange={setOpen}>
-			<div className="fixed bottom-4 left-1/2 z-50 h-16 w-full max-w-lg -translate-x-1/2 rounded-full border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700">
+			<div className="sticky bottom-4 z-50 mx-auto h-16 w-full max-w-lg rounded-full border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700">
 				<div className="mx-auto grid h-full max-w-lg grid-cols-5">
 					<Button variant="navSide" size="navSide" className="rounded-s-full">
 						<Link href="/">

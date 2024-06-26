@@ -29,7 +29,7 @@ export default async function RootLayout({
 					<body className={notoSansJp.className}>
 						<AppProvider>
 							<main className="flex h-screen flex-col justify-between">
-								<div className="grow">{children}</div>
+								<div className="grow pb-4">{children}</div>
 								<BottomNavigationBar categories={categories} />
 							</main>
 							<Analytics debug={false} />
