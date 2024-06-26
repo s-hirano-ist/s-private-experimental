@@ -20,7 +20,7 @@ import { queuedContentsContext } from "../stores/queued-contents-context";
 
 type Props = {
 	children: ReactNode;
-	categories: Category[];
+	categories: Omit<Category, "createdAt" | "updatedAt">[];
 	setDialogOpen: Dispatch<SetStateAction<boolean>>;
 };
 
