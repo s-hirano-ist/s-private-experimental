@@ -1,57 +1,25 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { ERROR_MESSAGES } from "@/constants";
-import { revertStatus } from "@/features/blog/actions/revert-status";
-import { updateStatus } from "@/features/blog/actions/update-status";
+import { changeStatus } from "@/features/blog/actions/change-status";
 import { useToast } from "@/hooks/use-toast";
-import { sleep } from "@/lib/utils";
 
 export function SubmitButtons() {
 	const { toast } = useToast();
 
 	const handleUpdateStatus = async () => {
-		try {
-			const state = await updateStatus();
-			if (!state.success) {
-				toast({
-					variant: "destructive",
-					description: state.message,
-				});
-				return;
-			}
-			toast({
-				variant: "default",
-				description: state.message,
-			});
-		} catch (error) {
-			console.error("Unexpected error.", error);
-			toast({
-				variant: "destructive",
-				description: ERROR_MESSAGES.UNEXPECTED,
-			});
-		}
+		const state = await changeStatus("UPDATE");
+		toast({
+			variant: state.success ? "default" : "destructive",
+			description: state.message,
+		});
 	};
+
 	const handleRevertStatus = async () => {
-		try {
-			const state = await revertStatus();
-			if (!state.success) {
-				toast({
-					variant: "destructive",
-					description: state.message,
-				});
-				return;
-			}
-			toast({
-				variant: "default",
-				description: state.message,
-			});
-		} catch (error) {
-			console.error("Unexpected error.", error);
-			toast({
-				variant: "destructive",
-				description: ERROR_MESSAGES.UNEXPECTED,
-			});
-		}
+		const state = await changeStatus("REVERT");
+		toast({
+			variant: state.success ? "default" : "destructive",
+			description: state.message,
+		});
 	};
 
 	return (
