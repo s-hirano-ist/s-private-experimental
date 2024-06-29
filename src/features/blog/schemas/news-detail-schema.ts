@@ -11,10 +11,3 @@ export const newsDetailSchema = z.object({
 	quote: z.string().max(256, { message: FORM_ERROR_MESSAGES.TOO_LONG }),
 	url: z.string().url().min(1, { message: FORM_ERROR_MESSAGES.REQUIRED }),
 });
-
-export const categorySchema = z.object({
-	newCategory: z
-		.string()
-		.max(16, { message: FORM_ERROR_MESSAGES.TOO_LONG })
-		.nullable(),
-});
