@@ -46,7 +46,6 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 				const submit = async () => {
 					const state = await addNewsDetail(formData);
 					if (!state.success) {
-						// undefined or false
 						toast({
 							variant: "destructive",
 							description: state.message,
