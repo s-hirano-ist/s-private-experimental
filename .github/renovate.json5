@@ -3,7 +3,7 @@
   baseBranches: ["main"],
   extends: ["config:base", ":semanticCommitTypeAll(chore)"],
   reviewers: ["s-hirano-ist"],
-  enabledManagers: ["npm", "github-actions"], // "docker-compose", "dockerfile"
+  enabledManagers: ["npm", "github-actions", "docker-compose", "dockerfile"],
   dependencyDashboard: true,
   schedule: ["before 11am on monday"],
   labels: ["dependencies"],
@@ -17,10 +17,17 @@
   packageRules: [
     {
       matchManagers: ["npm"],
-      matchUpdateTypes: ["patch", "minor"],
+      matchUpdateTypes: ["patch"],
       matchPackagePatterns: ["*"],
       matchDepTypes: ["dependencies", "devDependencies", "peerDependencies"],
-      groupName: "patch-minor",
+      groupName: "patch",
+    },
+    {
+      matchManagers: ["npm"],
+      matchUpdateTypes: ["minor"],
+      matchPackagePatterns: ["*"],
+      matchDepTypes: ["dependencies", "devDependencies", "peerDependencies"],
+      groupName: "minor",
     },
   ],
 }
