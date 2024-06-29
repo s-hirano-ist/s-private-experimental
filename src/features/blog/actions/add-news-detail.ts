@@ -3,6 +3,10 @@ import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createCategory } from "@/apis/prisma/category";
 import { createNewsDetail } from "@/apis/prisma/news-detail";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
+import {
+	formatCreateCategoryMessage,
+	formatCreateNewsDetailMessage,
+} from "@/lib/format-for-line";
 import type { QueuedContent } from "../stores/queued-contents-context";
 import { validateNewsDetail } from "../utils/validate";
 import { validateCategory } from "../utils/validate";
@@ -19,7 +23,7 @@ export async function addNewsDetail(
 		if (newCategory !== null) {
 			const category = await createCategory(newCategory);
 			await sendLineNotifyMessage(
-				`Category: ${category.category}の登録ができました。`,
+				formatCreateCategoryMessage(category.category),
 			);
 			formData.set("category", String(category.id));
 		}
@@ -27,7 +31,11 @@ export async function addNewsDetail(
 		const newsDetailValidatedFields = validateNewsDetail(formData);
 		const newNewsDetail = await createNewsDetail(newsDetailValidatedFields);
 		await sendLineNotifyMessage(
-			`NewsDetail: \n ${newNewsDetail.title} \n ${newNewsDetail.quote} \n ${newNewsDetail.url} の登録ができました。`,
+			formatCreateNewsDetailMessage(
+				newNewsDetail.title,
+				newNewsDetail.quote ?? "",
+				newNewsDetail.url,
+			),
 		);
 
 		return {
@@ -44,6 +52,7 @@ export async function addNewsDetail(
 	} catch (error) {
 		if (error instanceof Error) {
 			console.error(error.message);
+			await sendLineNotifyMessage(error.message);
 			return {
 				success: false,
 				message: error.message,
