@@ -5,7 +5,7 @@ export async function sendLineNotifyMessage(message: string) {
 	const LINE_NOTIFY_SECRET_TOKEN = process.env.LINE_NOTIFY_SECRET_TOKEN;
 
 	if (!LINE_NOTIFY_URL || !LINE_NOTIFY_SECRET_TOKEN)
-		throw new Error("ENV missing.");
+		throw new Error(ERROR_MESSAGES.UNEXPECTED);
 
 	const body = new URLSearchParams();
 	body.append("message", message);
