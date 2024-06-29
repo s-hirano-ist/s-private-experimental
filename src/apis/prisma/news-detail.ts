@@ -19,7 +19,7 @@ export async function createNewsDetail(
 
 export async function getUnexportedNewsDetails() {
 	return await prisma.newsDetail.findMany({
-		where: { exported: false },
+		where: { status: "UNEXPORTED" },
 		select: {
 			id: true,
 			title: true,
@@ -40,6 +40,7 @@ export async function getAllNewsDetails() {
 			title: true,
 			quote: true,
 			url: true,
+			status: true,
 			category: { select: { category: true } },
 		},
 	});

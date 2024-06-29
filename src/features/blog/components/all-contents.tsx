@@ -14,6 +14,7 @@ export async function AllContents() {
 						title: d.title,
 						quote: d.quote,
 						url: d.url,
+						status: d.status,
 						category: d.category?.category ?? "",
 					};
 				})}

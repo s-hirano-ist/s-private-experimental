@@ -52,6 +52,23 @@ const columns: ColumnDef<QueuedContent>[] = [
 		cell: ({ row }) => <div className="capitalize">{row.getValue("id")}</div>,
 	},
 	{
+		accessorKey: "status",
+		header: ({ column }) => {
+			return (
+				<Button
+					variant="ghost"
+					onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+				>
+					Status
+					<ArrowUpDown className="ml-2 size-4" />
+				</Button>
+			);
+		},
+		cell: ({ row }) => (
+			<div className="capitalize">{row.getValue("status")}</div>
+		),
+	},
+	{
 		accessorKey: "category",
 		header: ({ column }) => {
 			return (

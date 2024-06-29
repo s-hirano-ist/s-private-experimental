@@ -1,5 +1,5 @@
+import { FORM_ERROR_MESSAGES } from "@/constants";
 import { z } from "zod";
-import { FORM_ERROR_MESSAGES } from "../constants";
 
 export const newsDetailSchema = z.object({
 	// TODO: sanitizing

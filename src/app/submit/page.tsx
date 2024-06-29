@@ -1,4 +1,5 @@
 import { Header } from "@/components/nav/header";
+import { SubmitButtons } from "@/features/blog/components/submit-buttons";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -12,7 +13,9 @@ export default function Page() {
 	return (
 		<>
 			<Header title="SUBMIT" description="データのバッチ送信" />
-			<div className="p-4">TODO: SUBMIT DATA</div>
+			<div className="flex justify-center pt-8">
+				<SubmitButtons />
+			</div>
 		</>
 	);
 }

@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from "../constants";
+import { ERROR_MESSAGES } from "@/constants";
 import { categorySchema } from "../schemas/category-schema";
 import { newsDetailSchema } from "../schemas/news-detail-schema";
 
