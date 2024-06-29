@@ -1,11 +1,9 @@
+import { env } from "@/env.mjs";
 import { ERROR_MESSAGES } from "@/features/blog/constants";
 
 export async function sendLineNotifyMessage(message: string) {
-	const LINE_NOTIFY_URL = process.env.LINE_NOTIFY_URL;
-	const LINE_NOTIFY_SECRET_TOKEN = process.env.LINE_NOTIFY_SECRET_TOKEN;
-
-	if (!LINE_NOTIFY_URL || !LINE_NOTIFY_SECRET_TOKEN)
-		throw new Error(ERROR_MESSAGES.UNEXPECTED);
+	const LINE_NOTIFY_URL = env.LINE_NOTIFY_URL;
+	const LINE_NOTIFY_SECRET_TOKEN = env.LINE_NOTIFY_SECRET_TOKEN;
 
 	const body = new URLSearchParams();
 	body.append("message", message);
