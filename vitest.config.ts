@@ -5,8 +5,8 @@ export default defineConfig({
 	plugins: [react()],
 	test: {
 		environment: "jsdom",
-		coverage: { enabled: true },
-		include: ["./src/**/*.{test,spec}.?(c|m)[jt]s?(x)"],
+		coverage: { enabled: true, reportsDirectory: "./.vitest-coverage" },
+		include: ["./src/**/*.test.?(c|m)[jt]s?(x)"],
 		exclude: ["./e2e/**/*"],
 	},
 	resolve: { alias: { "@": "/src" } },

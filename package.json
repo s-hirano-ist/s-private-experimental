@@ -13,6 +13,7 @@
 		"check": "biome check --write --changed",
 		"check:all": "biome check --write *",
 		"test": "vitest",
+		"test:e2e": "playwright test",
 		"prisma:seed": "prisma db seed",
 		"prisma:generate": "prisma generate",
 		"prisma:migrate": "prisma migrate dev",
@@ -53,6 +54,7 @@
 		"zod": "3.23.8"
 	},
 	"devDependencies": {
+		"@playwright/test": "1.45.0",
 		"@types/node": "20.14.8",
 		"@types/react": "18.3.3",
 		"@types/react-dom": "18.3.0",
