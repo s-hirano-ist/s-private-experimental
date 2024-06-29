@@ -1,4 +1,5 @@
 "use server";
+import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createCategory } from "@/apis/prisma/category";
 import { createNewsDetail } from "@/apis/prisma/news-detail";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "../constants";
@@ -17,13 +18,17 @@ export async function submitBlog(formData: FormData): Promise<SubmitBlogState> {
 		const newCategory = validateCategory(formData);
 		if (newCategory !== null) {
 			const category = await createCategory(newCategory);
+			await sendLineNotifyMessage(
+				`Category: ${category.category}の登録ができました。`,
+			);
 			formData.set("category", String(category.id));
 		}
 
 		const newsDetailValidatedFields = validateNewsDetail(formData);
 		const newNewsDetail = await createNewsDetail(newsDetailValidatedFields);
-
-		console.log("Successfully added:", newsDetailValidatedFields.data);
+		await sendLineNotifyMessage(
+			`NewsDetail: \n ${newNewsDetail.title} \n ${newNewsDetail.quote} \n ${newNewsDetail.url} の登録ができました。`,
+		);
 
 		return {
 			success: true,
@@ -45,6 +50,7 @@ export async function submitBlog(formData: FormData): Promise<SubmitBlogState> {
 			};
 		}
 		console.error("Unexpected error:", error);
+		await sendLineNotifyMessage(ERROR_MESSAGES.UNEXPECTED);
 		return {
 			success: false,
 			message: ERROR_MESSAGES.UNEXPECTED,
