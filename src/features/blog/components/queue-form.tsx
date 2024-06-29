@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -11,8 +12,9 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import type { Category } from "@prisma/client";
+import { ClipboardPasteIcon } from "lucide-react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { submitBlog } from "../actions/submit";
 import { ERROR_MESSAGES } from "../constants";
@@ -76,6 +78,13 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 		setNewCategoryInputOpen(value === NEW_CATEGORY_VALUE);
 	};
 
+	const urlInputRef = useRef<HTMLInputElement>(null);
+
+	const handlePasteClick = async () => {
+		const clipboardText = await navigator.clipboard.readText();
+		if (urlInputRef.current !== null) urlInputRef.current.value = clipboardText;
+	};
+
 	return (
 		<form action={action} className="space-y-4 p-4">
 			<div className="space-y-1">
@@ -115,7 +124,12 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 			</div>
 			<div className="space-y-1">
 				<Label htmlFor="url">URL</Label>
-				<Input id="url" name="url" type="url" required />
+				<div className="flex space-x-2 px-2">
+					<Input id="url" name="url" type="url" ref={urlInputRef} required />
+					<Button variant="ghost" type="button" onClick={handlePasteClick}>
+						<ClipboardPasteIcon />
+					</Button>
+				</div>
 			</div>
 			{children}
 		</form>
