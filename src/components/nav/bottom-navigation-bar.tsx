@@ -11,6 +11,7 @@ import {
 	DrawerTitle,
 	DrawerTrigger,
 } from "@/components/ui/drawer";
+import { env } from "@/env.mjs";
 import { QueueForm } from "@/features/blog/components/queue-form";
 import { cn } from "@/lib/utils";
 import type { Category } from "@prisma/client";
@@ -83,7 +84,7 @@ export function BottomNavigationBar({ categories }: Props) {
 					</Button>
 				</Link>
 
-				<Link href={process.env.GITHUB_LINK ?? ""} target="_blank">
+				<Link href={env.NEXT_PUBLIC_GITHUB_LINK} target="_blank">
 					<Button variant="navSide" size="navSide" className="rounded-e-full">
 						<GitHubLogoIcon className="size-6" />
 						<span className="sr-only">GitHub</span>
