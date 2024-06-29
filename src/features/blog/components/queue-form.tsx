@@ -10,14 +10,14 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { ERROR_MESSAGES } from "@/constants";
 import { useToast } from "@/hooks/use-toast";
 import type { Category } from "@prisma/client";
 import { ClipboardPasteIcon } from "lucide-react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { submitBlog } from "../actions/submit";
-import { ERROR_MESSAGES } from "../constants";
+import { addNewsDetail } from "../actions/add-news-detail";
 import { queuedContentsContext } from "../stores/queued-contents-context";
 
 type Props = {
@@ -44,7 +44,7 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 		try {
 			if (formData !== undefined) {
 				const submit = async () => {
-					const state = await submitBlog(formData);
+					const state = await addNewsDetail(formData);
 					if (!state.success) {
 						// undefined or false
 						toast({

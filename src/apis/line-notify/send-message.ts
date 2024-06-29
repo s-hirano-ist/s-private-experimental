@@ -1,5 +1,5 @@
+import { ERROR_MESSAGES } from "@/constants";
 import { env } from "@/env.mjs";
-import { ERROR_MESSAGES } from "@/features/blog/constants";
 
 export async function sendLineNotifyMessage(message: string) {
 	const LINE_NOTIFY_URL = env.LINE_NOTIFY_URL;

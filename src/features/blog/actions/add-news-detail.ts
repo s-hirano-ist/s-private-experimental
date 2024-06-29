@@ -2,18 +2,18 @@
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createCategory } from "@/apis/prisma/category";
 import { createNewsDetail } from "@/apis/prisma/news-detail";
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "../constants";
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
 import type { QueuedContent } from "../stores/queued-contents-context";
 import { validateNewsDetail } from "../utils/validate";
 import { validateCategory } from "../utils/validate";
 
-type SubmitBlogState = {
-	success: boolean | undefined;
-	message: string;
+type AddNewsDetailState = ServerAction & {
 	data?: QueuedContent;
 };
 
-export async function submitBlog(formData: FormData): Promise<SubmitBlogState> {
+export async function addNewsDetail(
+	formData: FormData,
+): Promise<AddNewsDetailState> {
 	try {
 		const newCategory = validateCategory(formData);
 		if (newCategory !== null) {
