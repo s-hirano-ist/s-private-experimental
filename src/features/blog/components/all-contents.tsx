@@ -1,18 +1,11 @@
+import { getAllNewsDetails } from "@/apis/prisma/news-detail";
 import ErrorView from "@/components/error-view";
-import prisma from "@/server/db";
 import { AllTable } from "./all-table";
 
 export async function AllContents() {
 	try {
-		const newsDetails = await prisma.newsDetail.findMany({
-			select: {
-				id: true,
-				title: true,
-				quote: true,
-				url: true,
-				category: { select: { category: true } },
-			},
-		});
+		const newsDetails = await getAllNewsDetails();
+
 		return (
 			<AllTable
 				data={newsDetails.map((d) => {

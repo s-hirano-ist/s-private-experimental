@@ -1,22 +1,11 @@
+import { getUnexportedNewsDetails } from "@/apis/prisma/news-detail";
 import ErrorView from "@/components/error-view";
-import prisma from "@/server/db";
 import { QueuedStack } from "./queued-stack";
 
 export async function QueuedContents() {
 	try {
-		const newsDetails = await prisma.newsDetail.findMany({
-			where: { exported: false },
-			select: {
-				id: true,
-				title: true,
-				quote: true,
-				url: true,
-				category: { select: { category: true } },
-			},
-			orderBy: {
-				id: "desc",
-			},
-		});
+		const newsDetails = await getUnexportedNewsDetails();
+
 		return (
 			<QueuedStack
 				queuedContents={newsDetails.map((d) => {
