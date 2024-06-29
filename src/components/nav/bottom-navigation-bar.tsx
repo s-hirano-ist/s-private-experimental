@@ -1,5 +1,4 @@
 "use client";
-import { SubmitButton } from "@/components/form/submit-button";
 import { Button } from "@/components/ui/button";
 import {
 	Drawer,
@@ -104,7 +103,7 @@ export function BottomNavigationBar({ categories }: Props) {
 							<DrawerClose asChild>
 								<Button variant="outline">キャンセル</Button>
 							</DrawerClose>
-							<SubmitButton label="保存" />
+							<Button type="submit">保存</Button>
 						</div>
 					</DrawerFooter>
 				</QueueForm>
