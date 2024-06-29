@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from "@/constants";
+import { FORM_ERROR_MESSAGES } from "@/constants";
 import { categorySchema } from "../schemas/category-schema";
 import { newsDetailSchema } from "../schemas/news-detail-schema";
 
@@ -7,7 +7,7 @@ export function validateCategory(formData: FormData) {
 		newCategory: formData.get("new_category"),
 	});
 	if (!categoryValidatedFields.success)
-		throw new Error(ERROR_MESSAGES.INVALID_FORMAT);
+		throw new Error(FORM_ERROR_MESSAGES.INVALID_FORMAT);
 	return categoryValidatedFields.data.newCategory;
 }
 
@@ -19,7 +19,7 @@ export function validateNewsDetail(formData: FormData) {
 		url: formData.get("url"),
 	});
 	if (!newsDetailValidatedFields.success)
-		throw new Error(ERROR_MESSAGES.INVALID_FORMAT);
+		throw new Error(FORM_ERROR_MESSAGES.INVALID_FORMAT);
 
 	return newsDetailValidatedFields;
 }
