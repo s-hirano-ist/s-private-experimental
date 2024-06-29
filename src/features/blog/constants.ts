@@ -5,6 +5,7 @@ export const FORM_ERROR_MESSAGES = {
 
 export const ERROR_MESSAGES = {
 	UNEXPECTED: "予期せぬエラーが発生しました。",
+	LINE: "Line Notifyでエラーが発生しました。",
 	INVALID_FORMAT: "無効なフォーマットで入力されています。",
 };
 

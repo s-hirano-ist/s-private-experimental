@@ -12,9 +12,9 @@ const NUMBER_OF_ROWS = 32;
 export function LoadingStack() {
 	return (
 		<div className="grid grid-cols-1 gap-2 p-4 sm:grid-cols-2 sm:gap-4">
-			{[...Array(NUMBER_OF_ROWS)].map((key, _) => {
+			{[...Array(NUMBER_OF_ROWS)].map((_, index) => {
 				return (
-					<Card className="hover:bg-primary/10" key={key}>
+					<Card className="hover:bg-primary/10" key={String(index)}>
 						<CardHeader>
 							<div className="flex gap-4">
 								<Skeleton className="h-6 w-8" />
