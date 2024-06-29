@@ -30,6 +30,9 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 	const [formData, setFormData] = useState<FormData>();
 	const setQueuedContents = useSetRecoilState(queuedContentsContext);
 
+	const NEW_CATEGORY_VALUE = "new"; // 新規の場合のcategoryのvalue
+	const [newCategoryInputOpen, setNewCategoryInputOpen] = useState(false);
+
 	const action = (_formData: FormData) => {
 		setDialogOpen(false);
 		setFormData(_formData);
@@ -69,11 +72,19 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 		}
 	}, [formData, toast, setQueuedContents]);
 
+	const handleSelectValueChange = (value: string) => {
+		setNewCategoryInputOpen(value === NEW_CATEGORY_VALUE);
+	};
+
 	return (
 		<form action={action} className="space-y-4 p-4">
 			<div className="space-y-1">
 				<Label htmlFor="category">カテゴリー</Label>
-				<Select name="category" required>
+				<Select
+					name="category"
+					required
+					onValueChange={handleSelectValueChange}
+				>
 					<SelectTrigger>
 						<SelectValue />
 					</SelectTrigger>
@@ -83,9 +94,17 @@ export function QueueForm({ children, categories, setDialogOpen }: Props) {
 								{category.category}
 							</SelectItem>
 						))}
+						<SelectItem value={NEW_CATEGORY_VALUE} key={NEW_CATEGORY_VALUE}>
+							その他
+						</SelectItem>
 					</SelectContent>
 				</Select>
 			</div>
+			{newCategoryInputOpen && (
+				<div className="space-y-1">
+					<Input id="new_category" name="new_category" required />
+				</div>
+			)}
 			<div className="space-y-1">
 				<Label htmlFor="title">タイトル</Label>
 				<Input id="title" name="title" required />
