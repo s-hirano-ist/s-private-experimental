@@ -3,6 +3,7 @@ services:
     container_name: blog-db
     build:
       context: .
+      dockerfile: db.Dockerfile
     volumes:
       - blog-db-data:/var/lib/postgresql/data
     ports:
