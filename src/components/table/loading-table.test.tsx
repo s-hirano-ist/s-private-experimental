@@ -13,6 +13,7 @@ describe("LoadingTable", () => {
 
 		// Check for the presence of the skeleton elements in headers
 		for (const header of headers) {
+			// FIXME: get by roleに変更
 			expect(header.querySelector(".animate-pulse")).toBeInTheDocument();
 		}
 
@@ -24,6 +25,7 @@ describe("LoadingTable", () => {
 		for (const row of rows) {
 			const cells = row.querySelectorAll("td");
 			for (const cell of cells) {
+				// FIXME: get by roleに変更
 				expect(cell.querySelector(".animate-pulse")).toBeInTheDocument();
 			}
 		}
