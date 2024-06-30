@@ -2,6 +2,7 @@
 	"name": "dump-to-github",
 	"version": "0.0.2",
 	"author": "s-hirano-ist",
+	"description": "Dump data to SQL and then to GitHub.",
 	"packageManager": "pnpm@9.1.0",
 	"scripts": {
 		"corepack": "corepack enable pnpm",
