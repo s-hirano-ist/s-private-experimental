@@ -1,6 +1,6 @@
 {
 	"name": "dump-to-github",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "s-hirano-ist",
 	"description": "Dump data to SQL and then to GitHub.",
 	"packageManager": "pnpm@9.1.0",
