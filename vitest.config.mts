@@ -5,6 +5,7 @@ export default defineConfig({
 	plugins: [react()],
 	test: {
 		environment: "jsdom",
+		setupFiles: ["./vitest-setup.ts"],
 		coverage: { enabled: true, reportsDirectory: "./.vitest-coverage" },
 		include: ["./src/**/*.test.?(c|m)[jt]s?(x)"],
 		exclude: ["./e2e/**/*"],

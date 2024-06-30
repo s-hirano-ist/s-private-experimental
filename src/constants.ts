@@ -13,3 +13,6 @@ export const ERROR_MESSAGES = {
 export const SUCCESS_MESSAGES = {
 	SUCCESS: "正常に登録できました。",
 } as const;
+
+export const LOADING_STACK_SIZE = 32;
+export const LOADING_TABLE_ROWS = 5;
