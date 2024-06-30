@@ -1,0 +1,12 @@
+services:
+  db:
+    container_name: create_pr
+    build:
+      context: .
+      dockerfile: create_pr.Dockerfile
+      args:
+        - no-cache=true
+    environment:
+      - GITHUB_SECRET_KEY=${GITHUB_SECRET_KEY}
+      - GITHUB_USER_NAME=${GITHUB_USER_NAME}
+      - GITHUB_USER_EMAIL=${GITHUB_USER_EMAIL}
