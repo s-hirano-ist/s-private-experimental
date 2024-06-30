@@ -1,16 +1,19 @@
-FROM alpine:latest
+FROM node:20.13.0-alpine
 
-RUN apk update && apk add --no-cache \
-    git \
-    curl \
-    jq \
-    openssh
+RUN apk update && apk add --no-cache git curl jq openssh
 
-COPY create_pr.sh /create_pr.sh
+COPY package.json pnpm-lock.yaml main.ts create_pr.sh biome.json .npmrc .env /
+
 RUN chmod +x /create_pr.sh
 
 ENV GITHUB_SECRET_KEY=${GITHUB_SECRET_KEY}
 ENV GITHUB_USER_NAME=${GITHUB_USER_NAME}
 ENV GITHUB_USER_EMAIL=${GITHUB_USER_EMAIL}
+ENV PGHOST=${PGHOST}
+ENV PGPORT=${PGPORT}
+ENV PGUSER=${PGUSER}
+ENV PGPASSWORD=${PGPASSWORD}
+ENV PGDATABASE=${PGDATABASE}
+ENV OUTPUT_PATH=${OUTPUT_PATH}
 
-ENTRYPOINT ["/create_pr.sh"]
+ENTRYPOINT ["sh", "/create_pr.sh"]

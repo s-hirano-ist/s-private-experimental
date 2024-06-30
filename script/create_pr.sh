@@ -1,25 +1,32 @@
 #!/bin/sh
 
+npm run corepack
+pnpm i --frozen-lockfile
+
 git clone https://github.com/s-hirano-ist/blog
+
+# Genrate files
+pnpm start
 
 cd blog
 
-echo '{"new_key": "new_value"}' >> your_json_file.json
-
+# Git
 git config --global user.name ${GITHUB_USER_NAME}
 git config --global user.email ${GITHUB_USER_EMAIL}
 
 branch_name=conents--update-news-$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 6)
 git checkout -b $branch_name
 
+git status
+
 git add -A
 git commit -m "contents: update news"
 
+# Push to GitHub
 REPO_URL="https://${GITHUB_SECRET_KEY}@github.com/s-hirano-ist/blog.git"
 git push $REPO_URL $branch_name
 
-
-# make PR
+# Make PR
 curl \
     -X POST \
     -H "Authorization: token ${GITHUB_SECRET_KEY}" \

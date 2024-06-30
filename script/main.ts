@@ -1,8 +1,6 @@
-import { writeFile } from "node:fs/promises";
+import { access, readFile, writeFile } from "node:fs/promises";
 import dotenv from "dotenv";
 import pkg from "pg";
-
-const OUTPUT_PATH = "output";
 
 type NewsDetail = {
 	id: number;
@@ -12,7 +10,21 @@ type NewsDetail = {
 	category: string;
 };
 
+type Template = {
+	heading: string;
+	description: string;
+	body: BodyItem[];
+};
+
+type BodyItem = {
+	title: string;
+	quote: string;
+	url: string;
+};
+
 dotenv.config();
+
+const OUTPUT_PATH = process.env.OUTPUT_PATH;
 
 const { Pool } = pkg;
 
@@ -22,6 +34,7 @@ async function getConnection() {
 	await connection.query("BEGIN");
 	return { pool, connection };
 }
+
 type OutputType = {
 	[key: string]: {
 		title: string;
@@ -39,25 +52,45 @@ function categorizeNewsDetails(newsDetails: NewsDetail[]): OutputType {
 	}, {} as OutputType);
 }
 
+async function readFileOrCreate(key: string) {
+	const filePath = `${OUTPUT_PATH}/${key}.json`;
+
+	try {
+		const data = await readFile(filePath, "utf8");
+		return JSON.parse(data) as Template;
+	} catch (error) {
+		// ファイルが存在しない
+		const data: Template = { heading: key, description: "FIXME", body: [] };
+		const jsonData = JSON.stringify(data, null, 2);
+		await writeFile(filePath, jsonData);
+		return data as Template;
+	}
+}
+
 async function exportData(data: OutputType) {
 	for (const [key, value] of Object.entries(data)) {
 		console.log(`Key: ${key}`);
-		const jsonData = JSON.stringify(value, null, 2);
-		await writeFile(`${OUTPUT_PATH}/${key}.json`, jsonData);
+		const originalData = await readFileOrCreate(key);
+
+		originalData.body.push(...value);
+		await writeFile(
+			`${OUTPUT_PATH}/${key}.json`,
+			`${JSON.stringify(originalData, null, 2)}\n`,
+		);
 	}
 }
 
 const { pool, connection } = await getConnection();
 try {
-	const res = await connection.query(
-		"SELECT nd.id, nd.title, nd.url, nd.quote, c.category FROM news_detail nd JOIN category c ON nd.category_id = c.id WHERE nd.status = $1;",
-		["UNEXPORTED"],
-	);
+	const newsDetails = (
+		await connection.query(
+			"SELECT nd.id, nd.title, nd.url, nd.quote, c.category FROM news_detail nd JOIN category c ON nd.category_id = c.id WHERE nd.status = $1;",
+			["UNEXPORTED"],
+		)
+	).rows as NewsDetail[];
 	console.log("📊 データを取得しました。");
 
-	const rows = res.rows as NewsDetail[];
-	const out = categorizeNewsDetails(rows);
-	await exportData(out);
+	await exportData(categorizeNewsDetails(newsDetails));
 
 	console.log("💾 データがdata.jsonに書き出されました。");
 
@@ -68,7 +101,7 @@ try {
 } finally {
 	try {
 		connection.release();
-		pool.end();
+		await pool.end();
 		console.log("🔚 データベース接続が終了しました。");
 	} catch (endError) {
 		console.error("⚠️ 接続終了時にエラーが発生しました:", endError);
