@@ -29,7 +29,8 @@ const OUTPUT_PATH = process.env.OUTPUT_PATH;
 const { Pool } = pkg;
 
 async function getConnection() {
-	const pool = new Pool();
+	// const pool = new Pool();
+	const pool = new Pool({ connectionString: process.env.POSTGRES_URL });
 	const connection = await pool.connect();
 	await connection.query("BEGIN");
 	return { pool, connection };
