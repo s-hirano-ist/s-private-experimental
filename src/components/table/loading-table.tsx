@@ -7,10 +7,8 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import * as React from "react";
+import { LOADING_TABLE_ROWS } from "@/constants";
 import { TableFooter } from "./table-footer";
-
-const NUMBER_OF_ROWS = 4;
 
 export function LoadingTable() {
 	return (
@@ -27,7 +25,7 @@ export function LoadingTable() {
 					</TableRow>
 				</TableHeader>
 				<TableBody>
-					{[...Array(NUMBER_OF_ROWS)].map((_, key) => {
+					{[...Array(LOADING_TABLE_ROWS - 1)].map((_, key) => {
 						return (
 							<TableRow key={String(key)}>
 								<TableCell className="h-12">

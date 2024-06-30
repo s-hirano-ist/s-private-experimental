@@ -5,14 +5,13 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { LOADING_STACK_SIZE } from "@/constants";
 import { Skeleton } from "../ui/skeleton";
-
-const NUMBER_OF_ROWS = 32;
 
 export function LoadingStack() {
 	return (
 		<div className="grid grid-cols-1 gap-2 p-4 sm:grid-cols-2 sm:gap-4">
-			{[...Array(NUMBER_OF_ROWS)].map((_, index) => {
+			{[...Array(LOADING_STACK_SIZE)].map((_, index) => {
 				return (
 					<Card className="hover:bg-primary/10" key={String(index)}>
 						<CardHeader>
