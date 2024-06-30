@@ -1,4 +1,4 @@
-FROM node:20.13.0-alpine
+FROM node:20.15.0-alpine
 
 RUN apk update && apk add --no-cache git curl jq openssh
 
