@@ -12,6 +12,10 @@ import { addMypage } from "../actions/add-mypage";
 import { mypageContext } from "../stores/mypage-context";
 
 export function MypageAddForm() {
+	const titleInputRef = useRef<HTMLInputElement>(null);
+	const quoteInputRef = useRef<HTMLTextAreaElement>(null);
+	const urlInputRef = useRef<HTMLInputElement>(null);
+
 	const { toast } = useToast();
 
 	const [formData, setFormData] = useState<FormData>();
@@ -42,6 +46,9 @@ export function MypageAddForm() {
 						description: state.message,
 					});
 					setFormData(undefined);
+					if (titleInputRef.current) titleInputRef.current.value = "";
+					if (quoteInputRef.current) quoteInputRef.current.value = "";
+					if (urlInputRef.current) urlInputRef.current.value = "";
 				};
 				submit();
 			}
@@ -54,8 +61,6 @@ export function MypageAddForm() {
 		}
 	}, [formData, toast, setQueuedContents]);
 
-	const urlInputRef = useRef<HTMLInputElement>(null);
-
 	const handlePasteClick = async () => {
 		const clipboardText = await navigator.clipboard.readText();
 		if (urlInputRef.current !== null) urlInputRef.current.value = clipboardText;
@@ -65,11 +70,11 @@ export function MypageAddForm() {
 		<form action={action} className="space-y-4 p-4">
 			<div className="space-y-1">
 				<Label htmlFor="title">タイトル</Label>
-				<Input id="title" name="title" required />
+				<Input id="title" name="title" ref={titleInputRef} required />
 			</div>
 			<div className="space-y-1">
 				<Label htmlFor="quote">ひとこと</Label>
-				<Textarea id="quote" name="quote" required />
+				<Textarea id="quote" name="quote" ref={quoteInputRef} required />
 			</div>
 			<div className="space-y-1">
 				<Label htmlFor="url">URL</Label>
