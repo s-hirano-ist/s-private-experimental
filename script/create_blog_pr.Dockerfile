@@ -2,9 +2,9 @@ FROM node:20.15.0-alpine
 
 RUN apk update && apk add --no-cache git curl jq openssh
 
-COPY package.json pnpm-lock.yaml main.ts create_pr.sh biome.json .npmrc .env /
+COPY package.json pnpm-lock.yaml pr-blog.ts create_blog_pr.sh biome.json .npmrc .env /
 
-RUN chmod +x /create_pr.sh
+RUN chmod +x /create_blog_pr.sh
 
 ENV GITHUB_SECRET_KEY=${GITHUB_SECRET_KEY}
 ENV GITHUB_USER_NAME=${GITHUB_USER_NAME}
@@ -17,4 +17,4 @@ ENV POSTGRES_URL=${POSTGRES_URL}
 # ENV PGDATABASE=${PGDATABASE}
 # ENV OUTPUT_PATH=${OUTPUT_PATH}
 
-ENTRYPOINT ["sh", "/create_pr.sh"]
+ENTRYPOINT ["sh", "/create_blog_pr.sh"]

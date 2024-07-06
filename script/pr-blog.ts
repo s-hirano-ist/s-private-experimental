@@ -1,4 +1,4 @@
-import { access, readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import dotenv from "dotenv";
 import pkg from "pg";
 
@@ -24,7 +24,7 @@ type BodyItem = {
 
 dotenv.config();
 
-const OUTPUT_PATH = process.env.OUTPUT_PATH;
+const OUTPUT_PATH = process.env.BLOG_OUTPUT_PATH;
 
 const { Pool } = pkg;
 

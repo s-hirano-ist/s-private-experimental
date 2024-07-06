@@ -6,7 +6,7 @@ pnpm i --frozen-lockfile
 git clone https://github.com/s-hirano-ist/blog
 
 # Genrate files
-pnpm start
+pnpm blog
 
 cd blog
 
