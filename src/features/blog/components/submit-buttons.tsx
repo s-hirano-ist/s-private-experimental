@@ -28,7 +28,7 @@ export function SubmitButtons() {
 	return (
 		<div className="grid grid-cols-3 gap-4 text-center">
 			<Button onClick={handleUpdateStatus}>UPDATE</Button>
-			<Link href={env.NEXT_PUBLIC_GITHUB_LINK} target="_blank">
+			<Link href={new URL(env.NEXT_PUBLIC_GITHUB_LINK)} target="_blank">
 				<Button variant="ghost">
 					<GitHubLogoIcon className="size-8" />
 					<span className="sr-only">GitHub</span>
