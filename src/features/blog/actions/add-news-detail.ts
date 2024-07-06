@@ -7,12 +7,12 @@ import {
 	formatCreateCategoryMessage,
 	formatCreateNewsDetailMessage,
 } from "@/lib/format-for-line";
-import type { QueuedContent } from "../stores/queued-contents-context";
+import type { NewsDetailContext } from "../stores/news-detail-context";
 import { validateNewsDetail } from "../utils/validate";
 import { validateCategory } from "../utils/validate";
 
 type AddNewsDetailState = ServerAction & {
-	data?: QueuedContent;
+	data?: NewsDetailContext;
 };
 
 export async function addNewsDetail(

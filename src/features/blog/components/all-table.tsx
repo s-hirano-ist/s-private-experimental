@@ -33,9 +33,9 @@ import {
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import type { QueuedContent } from "../stores/queued-contents-context";
+import type { NewsDetailContext } from "../stores/news-detail-context";
 
-const columns: ColumnDef<QueuedContent>[] = [
+const columns: ColumnDef<NewsDetailContext>[] = [
 	{
 		accessorKey: "id",
 		header: ({ column }) => {
@@ -125,7 +125,7 @@ const columns: ColumnDef<QueuedContent>[] = [
 ];
 
 type Props = {
-	data: QueuedContent[];
+	data: NewsDetailContext[];
 };
 
 export function AllTable({ data }: Props) {

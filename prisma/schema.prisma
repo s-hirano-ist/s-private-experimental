@@ -43,3 +43,13 @@ model NewsDetail {
 
   @@map("news_detail")
 }
+
+model mypage {
+  id        Int        @id @default(autoincrement())
+  title     String
+  url       String
+  quote     String
+  status    NewsStatus @default(UNEXPORTED)
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+}

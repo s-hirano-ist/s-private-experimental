@@ -3,6 +3,7 @@ import data1 from "./sampleData/AI.json";
 import data2 from "./sampleData/education.json";
 import data3 from "./sampleData/innovation.json";
 import data4 from "./sampleData/interesting.json";
+import mypageData from "./sampleData/mypage.json";
 
 const prisma = new PrismaClient();
 
@@ -49,6 +50,11 @@ async function main() {
 				},
 			},
 		});
+
+		await prisma.mypage.createMany({
+			data: mypageData,
+		});
+
 		console.log("added sample data to the database");
 	} catch (error) {
 		console.error(error);

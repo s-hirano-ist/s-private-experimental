@@ -18,7 +18,7 @@ import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { addNewsDetail } from "../actions/add-news-detail";
-import { queuedContentsContext } from "../stores/queued-contents-context";
+import { newsDetailContext } from "../stores/news-detail-context";
 
 type Props = {
 	children: ReactNode;
@@ -26,11 +26,15 @@ type Props = {
 	setDialogOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-export function QueueForm({ children, categories, setDialogOpen }: Props) {
+export function NewsDetailAddForm({
+	children,
+	categories,
+	setDialogOpen,
+}: Props) {
 	const { toast } = useToast();
 
 	const [formData, setFormData] = useState<FormData>();
-	const setQueuedContents = useSetRecoilState(queuedContentsContext);
+	const setQueuedContents = useSetRecoilState(newsDetailContext);
 
 	const NEW_CATEGORY_VALUE = "new"; // 新規の場合のcategoryのvalue
 	const [newCategoryInputOpen, setNewCategoryInputOpen] = useState(false);

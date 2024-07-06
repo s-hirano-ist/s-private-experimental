@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { env } from "@/env.mjs";
 import { cn } from "@/lib/utils";
 import type { Category } from "@prisma/client";
 import {
@@ -14,7 +13,7 @@ import {
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { AddContent } from "../../features/blog/components/add-content";
+import { NewsDetailAddDrawer } from "../../features/blog/components/news-detail-add-drawer";
 
 type Props = {
 	categories: Omit<Category, "createdAt" | "updatedAt">[];
@@ -89,7 +88,7 @@ export function BottomNavigationBar({ categories }: Props) {
 				</Link>
 			</div>
 			<DrawerContent>
-				<AddContent categories={categories} setOpen={setOpen} />
+				<NewsDetailAddDrawer categories={categories} setOpen={setOpen} />
 			</DrawerContent>
 		</Drawer>
 	);
