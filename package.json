@@ -15,6 +15,7 @@
 		"check:all": "biome check --write *",
 		"test": "vitest",
 		"test:e2e": "playwright test",
+		"test:storybook": "test-storybook --coverage --coverageDirectory .storybook-coverage",
 		"prisma:seed": "prisma db seed",
 		"prisma:generate": "prisma generate",
 		"prisma:migrate": "prisma migrate dev",
@@ -26,7 +27,7 @@
 		"release:major": "standard-version --release-as major",
 		"commit": "git-cz",
 		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"storybook:build": "storybook build"
 	},
 	"prisma": {
 		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -59,6 +60,7 @@
 	"devDependencies": {
 		"@chromatic-com/storybook": "^1.6.0",
 		"@playwright/test": "1.45.0",
+		"@storybook/addon-coverage": "1.0.4",
 		"@storybook/addon-essentials": "8.1.11",
 		"@storybook/addon-interactions": "8.1.11",
 		"@storybook/addon-links": "8.1.11",
@@ -67,6 +69,7 @@
 		"@storybook/nextjs": "8.1.11",
 		"@storybook/react": "8.1.11",
 		"@storybook/test": "8.1.11",
+		"@storybook/test-runner": "0.19.0",
 		"@testing-library/jest-dom": "6.4.6",
 		"@testing-library/react": "16.0.0",
 		"@types/node": "20.14.9",
