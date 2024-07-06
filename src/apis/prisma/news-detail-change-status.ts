@@ -1,13 +1,8 @@
 "use server";
 import prisma from "@/server/db";
+import type { Status } from "@/types/status";
 
-export type ChangeStatus = {
-	unexported: number;
-	recentlyUpdated: number;
-	exported: number;
-};
-
-export async function updateNewsDetailStatus(): Promise<ChangeStatus> {
+export async function updateNewsDetailStatus(): Promise<Status> {
 	return await prisma.$transaction(async (prisma) => {
 		const exportedData = await prisma.newsDetail.updateMany({
 			where: { status: "UPDATED_RECENTLY" },
@@ -25,7 +20,7 @@ export async function updateNewsDetailStatus(): Promise<ChangeStatus> {
 	});
 }
 
-export async function revertNewsDetailStatus(): Promise<ChangeStatus> {
+export async function revertNewsDetailStatus(): Promise<Status> {
 	return await prisma.$transaction(async (prisma) => {
 		const unexportedData = await prisma.newsDetail.updateMany({
 			where: { status: "UPDATED_RECENTLY" },

@@ -1,10 +1,10 @@
-import type { ChangeStatus } from "@/apis/prisma/change-status";
+import type { Status } from "@/types/status";
 
 export function formatChangeStatusMessage({
 	unexported,
 	recentlyUpdated,
 	exported,
-}: ChangeStatus) {
+}: Status) {
 	return `更新\n未処理: ${unexported}\n直近更新: ${recentlyUpdated}\n確定: ${exported}`;
 }
 
