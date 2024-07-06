@@ -1,7 +1,9 @@
 "use server";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
-import { revertNewsDetailStatus } from "@/apis/prisma/change-status";
-import { updateNewsDetailStatus } from "@/apis/prisma/change-status";
+import {
+	revertNewsDetailStatus,
+	updateNewsDetailStatus,
+} from "@/apis/prisma/news-detail-change-status";
 import { ERROR_MESSAGES } from "@/constants";
 import { formatChangeStatusMessage } from "@/lib/format-for-line";
 import { Prisma } from "@prisma/client";
@@ -19,7 +21,9 @@ const handleStatusChange = async (changeType: Change) => {
 	}
 };
 
-export async function changeStatus(changeType: Change): Promise<ServerAction> {
+export async function changeNewsDetailStatus(
+	changeType: Change,
+): Promise<ServerAction> {
 	try {
 		const message = formatChangeStatusMessage(
 			await handleStatusChange(changeType),
