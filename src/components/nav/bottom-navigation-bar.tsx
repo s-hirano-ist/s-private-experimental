@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import type { Category } from "@prisma/client";
 import {
 	CheckIcon,
-	GitHubLogoIcon,
+	CodeIcon,
 	HomeIcon,
 	PlusIcon,
 	TableIcon,
@@ -74,10 +74,17 @@ export function BottomNavigationBar({ categories }: Props) {
 					</Button>
 				</Link>
 
-				<Link href={env.NEXT_PUBLIC_GITHUB_LINK} target="_blank">
-					<Button variant="navSide" size="navSide" className="rounded-e-full">
-						<GitHubLogoIcon className="size-6" />
-						<span className="sr-only">GitHub</span>
+				<Link href="/mypage">
+					<Button
+						variant="navSide"
+						size="navSide"
+						className={cn(
+							"rounded-e-full",
+							pathname === "/mypage" ? "bg-primary/10" : "",
+						)}
+					>
+						<CodeIcon className="size-6" />
+						<span className="sr-only">Mypage</span>
 					</Button>
 				</Link>
 			</div>
