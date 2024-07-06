@@ -2,13 +2,15 @@
 import prisma from "@/server/db";
 import type { Status } from "@/types/status";
 
-export async function updateNewsDetailStatus(): Promise<Status> {
+// FIXME: refactor: change-mypage-statusと統一させる
+
+export async function updateBlogStatus(): Promise<Status> {
 	return await prisma.$transaction(async (prisma) => {
-		const exportedData = await prisma.newsDetail.updateMany({
+		const exportedData = await prisma.blog.updateMany({
 			where: { status: "UPDATED_RECENTLY" },
 			data: { status: "EXPORTED" },
 		});
-		const recentlyUpdatedData = await prisma.newsDetail.updateMany({
+		const recentlyUpdatedData = await prisma.blog.updateMany({
 			where: { status: "UNEXPORTED" },
 			data: { status: "UPDATED_RECENTLY" },
 		});
@@ -20,13 +22,13 @@ export async function updateNewsDetailStatus(): Promise<Status> {
 	});
 }
 
-export async function revertNewsDetailStatus(): Promise<Status> {
+export async function revertBlogStatus(): Promise<Status> {
 	return await prisma.$transaction(async (prisma) => {
-		const unexportedData = await prisma.newsDetail.updateMany({
+		const unexportedData = await prisma.blog.updateMany({
 			where: { status: "UPDATED_RECENTLY" },
 			data: { status: "UNEXPORTED" },
 		});
-		const recentlyUpdatedData = await prisma.newsDetail.updateMany({
+		const recentlyUpdatedData = await prisma.blog.updateMany({
 			where: { status: "EXPORTED" },
 			data: { status: "UPDATED_RECENTLY" },
 		});

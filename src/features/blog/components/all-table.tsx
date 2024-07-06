@@ -33,9 +33,9 @@ import {
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import type { NewsDetailContext } from "../stores/news-detail-context";
+import type { BlogContext } from "../stores/blog-context";
 
-const columns: ColumnDef<NewsDetailContext>[] = [
+const columns: ColumnDef<BlogContext>[] = [
 	{
 		accessorKey: "id",
 		header: ({ column }) => {
@@ -125,7 +125,7 @@ const columns: ColumnDef<NewsDetailContext>[] = [
 ];
 
 type Props = {
-	data: NewsDetailContext[];
+	data: BlogContext[];
 };
 
 export function AllTable({ data }: Props) {

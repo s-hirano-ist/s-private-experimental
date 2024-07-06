@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export type NewsDetailContext = {
+export type BlogContext = {
 	id: number;
 	title: string;
 	quote: string | null;
@@ -8,7 +8,7 @@ export type NewsDetailContext = {
 	category: string;
 };
 
-export const newsDetailContext = atom<NewsDetailContext[]>({
-	key: "newsDetails",
+export const blogContext = atom<BlogContext[]>({
+	key: "blog",
 	default: [],
 });

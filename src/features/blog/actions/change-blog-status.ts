@@ -1,9 +1,9 @@
 "use server";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import {
-	revertNewsDetailStatus,
-	updateNewsDetailStatus,
-} from "@/apis/prisma/news-detail-change-status";
+	revertBlogStatus,
+	updateBlogStatus,
+} from "@/apis/prisma/change-blog-status";
 import { ERROR_MESSAGES } from "@/constants";
 import { formatChangeStatusMessage } from "@/lib/format-for-line";
 import { Prisma } from "@prisma/client";
@@ -13,15 +13,15 @@ type Change = "UPDATE" | "REVERT";
 const handleStatusChange = async (changeType: Change) => {
 	switch (changeType) {
 		case "UPDATE":
-			return await updateNewsDetailStatus();
+			return await updateBlogStatus();
 		case "REVERT":
-			return await revertNewsDetailStatus();
+			return await revertBlogStatus();
 		default:
 			throw new Error(ERROR_MESSAGES.UNEXPECTED);
 	}
 };
 
-export async function changeNewsDetailStatus(
+export async function changeBlogStatus(
 	changeType: Change,
 ): Promise<ServerAction> {
 	try {

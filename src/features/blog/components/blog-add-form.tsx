@@ -17,8 +17,8 @@ import { ClipboardPasteIcon } from "lucide-react";
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { addNewsDetail } from "../actions/add-news-detail";
-import { newsDetailContext } from "../stores/news-detail-context";
+import { addBlog } from "../actions/add-blog";
+import { blogContext } from "../stores/blog-context";
 
 type Props = {
 	children: ReactNode;
@@ -26,15 +26,11 @@ type Props = {
 	setDialogOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-export function NewsDetailAddForm({
-	children,
-	categories,
-	setDialogOpen,
-}: Props) {
+export function BlogAddForm({ children, categories, setDialogOpen }: Props) {
 	const { toast } = useToast();
 
 	const [formData, setFormData] = useState<FormData>();
-	const setQueuedContents = useSetRecoilState(newsDetailContext);
+	const setQueuedContents = useSetRecoilState(blogContext);
 
 	const NEW_CATEGORY_VALUE = "new"; // 新規の場合のcategoryのvalue
 	const [newCategoryInputOpen, setNewCategoryInputOpen] = useState(false);
@@ -48,7 +44,7 @@ export function NewsDetailAddForm({
 		try {
 			if (formData !== undefined) {
 				const submit = async () => {
-					const state = await addNewsDetail(formData);
+					const state = await addBlog(formData);
 					if (!state.success) {
 						toast({
 							variant: "destructive",

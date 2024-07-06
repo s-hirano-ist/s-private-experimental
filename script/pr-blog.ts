@@ -2,7 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import dotenv from "dotenv";
 import pkg from "pg";
 
-type NewsDetail = {
+type Blog = {
 	id: number;
 	title: string;
 	url: string;
@@ -44,11 +44,11 @@ type OutputType = {
 	}[];
 };
 
-function categorizeNewsDetails(newsDetails: NewsDetail[]): OutputType {
-	return newsDetails.reduce((acc, newsDetail) => {
-		if (!acc[newsDetail.category]) acc[newsDetail.category] = [];
-		const { title, quote, url } = newsDetail;
-		acc[newsDetail.category].push({ title, quote: quote ?? "", url });
+function categorizeBlog(blogs: Blog[]): OutputType {
+	return blogs.reduce((acc, blog) => {
+		if (!acc[blog.category]) acc[blog.category] = [];
+		const { title, quote, url } = blog;
+		acc[blog.category].push({ title, quote: quote ?? "", url });
 		return acc;
 	}, {} as OutputType);
 }
@@ -83,15 +83,15 @@ async function exportData(data: OutputType) {
 
 const { pool, connection } = await getConnection();
 try {
-	const newsDetails = (
+	const blogs = (
 		await connection.query(
 			"SELECT nd.id, nd.title, nd.url, nd.quote, c.category FROM news_detail nd JOIN category c ON nd.category_id = c.id WHERE nd.status = $1;",
 			["UNEXPORTED"],
 		)
-	).rows as NewsDetail[];
+	).rows as Blog[];
 	console.log("📊 データを取得しました。");
 
-	await exportData(categorizeNewsDetails(newsDetails));
+	await exportData(categorizeBlog(blogs));
 
 	console.log("💾 データがdata.jsonに書き出されました。");
 

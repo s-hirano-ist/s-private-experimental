@@ -1,14 +1,14 @@
-import { getUnexportedMypage } from "@/apis/prisma/mypage";
+import { getUnexportedMypage } from "@/apis/prisma/fetch-mypage";
 import ErrorView from "@/components/error-view";
 import { MypageStack } from "./mypage-stack";
 
 export async function MypageContents() {
 	try {
-		const newsDetails = await getUnexportedMypage();
+		const mypage = await getUnexportedMypage();
 
 		return (
 			<MypageStack
-				mypage={newsDetails.map((d) => {
+				mypage={mypage.map((d) => {
 					return {
 						id: d.id,
 						title: d.title,

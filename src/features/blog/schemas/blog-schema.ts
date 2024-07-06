@@ -1,7 +1,7 @@
 import { FORM_ERROR_MESSAGES } from "@/constants";
 import { z } from "zod";
 
-export const newsDetailSchema = z.object({
+export const blogSchema = z.object({
 	// TODO: sanitizing
 	categoryId: z.number(),
 	title: z

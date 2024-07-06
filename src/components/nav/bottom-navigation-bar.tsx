@@ -13,7 +13,7 @@ import {
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { NewsDetailAddDrawer } from "../../features/blog/components/news-detail-add-drawer";
+import { BlogAddDrawer } from "../../features/blog/components/blog-add-drawer";
 
 type Props = {
 	categories: Omit<Category, "createdAt" | "updatedAt">[];
@@ -88,7 +88,7 @@ export function BottomNavigationBar({ categories }: Props) {
 				</Link>
 			</div>
 			<DrawerContent>
-				<NewsDetailAddDrawer categories={categories} setOpen={setOpen} />
+				<BlogAddDrawer categories={categories} setOpen={setOpen} />
 			</DrawerContent>
 		</Drawer>
 	);

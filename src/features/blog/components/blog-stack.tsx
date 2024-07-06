@@ -1,21 +1,21 @@
 "use client";
 
 import { ContentStack } from "@/components/table/content-stack";
-import { newsDetailContext } from "@/features/blog/stores/news-detail-context";
+import { blogContext } from "@/features/blog/stores/blog-context";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import type { NewsDetailContext } from "../stores/news-detail-context";
+import type { BlogContext } from "../stores/blog-context";
 
 type Props = {
-	newsDetail: NewsDetailContext[];
+	blog: BlogContext[];
 };
 
-export function NewsDetailStack({ newsDetail }: Props) {
-	const [data, setData] = useRecoilState(newsDetailContext);
+export function BlogStack({ blog }: Props) {
+	const [data, setData] = useRecoilState(blogContext);
 
 	useEffect(() => {
-		setData(newsDetail);
-	}, [newsDetail, setData]);
+		setData(blog);
+	}, [blog, setData]);
 
 	return (
 		<div className="grid grid-cols-1 gap-2 bg-gradient-to-r from-primary to-primary-grad p-2 sm:grid-cols-2 sm:gap-4 sm:p-4">

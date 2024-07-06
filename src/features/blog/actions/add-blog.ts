@@ -1,23 +1,21 @@
 "use server";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
-import { createCategory } from "@/apis/prisma/category";
-import { createNewsDetail } from "@/apis/prisma/news-detail";
+import { createBlog } from "@/apis/prisma/fetch-blog";
+import { createCategory } from "@/apis/prisma/fetch-category";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
 import {
 	formatCreateCategoryMessage,
 	formatCreateContentMessage,
 } from "@/lib/format-for-line";
-import type { NewsDetailContext } from "../stores/news-detail-context";
-import { validateNewsDetail } from "../utils/validate";
+import type { BlogContext } from "../stores/blog-context";
+import { validateBlog } from "../utils/validate";
 import { validateCategory } from "../utils/validate";
 
-type AddNewsDetailState = ServerAction & {
-	data?: NewsDetailContext;
+type AddBlogState = ServerAction & {
+	data?: BlogContext;
 };
 
-export async function addNewsDetail(
-	formData: FormData,
-): Promise<AddNewsDetailState> {
+export async function addBlog(formData: FormData): Promise<AddBlogState> {
 	try {
 		const newCategory = validateCategory(formData);
 		if (newCategory !== null) {
@@ -28,13 +26,13 @@ export async function addNewsDetail(
 			formData.set("category", String(category.id));
 		}
 
-		const newsDetailValidatedFields = validateNewsDetail(formData);
-		const newNewsDetail = await createNewsDetail(newsDetailValidatedFields);
+		const blogValidatedFields = validateBlog(formData);
+		const newBlog = await createBlog(blogValidatedFields);
 		await sendLineNotifyMessage(
 			formatCreateContentMessage(
-				newNewsDetail.title,
-				newNewsDetail.quote ?? "",
-				newNewsDetail.url,
+				newBlog.title,
+				newBlog.quote ?? "",
+				newBlog.url,
 			),
 		);
 
@@ -42,11 +40,11 @@ export async function addNewsDetail(
 			success: true,
 			message: SUCCESS_MESSAGES.SUCCESS,
 			data: {
-				id: newNewsDetail.id,
-				title: newsDetailValidatedFields.data.title,
-				quote: newsDetailValidatedFields.data.quote,
-				url: newsDetailValidatedFields.data.url,
-				category: newNewsDetail.category.category,
+				id: newBlog.id,
+				title: blogValidatedFields.data.title,
+				quote: blogValidatedFields.data.quote,
+				url: blogValidatedFields.data.url,
+				category: newBlog.category.category,
 			},
 		};
 	} catch (error) {

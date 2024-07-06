@@ -1,7 +1,7 @@
 import prisma from "@/server/db";
 import type { SafeParseSuccess } from "zod";
 
-export async function createNewsDetail(
+export async function createBlog(
 	validatedFields: SafeParseSuccess<{
 		title: string;
 		categoryId: number;
@@ -9,7 +9,7 @@ export async function createNewsDetail(
 		url: string;
 	}>,
 ) {
-	return await prisma.newsDetail.create({
+	return await prisma.blog.create({
 		data: validatedFields.data,
 		include: {
 			category: true,
@@ -17,8 +17,8 @@ export async function createNewsDetail(
 	});
 }
 
-export async function getUnexportedNewsDetails() {
-	return await prisma.newsDetail.findMany({
+export async function getUnexportedBlog() {
+	return await prisma.blog.findMany({
 		where: { status: "UNEXPORTED" },
 		select: {
 			id: true,
@@ -33,8 +33,8 @@ export async function getUnexportedNewsDetails() {
 	});
 }
 
-export async function getAllNewsDetails() {
-	return await prisma.newsDetail.findMany({
+export async function getAllBlog() {
+	return await prisma.blog.findMany({
 		select: {
 			id: true,
 			title: true,

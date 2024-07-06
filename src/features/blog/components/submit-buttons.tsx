@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { env } from "@/env.mjs";
-import { changeNewsDetailStatus } from "@/features/blog/actions/change-news-detail-status";
+import { changeBlogStatus } from "@/features/blog/actions/change-blog-status";
 import { useToast } from "@/hooks/use-toast";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Link } from "next-view-transitions";
@@ -11,7 +11,7 @@ export function SubmitButtons() {
 	const { toast } = useToast();
 
 	const handleBlogUpdateStatus = async () => {
-		const state = await changeNewsDetailStatus("UPDATE");
+		const state = await changeBlogStatus("UPDATE");
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
@@ -19,7 +19,7 @@ export function SubmitButtons() {
 	};
 
 	const handleBlogRevertStatus = async () => {
-		const state = await changeNewsDetailStatus("REVERT");
+		const state = await changeBlogStatus("REVERT");
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,

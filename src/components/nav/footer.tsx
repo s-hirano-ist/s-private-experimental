@@ -1,4 +1,4 @@
-import { getCategories } from "@/apis/prisma/category";
+import { getCategories } from "@/apis/prisma/fetch-category";
 import { BottomNavigationBar } from "@/components/nav/bottom-navigation-bar";
 
 export async function Footer() {

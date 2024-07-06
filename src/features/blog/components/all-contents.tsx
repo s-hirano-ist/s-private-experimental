@@ -1,14 +1,14 @@
-import { getAllNewsDetails } from "@/apis/prisma/news-detail";
+import { getAllBlog } from "@/apis/prisma/fetch-blog";
 import ErrorView from "@/components/error-view";
 import { AllTable } from "./all-table";
 
 export async function AllContents() {
 	try {
-		const newsDetails = await getAllNewsDetails();
+		const blog = await getAllBlog();
 
 		return (
 			<AllTable
-				data={newsDetails.map((d) => {
+				data={blog.map((d) => {
 					return {
 						id: d.id,
 						title: d.title,

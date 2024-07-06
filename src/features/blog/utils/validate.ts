@@ -1,7 +1,7 @@
 import { FORM_ERROR_MESSAGES } from "@/constants";
 import { categorySchema } from "../schemas/category-schema";
 import { mypageSchema } from "../schemas/mypage-schema";
-import { newsDetailSchema } from "../schemas/news-detail-schema";
+import { blogSchema } from "../schemas/blog-schema";
 
 export function validateCategory(formData: FormData) {
 	const categoryValidatedFields = categorySchema.safeParse({
@@ -12,17 +12,17 @@ export function validateCategory(formData: FormData) {
 	return categoryValidatedFields.data.newCategory;
 }
 
-export function validateNewsDetail(formData: FormData) {
-	const newsDetailValidatedFields = newsDetailSchema.safeParse({
+export function validateBlog(formData: FormData) {
+	const blogValidatedFields = blogSchema.safeParse({
 		categoryId: Number(formData.get("category")),
 		title: formData.get("title"),
 		quote: formData.get("quote"),
 		url: formData.get("url"),
 	});
-	if (!newsDetailValidatedFields.success)
+	if (!blogValidatedFields.success)
 		throw new Error(FORM_ERROR_MESSAGES.INVALID_FORMAT);
 
-	return newsDetailValidatedFields;
+	return blogValidatedFields;
 }
 
 export function validateMypage(formData: FormData) {

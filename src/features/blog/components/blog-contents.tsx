@@ -1,14 +1,14 @@
-import { getUnexportedNewsDetails } from "@/apis/prisma/news-detail";
+import { getUnexportedBlog } from "@/apis/prisma/fetch-blog";
 import ErrorView from "@/components/error-view";
-import { NewsDetailStack } from "./news-detail-stack";
+import { BlogStack } from "./blog-stack";
 
-export async function NewsDetailContents() {
+export async function BlogContents() {
 	try {
-		const newsDetails = await getUnexportedNewsDetails();
+		const blog = await getUnexportedBlog();
 
 		return (
-			<NewsDetailStack
-				newsDetail={newsDetails.map((d) => {
+			<BlogStack
+				blog={blog.map((d) => {
 					return {
 						id: d.id,
 						title: d.title,

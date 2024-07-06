@@ -3,7 +3,7 @@ import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import {
 	revertMypageStatus,
 	updateMypageStatus,
-} from "@/apis/prisma/mypage-change-status";
+} from "@/apis/prisma/change-mypage-status";
 import { ERROR_MESSAGES } from "@/constants";
 import { formatChangeStatusMessage } from "@/lib/format-for-line";
 import prisma from "@/server/db";
