@@ -1,17 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import {
-	Drawer,
-	DrawerClose,
-	DrawerContent,
-	DrawerDescription,
-	DrawerFooter,
-	DrawerHeader,
-	DrawerTitle,
-	DrawerTrigger,
-} from "@/components/ui/drawer";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { env } from "@/env.mjs";
-import { QueueForm } from "@/features/blog/components/queue-form";
 import { cn } from "@/lib/utils";
 import type { Category } from "@prisma/client";
 import {
@@ -24,6 +14,7 @@ import {
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { AddContent } from "../../features/blog/components/add-content";
 
 type Props = {
 	categories: Omit<Category, "createdAt" | "updatedAt">[];
@@ -91,22 +82,7 @@ export function BottomNavigationBar({ categories }: Props) {
 				</Link>
 			</div>
 			<DrawerContent>
-				<DrawerHeader>
-					<DrawerTitle>新規登録</DrawerTitle>
-					<DrawerDescription>
-						ブログに登録するデータを入力してください。
-					</DrawerDescription>
-				</DrawerHeader>
-				<QueueForm categories={categories} setDialogOpen={setOpen}>
-					<DrawerFooter>
-						<div className="grid grid-cols-2 gap-4">
-							<DrawerClose asChild>
-								<Button variant="outline">キャンセル</Button>
-							</DrawerClose>
-							<Button type="submit">保存</Button>
-						</div>
-					</DrawerFooter>
-				</QueueForm>
+				<AddContent categories={categories} setOpen={setOpen} />
 			</DrawerContent>
 		</Drawer>
 	);
