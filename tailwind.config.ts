@@ -28,6 +28,9 @@ const config = {
 					DEFAULT: "hsl(var(--primary))",
 					foreground: "hsl(var(--primary-foreground))",
 				},
+				"primary-grad": {
+					DEFAULT: "hsl(var(--primary-grad))",
+				},
 				secondary: {
 					DEFAULT: "hsl(var(--secondary))",
 					foreground: "hsl(var(--secondary-foreground))",
