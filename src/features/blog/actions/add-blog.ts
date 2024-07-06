@@ -8,8 +8,8 @@ import {
 	formatCreateContentMessage,
 } from "@/lib/format-for-line";
 import type { BlogContext } from "../stores/blog-context";
-import { validateBlog } from "../utils/validate";
-import { validateCategory } from "../utils/validate";
+import { validateBlog } from "../utils/validate-blog";
+import { validateCategory } from "../utils/validate-category";
 
 type AddBlogState = ServerAction & {
 	data?: BlogContext;

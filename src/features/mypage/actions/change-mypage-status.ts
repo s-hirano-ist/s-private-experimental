@@ -6,7 +6,6 @@ import {
 } from "@/apis/prisma/change-mypage-status";
 import { ERROR_MESSAGES } from "@/constants";
 import { formatChangeStatusMessage } from "@/lib/format-for-line";
-import prisma from "@/server/db";
 import { Prisma } from "@prisma/client";
 
 type Change = "UPDATE" | "REVERT";

@@ -1,7 +1,7 @@
 import { Header } from "@/components/nav/header";
 import { LoadingStack } from "@/components/table/loading-stack";
-import { MypageAddForm } from "@/features/blog/components/mypage-add-form";
-import { MypageContents } from "@/features/blog/components/mypage-contents";
+import { MypageAddForm } from "@/features/mypage/components/mypage-add-form";
+import { MypageContents } from "@/features/mypage/components/mypage-contents";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 

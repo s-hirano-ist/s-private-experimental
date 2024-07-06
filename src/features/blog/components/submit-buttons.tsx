@@ -5,7 +5,7 @@ import { changeBlogStatus } from "@/features/blog/actions/change-blog-status";
 import { useToast } from "@/hooks/use-toast";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Link } from "next-view-transitions";
-import { changeMypageStatus } from "../actions/change-mypage-status";
+import { changeMypageStatus } from "../../mypage/actions/change-mypage-status";
 
 export function SubmitButtons() {
 	const { toast } = useToast();
