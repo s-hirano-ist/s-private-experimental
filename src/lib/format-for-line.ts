@@ -12,7 +12,7 @@ export function formatCreateCategoryMessage(category: string) {
 	return `カテゴリー\n${category}\nの登録ができました`;
 }
 
-export function formatCreateNewsDetailMessage(
+export function formatCreateContentMessage(
 	title: string,
 	quote: string,
 	url: string,

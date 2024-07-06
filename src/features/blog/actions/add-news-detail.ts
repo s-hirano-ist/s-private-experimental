@@ -5,7 +5,7 @@ import { createNewsDetail } from "@/apis/prisma/news-detail";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
 import {
 	formatCreateCategoryMessage,
-	formatCreateNewsDetailMessage,
+	formatCreateContentMessage,
 } from "@/lib/format-for-line";
 import type { NewsDetailContext } from "../stores/news-detail-context";
 import { validateNewsDetail } from "../utils/validate";
@@ -31,7 +31,7 @@ export async function addNewsDetail(
 		const newsDetailValidatedFields = validateNewsDetail(formData);
 		const newNewsDetail = await createNewsDetail(newsDetailValidatedFields);
 		await sendLineNotifyMessage(
-			formatCreateNewsDetailMessage(
+			formatCreateContentMessage(
 				newNewsDetail.title,
 				newNewsDetail.quote ?? "",
 				newNewsDetail.url,

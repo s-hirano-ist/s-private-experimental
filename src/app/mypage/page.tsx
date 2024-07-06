@@ -1,7 +1,7 @@
 import { Header } from "@/components/nav/header";
 import { LoadingStack } from "@/components/table/loading-stack";
+import { MypageAddForm } from "@/features/blog/components/mypage-add-form";
 import { MypageContents } from "@/features/blog/components/mypage-contents";
-import { NewsDetailContents } from "@/features/blog/components/news-detail-contents";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -16,6 +16,7 @@ export default function Page() {
 	return (
 		<>
 			<Header title="Mypageへの送信" />
+			<MypageAddForm />
 			<Suspense fallback={<LoadingStack />}>
 				<MypageContents />
 			</Suspense>

@@ -1,5 +1,6 @@
 import { FORM_ERROR_MESSAGES } from "@/constants";
 import { categorySchema } from "../schemas/category-schema";
+import { mypageSchema } from "../schemas/mypage-schema";
 import { newsDetailSchema } from "../schemas/news-detail-schema";
 
 export function validateCategory(formData: FormData) {
@@ -22,4 +23,16 @@ export function validateNewsDetail(formData: FormData) {
 		throw new Error(FORM_ERROR_MESSAGES.INVALID_FORMAT);
 
 	return newsDetailValidatedFields;
+}
+
+export function validateMypage(formData: FormData) {
+	const mypageValidatedFields = mypageSchema.safeParse({
+		title: formData.get("title"),
+		quote: formData.get("quote"),
+		url: formData.get("url"),
+	});
+	if (!mypageValidatedFields.success)
+		throw new Error(FORM_ERROR_MESSAGES.INVALID_FORMAT);
+
+	return mypageValidatedFields;
 }

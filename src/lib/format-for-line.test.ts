@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
 	formatChangeStatusMessage,
 	formatCreateCategoryMessage,
-	formatCreateNewsDetailMessage,
+	formatCreateContentMessage,
 } from "./format-for-line";
 
 describe("formatChangeStatusMessage", () => {
@@ -36,7 +36,7 @@ describe("formatCreateNewsDetailMessage", () => {
 		const quote = "これは引用です";
 		const url = "https://example.com";
 
-		const result = formatCreateNewsDetailMessage(title, quote, url);
+		const result = formatCreateContentMessage(title, quote, url);
 
 		expect(result).toBe(
 			"コンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\nの登録ができました",
