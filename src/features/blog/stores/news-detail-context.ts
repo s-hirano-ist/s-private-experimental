@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export type QueuedContent = {
+export type NewsDetailContext = {
 	id: number;
 	title: string;
 	quote: string | null;
@@ -8,7 +8,7 @@ export type QueuedContent = {
 	category: string;
 };
 
-export const queuedContentsContext = atom<QueuedContent[]>({
-	key: "queuedContentsContext",
+export const newsDetailContext = atom<NewsDetailContext[]>({
+	key: "newsDetails",
 	default: [],
 });

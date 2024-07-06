@@ -1,14 +1,14 @@
 import { getUnexportedNewsDetails } from "@/apis/prisma/news-detail";
 import ErrorView from "@/components/error-view";
-import { QueuedStack } from "./queued-stack";
+import { NewsDetailStack } from "./news-detail-stack";
 
-export async function QueuedContents() {
+export async function NewsDetailContents() {
 	try {
 		const newsDetails = await getUnexportedNewsDetails();
 
 		return (
-			<QueuedStack
-				queuedContents={newsDetails.map((d) => {
+			<NewsDetailStack
+				newsDetail={newsDetails.map((d) => {
 					return {
 						id: d.id,
 						title: d.title,

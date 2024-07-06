@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
 	return (
 		<>
-			<Header title="SUBMIT" description="データのバッチ送信" />
+			<Header title="バッチ送信" />
 			<div className="flex justify-center pt-8">
 				<SubmitButtons />
 			</div>
