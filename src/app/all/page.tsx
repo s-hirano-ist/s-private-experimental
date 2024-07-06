@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function Home() {
 	return (
 		<>
-			<Header title="全データ" description="DBのデータ一覧" />
+			<Header title="全データ" />
 			<Suspense fallback={<LoadingTable />}>
 				<AllContents />
 			</Suspense>

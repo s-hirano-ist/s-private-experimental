@@ -8,10 +8,7 @@ export const dynamic = "force-dynamic";
 export default function Home() {
 	return (
 		<>
-			<Header
-				title="エクスポート待ち"
-				description="LocalのGitへ書き込み待ちのデータ一覧"
-			/>
+			<Header title="エクスポート待ち" />
 			<Suspense fallback={<LoadingStack />}>
 				<QueuedContents />
 			</Suspense>
