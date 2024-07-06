@@ -8,6 +8,7 @@ node_modules
 
 # testing
 /.vitest-coverage
+/.storybook-coverage
 /.playwright-output
 
 # next.js
