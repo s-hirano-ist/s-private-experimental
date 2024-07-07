@@ -92,7 +92,7 @@ export function Footer() {
 					</Link>
 				</div>
 				<DrawerContent>
-					<SubmitDrawer />
+					<SubmitDrawer setOpen={setOpen} />
 				</DrawerContent>
 			</Drawer>
 		</footer>

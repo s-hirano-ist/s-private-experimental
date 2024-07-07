@@ -7,12 +7,18 @@ import {
 } from "@/components/ui/drawer";
 import { changeBlogStatus } from "@/features/blog/actions/change-blog-status";
 import { useToast } from "@/hooks/use-toast";
+import type { Dispatch, SetStateAction } from "react";
 import { changeMypageStatus } from "../../mypage/actions/change-mypage-status";
 
-export function SubmitDrawer() {
+type Props = {
+	setOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+export function SubmitDrawer({ setOpen }: Props) {
 	const { toast } = useToast();
 
 	const handleBlogUpdateStatus = async () => {
+		setOpen(false);
 		const state = await changeBlogStatus("UPDATE");
 		toast({
 			variant: state.success ? "default" : "destructive",
@@ -21,6 +27,7 @@ export function SubmitDrawer() {
 	};
 
 	const handleBlogRevertStatus = async () => {
+		setOpen(false);
 		const state = await changeBlogStatus("REVERT");
 		toast({
 			variant: state.success ? "default" : "destructive",
@@ -29,6 +36,7 @@ export function SubmitDrawer() {
 	};
 
 	const handleMypageUpdateStatus = async () => {
+		setOpen(false);
 		const state = await changeMypageStatus("UPDATE");
 		toast({
 			variant: state.success ? "default" : "destructive",
