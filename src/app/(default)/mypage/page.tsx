@@ -16,7 +16,10 @@ export const metadata: Metadata = {
 export default function Page() {
 	return (
 		<>
-			<Header title="Mypageへの送信" />
+			<Header
+				title="マイページへ送信"
+				url="https://github.com/s-hirano-ist/mypage"
+			/>
 			<MypageAddForm />
 			<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
 			<Suspense fallback={<LoadingStack />}>

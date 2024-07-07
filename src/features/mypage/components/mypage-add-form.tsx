@@ -21,10 +21,6 @@ export function MypageAddForm() {
 	const [formData, setFormData] = useState<FormData>();
 	const setQueuedContents = useSetRecoilState(mypageContext);
 
-	const action = (_formData: FormData) => {
-		setFormData(_formData);
-	};
-
 	useEffect(() => {
 		try {
 			if (formData !== undefined) {
@@ -67,7 +63,7 @@ export function MypageAddForm() {
 	};
 
 	return (
-		<form action={action} className="space-y-4 p-4">
+		<form action={setFormData} className="space-y-4 p-4">
 			<div className="space-y-1">
 				<Label htmlFor="title">タイトル</Label>
 				<Input id="title" name="title" ref={titleInputRef} required />
@@ -85,7 +81,9 @@ export function MypageAddForm() {
 					</Button>
 				</div>
 			</div>
-			<Button type="submit">保存</Button>
+			<Button type="submit" className="w-full ">
+				保存
+			</Button>
 		</form>
 	);
 }
