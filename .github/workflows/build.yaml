@@ -46,5 +46,4 @@ jobs:
         env:
           SKIP_ENV_VALIDATION: true
           POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
-          NEXT_PUBLIC_GITHUB_LINK: ${{ secrets.NEXT_PUBLIC_GITHUB_LINK }}
 
