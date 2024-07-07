@@ -1,7 +1,6 @@
-import { getAllBlog } from "@/apis/prisma/fetch-blog";
 import { getAllMypage } from "@/apis/prisma/fetch-mypage";
-import ErrorView from "@/components/error-view";
-import { ContentsTable } from "../../../components/table/contents-table";
+import { ErrorView } from "@/components/error-view";
+import { ContentsTable } from "@/components/table/contents-table";
 import type { MypageContext } from "../stores/mypage-context";
 
 export async function MypageTable() {

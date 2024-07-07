@@ -1,10 +1,4 @@
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { LOADING_STACK_SIZE } from "@/constants";
 import { Skeleton } from "../ui/skeleton";
 
@@ -21,12 +15,8 @@ export function LoadingStack() {
 							</div>
 						</CardHeader>
 						<CardContent>
-							<CardTitle>
-								<Skeleton className="h-4 w-full" />
-							</CardTitle>
-							<CardDescription className="truncate">
-								<Skeleton className="h-4 w-full" />
-							</CardDescription>
+							<Skeleton className="h-4 w-full" />
+							<Skeleton className="h-4 w-full" />
 						</CardContent>
 					</Card>
 				);

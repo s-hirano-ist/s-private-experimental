@@ -1,4 +1,5 @@
 "use client";
+import { SubmitButton } from "@/components/submit-button";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -81,9 +82,7 @@ export function MypageAddForm() {
 					</Button>
 				</div>
 			</div>
-			<Button type="submit" className="w-full ">
-				保存
-			</Button>
+			<SubmitButton label="保存" />
 		</form>
 	);
 }

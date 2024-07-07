@@ -1,4 +1,5 @@
 "use client";
+import { NoContent } from "@/components/no-content";
 import { ContentStack } from "@/components/stack/content-stack";
 import { blogContext } from "@/features/blog/stores/blog-context";
 import { useEffect } from "react";
@@ -15,6 +16,8 @@ export function BlogStack({ blog }: Props) {
 	useEffect(() => {
 		setData(blog);
 	}, [blog, setData]);
+
+	if (data.length === 0) return <NoContent />;
 
 	return (
 		<div className="grid grid-cols-1 gap-2 p-2 sm:grid-cols-2 sm:gap-4 sm:p-4">

@@ -1,5 +1,5 @@
 import { getUnexportedMypage } from "@/apis/prisma/fetch-mypage";
-import ErrorView from "@/components/error-view";
+import { ErrorView } from "@/components/error-view";
 import { MypageStack } from "./mypage-stack";
 
 export async function MypageContents() {

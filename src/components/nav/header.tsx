@@ -11,19 +11,19 @@ type Props = {
 
 export function Header({ title, url }: Props) {
 	return (
-		<header className="sticky top-0 z-50 w-full bg-gradient-to-r from-primary to-primary-grad p-4 text-white">
-			<div className="flex items-center justify-between sm:px-4">
-				<div className="flex items-center justify-start gap-4">
+		<header className="sticky top-0 z-50 w-full bg-gradient-to-r from-primary to-primary-grad p-2 text-white">
+			<div className="flex items-center justify-between px-2">
+				<div className="flex items-center justify-start">
 					<Image
 						src="/apple-icon.png"
 						width={50}
 						height={50}
 						alt=""
-						className="size-12 object-cover"
+						className="size-8 object-cover"
 					/>
 					{url ? (
 						<Link href={new URL(url)} target="_blank">
-							<Button variant="link" className="text-2xl font-semibold">
+							<Button variant="link" className="text-xl font-semibold">
 								{title}
 							</Button>
 						</Link>
