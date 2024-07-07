@@ -2,6 +2,73 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/s-hirano-ist/dump-to-github/compare/v1.0.1...v1.1.0) (2024-07-07)
+
+
+### バグ修正
+
+* 🐛 format ([00a5dc4](https://github.com/s-hirano-ist/dump-to-github/commit/00a5dc435cba7c4731234f087f1bed7420475646))
+* 🐛 header layout ([6c2c374](https://github.com/s-hirano-ist/dump-to-github/commit/6c2c374286882cabeb5b93c04323b833d76fb11a))
+* 🐛 loading component error ([419f0b4](https://github.com/s-hirano-ist/dump-to-github/commit/419f0b4f794df2a18ce02e6408dfbc4468c5ee28))
+* 🐛 tests ([f6f46af](https://github.com/s-hirano-ist/dump-to-github/commit/f6f46af8ce1b93308a1e8f393d3d122301f89bb9))
+* 🐛 toaster position ([88eea07](https://github.com/s-hirano-ist/dump-to-github/commit/88eea07c0f7f47cdffd8cb267d01a104859ed2b3))
+
+
+### 新機能
+
+* 🎸 add mypage add feature ([1019e9a](https://github.com/s-hirano-ist/dump-to-github/commit/1019e9a99ef613cc7ee7dd6924c61d67d5a0a080))
+* 🎸 add mypage show stack ([febbe3b](https://github.com/s-hirano-ist/dump-to-github/commit/febbe3b92cf3610aa0badb83d91138549d345329))
+* 🎸 add mypage template ([4eae19b](https://github.com/s-hirano-ist/dump-to-github/commit/4eae19be442735ad7d78699d4d2c5708b3366c3a))
+* 🎸 add reset input on submit ([450fe27](https://github.com/s-hirano-ist/dump-to-github/commit/450fe2755019f2b9ac6d1cc1b3c92deb3bce482a)), closes [#187](https://github.com/s-hirano-ist/dump-to-github/issues/187)
+* 🎸 add revert and update on mypage ([def9c2e](https://github.com/s-hirano-ist/dump-to-github/commit/def9c2ee97b013d180092c4a5d9b08a92840afbe))
+* 🎸 add submit mypage feature ([016af7e](https://github.com/s-hirano-ist/dump-to-github/commit/016af7e9533ca5f975dda18537441e1c878bd1f9))
+* 🎸 bottom navigation menu and coloring ([affa679](https://github.com/s-hirano-ist/dump-to-github/commit/affa67993741b2da988ec50006862b344f49bdcb))
+* 🎸 change bg color ([5ce70a1](https://github.com/s-hirano-ist/dump-to-github/commit/5ce70a16e5917a8ef73964425e3e6185077945bb)), closes [#172](https://github.com/s-hirano-ist/dump-to-github/issues/172)
+* 🎸 change submit button to use useFormStatus ([7da58a7](https://github.com/s-hirano-ist/dump-to-github/commit/7da58a7ebe88a1ba067cd1036c36fc94b803378d))
+
+
+### ビルドプロセスまたは補助ツールの変更
+
+* 🤖 add shadcn ui command ([f5970ef](https://github.com/s-hirano-ist/dump-to-github/commit/f5970efbefac13f57159a6fbb1d7d1e2fbc3861b))
+* 🤖 add storybook (draft) ([f855c78](https://github.com/s-hirano-ist/dump-to-github/commit/f855c78afe4662bc941fa0d57fc8109dc2993da2))
+* 🤖 change package.json script ([8564df4](https://github.com/s-hirano-ist/dump-to-github/commit/8564df45c3a4c2c06c72107b779b4a0d9c71976a))
+* 🤖 close drawer on submit ([ba8e3d8](https://github.com/s-hirano-ist/dump-to-github/commit/ba8e3d86e876703b274badcc03ba6c9bd95a675e)), closes [#195](https://github.com/s-hirano-ist/dump-to-github/issues/195)
+* **deps:** update dependency @tanstack/react-table to v8.19.2 ([902497c](https://github.com/s-hirano-ist/dump-to-github/commit/902497cd4549ede174b5231434fe147d1bc771ae))
+* **deps:** update dependency postcss to v8.4.39 ([f646e8e](https://github.com/s-hirano-ist/dump-to-github/commit/f646e8e435a91c8732b18c13891dca47b9a56b63))
+* **deps:** update minor ([34946d0](https://github.com/s-hirano-ist/dump-to-github/commit/34946d0d492bfd64d0f0b52d463c8970c85a559e))
+
+
+### リファクタリング
+
+* 💡 add content component ([2d22ea7](https://github.com/s-hirano-ist/dump-to-github/commit/2d22ea776520af2eca300a42fdc2f1f78b5314a8))
+* 💡 add public dir because of storybook fail ([125140a](https://github.com/s-hirano-ist/dump-to-github/commit/125140ab68bf84e2220ffa60649603f5219d651b))
+* 💡 add typed routes ([bf60279](https://github.com/s-hirano-ist/dump-to-github/commit/bf60279f10578207d9d3e3d17565d7819979160d))
+* 💡 blog and mypage ([195e58c](https://github.com/s-hirano-ist/dump-to-github/commit/195e58c3415c8f67a7e48532d36a842ece29a099))
+* 💡 change dir of pages ([cb2cca5](https://github.com/s-hirano-ist/dump-to-github/commit/cb2cca5620acf7d57746baea0435842f40c95af3))
+* 💡 change news detail name to blog ([d3f1e44](https://github.com/s-hirano-ist/dump-to-github/commit/d3f1e44b2c29151a05d5a7e93e498db16f9133d4))
+* 💡 delete unused envs ([a5cb4bd](https://github.com/s-hirano-ist/dump-to-github/commit/a5cb4bda56c4aaa32105380f44aa0c5f9f089bb9))
+* 💡 delete unused files ([2663f50](https://github.com/s-hirano-ist/dump-to-github/commit/2663f505f6bf4810b3dd124256793d9de1186d41))
+* 💡 divide mypage and blog feature dir ([450a59a](https://github.com/s-hirano-ist/dump-to-github/commit/450a59a7e9e3bb28c5f0ccb8eb6ef20f61bcc813)), closes [#188](https://github.com/s-hirano-ist/dump-to-github/issues/188)
+* 💡 error view ([bcb45af](https://github.com/s-hirano-ist/dump-to-github/commit/bcb45afbc039bd98c9947c8b7b561a7cfd9a4462))
+* 💡 loading components ([9405c75](https://github.com/s-hirano-ist/dump-to-github/commit/9405c75138c5b182f8e877b0e8816d25dc9e7bce))
+* 💡 move type declaration to types dir ([8ee2e4f](https://github.com/s-hirano-ist/dump-to-github/commit/8ee2e4fc042ef7bc65391daf8c99ee8b8798622b))
+* 💡 naming of table news detail to blog ([febb731](https://github.com/s-hirano-ist/dump-to-github/commit/febb731d3e57bf833712c58558c9767930d5368a))
+* 💡 no content view ([75598f9](https://github.com/s-hirano-ist/dump-to-github/commit/75598f9005157840e6933628f19caa48af595abf))
+* 💡 tables ([44ae9c9](https://github.com/s-hirano-ist/dump-to-github/commit/44ae9c900a271b89e4a1f0e8ead7771a47694a15))
+
+
+### CI関連
+
+* 🎡 add vitest coverage action ([3d61e05](https://github.com/s-hirano-ist/dump-to-github/commit/3d61e0563f22520311b0494a6b1200815749cbda))
+* 🎡 fix ci pull request trigger ([40bfcec](https://github.com/s-hirano-ist/dump-to-github/commit/40bfcec7c7bc457ac9c64a7e7067479ab4d28a65))
+
+
+### テストの追加・修正
+
+* 💍 add more unit tests ([3b98465](https://github.com/s-hirano-ist/dump-to-github/commit/3b9846546eb2f92ae90d990923af38e80cdda45d))
+* 💍 add storybook test ([19ff081](https://github.com/s-hirano-ist/dump-to-github/commit/19ff0814749aa62ad539450473283163cb7e14b3))
+* 💍 add storybook tests ([adf5f15](https://github.com/s-hirano-ist/dump-to-github/commit/adf5f154223ebc493dd8dd5e2ff84904a3240897))
+
 ### [1.0.1](https://github.com/s-hirano-ist/dump-to-github/compare/v0.0.2...v1.0.1) (2024-06-30)
 
 
