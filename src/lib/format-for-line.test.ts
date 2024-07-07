@@ -1,4 +1,4 @@
-import type { ChangeStatus } from "@/apis/prisma/change-status";
+import type { Status } from "@/types/status";
 import { describe, expect, it } from "vitest";
 import {
 	formatChangeStatusMessage,
@@ -8,7 +8,7 @@ import {
 
 describe("formatChangeStatusMessage", () => {
 	it("should format the change status message correctly", () => {
-		const changeStatus: ChangeStatus = {
+		const changeStatus: Status = {
 			unexported: 5,
 			recentlyUpdated: 3,
 			exported: 7,
@@ -30,8 +30,8 @@ describe("formatCreateCategoryMessage", () => {
 	});
 });
 
-describe("formatCreateNewsDetailMessage", () => {
-	it("should format the create news detail message correctly", () => {
+describe("formatCreateContentsMessage", () => {
+	it("should format the create contents message correctly", () => {
 		const title = "新しいニュース";
 		const quote = "これは引用です";
 		const url = "https://example.com";

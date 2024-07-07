@@ -15,7 +15,7 @@ async function main() {
 			update: {},
 			create: {
 				category: data1.category,
-				newsDetail: {
+				blog: {
 					create: data1.body,
 				},
 			},
@@ -25,7 +25,7 @@ async function main() {
 			update: {},
 			create: {
 				category: data2.category,
-				newsDetail: {
+				blog: {
 					create: data2.body,
 				},
 			},
@@ -35,7 +35,7 @@ async function main() {
 			update: {},
 			create: {
 				category: data3.category,
-				newsDetail: {
+				blog: {
 					create: data3.body,
 				},
 			},
@@ -45,7 +45,7 @@ async function main() {
 			update: {},
 			create: {
 				category: data4.category,
-				newsDetail: {
+				blog: {
 					create: data4.body,
 				},
 			},

@@ -14,42 +14,38 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-enum NewsStatus {
+enum Status {
   UNEXPORTED
   UPDATED_RECENTLY
   EXPORTED
 }
 
 model Category {
-  id         Int          @id @default(autoincrement())
-  category   String       @unique
-  newsDetail NewsDetail[]
-  createdAt  DateTime     @default(now()) @map("created_at")
-  updatedAt  DateTime     @updatedAt @map("updated_at")
-
-  @@map("category")
+  id        Int      @id @default(autoincrement())
+  category  String   @unique
+  blog      blog[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 }
 
-model NewsDetail {
-  id         Int        @id @default(autoincrement())
+model blog {
+  id         Int      @id @default(autoincrement())
   title      String
   url        String
   quote      String?
-  status     NewsStatus @default(UNEXPORTED)
-  category   Category   @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  categoryId Int        @map("category_id")
-  createdAt  DateTime   @default(now()) @map("created_at")
-  updatedAt  DateTime   @updatedAt @map("updated_at")
-
-  @@map("news_detail")
+  status     Status   @default(UNEXPORTED)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  categoryId Int      @map("category_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
 }
 
 model mypage {
-  id        Int        @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   title     String
   url       String
   quote     String
-  status    NewsStatus @default(UNEXPORTED)
-  createdAt DateTime   @default(now()) @map("created_at")
-  updatedAt DateTime   @updatedAt @map("updated_at")
+  status    Status   @default(UNEXPORTED)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 }

@@ -1,13 +1,15 @@
 "use client";
+import { Link } from "next-view-transitions";
 // import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
-// import { Button } from "../ui/button";
+import { Button } from "../ui/button";
 
 type Props = {
 	title: string;
+	url?: string;
 };
 
-export function Header({ title }: Props) {
+export function Header({ title, url }: Props) {
 	return (
 		<header className="sticky top-0 z-50 w-full bg-gradient-to-r from-primary to-primary-grad p-4 text-white">
 			<div className="flex items-center justify-between sm:px-4">
@@ -19,7 +21,15 @@ export function Header({ title }: Props) {
 						alt=""
 						className="size-12 object-cover"
 					/>
-					<p className="text-2xl font-semibold">{title}</p>
+					{url ? (
+						<Link href={new URL(url)} target="_blank">
+							<Button variant="link" className="text-2xl font-semibold">
+								{title}
+							</Button>
+						</Link>
+					) : (
+						<p className="text-2xl font-semibold">{title}</p>
+					)}
 				</div>
 				{/* TODO: add theme button */}
 				{/* <nav>
