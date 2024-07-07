@@ -2,7 +2,8 @@ name: build
 permissions:
   pull-requests: write
 on:
-  push:
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
   build:
     runs-on: ubuntu-latest
