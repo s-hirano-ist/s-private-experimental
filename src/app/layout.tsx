@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
-import "./globals.css";
 import AppProvider from "@/components/app-provider";
 import { Footer } from "@/components/nav/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
+import type { Metadata } from "next";
 import { ViewTransitions } from "next-view-transitions";
-import { type ReactNode, Suspense } from "react";
+import { Noto_Sans_JP } from "next/font/google";
+import type { ReactNode } from "react";
+import "./globals.css";
 
 const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
 
@@ -18,27 +18,20 @@ export const metadata: Metadata = {
 export default async function RootLayout({
 	children,
 }: Readonly<{ children: ReactNode }>) {
-	try {
-		return (
-			<ViewTransitions>
-				<html lang="ja">
-					<body className={notoSansJp.className}>
-						<AppProvider>
-							<main className="flex h-screen flex-col justify-between">
-								<Suspense>
-									<div className="grow pb-4">{children}</div>
-								</Suspense>
-								<Footer />
-							</main>
-							<Analytics debug={false} />
-							<Toaster />
-						</AppProvider>
-					</body>
-				</html>
-			</ViewTransitions>
-		);
-	} catch (error) {
-		console.error("Unexpected error.", error);
-		return <></>;
-	}
+	return (
+		<ViewTransitions>
+			<html lang="ja">
+				<body className={notoSansJp.className}>
+					<AppProvider>
+						<main className="flex h-screen flex-col justify-between">
+							<div className="grow pb-4">{children}</div>
+							<Footer />
+						</main>
+						<Analytics debug={false} />
+						<Toaster />
+					</AppProvider>
+				</body>
+			</html>
+		</ViewTransitions>
+	);
 }

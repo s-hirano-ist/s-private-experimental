@@ -1,9 +1,9 @@
-import { getCategories } from "@/apis/prisma/fetch-category";
 import { Header } from "@/components/nav/header";
-import { LoadingStack } from "@/components/table/loading-stack";
+import { LoadingStack } from "@/components/stack/loading-stack";
 import { Separator } from "@/components/ui/separator";
-import { BlogAddForm } from "@/features/blog/components/blog-add-form";
+import { BlogAddProvider } from "@/features/blog/components/blog-add-provider";
 import { BlogContents } from "@/features/blog/components/blog-contents";
+import { LoadingForm } from "@/features/blog/components/loading-add-form";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -15,23 +15,16 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-	try {
-		const categories = await getCategories();
-		return (
-			<>
-				<Header
-					title="ブログへ送信"
-					url="https://github.com/s-hirano-ist/blog"
-				/>
-				<BlogAddForm categories={categories} />
-				<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
-				<Suspense fallback={<LoadingStack />}>
-					<BlogContents />
-				</Suspense>
-			</>
-		);
-	} catch (error) {
-		console.error("Unexpected error.", error);
-		return <></>;
-	}
+	return (
+		<>
+			<Header title="ブログへ送信" url="https://github.com/s-hirano-ist/blog" />
+			<Suspense fallback={<LoadingForm />}>
+				<BlogAddProvider />
+			</Suspense>
+			<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
+			<Suspense fallback={<LoadingStack />}>
+				<BlogContents />
+			</Suspense>
+		</>
+	);
 }
