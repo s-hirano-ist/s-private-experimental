@@ -1,5 +1,5 @@
 import { Header } from "@/components/nav/header";
-import { LoadingStack } from "@/components/table/loading-stack";
+import { LoadingStack } from "@/components/stack/loading-stack";
 import { Separator } from "@/components/ui/separator";
 import { MypageAddForm } from "@/features/mypage/components/mypage-add-form";
 import { MypageContents } from "@/features/mypage/components/mypage-contents";

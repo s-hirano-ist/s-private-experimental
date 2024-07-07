@@ -1,6 +1,5 @@
 "use client";
-
-import { ContentStack } from "@/components/table/content-stack";
+import { ContentStack } from "@/components/stack/content-stack";
 import { blogContext } from "@/features/blog/stores/blog-context";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";

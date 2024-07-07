@@ -1,6 +1,5 @@
 "use client";
-
-import { ContentStack } from "@/components/table/content-stack";
+import { ContentStack } from "@/components/stack/content-stack";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { type MypageContext, mypageContext } from "../stores/mypage-context";
