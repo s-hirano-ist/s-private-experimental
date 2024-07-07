@@ -1,15 +1,5 @@
 "use client";
-
 import { TableFooter } from "@/components/table/table-footer";
-import { Button } from "@/components/ui/button";
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from "@/components/ui/dialog";
 import {
 	Table,
 	TableBody,
@@ -36,6 +26,8 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 import type { BlogContext } from "../../features/blog/stores/blog-context";
+import { NoContent } from "../no-content";
+
 type Props<T extends BlogContext | MypageContext> = {
 	data: T[];
 	columnType: "blog" | "mypage";
@@ -107,8 +99,8 @@ export function ContentsTable<T extends BlogContext | MypageContext>({
 						))
 					) : (
 						<TableRow>
-							<TableCell colSpan={columns.length} className="h-24 text-center">
-								データなし
+							<TableCell colSpan={columns.length} className="mx-auto flex">
+								<NoContent />
 							</TableCell>
 						</TableRow>
 					)}
