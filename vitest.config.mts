@@ -8,8 +8,10 @@ export default defineConfig({
 		setupFiles: ["./vitest-setup.ts"],
 		coverage: {
 			enabled: true,
+			reportOnFailure: true,
 			reportsDirectory: "./.vitest-coverage",
 			include: ["src/**"],
+			reporter: ["text", "json-summary", "json"],
 		},
 		include: ["./src/**/*.test.?(c|m)[jt]s?(x)"],
 		exclude: ["./e2e/**/*"],
