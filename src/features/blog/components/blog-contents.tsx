@@ -1,5 +1,5 @@
 import { getUnexportedBlog } from "@/apis/prisma/fetch-blog";
-import ErrorView from "@/components/error-view";
+import { ErrorView } from "@/components/error-view";
 import { BlogStack } from "./blog-stack";
 
 export async function BlogContents() {

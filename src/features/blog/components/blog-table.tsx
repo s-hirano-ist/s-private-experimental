@@ -1,6 +1,6 @@
 import { getAllBlog } from "@/apis/prisma/fetch-blog";
-import ErrorView from "@/components/error-view";
-import { ContentsTable } from "../../../components/table/contents-table";
+import { ErrorView } from "@/components/error-view";
+import { ContentsTable } from "@/components/table/contents-table";
 import type { BlogContext } from "../stores/blog-context";
 
 export async function BlogTable() {

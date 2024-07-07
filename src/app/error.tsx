@@ -1,5 +1,5 @@
 "use client"; // Error components must be Client Components
-import ErrorView from "@/components/error-view";
+import { ErrorView } from "@/components/error-view";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 

@@ -1,4 +1,4 @@
-export default function ErrorView() {
+export function ErrorView() {
 	return (
 		<div className="m-4 p-2 text-center font-extrabold text-primary-grad ring ring-primary-grad">
 			<div className="text-9xl">
