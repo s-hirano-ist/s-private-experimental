@@ -19,8 +19,8 @@ const buttonVariants = cva(
 					"bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
 				ghost: "hover:bg-accent hover:text-accent-foreground",
 				link: "text-primary underline-offset-4 hover:underline",
-				navSide: "hover:bg-accent dark:hover:bg-gray-800",
-				navCenter: "bg-primary font-medium hover:bg-primary/90",
+				navSide: "hover:bg-black/40 dark:hover:bg-gray-800",
+				navCenter: "bg-primary font-medium hover:bg-black/40",
 			},
 			size: {
 				default: "h-9 px-4 py-2",
@@ -28,7 +28,7 @@ const buttonVariants = cva(
 				lg: "h-10 rounded-md px-8",
 				icon: "size-9",
 				navSide: "size-full",
-				navCenter: "size-10 rounded-full",
+				navCenter: "size-14 rounded-full",
 			},
 		},
 		defaultVariants: {

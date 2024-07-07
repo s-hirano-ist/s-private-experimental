@@ -4,15 +4,15 @@ import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
 import type { Category } from "@prisma/client";
 import {
-	CheckIcon,
-	CodeIcon,
-	HomeIcon,
-	PlusIcon,
+	NewspaperIcon,
+	SendIcon,
+	SettingsIcon,
 	TableIcon,
-} from "@radix-ui/react-icons";
+	VariableIcon,
+} from "lucide-react";
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { type ReactNode, useState } from "react";
 import { BlogAddDrawer } from "../../features/blog/components/blog-add-drawer";
 
 type Props = {
@@ -23,67 +23,75 @@ export function BottomNavigationBar({ categories }: Props) {
 	const [open, setOpen] = useState(false);
 	const pathname = usePathname();
 
+	const Icon = (name: string, icon: ReactNode) => {
+		return (
+			<div className="flex flex-col items-center">
+				{icon}
+				<div className="text-xs font-thin">{name}</div>
+				<span className="sr-only">{name}</span>
+			</div>
+		);
+	};
+
 	return (
 		<Drawer open={open} onOpenChange={setOpen}>
-			<div className="mx-auto grid h-16 max-w-lg grid-cols-5">
+			<div className="mx-auto grid h-16 max-w-lg grid-cols-5 rounded-full bg-gradient-to-r from-primary to-primary-grad text-white">
 				<Link href="/">
 					<Button
 						variant="navSide"
 						size="navSide"
 						className={cn(
 							"rounded-s-full",
-							pathname === "/" ? "bg-primary/10" : "",
+							pathname === "/" ? "bg-black/40" : "",
 						)}
 					>
-						<HomeIcon className="size-6" />
-						<span className="sr-only">Home</span>
+						{Icon("ブログ", <NewspaperIcon className="size-6" />)}
 					</Button>
 				</Link>
 
-				<Link href="/all" className=" ">
+				<Link href="/mypage" className=" ">
 					<Button
 						variant="navSide"
 						size="navSide"
 						type="button"
-						className={pathname === "/all" ? "bg-primary/10" : ""}
+						className={pathname === "/mypage" ? "bg-black/40" : ""}
 					>
-						<TableIcon className="size-6" />
-						<span className="sr-only">All</span>
+						{Icon("マイページ", <VariableIcon className="size-6" />)}
 					</Button>
 				</Link>
 
 				<DrawerTrigger asChild>
 					<div className="flex items-center justify-center">
 						<Button variant="navCenter" size="navCenter" type="button">
-							<PlusIcon className="size-6 text-white" />
-							<span className="sr-only">Add</span>
+							{Icon("送信", <SendIcon className="size-6 text-white" />)}
+
+							{/* <SendIcon className="size-6 text-white" /> */}
+							<span className="sr-only">Submit</span>
 						</Button>
 					</div>
 				</DrawerTrigger>
 
-				<Link href="/submit">
+				<Link href="/all">
 					<Button
 						variant="navSide"
 						size="navSide"
 						type="button"
-						className={pathname === "/submit" ? "bg-primary/10" : ""}
+						className={pathname === "/all" ? "bg-black/40" : ""}
 					>
-						<CheckIcon className="size-6" />
-						<span className="sr-only">Submit</span>
+						{Icon("全データ", <TableIcon className="size-6" />)}
 					</Button>
 				</Link>
 
-				<Link href="/mypage">
+				<Link href="/settings">
 					<Button
 						variant="navSide"
 						size="navSide"
 						className={cn(
 							"rounded-e-full",
-							pathname === "/mypage" ? "bg-primary/10" : "",
+							pathname === "/settings" ? "bg-black/40" : "",
 						)}
 					>
-						<CodeIcon className="size-6" />
-						<span className="sr-only">Mypage</span>
+						{Icon("設定", <SettingsIcon className="size-6" />)}
 					</Button>
 				</Link>
 			</div>

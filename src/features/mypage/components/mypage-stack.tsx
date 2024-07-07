@@ -17,7 +17,7 @@ export function MypageStack({ mypage }: Props) {
 	}, [mypage, setData]);
 
 	return (
-		<div className="grid grid-cols-1 gap-2 bg-gradient-to-r from-primary to-primary-grad p-2 sm:grid-cols-2 sm:gap-4 sm:p-4">
+		<div className="grid grid-cols-1 gap-2 p-2 sm:grid-cols-2 sm:gap-4 sm:p-4">
 			{data.map((d) => {
 				return (
 					<ContentStack
