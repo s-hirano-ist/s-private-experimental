@@ -1,13 +1,15 @@
 import { getAllBlog } from "@/apis/prisma/fetch-blog";
+import { getAllMypage } from "@/apis/prisma/fetch-mypage";
 import ErrorView from "@/components/error-view";
-import { AllTable } from "./all-table";
+import { ContentsTable } from "../../../components/table/contents-table";
+import type { MypageContext } from "../stores/mypage-context";
 
-export async function AllContents() {
+export async function MypageTable() {
 	try {
-		const blog = await getAllBlog();
+		const blog = await getAllMypage();
 
 		return (
-			<AllTable
+			<ContentsTable<MypageContext>
 				data={blog.map((d) => {
 					return {
 						id: d.id,
@@ -15,9 +17,9 @@ export async function AllContents() {
 						quote: d.quote,
 						url: d.url,
 						status: d.status,
-						category: d.category?.category ?? "",
 					};
 				})}
+				columnType="mypage"
 			/>
 		);
 	} catch (error) {

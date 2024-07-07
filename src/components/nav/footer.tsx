@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import { SubmitDrawer } from "@/features/submit/components/submit-drawer";
 import { cn } from "@/lib/utils";
 import {
 	NewspaperIcon,
@@ -12,7 +13,6 @@ import {
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { type ReactNode, useState } from "react";
-import { BlogAddDrawer } from "../../features/blog/components/blog-add-drawer";
 
 export function Footer() {
 	const [open, setOpen] = useState(false);
@@ -30,7 +30,7 @@ export function Footer() {
 
 	return (
 		<footer className="sticky bottom-4 z-50 mx-auto w-full max-w-lg rounded-full border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700">
-			<Drawer open={open} onOpenChange={setOpen}>
+			<Drawer open={open} onOpenChange={setOpen} snapPoints={[0.5]}>
 				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 rounded-full bg-gradient-to-r from-primary to-primary-grad text-white">
 					<Link href="/">
 						<Button
@@ -92,9 +92,9 @@ export function Footer() {
 					</Link>
 				</div>
 				<DrawerContent>
-					<BlogAddDrawer />
+					<SubmitDrawer />
 				</DrawerContent>
-			</Drawer>{" "}
+			</Drawer>
 		</footer>
 	);
 }

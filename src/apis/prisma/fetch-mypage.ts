@@ -27,3 +27,15 @@ export async function getUnexportedMypage() {
 		},
 	});
 }
+
+export async function getAllMypage() {
+	return await prisma.mypage.findMany({
+		select: {
+			id: true,
+			title: true,
+			quote: true,
+			url: true,
+			status: true,
+		},
+	});
+}

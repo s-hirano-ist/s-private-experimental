@@ -18,6 +18,10 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import { ERROR_MESSAGES } from "@/constants";
+import { blogColumns } from "@/features/blog/utils/blog-columns";
+import type { MypageContext } from "@/features/mypage/stores/mypage-context";
+import { mypageColumns } from "@/features/mypage/utils/mypage-columns";
 import {
 	type ColumnDef,
 	type ColumnFiltersState,
@@ -30,112 +34,35 @@ import {
 	getSortedRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
-import type { BlogContext } from "../stores/blog-context";
-
-const columns: ColumnDef<BlogContext>[] = [
-	{
-		accessorKey: "id",
-		header: ({ column }) => {
-			return (
-				<Button
-					variant="ghost"
-					onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-				>
-					ID
-					<ArrowUpDown className="ml-2 size-4" />
-				</Button>
-			);
-		},
-		cell: ({ row }) => <div className="capitalize">{row.getValue("id")}</div>,
-	},
-	{
-		accessorKey: "status",
-		header: ({ column }) => {
-			return (
-				<Button
-					variant="ghost"
-					onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-				>
-					Status
-					<ArrowUpDown className="ml-2 size-4" />
-				</Button>
-			);
-		},
-		cell: ({ row }) => (
-			<div className="capitalize">{row.getValue("status")}</div>
-		),
-	},
-	{
-		accessorKey: "category",
-		header: ({ column }) => {
-			return (
-				<Button
-					variant="ghost"
-					onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-				>
-					カテゴリー
-					<ArrowUpDown className="ml-2 size-4" />
-				</Button>
-			);
-		},
-		cell: ({ row }) => (
-			<div className="capitalize">{row.getValue("category")}</div>
-		),
-	},
-	{
-		accessorKey: "title",
-		header: "タイトル",
-		cell: ({ row }) => {
-			return <div className="font-bold">{row.getValue("title")}</div>;
-		},
-	},
-	{
-		accessorKey: "quote",
-		header: () => <></>,
-		cell: ({ row }) => {
-			return (
-				row.getValue("quote") !== null && (
-					<Dialog>
-						<DialogTrigger>
-							<Lightbulb />
-						</DialogTrigger>
-						<DialogContent>
-							<DialogHeader>
-								<DialogTitle>{row.getValue("title")}</DialogTitle>
-								<DialogDescription>{row.getValue("quote")}</DialogDescription>
-							</DialogHeader>
-						</DialogContent>
-					</Dialog>
-				)
-			);
-		},
-	},
-	{
-		accessorKey: "url",
-		header: () => <></>,
-		cell: ({ row }) => (
-			<Link href={row.getValue("url")} target="_blank">
-				<LinkIcon />
-			</Link>
-		),
-	},
-];
-
-type Props = {
-	data: BlogContext[];
+import type { BlogContext } from "../../features/blog/stores/blog-context";
+type Props<T extends BlogContext | MypageContext> = {
+	data: T[];
+	columnType: "blog" | "mypage";
 };
 
-export function AllTable({ data }: Props) {
+export function ContentsTable<T extends BlogContext | MypageContext>({
+	data,
+	columnType,
+}: Props<T>) {
 	const [sorting, setSorting] = useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 	const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
+	const columns = () => {
+		switch (columnType) {
+			case "blog":
+				return blogColumns();
+			case "mypage":
+				return mypageColumns();
+			default:
+				throw new Error(ERROR_MESSAGES.UNEXPECTED);
+		}
+	};
+
 	const table = useReactTable({
 		data,
-		columns,
+		columns: columns() as ColumnDef<T>[],
 		onSortingChange: setSorting,
 		onColumnFiltersChange: setColumnFilters,
 		getCoreRowModel: getCoreRowModel(),

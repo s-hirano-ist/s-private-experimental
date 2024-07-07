@@ -1,13 +1,15 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { env } from "@/env.mjs";
+import {
+	DrawerDescription,
+	DrawerHeader,
+	DrawerTitle,
+} from "@/components/ui/drawer";
 import { changeBlogStatus } from "@/features/blog/actions/change-blog-status";
 import { useToast } from "@/hooks/use-toast";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { Link } from "next-view-transitions";
 import { changeMypageStatus } from "../../mypage/actions/change-mypage-status";
 
-export function SubmitButtons() {
+export function SubmitDrawer() {
 	const { toast } = useToast();
 
 	const handleBlogUpdateStatus = async () => {
@@ -41,23 +43,20 @@ export function SubmitButtons() {
 			description: state.message,
 		});
 	};
-
 	return (
-		<div className="grid grid-cols-2 gap-4">
-			<Link
-				href={new URL(env.NEXT_PUBLIC_GITHUB_LINK)}
-				target="_blank"
-				className="col-start-2"
-			>
-				<Button variant="ghost">
-					<GitHubLogoIcon className="size-8" />
-					<span className="sr-only">GitHub</span>
-				</Button>
-			</Link>
-			<Button onClick={handleBlogUpdateStatus}>BLOG UPDATE</Button>
-			<Button onClick={handleBlogRevertStatus}>BLOG REVERT</Button>
-			<Button onClick={handleMypageUpdateStatus}>MYPAGE UPDATE</Button>
-			<Button onClick={handleMypageRevertStatus}>MYPAGE REVERT</Button>
-		</div>
+		<>
+			<DrawerHeader>
+				<DrawerTitle>アクション</DrawerTitle>
+				<DrawerDescription>
+					実行するアクションを選択してください。
+				</DrawerDescription>
+			</DrawerHeader>
+			<div className="grid grid-cols-2 gap-4 px-4">
+				<Button onClick={handleBlogUpdateStatus}>BLOG UPDATE</Button>
+				<Button onClick={handleBlogRevertStatus}>BLOG REVERT</Button>
+				<Button onClick={handleMypageUpdateStatus}>MYPAGE UPDATE</Button>
+				<Button onClick={handleMypageRevertStatus}>MYPAGE REVERT</Button>
+			</div>
+		</>
 	);
 }
