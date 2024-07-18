@@ -20,7 +20,9 @@ export async function addBlog(formData: FormData): Promise<AddBlogState> {
 		const newCategory = validateCategory(formData);
 		if (newCategory !== null) {
 			const category = await createCategory(newCategory);
-			await sendLineNotifyMessage(formatCreateCategoryMessage(category.name));
+			await sendLineNotifyMessage(
+				formatCreateCategoryMessage(category.name, "BLOG"),
+			);
 			formData.set("category", String(category.id));
 		}
 

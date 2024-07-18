@@ -27,6 +27,7 @@ export async function changeMypageStatus(
 	try {
 		const message = formatChangeStatusMessage(
 			await handleStatusChange(changeType),
+			"MYPAGE",
 		);
 		await sendLineNotifyMessage(message);
 		return { success: true, message };

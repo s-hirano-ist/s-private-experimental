@@ -13,20 +13,24 @@ describe("formatChangeStatusMessage", () => {
 			recentlyUpdated: 3,
 			exported: 7,
 		};
+		const contentName = "BLOG";
 
-		const result = formatChangeStatusMessage(changeStatus);
+		const result = formatChangeStatusMessage(changeStatus, contentName);
 
-		expect(result).toBe("更新\n未処理: 5\n直近更新: 3\n確定: 7");
+		expect(result).toBe("**BLOG**\n\n更新\n未処理: 5\n直近更新: 3\n確定: 7");
 	});
 });
 
 describe("formatCreateCategoryMessage", () => {
 	it("should format the create category message correctly", () => {
 		const category = "新しいカテゴリー";
+		const contentName = "BLOG";
 
-		const result = formatCreateCategoryMessage(category);
+		const result = formatCreateCategoryMessage(category, contentName);
 
-		expect(result).toBe("カテゴリー\n新しいカテゴリー\nの登録ができました");
+		expect(result).toBe(
+			"**BLOG**\n\nカテゴリー\n新しいカテゴリー\nの登録ができました",
+		);
 	});
 });
 

@@ -27,6 +27,7 @@ export async function changeBlogStatus(
 	try {
 		const message = formatChangeStatusMessage(
 			await handleStatusChange(changeType),
+			"BLOG",
 		);
 		await sendLineNotifyMessage(message);
 		return { success: true, message };
