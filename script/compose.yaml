@@ -11,18 +11,18 @@ services:
       - GITHUB_USER_NAME=${GITHUB_USER_NAME}
       - GITHUB_USER_EMAIL=${GITHUB_USER_EMAIL}
       - POSTGRES_URL=${POSTGRES_URL}
-  # create_mypage_pr:
-  #   container_name: create_mypage_pr
-  #   build:
-  #     context: .
-  #     dockerfile: create_mypage_pr.Dockerfile
-  #     args:
-  #       - no-cache=true
-  #   environment:
-  #     - GITHUB_SECRET_KEY=${GITHUB_SECRET_KEY}
-  #     - GITHUB_USER_NAME=${GITHUB_USER_NAME}
-  #     - GITHUB_USER_EMAIL=${GITHUB_USER_EMAIL}
-  #     - POSTGRES_URL=${POSTGRES_URL}
+  create_mypage_pr:
+    container_name: create_mypage_pr
+    build:
+      context: .
+      dockerfile: create_mypage_pr.Dockerfile
+      args:
+        - no-cache=true
+    environment:
+      - GITHUB_SECRET_KEY=${GITHUB_SECRET_KEY}
+      - GITHUB_USER_NAME=${GITHUB_USER_NAME}
+      - GITHUB_USER_EMAIL=${GITHUB_USER_EMAIL}
+      - POSTGRES_URL=${POSTGRES_URL}
 
 # - PGHOST=${PGHOST}
 # - PGPORT=${PGPORT}
