@@ -19,6 +19,7 @@ export async function addMypage(formData: FormData): Promise<AddMypageState> {
 				newMypage.title,
 				newMypage.quote,
 				newMypage.url,
+				"MYPAGE",
 			),
 		);
 

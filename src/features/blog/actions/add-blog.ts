@@ -31,6 +31,8 @@ export async function addBlog(formData: FormData): Promise<AddBlogState> {
 				newBlog.title,
 				newBlog.quote ?? "",
 				newBlog.url,
+				"BLOG",
+				newBlog.category.name,
 			),
 		);
 

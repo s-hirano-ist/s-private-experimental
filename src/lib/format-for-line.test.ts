@@ -31,15 +31,34 @@ describe("formatCreateCategoryMessage", () => {
 });
 
 describe("formatCreateContentsMessage", () => {
-	it("should format the create contents message correctly", () => {
+	it("should format the create blog message correctly", () => {
+		const title = "新しいニュース";
+		const quote = "これは引用です";
+		const url = "https://example.com";
+		const category = "カテゴリー";
+
+		const result = formatCreateContentMessage(
+			title,
+			quote,
+			url,
+			"BLOG",
+			category,
+		);
+
+		expect(result).toBe(
+			"**BLOG**\n\nコンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\ncategory: カテゴリー\nの登録ができました",
+		);
+	});
+
+	it("should format the create mypage message correctly", () => {
 		const title = "新しいニュース";
 		const quote = "これは引用です";
 		const url = "https://example.com";
 
-		const result = formatCreateContentMessage(title, quote, url);
+		const result = formatCreateContentMessage(title, quote, url, "MYPAGE");
 
 		expect(result).toBe(
-			"コンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\nの登録ができました",
+			"**MYPAGE**\n\nコンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\nの登録ができました",
 		);
 	});
 });

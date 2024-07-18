@@ -1,3 +1,4 @@
+import type { Contents } from "@/types/contents";
 import type { Status } from "@/types/status";
 
 export function formatChangeStatusMessage({
@@ -16,6 +17,9 @@ export function formatCreateContentMessage(
 	title: string,
 	quote: string,
 	url: string,
+	contentName: Contents,
+	category?: string,
 ) {
-	return `コンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\nの登録ができました`;
+	const categoryString = category ? `\ncategory: ${category}` : "";
+	return `**${contentName}**\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}${categoryString}\nの登録ができました`;
 }
