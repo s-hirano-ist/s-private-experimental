@@ -25,7 +25,7 @@ export async function getUnexportedBlog() {
 			title: true,
 			quote: true,
 			url: true,
-			category: { select: { category: true } },
+			category: { select: { name: true } },
 		},
 		orderBy: {
 			id: "desc",
@@ -41,7 +41,7 @@ export async function getAllBlog() {
 			quote: true,
 			url: true,
 			status: true,
-			category: { select: { category: true } },
+			category: { select: { name: true } },
 		},
 	});
 }

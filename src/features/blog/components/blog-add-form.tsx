@@ -97,7 +97,7 @@ export function BlogAddForm({ categories }: Props) {
 					<SelectContent>
 						{categories.map((category) => (
 							<SelectItem value={String(category.id)} key={category.id}>
-								{category.category}
+								{category.name}
 							</SelectItem>
 						))}
 						<SelectItem value={NEW_CATEGORY_VALUE} key={NEW_CATEGORY_VALUE}>

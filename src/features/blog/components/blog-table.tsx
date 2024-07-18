@@ -16,7 +16,7 @@ export async function BlogTable() {
 						quote: d.quote,
 						url: d.url,
 						status: d.status,
-						category: d.category?.category ?? "",
+						category: d.category?.name ?? "",
 					};
 				})}
 				columnType="blog"
