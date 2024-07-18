@@ -22,10 +22,12 @@ enum Status {
 
 model Category {
   id        Int      @id @default(autoincrement())
-  category  String   @unique
+  name      String   @unique
   blog      Blog[]
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("category")
 }
 
 model Blog {
@@ -38,6 +40,8 @@ model Blog {
   categoryId Int      @map("category_id")
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("blog")
 }
 
 model Mypage {
@@ -48,4 +52,6 @@ model Mypage {
   status    Status   @default(UNEXPORTED)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("mypage")
 }

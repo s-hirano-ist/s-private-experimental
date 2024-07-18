@@ -14,7 +14,7 @@ export async function BlogContents() {
 						title: d.title,
 						quote: d.quote,
 						url: d.url,
-						category: d.category?.category ?? "",
+						category: d.category?.name ?? "",
 					};
 				})}
 			/>

@@ -14,7 +14,7 @@ async function main() {
 			where: { id: 1 },
 			update: {},
 			create: {
-				category: data1.category,
+				name: data1.category,
 				blog: {
 					create: data1.body,
 				},
@@ -24,7 +24,7 @@ async function main() {
 			where: { id: 2 },
 			update: {},
 			create: {
-				category: data2.category,
+				name: data2.category,
 				blog: {
 					create: data2.body,
 				},
@@ -34,7 +34,7 @@ async function main() {
 			where: { id: 3 },
 			update: {},
 			create: {
-				category: data3.category,
+				name: data3.category,
 				blog: {
 					create: data3.body,
 				},
@@ -44,7 +44,7 @@ async function main() {
 			where: { id: 4 },
 			update: {},
 			create: {
-				category: data4.category,
+				name: data4.category,
 				blog: {
 					create: data4.body,
 				},

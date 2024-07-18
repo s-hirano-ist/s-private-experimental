@@ -85,7 +85,7 @@ const { pool, connection } = await getConnection();
 try {
 	const blogs = (
 		await connection.query(
-			"SELECT nd.id, nd.title, nd.url, nd.quote, c.category FROM blog nd JOIN category c ON nd.category_id = c.id WHERE nd.status = $1;",
+			"SELECT nd.id, nd.title, nd.url, nd.quote, c.name FROM blog nd JOIN category c ON nd.category_id = c.id WHERE nd.status = $1;",
 			["UNEXPORTED"],
 		)
 	).rows as Blog[];

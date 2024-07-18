@@ -20,9 +20,7 @@ export async function addBlog(formData: FormData): Promise<AddBlogState> {
 		const newCategory = validateCategory(formData);
 		if (newCategory !== null) {
 			const category = await createCategory(newCategory);
-			await sendLineNotifyMessage(
-				formatCreateCategoryMessage(category.category),
-			);
+			await sendLineNotifyMessage(formatCreateCategoryMessage(category.name));
 			formData.set("category", String(category.id));
 		}
 
@@ -44,7 +42,7 @@ export async function addBlog(formData: FormData): Promise<AddBlogState> {
 				title: blogValidatedFields.data.title,
 				quote: blogValidatedFields.data.quote,
 				url: blogValidatedFields.data.url,
-				category: newBlog.category.category,
+				category: newBlog.category.name,
 			},
 		};
 	} catch (error) {
