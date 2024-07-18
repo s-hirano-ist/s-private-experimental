@@ -8,7 +8,7 @@ export type BlogContext = {
 	category: string;
 };
 
-export const blogContext = atom<BlogContext[]>({
+export const blogContext = atom<BlogContext[] | undefined>({
 	key: "blog",
-	default: [],
+	default: undefined,
 });

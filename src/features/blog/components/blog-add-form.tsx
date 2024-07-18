@@ -52,7 +52,7 @@ export function BlogAddForm({ categories }: Props) {
 					}
 					const data = state.data;
 					if (!data) throw new Error("State has no data error.");
-					setQueuedContents((previousData) => [data, ...previousData]);
+					setQueuedContents((previousData) => [data, ...(previousData ?? [])]);
 					toast({
 						variant: "default",
 						description: state.message,

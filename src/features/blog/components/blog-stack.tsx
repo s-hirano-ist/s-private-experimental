@@ -1,6 +1,7 @@
 "use client";
 import { NoContent } from "@/components/no-content";
 import { ContentStack } from "@/components/stack/content-stack";
+import { LoadingStack } from "@/components/stack/loading-stack";
 import { blogContext } from "@/features/blog/stores/blog-context";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
@@ -17,6 +18,7 @@ export function BlogStack({ blog }: Props) {
 		setData(blog);
 	}, [blog, setData]);
 
+	if (data === undefined) return <LoadingStack />;
 	if (data.length === 0) return <NoContent />;
 
 	return (

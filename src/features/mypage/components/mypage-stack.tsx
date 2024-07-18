@@ -1,6 +1,7 @@
 "use client";
 import { NoContent } from "@/components/no-content";
 import { ContentStack } from "@/components/stack/content-stack";
+import { LoadingStack } from "@/components/stack/loading-stack";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { type MypageContext, mypageContext } from "../stores/mypage-context";
@@ -16,6 +17,7 @@ export function MypageStack({ mypage }: Props) {
 		setData(mypage);
 	}, [mypage, setData]);
 
+	if (data === undefined) return <LoadingStack />;
 	if (data.length === 0) return <NoContent />;
 
 	return (
