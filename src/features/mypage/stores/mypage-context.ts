@@ -7,7 +7,7 @@ export type MypageContext = {
 	url: string;
 };
 
-export const mypageContext = atom<MypageContext[]>({
+export const mypageContext = atom<MypageContext[] | undefined>({
 	key: "mypage",
-	default: [],
+	default: undefined,
 });
