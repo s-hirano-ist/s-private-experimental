@@ -6,9 +6,9 @@ import { validateMypage } from "@/features/mypage/utils/validate-mypage";
 import { formatCreateContentMessage } from "@/lib/format-for-line";
 import type { MypageContext } from "../stores/mypage-context";
 
-type AddMypageState = ServerAction & {
-	data?: MypageContext;
-};
+type AddMypageState =
+	| (ServerAction & { success: true; data: MypageContext })
+	| (ServerAction & { success: false });
 
 export async function addMypage(formData: FormData): Promise<AddMypageState> {
 	try {
