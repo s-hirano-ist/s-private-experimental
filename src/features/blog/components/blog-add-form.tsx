@@ -11,11 +11,10 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { ERROR_MESSAGES } from "@/constants";
 import { useToast } from "@/hooks/use-toast";
 import type { Category } from "@prisma/client";
 import { ClipboardPasteIcon } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { addBlog } from "../actions/add-blog";
 import { blogContext } from "../stores/blog-context";
@@ -31,47 +30,29 @@ export function BlogAddForm({ categories }: Props) {
 
 	const { toast } = useToast();
 
-	const [formData, setFormData] = useState<FormData>();
 	const setQueuedContents = useSetRecoilState(blogContext);
 
 	const NEW_CATEGORY_VALUE = "new"; // 新規の場合のcategoryのvalue
 	const [newCategoryInputOpen, setNewCategoryInputOpen] = useState(false);
 
-	useEffect(() => {
-		try {
-			if (formData !== undefined) {
-				const submit = async () => {
-					const state = await addBlog(formData);
-					if (!state.success) {
-						toast({
-							variant: "destructive",
-							description: state.message,
-						});
-						setFormData(undefined);
-						return;
-					}
-					const data = state.data;
-					if (!data) throw new Error("State has no data error.");
-					setQueuedContents((previousData) => [data, ...(previousData ?? [])]);
-					toast({
-						variant: "default",
-						description: state.message,
-					});
-					setFormData(undefined);
-					if (titleInputRef.current) titleInputRef.current.value = "";
-					if (quoteInputRef.current) quoteInputRef.current.value = "";
-					if (urlInputRef.current) urlInputRef.current.value = "";
-				};
-				submit();
-			}
-		} catch (error) {
-			console.error("Unexpected error.", error);
+	const formAction = async (formData: FormData) => {
+		const state = await addBlog(formData);
+		if (!state.success) {
 			toast({
 				variant: "destructive",
-				description: ERROR_MESSAGES.UNEXPECTED,
+				description: state.message,
 			});
+			return;
 		}
-	}, [formData, toast, setQueuedContents]);
+		setQueuedContents((previousData) => [state.data, ...(previousData ?? [])]);
+		toast({
+			variant: "default",
+			description: state.message,
+		});
+		if (titleInputRef.current) titleInputRef.current.value = "";
+		if (quoteInputRef.current) quoteInputRef.current.value = "";
+		if (urlInputRef.current) urlInputRef.current.value = "";
+	};
 
 	const handleSelectValueChange = (value: string) => {
 		setNewCategoryInputOpen(value === NEW_CATEGORY_VALUE);
@@ -83,7 +64,7 @@ export function BlogAddForm({ categories }: Props) {
 	};
 
 	return (
-		<form action={setFormData} className="space-y-4 p-4">
+		<form action={formAction} className="space-y-4 p-4">
 			<div className="space-y-1">
 				<Label htmlFor="category">カテゴリー</Label>
 				<Select
