@@ -11,9 +11,9 @@ import type { BlogContext } from "../stores/blog-context";
 import { validateBlog } from "../utils/validate-blog";
 import { validateCategory } from "../utils/validate-category";
 
-type AddBlogState = ServerAction & {
-	data?: BlogContext;
-};
+type AddBlogState =
+	| (ServerAction & { success: true; data: BlogContext })
+	| (ServerAction & { success: false });
 
 export async function addBlog(formData: FormData): Promise<AddBlogState> {
 	try {
