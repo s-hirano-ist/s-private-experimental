@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/s-hirano-ist/dump-to-github/compare/v1.1.0...v1.2.0) (2024-07-20)
+
+
+### リファクタリング
+
+* 💡 change snackbar message ([35ae4af](https://github.com/s-hirano-ist/dump-to-github/commit/35ae4af6fcefa18927a855435c84a6706bbb6d07))
+* 💡 line message ([7203fae](https://github.com/s-hirano-ist/dump-to-github/commit/7203fae671185717b012ba222028c3b8d5f30b86))
+* 💡 small fixes ([f913c57](https://github.com/s-hirano-ist/dump-to-github/commit/f913c57ce5246d95e9b1ee524bd731f89218af4b))
+* 💡 table name ([c679d9d](https://github.com/s-hirano-ist/dump-to-github/commit/c679d9d148505822842dbfc32b6821e9d5058301))
+* 💡 table names ([1906769](https://github.com/s-hirano-ist/dump-to-github/commit/1906769045b9456119144cd50a949c39b8c2b312))
+
+
+### バグ修正
+
+* 🐛 204 on loading ([e388391](https://github.com/s-hirano-ist/dump-to-github/commit/e388391079b8171f280a4e1a79414a69f7e125a8))
+* 🐛 bug on blog double click chatter ([c6c5517](https://github.com/s-hirano-ist/dump-to-github/commit/c6c5517a61f0d991d8e0cba88df4e9312a34be40))
+* 🐛 bug on blog double click chatter ([0c9a719](https://github.com/s-hirano-ist/dump-to-github/commit/0c9a719e892ce481bddd0fb855014b497b07f75b))
+* 🐛 disable buttons on submit buttons click ([2017d06](https://github.com/s-hirano-ist/dump-to-github/commit/2017d0632f2d3818886d1a4d001edc4cb9fb9c94))
+
+
+### ビルドプロセスまたは補助ツールの変更
+
+* 🤖 revert dockerfile version ([2c10a7e](https://github.com/s-hirano-ist/dump-to-github/commit/2c10a7e29434532029e83724842c3794d1b5909b))
+* 🤖 update node version on nvmrc ([f471cef](https://github.com/s-hirano-ist/dump-to-github/commit/f471cefcfa7e0121691bbeba99a5bfea35fba0f8))
+* 🤖 update pnpm ([74806e6](https://github.com/s-hirano-ist/dump-to-github/commit/74806e6796f5ec7179c03c372b1b6f8b48f4edee))
+* **deps:** update minor ([3ff9efb](https://github.com/s-hirano-ist/dump-to-github/commit/3ff9efb8c2b82d15e607806b73d8f045198dd347))
+* **deps:** update node.js to v20.15.1 ([9484a74](https://github.com/s-hirano-ist/dump-to-github/commit/9484a74220f6f78c63c1b28283c9a702a032d3f9))
+* **deps:** update patch ([461d58d](https://github.com/s-hirano-ist/dump-to-github/commit/461d58d6040fe8bcb4d89be006a919f82b83f002))
+* **deps:** update pnpm to v9.5.0 ([2a87f35](https://github.com/s-hirano-ist/dump-to-github/commit/2a87f35a5bd3adf834ae3eae9f74b8fcd6851ba3))
+* **deps:** update postgres docker tag to v16 ([b6bbf0b](https://github.com/s-hirano-ist/dump-to-github/commit/b6bbf0b3fcea3c26cf1af54e7fdcb6d79eb8ec55))
+* **deps:** update vitest monorepo to v2 ([de0693a](https://github.com/s-hirano-ist/dump-to-github/commit/de0693ac9c43b0ed1051809db4d8f7e0fc104a6a))
+
 ## [1.1.0](https://github.com/s-hirano-ist/dump-to-github/compare/v1.0.1...v1.1.0) (2024-07-07)
 
 
