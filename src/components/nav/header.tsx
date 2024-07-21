@@ -28,7 +28,7 @@ export function Header({ title, url }: Props) {
 							</Button>
 						</Link>
 					) : (
-						<p className="text-2xl font-semibold">{title}</p>
+						<p className="px-4 text-xl font-semibold">{title}</p>
 					)}
 				</div>
 				{/* TODO: add theme button */}
