@@ -1,1 +1,1 @@
-# s-admin
+# s-private
