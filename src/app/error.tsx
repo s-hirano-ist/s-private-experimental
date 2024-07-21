@@ -17,10 +17,7 @@ export default function Page({
 	return (
 		<main>
 			<div className="flex h-screen w-screen flex-col items-center justify-center space-y-4 text-center">
-				<StatusCodeView
-					statusCode={500}
-					statusMessage="Internal server error"
-				/>
+				<StatusCodeView statusCode="500" />
 				<Button variant="outline" onClick={() => reset()}>
 					Try again
 				</Button>

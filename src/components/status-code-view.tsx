@@ -1,7 +1,21 @@
-export function StatusCodeView({
-	statusCode,
-	statusMessage,
-}: { statusCode: number; statusMessage: string }) {
+type StatusCode = "204" | "401" | "404" | "500";
+
+export function StatusCodeView({ statusCode }: { statusCode: StatusCode }) {
+	const statusMessage = () => {
+		switch (statusCode) {
+			case "204":
+				return "No Content";
+			case "401":
+				return "Unauthorized";
+			case "404":
+				return "Not Found";
+			case "500":
+				return "Internal server error";
+			default:
+				return "Unknown Status";
+		}
+	};
+
 	return (
 		<div className="w-full p-2 text-center font-extrabold text-primary-grad">
 			<div className="text-9xl">
@@ -9,7 +23,7 @@ export function StatusCodeView({
 				{String(statusCode)}
 				<span className="hidden font-light sm:inline">---</span>
 			</div>
-			<div className="text-sm">------{statusMessage}------</div>
+			<div className="text-sm">------{statusMessage()}------</div>
 		</div>
 	);
 }

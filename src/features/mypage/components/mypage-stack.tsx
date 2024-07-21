@@ -18,8 +18,7 @@ export function MypageStack({ mypage }: Props) {
 	}, [mypage, setData]);
 
 	if (data === undefined) return <LoadingStack />;
-	if (data.length === 0)
-		return <StatusCodeView statusCode={204} statusMessage="No content" />;
+	if (data.length === 0) return <StatusCodeView statusCode="204" />;
 
 	return (
 		<div className="grid grid-cols-1 gap-2 p-2 sm:grid-cols-2 sm:gap-4 sm:p-4">

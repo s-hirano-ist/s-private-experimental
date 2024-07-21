@@ -100,7 +100,7 @@ export function ContentsTable<T extends BlogContext | MypageContext>({
 					) : (
 						<TableRow>
 							<TableCell colSpan={columns.length} className="mx-auto flex">
-								<StatusCodeView statusCode={200} statusMessage="No content" />
+								<StatusCodeView statusCode="204" />
 							</TableCell>
 						</TableRow>
 					)}

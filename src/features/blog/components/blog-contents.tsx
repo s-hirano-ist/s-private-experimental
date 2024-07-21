@@ -23,10 +23,7 @@ export async function BlogContents() {
 		console.error("Unexpected error.", error);
 		return (
 			<div className="flex flex-col items-center">
-				<StatusCodeView
-					statusCode={500}
-					statusMessage="Internal server error"
-				/>
+				<StatusCodeView statusCode="500" />
 			</div>
 		);
 	}
