@@ -1,5 +1,5 @@
 "use client"; // Error components must be Client Components
-import { ErrorView } from "@/components/error-view";
+import { StatusCodeView } from "@/components/status-code-view";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 
@@ -20,7 +20,7 @@ export default function Page({
 			<body>
 				<main>
 					<div className="flex h-screen w-screen flex-col items-center justify-center space-y-4 text-center">
-						<ErrorView />
+						<StatusCodeView statusCode="500" />
 						<Button variant="outline" onClick={() => reset()}>
 							Try again
 						</Button>

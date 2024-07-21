@@ -26,7 +26,7 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 import type { BlogContext } from "../../features/blog/stores/blog-context";
-import { NoContent } from "../no-content";
+import { StatusCodeView } from "../status-code-view";
 
 type Props<T extends BlogContext | MypageContext> = {
 	data: T[];
@@ -100,7 +100,7 @@ export function ContentsTable<T extends BlogContext | MypageContext>({
 					) : (
 						<TableRow>
 							<TableCell colSpan={columns.length} className="mx-auto flex">
-								<NoContent />
+								<StatusCodeView statusCode="204" />
 							</TableCell>
 						</TableRow>
 					)}
