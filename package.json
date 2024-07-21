@@ -1,8 +1,8 @@
 {
-	"name": "dump-to-github",
+	"name": "s-admin",
 	"version": "1.2.0",
 	"author": "s-hirano-ist",
-	"description": "Dump data to SQL and then to GitHub.",
+	"description": "Admin tool for s-hirano-ist.",
 	"packageManager": "pnpm@9.5.0",
 	"scripts": {
 		"corepack": "corepack enable pnpm",

@@ -11,8 +11,8 @@ import "./globals.css";
 const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Dump",
-	description: "Dump blog data to GitHub",
+	title: "s-admin",
+	description: "admin tool for s-hirano-ist.",
 };
 
 export default async function RootLayout({

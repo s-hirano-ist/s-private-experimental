@@ -1,12 +1,6 @@
 import { Header } from "@/components/nav/header";
 import { StatusCodeView } from "@/components/status-code-view";
 import { Button } from "@/components/ui/button";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-	title: "Unauthorized | Dump",
-	description: "Dump blog data to GitHub",
-};
 
 export default function Page() {
 	return (

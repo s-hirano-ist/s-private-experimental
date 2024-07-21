@@ -18,9 +18,8 @@ export default auth(async (request) => {
 	if (
 		userEmail === env.ALLOWED_GITHUB_ACCOUNT_EMAIL &&
 		request.url === unauthorizedUrl.toString()
-	) {
+	)
 		return Response.redirect(new URL("/", nextUrl));
-	}
 });
 
 export const config = {

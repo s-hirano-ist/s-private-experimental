@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 
-export const dynamic = "force-dynamic";
-
+//FIXME: change to content book and notes
 export const metadata: Metadata = {
-	title: "Settings | Dump",
-	description: "Dump blog data to GitHub",
+	title: "All | Contents",
+	description: "Private contents",
 };
 
 export default function Page() {

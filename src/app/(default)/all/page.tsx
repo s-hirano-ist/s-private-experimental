@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
 	title: "All | Dump",
-	description: "Dump blog data to GitHub",
+	description: "Dump blog/mypage data to GitHub",
 };
 
 export default function Home() {
