@@ -1,0 +1,16 @@
+{
+	"name": "s-admin",
+	"short_name": "s-admin",
+	"description": "Admin tool for s-hirano-ist",
+	"lang": "ja",
+	"start_url": "/",
+	"theme_color": "#4f697b",
+	"background_color": "#000",
+	"icons": [
+		{
+			"src": "/favicon.ico",
+			"sizes": "any"
+		}
+	],
+	"display": "fullscreen"
+}
