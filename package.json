@@ -1,8 +1,8 @@
 {
-	"name": "s-admin",
+	"name": "s-private",
 	"version": "1.2.0",
 	"author": "s-hirano-ist",
-	"description": "Admin tool for s-hirano-ist.",
+	"description": "Private pages and admin tool for s-hirano-ist.",
 	"packageManager": "pnpm@9.5.0",
 	"scripts": {
 		"corepack": "corepack enable pnpm",

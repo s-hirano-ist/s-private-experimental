@@ -34,7 +34,7 @@ curl \
     https://api.github.com/repos/s-hirano-ist/mypage/pulls \
     -d '{
         "title": "contents: update content",
-        "body": "https://github.com/s-hirano-ist/s-admin から取得したエクスポートしたコンテンツ一覧。",
+        "body": "https://github.com/s-hirano-ist/s-private から取得したエクスポートしたコンテンツ一覧。",
         "base": "main",
         "head": "'${branch_name}'"
     }'
