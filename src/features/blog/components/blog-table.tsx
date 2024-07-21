@@ -1,5 +1,5 @@
 import { getAllBlog } from "@/apis/prisma/fetch-blog";
-import { ErrorView } from "@/components/error-view";
+import { StatusCodeView } from "@/components/status-code-view";
 import { ContentsTable } from "@/components/table/contents-table";
 import type { BlogContext } from "../stores/blog-context";
 
@@ -26,7 +26,10 @@ export async function BlogTable() {
 		console.error("Unexpected error.", error);
 		return (
 			<div className="flex flex-col items-center">
-				<ErrorView />
+				<StatusCodeView
+					statusCode={500}
+					statusMessage="Internal server error"
+				/>
 			</div>
 		);
 	}

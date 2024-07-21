@@ -1,5 +1,5 @@
 import { getUnexportedMypage } from "@/apis/prisma/fetch-mypage";
-import { ErrorView } from "@/components/error-view";
+import { StatusCodeView } from "@/components/status-code-view";
 import { MypageStack } from "./mypage-stack";
 
 export async function MypageContents() {
@@ -22,7 +22,10 @@ export async function MypageContents() {
 		console.error("Unexpected error.", error);
 		return (
 			<div className="flex flex-col items-center">
-				<ErrorView />
+				<StatusCodeView
+					statusCode={500}
+					statusMessage="Internal server error"
+				/>
 			</div>
 		);
 	}
