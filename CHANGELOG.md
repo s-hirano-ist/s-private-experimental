@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/s-hirano-ist/s-private/compare/v1.2.0...v1.3.0) (2024-07-21)
+
+
+### 新機能
+
+* 🎸 add auth ([958e958](https://github.com/s-hirano-ist/s-private/commit/958e958ed143f1b73eeeb0359516d0f29cd34c98))
+
+
+### バグ修正
+
+* 🐛 padding of header description ([f032c10](https://github.com/s-hirano-ist/s-private/commit/f032c100cb680d7419b602f55e3ddb5995570803))
+
+
+### テストの追加・修正
+
+* 💍 add more margin on test sleep function ([d09561d](https://github.com/s-hirano-ist/s-private/commit/d09561dbcb228cfdc871feec73808722e9fa12cb))
+
+
+### ドキュメント
+
+* ✏️ update readme ([941ac51](https://github.com/s-hirano-ist/s-private/commit/941ac5192e7b0393d9bad38732e824c0ae891679))
+
+
+### リファクタリング
+
+* 💡 add status code component ([e1f3566](https://github.com/s-hirano-ist/s-private/commit/e1f3566b5c602e772a919b111b9dc49d0f299ef1))
+* 💡 change dump to s-admin ([54161f9](https://github.com/s-hirano-ist/s-private/commit/54161f9246a2a0f9951508bc380de75a89b54aa6))
+* 💡 change name to s-admin ([6d15701](https://github.com/s-hirano-ist/s-private/commit/6d1570147653fc8dd721f0715848f17bee83bde7))
+* 💡 padding and margin ([7bfe019](https://github.com/s-hirano-ist/s-private/commit/7bfe01920a716214583aa590c6d553c7e694f50c))
+* 💡 status code checker ([e21062f](https://github.com/s-hirano-ist/s-private/commit/e21062fb4b926bee022fb573f261c3e475c21088))
+
+
+### ビルドプロセスまたは補助ツールの変更
+
+* 🤖 add mainfest ([afc8477](https://github.com/s-hirano-ist/s-private/commit/afc84773c229a1356e576e05e083ecf694056a2b))
+* 🤖 change favicon ([37a7a65](https://github.com/s-hirano-ist/s-private/commit/37a7a655cb1b281b5c911730beec19c9a996c3dc))
+* 🤖 change s-admin to s-private ([093183e](https://github.com/s-hirano-ist/s-private/commit/093183e11f1637ed46111dec8603658391ee7093))
+
 ## [1.2.0](https://github.com/s-hirano-ist/dump-to-github/compare/v1.1.0...v1.2.0) (2024-07-20)
 
 
