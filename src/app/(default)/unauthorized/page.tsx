@@ -13,7 +13,7 @@ export default function Page() {
 		<div className="space-y-2">
 			<Header title="Unauthorized" />
 			<StatusCodeView statusCode="401" />
-			<p className="text-center text-primary-grad">
+			<p className="px-4 text-center text-primary-grad">
 				GitHubでログアウトし、許可済みアカウントで再ログインしてください。
 			</p>
 			<form action="/api/auth/signout" className="flex flex-col">
