@@ -13,7 +13,7 @@ export async function MypageTable() {
 					return {
 						id: d.id,
 						title: d.title,
-						quote: d.quote,
+						quote: d.quote ?? "",
 						url: d.url,
 						status: d.status,
 					};

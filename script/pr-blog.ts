@@ -7,7 +7,7 @@ type Blog = {
 	title: string;
 	url: string;
 	quote: string | null;
-	category: string;
+	name: string;
 };
 
 type Template = {
@@ -46,9 +46,9 @@ type OutputType = {
 
 function categorizeBlog(blogs: Blog[]): OutputType {
 	return blogs.reduce((acc, blog) => {
-		if (!acc[blog.category]) acc[blog.category] = [];
+		if (!acc[blog.name]) acc[blog.name] = [];
 		const { title, quote, url } = blog;
-		acc[blog.category].push({ title, quote: quote ?? "", url });
+		acc[blog.name].push({ title, quote: quote ?? "", url });
 		return acc;
 	}, {} as OutputType);
 }

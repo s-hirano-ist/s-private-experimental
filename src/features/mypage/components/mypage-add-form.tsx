@@ -52,7 +52,7 @@ export function MypageAddForm() {
 			</div>
 			<div className="space-y-1">
 				<Label htmlFor="quote">ひとこと</Label>
-				<Textarea id="quote" name="quote" ref={quoteInputRef} required />
+				<Textarea id="quote" name="quote" ref={quoteInputRef} />
 			</div>
 			<div className="space-y-1">
 				<Label htmlFor="url">URL</Label>
