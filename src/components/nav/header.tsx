@@ -11,7 +11,7 @@ type Props = {
 
 export function Header({ title, url }: Props) {
 	return (
-		<header className="sticky top-0 z-50 w-full bg-gradient-to-r from-primary to-primary-grad p-2 text-white">
+		<header className="sticky top-0 z-50 w-full bg-gradient-to-b from-primary to-primary-grad p-2 text-white">
 			<div className="flex items-center justify-between px-2">
 				<div className="flex items-center justify-start">
 					<Image
