@@ -3,12 +3,12 @@
 npm run corepack
 pnpm i --frozen-lockfile
 
-git clone https://github.com/s-hirano-ist/blog
+git clone https://github.com/s-hirano-ist/s-public
 
 # Genrate files
 pnpm blog
 
-cd blog
+cd s-public
 
 # Git
 git config --global user.name ${GITHUB_USER_NAME}
@@ -23,7 +23,7 @@ git add -A
 git commit -m "contents: update news"
 
 # Push to GitHub
-REPO_URL="https://${GITHUB_SECRET_KEY}@github.com/s-hirano-ist/blog.git"
+REPO_URL="https://${GITHUB_SECRET_KEY}@github.com/s-hirano-ist/s-public.git"
 git push $REPO_URL $branch_name
 
 # Make PR
@@ -31,10 +31,10 @@ curl \
     -X POST \
     -H "Authorization: token ${GITHUB_SECRET_KEY}" \
     -H "Accept: application/vnd.github.v3+json" \
-    https://api.github.com/repos/s-hirano-ist/blog/pulls \
+    https://api.github.com/repos/s-hirano-ist/s-public/pulls \
     -d '{
         "title": "contents: update news",
-        "body": "https://github.com/s-hirano-ist/s-private から取得したエクスポートしたニュース一覧。",
+        "body": "https://github.com/s-hirano-ist/s-public から取得したエクスポートしたニュース一覧。",
         "base": "main",
         "head": "'${branch_name}'"
     }'
