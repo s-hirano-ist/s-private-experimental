@@ -17,7 +17,7 @@ export async function addMypage(formData: FormData): Promise<AddMypageState> {
 		await sendLineNotifyMessage(
 			formatCreateContentMessage(
 				newMypage.title,
-				newMypage.quote,
+				newMypage.quote ?? "",
 				newMypage.url,
 				"MYPAGE",
 			),

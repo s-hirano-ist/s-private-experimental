@@ -12,7 +12,7 @@ export async function MypageContents() {
 					return {
 						id: d.id,
 						title: d.title,
-						quote: d.quote,
+						quote: d.quote ?? "",
 						url: d.url,
 					};
 				})}

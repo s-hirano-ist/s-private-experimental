@@ -7,9 +7,6 @@ export const mypageSchema = z.object({
 		.string()
 		.min(1, { message: FORM_ERROR_MESSAGES.REQUIRED })
 		.max(32, { message: FORM_ERROR_MESSAGES.TOO_LONG }),
-	quote: z
-		.string()
-		.min(1, { message: FORM_ERROR_MESSAGES.REQUIRED })
-		.max(256, { message: FORM_ERROR_MESSAGES.TOO_LONG }),
+	quote: z.string().max(256, { message: FORM_ERROR_MESSAGES.TOO_LONG }),
 	url: z.string().url().min(1, { message: FORM_ERROR_MESSAGES.REQUIRED }),
 });
