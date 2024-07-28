@@ -51,8 +51,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       lucide-react:
-        specifier: 0.414.0
-        version: 0.414.0(react@18.3.1)
+        specifier: 0.417.0
+        version: 0.417.0(react@18.3.1)
       next:
         specifier: 14.2.5
         version: 14.2.5(@babel/core@7.24.7)(@playwright/test@1.45.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -60,8 +60,8 @@ importers:
         specifier: 5.0.0-beta.19
         version: 5.0.0-beta.19(next@14.2.5(@babel/core@7.24.7)(@playwright/test@1.45.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       next-view-transitions:
-        specifier: 0.2.0
-        version: 0.2.0(next@14.2.5(@babel/core@7.24.7)(@playwright/test@1.45.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 0.3.0
+        version: 0.3.0(next@14.2.5(@babel/core@7.24.7)(@playwright/test@1.45.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -5456,8 +5456,8 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
-  lucide-react@0.414.0:
-    resolution: {integrity: sha512-Krr/MHg9AWoJc52qx8hyJ64X9++JNfS1wjaJviLM1EP/68VNB7Tv0VMldLCB1aUe6Ka9QxURPhQm/eB6cqOM3A==}
+  lucide-react@0.417.0:
+    resolution: {integrity: sha512-F/MDUHDter8YMZ7JKQpW/5/+v38tdaoShKX3e+opYsqfCnaHwn+5zz3+lBrMDFMNtSsvxtNpchLIaMpEfsi/4w==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
@@ -5682,8 +5682,8 @@ packages:
       nodemailer:
         optional: true
 
-  next-view-transitions@0.2.0:
-    resolution: {integrity: sha512-dFxevMIJy8irIstytJivLEtgYT4IJ7Gy7fnDCKHJtNZAsuQgmewYcdA/o/mRkMd1zwxTfyGALiOlZYxvtsn5jg==}
+  next-view-transitions@0.3.0:
+    resolution: {integrity: sha512-EfMG4sQR48Q40apCl0rWqTvpDNk4TcdlFjcsGd2ZOBJMNlwfuB8lnwhOL5A0kKWnZwXlMgDPFXY7qwoOY+NhtQ==}
     peerDependencies:
       next: ^14.0.0
       react: ^18.2.0
@@ -14068,7 +14068,7 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  lucide-react@0.414.0(react@18.3.1):
+  lucide-react@0.417.0(react@18.3.1):
     dependencies:
       react: 18.3.1
 
@@ -14261,7 +14261,7 @@ snapshots:
       next: 14.2.5(@babel/core@7.24.7)(@playwright/test@1.45.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
 
-  next-view-transitions@0.2.0(next@14.2.5(@babel/core@7.24.7)(@playwright/test@1.45.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  next-view-transitions@0.3.0(next@14.2.5(@babel/core@7.24.7)(@playwright/test@1.45.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       next: 14.2.5(@babel/core@7.24.7)(@playwright/test@1.45.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
