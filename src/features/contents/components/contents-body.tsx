@@ -1,6 +1,6 @@
 const ContentsBody = ({ content }: { content: string }) => {
 	return (
-		<div className="mx-2">
+		<div className="prose mx-auto">
 			<div dangerouslySetInnerHTML={{ __html: content }} />
 		</div>
 	);

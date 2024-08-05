@@ -6,24 +6,25 @@ import { getAllSlugs, getContentsBySlug } from "@/features/contents/utils/api";
 import markdownToHtml from "@/features/contents/utils/markdownToHtml";
 import type { Metadata } from "next";
 
-const path = "notes";
+const path = "books";
 
 export const dynamicParams = false;
 
 type Props = { params: ContentsType };
 
 export function generateMetadata({ params }: Props): Metadata {
-	return { title: `Notes | ${params.slug}` };
+	return { title: `Book reviews | ${decodeURIComponent(params.slug)}` };
 }
 
 export default async function Page({ params }: Props) {
 	const { slug } = params;
-	const slugs = getContentsBySlug(slug, `${MARKDOWN_PATHS}/${path}`);
+	const decordedSlug = decodeURIComponent(slug);
+	const slugs = getContentsBySlug(decordedSlug, `${MARKDOWN_PATHS}/${path}`);
 	const content = await markdownToHtml(slugs);
 
 	return (
 		<>
-			<Header title={slug} />
+			<Header title={decordedSlug} />
 			<ContentsBody content={content} />
 		</>
 	);

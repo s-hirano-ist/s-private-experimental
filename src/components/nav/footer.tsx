@@ -67,14 +67,12 @@ export function Footer() {
 						</div>
 					</DrawerTrigger>
 
-					<Link href="/contents/book-reviews">
+					<Link href="/contents/books">
 						<Button
 							variant="navSide"
 							size="navSide"
 							type="button"
-							className={
-								pathname === "/contents/book-reviews" ? "bg-black/40" : ""
-							}
+							className={pathname === "/contents/books" ? "bg-black/40" : ""}
 						>
 							{Icon("BOOKS", <BookOpenIcon className="size-6" />)}
 						</Button>

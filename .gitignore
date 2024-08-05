@@ -12,8 +12,8 @@ node_modules
 /.playwright-output
 
 # next.js
-/.next/
-/out/
+/.next
+/out
 
 # production
 /build
