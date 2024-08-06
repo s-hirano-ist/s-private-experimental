@@ -18,6 +18,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/pnpm-lock.yaml ./
 COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/.env ./
 
 RUN pnpm install --prod
 EXPOSE 3000
