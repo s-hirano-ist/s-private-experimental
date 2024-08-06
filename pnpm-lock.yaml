@@ -65,6 +65,9 @@ importers:
       next-view-transitions:
         specifier: 0.3.0
         version: 0.3.0(next@14.2.5(@babel/core@7.24.7)(@playwright/test@1.45.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      prisma:
+        specifier: 5.17.0
+        version: 5.17.0
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -177,9 +180,6 @@ importers:
       postcss:
         specifier: 8.4.39
         version: 8.4.39
-      prisma:
-        specifier: 5.17.0
-        version: 5.17.0
       rehype:
         specifier: 13.0.1
         version: 13.0.1
@@ -6588,7 +6588,6 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     deprecated: |-
       You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
-
       (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   qs@6.11.0:

@@ -1,17 +1,26 @@
 services:
-  db:
-    container_name: blog-db
+  prod_db:
+    container_name: prod-db
     build:
       context: .
-      dockerfile: db.Dockerfile
+      dockerfile: docker/db.Dockerfile
     volumes:
-      - blog-db-data:/var/lib/postgresql/data
+      - prod-db-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
     environment:
       POSTGRES_USER: ${USERNAME}
       POSTGRES_PASSWORD: ${PASSWORD}
-      POSTGRES_DB: blog-db
+      POSTGRES_DB: prod-db
+
+  prod_frontend:
+    container_name: prod-frontend
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - 3000:3000
 
 volumes:
-  blog-db-data:
+  prod-db-data:
+  staging-db-data:
