@@ -15,8 +15,8 @@ export function ContentsPreview({
 
 	const imageSrc: StaticImageData =
 		imagePath !== undefined
-			? require(`../../../../s-contents/public/assets/${path}/${imagePath}`)
-			: require("../../../../s-contents/public/assets/_no_image.svg");
+			? require(`../../../../s-contents/image/${path}/${imagePath}`)
+			: require("../../../../s-contents/image/_no_image.svg");
 
 	return (
 		<Link href={`${path}/${slug}` as Route}>

@@ -17,4 +17,4 @@ export const SUCCESS_MESSAGES = {
 export const LOADING_STACK_SIZE = 32;
 export const LOADING_TABLE_ROWS = 5;
 
-export const MARKDOWN_PATHS = "s-contents/_markdown";
+export const MARKDOWN_PATHS = "s-contents/markdown";

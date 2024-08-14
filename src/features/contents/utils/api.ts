@@ -15,7 +15,7 @@ export function getContentsBySlug(slug: string, path: string) {
 }
 
 export function getAllSlugs(path: string) {
-	const contentsDirectory = join(process.cwd(), "s-contents/_markdown", path);
+	const contentsDirectory = join(process.cwd(), "s-contents/markdown", path);
 	try {
 		return fs
 			.readdirSync(contentsDirectory)
@@ -27,10 +27,7 @@ export function getAllSlugs(path: string) {
 }
 
 export function getAllImages(path: string) {
-	const imagesDirectory = join(
-		process.cwd(),
-		`s-contents/public/assets/${path}`,
-	);
+	const imagesDirectory = join(process.cwd(), `s-contents/image/${path}`);
 	try {
 		return fs
 			.readdirSync(imagesDirectory)
