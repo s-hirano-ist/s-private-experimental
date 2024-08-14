@@ -11,7 +11,9 @@ services:
     environment:
       POSTGRES_USER: ${USERNAME}
       POSTGRES_PASSWORD: ${PASSWORD}
-      POSTGRES_DB: prod-db
+      POSTGRES_DB: dump-db
+    profiles:
+      - prod
 
   prod_frontend:
     container_name: prod-frontend
@@ -20,7 +22,25 @@ services:
       dockerfile: docker/Dockerfile
     ports:
       - 3000:3000
+    profiles:
+      - prod
+
+  dev_db:
+    container_name: dev-db
+    build:
+      context: .
+      dockerfile: docker/db.Dockerfile
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${USERNAME}
+      POSTGRES_PASSWORD: ${PASSWORD}
+      POSTGRES_DB: dump-db
+    profiles:
+      - dev
 
 volumes:
   prod-db-data:
-  staging-db-data:
+  dev-db-data:
