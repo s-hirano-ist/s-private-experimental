@@ -11,7 +11,7 @@ const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "s-private",
-	description: "Private pages and admin tool for s-hirano-ist.",
+	description: "Private pages and admin tools for s-hirano-ist.",
 };
 
 export default async function RootLayout({

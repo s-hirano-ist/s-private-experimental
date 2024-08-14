@@ -1,7 +1,7 @@
 {
 	"name": "s-private",
 	"short_name": "s-private",
-	"description": "Private pages and admin tool for s-hirano-ist.",
+	"description": "Private pages and admin tools for s-hirano-ist.",
 	"lang": "ja",
 	"start_url": "/",
 	"theme_color": "#77a2c0",

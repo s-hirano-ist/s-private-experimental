@@ -14,6 +14,7 @@ services:
       POSTGRES_DB: dump-db
     profiles:
       - prod
+    restart: always
 
   prod_frontend:
     container_name: prod-frontend
@@ -21,9 +22,10 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     ports:
-      - 3000:3000
+      - 80:3000
     profiles:
       - prod
+    restart: always
 
   dev_db:
     container_name: dev-db
@@ -40,6 +42,7 @@ services:
       POSTGRES_DB: dump-db
     profiles:
       - dev
+    restart: always
 
 volumes:
   prod-db-data:
