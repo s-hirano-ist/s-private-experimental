@@ -2,7 +2,7 @@
 import { ContentStack } from "@/components/stack/content-stack";
 import { LoadingStack } from "@/components/stack/loading-stack";
 import { StatusCodeView } from "@/components/status-code-view";
-import { blogContext } from "@/features/blog/stores/blog-context";
+import { blogContext } from "@/features/dump/stores/blog-context";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import type { BlogContext } from "../stores/blog-context";

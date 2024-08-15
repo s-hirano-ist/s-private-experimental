@@ -1,9 +1,9 @@
 import { Header } from "@/components/nav/header";
 import { LoadingStack } from "@/components/stack/loading-stack";
 import { Separator } from "@/components/ui/separator";
-import { BlogAddProvider } from "@/features/blog/components/blog-add-provider";
-import { BlogContents } from "@/features/blog/components/blog-contents";
-import { LoadingForm } from "@/features/blog/components/loading-add-form";
+import { BlogAddProvider } from "@/features/dump/components/blog-add-provider";
+import { BlogContents } from "@/features/dump/components/blog-contents";
+import { LoadingForm } from "@/features/dump/components/loading-add-form";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 

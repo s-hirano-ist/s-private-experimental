@@ -1,5 +1,5 @@
 import { getCategories } from "@/apis/prisma/fetch-category";
-import { BlogAddForm } from "@/features/blog/components/blog-add-form";
+import { BlogAddForm } from "@/features/dump/components/blog-add-form";
 
 export async function BlogAddProvider() {
 	try {
