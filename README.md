@@ -21,3 +21,11 @@ pnpm dev
 ```bash
 docker compose --profile prod up --build -d
 ```
+
+## その他
+
+### 容量圧迫時
+
+```bash
+docker builder prune
+```
