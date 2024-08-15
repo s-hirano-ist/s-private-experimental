@@ -9,9 +9,9 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { ERROR_MESSAGES } from "@/constants";
-import { blogColumns } from "@/features/blog/utils/blog-columns";
-import type { MypageContext } from "@/features/mypage/stores/mypage-context";
-import { mypageColumns } from "@/features/mypage/utils/mypage-columns";
+import type { MypageContext } from "@/features/dump/stores/mypage-context";
+import { blogColumns } from "@/features/dump/utils/blog-columns";
+import { mypageColumns } from "@/features/dump/utils/mypage-columns";
 import {
 	type ColumnDef,
 	type ColumnFiltersState,
@@ -25,7 +25,7 @@ import {
 	useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import type { BlogContext } from "../../features/blog/stores/blog-context";
+import type { BlogContext } from "../../features/dump/stores/blog-context";
 import { StatusCodeView } from "../status-code-view";
 
 type Props<T extends BlogContext | MypageContext> = {

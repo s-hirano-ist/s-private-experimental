@@ -1,8 +1,8 @@
 import { Header } from "@/components/nav/header";
 import { LoadingTable } from "@/components/table/loading-table";
 import { Separator } from "@/components/ui/separator";
-import { BlogTable } from "@/features/blog/components/blog-table";
-import { MypageTable } from "@/features/mypage/components/mypage-table";
+import { BlogTable } from "@/features/dump/components/blog-table";
+import { MypageTable } from "@/features/dump/components/mypage-table";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 

@@ -2,7 +2,7 @@
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createMypage } from "@/apis/prisma/fetch-mypage";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
-import { validateMypage } from "@/features/mypage/utils/validate-mypage";
+import { validateMypage } from "@/features/dump/utils/validate-mypage";
 import { formatCreateContentMessage } from "@/lib/format-for-line";
 import type { MypageContext } from "../stores/mypage-context";
 
