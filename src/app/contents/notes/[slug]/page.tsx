@@ -8,6 +8,8 @@ import type { Metadata } from "next";
 
 const path = "notes";
 
+export const dynamicParams = true; // FIXME: #278
+
 type Props = { params: ContentsType };
 
 export function generateMetadata({ params }: Props): Metadata {
@@ -16,13 +18,13 @@ export function generateMetadata({ params }: Props): Metadata {
 
 export default async function Page({ params }: Props) {
 	const { slug } = params;
-	const slugs = getContentsBySlug(slug, `${MARKDOWN_PATHS}/${path}`);
-	const content = await markdownToHtml(slugs);
+	const content = getContentsBySlug(slug, `${MARKDOWN_PATHS}/${path}`);
+	const htmlContent = await markdownToHtml(content);
 
 	return (
 		<>
 			<Header title={slug} />
-			<ContentsBody content={content} />
+			<ContentsBody content={htmlContent} />
 		</>
 	);
 }

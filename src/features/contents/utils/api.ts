@@ -27,13 +27,13 @@ export function getAllSlugs(path: string) {
 }
 
 export function getAllImages(path: string) {
-	const imagesDirectory = join(process.cwd(), `s-contents/image/${path}`);
+	const imagesDirectory = join(process.cwd(), "s-contents/image", path);
 	try {
 		return fs
 			.readdirSync(imagesDirectory)
 			.filter((slug) => slug !== ".DS_Store");
 	} catch (error) {
-		console.error(`Error reading file ${path}:`, error);
+		console.error(`Error reading directory ${imagesDirectory}:`, error);
 		return [];
 	}
 }

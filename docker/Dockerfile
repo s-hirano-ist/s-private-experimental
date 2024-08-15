@@ -20,6 +20,9 @@ COPY --from=builder /app/pnpm-lock.yaml ./
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/.env ./
 
+# FIXME: disable when dynamicParams enabled
+COPY --from=builder /app/s-contents ./s-contents
+
 RUN pnpm install --prod
 EXPOSE 3000
 CMD ["pnpm", "start"]
