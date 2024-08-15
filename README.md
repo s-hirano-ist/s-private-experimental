@@ -1,23 +1,23 @@
 # s-private
 
-## TODO
-
-### 💻 Tech Stack
-
-**Main Framework** - [Next.js](https://nextjs.org/)  
-**Type Checking** - [TypeScript](https://www.typescriptlang.org/)  
-**Styling** - [MUI](https://www.mui.com/)  
-**Code Formatting** - [Prettier](https://prettier.io/)  
-**Linting** - [ESLint](https://eslint.org)  
-**Auto Commit Rejection** - [Husky](https://typicode.github.io/husky/)  
-**Package updates** - [Renovate](https://www.mend.io/renovate/)
-
-### 注意点
-
-技術系記事は古くなる可能性があるため、汎化性の高いもののみ保存
-
-### 🪝 Tags & Realease
+## 初期設定
 
 ```bash
-gh release create --generate-notes
+git clone --recursive https://github.com/s-hirano-ist/s-private.git
+cd s-private
+```
+
+## 起動方法
+
+### 開発環境
+
+```bash
+docker compose --profile dev up --build -d
+pnpm dev
+```
+
+### 本番環境
+
+```bash
+docker compose --profile prod up --build -d
 ```
