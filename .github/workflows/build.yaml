@@ -11,8 +11,11 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v4
-
+      - name: Checkout files
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          submodules: true
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
