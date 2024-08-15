@@ -8,8 +8,6 @@ import type { Metadata } from "next";
 
 const path = "books";
 
-export const dynamicParams = false;
-
 type Props = { params: ContentsType };
 
 export function generateMetadata({ params }: Props): Metadata {
