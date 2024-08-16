@@ -6,6 +6,8 @@ services:
       dockerfile: docker/db.Dockerfile
     volumes:
       - prod-db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432 # FIXME: disable after #274
     environment:
       POSTGRES_USER: ${USERNAME}
       POSTGRES_PASSWORD: ${PASSWORD}
