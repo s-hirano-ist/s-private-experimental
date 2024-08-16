@@ -11,6 +11,9 @@ services:
       - GITHUB_USER_NAME=${GITHUB_USER_NAME}
       - GITHUB_USER_EMAIL=${GITHUB_USER_EMAIL}
       - POSTGRES_URL=${POSTGRES_URL}
+    networks:
+      - s-dev-network
+
   create_mypage_pr:
     container_name: create_mypage_pr
     build:
@@ -23,10 +26,9 @@ services:
       - GITHUB_USER_NAME=${GITHUB_USER_NAME}
       - GITHUB_USER_EMAIL=${GITHUB_USER_EMAIL}
       - POSTGRES_URL=${POSTGRES_URL}
+    networks:
+      - s-dev-network
 
-# - PGHOST=${PGHOST}
-# - PGPORT=${PGPORT}
-# - PGUSER=${PGUSER}
-# - PGPASSWORD=${PGPASSWORD}
-# - PGDATABASE=${PGDATABASE}
-# - OUTPUT_PATH=${OUTPUT_PATH}
+networks:
+  s-dev-network:
+    external: true
