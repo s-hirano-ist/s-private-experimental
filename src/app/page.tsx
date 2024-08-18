@@ -8,8 +8,11 @@ export const metadata: Metadata = {
 
 export default function Page() {
 	return (
-		<>
-			<Header title="" />
-		</>
+		<iframe
+			title="portfolio"
+			src="https://s-hirano.com"
+			width="100%"
+			className="h-dvh border-0"
+		/>
 	);
 }
