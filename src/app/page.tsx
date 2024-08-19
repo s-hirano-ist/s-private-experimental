@@ -2,8 +2,8 @@ import { Header } from "@/components/nav/header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Notes | Contents",
-	description: "Private notes",
+	title: "Portfolio",
+	description: "Portfolio of s-hirano-ist",
 };
 
 export default function Page() {
