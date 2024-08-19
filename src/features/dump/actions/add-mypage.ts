@@ -2,6 +2,7 @@
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createMypage } from "@/apis/prisma/fetch-mypage";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
+import { auth } from "@/features/auth/lib/auth";
 import { validateMypage } from "@/features/dump/utils/validate-mypage";
 import { formatCreateContentMessage } from "@/lib/format-for-line";
 import type { MypageContext } from "../stores/mypage-context";
@@ -12,6 +13,9 @@ type AddMypageState =
 
 export async function addMypage(formData: FormData): Promise<AddMypageState> {
 	try {
+		const authorized = await auth();
+		if (!authorized) throw new Error("Unauthorized");
+
 		const mypageValidatedFields = validateMypage(formData);
 		const newMypage = await createMypage(mypageValidatedFields);
 		await sendLineNotifyMessage(
