@@ -3,6 +3,7 @@ import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createBlog } from "@/apis/prisma/fetch-blog";
 import { createCategory } from "@/apis/prisma/fetch-category";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
+import { auth } from "@/features/auth/lib/auth";
 import {
 	formatCreateCategoryMessage,
 	formatCreateContentMessage,
@@ -17,6 +18,9 @@ type AddBlogState =
 
 export async function addBlog(formData: FormData): Promise<AddBlogState> {
 	try {
+		const authorized = await auth();
+		if (!authorized) throw new Error("Unauthorized");
+
 		const newCategory = validateCategory(formData);
 		if (newCategory !== null) {
 			const category = await createCategory(newCategory);

@@ -5,6 +5,7 @@ import {
 	updateMypageStatus,
 } from "@/apis/prisma/change-mypage-status";
 import { ERROR_MESSAGES } from "@/constants";
+import { auth } from "@/features/auth/lib/auth";
 import { formatChangeStatusMessage } from "@/lib/format-for-line";
 import { Prisma } from "@prisma/client";
 
@@ -25,6 +26,9 @@ export async function changeMypageStatus(
 	changeType: Change,
 ): Promise<ServerAction> {
 	try {
+		const authorized = await auth();
+		if (!authorized) throw new Error("Unauthorized");
+
 		const message = formatChangeStatusMessage(
 			await handleStatusChange(changeType),
 			"MYPAGE",
