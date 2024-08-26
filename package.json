@@ -29,7 +29,6 @@
 		"release:major": "standard-version --release-as major",
 		"commit": "git-cz",
 		"storybook": "storybook dev -p 6006",
-		"storybook:ci": "storybook dev -p 6006 --ci",
 		"storybook:build": "storybook build -o .storybook-static",
 		"ui:diff": "shadcn-ui diff"
 	},
