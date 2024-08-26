@@ -53,8 +53,8 @@ jobs:
           json-final-path: ./.vitest-coverage/coverage-final.json
 
       # - run: pnpm test:e2e # FIXME: later if I have time
+      - run: pnpm storybook:ci
       - run: pnpm build
         env:
           SKIP_ENV_VALIDATION: true
           POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
-
