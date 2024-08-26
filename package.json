@@ -29,7 +29,7 @@
 		"release:major": "standard-version --release-as major",
 		"commit": "git-cz",
 		"storybook": "storybook dev -p 6006",
-		"storybook:build": "storybook build",
+		"storybook:build": "storybook build -o .storybook-static",
 		"ui:diff": "shadcn-ui diff"
 	},
 	"prisma": {

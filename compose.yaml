@@ -29,6 +29,17 @@ services:
     networks:
       - s-network
 
+  prod_storybook:
+    container_name: prod-storybook
+    build:
+      context: .
+      dockerfile: docker/storybook.Dockerfile
+    profiles:
+      - prod
+    restart: always
+    networks:
+      - s-network
+
   dev_db:
     container_name: dev-db
     build:
