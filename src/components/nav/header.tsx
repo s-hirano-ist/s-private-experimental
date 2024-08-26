@@ -14,13 +14,15 @@ export function Header({ title, url }: Props) {
 		<header className="sticky top-0 z-50 w-full bg-gradient-to-b from-primary to-primary-grad p-2 text-white">
 			<div className="flex items-center justify-between px-2">
 				<div className="flex items-center justify-start">
-					<Image
-						src="/apple-icon.png"
-						width={50}
-						height={50}
-						alt=""
-						className="size-8 object-cover"
-					/>
+					<Link href="/">
+						<Image
+							src="/apple-icon.png"
+							width={50}
+							height={50}
+							alt=""
+							className="size-8 object-cover"
+						/>
+					</Link>
 					{url ? (
 						<Link href={new URL(url)} target="_blank">
 							<Button variant="link" className="text-xl font-semibold">
