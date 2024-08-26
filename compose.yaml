@@ -29,6 +29,19 @@ services:
     networks:
       - s-network
 
+  prod_storybook:
+    container_name: prod-storybook
+    image: httpd:2.4.62
+    ports:
+      - "6006:80"
+    volumes:
+      - ./.storybook-static:/usr/local/apache2/htdocs/
+    profiles:
+      - prod
+    restart: always
+    networks:
+      - s-network
+
   dev_db:
     container_name: dev-db
     build:
