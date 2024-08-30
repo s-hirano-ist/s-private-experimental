@@ -19,14 +19,20 @@ export function ContentsPreview({
 			: require("../../../../s-contents/image/_no_image.svg");
 
 	return (
-		<Link href={`${path}/${slug}` as Route}>
+		<Link href={`${path}/${slug}` as Route} scroll={false}>
 			<Card className="flex h-full flex-col justify-evenly">
 				<CardHeader>
 					<CardTitle className="text-center">{slug}</CardTitle>
 				</CardHeader>
 				<CardContent>
 					<div className="flex justify-center">
-						<Image src={imageSrc} height={96} width={96} alt={slug} />
+						<Image
+							src={imageSrc}
+							height={96}
+							width={96}
+							alt={slug}
+							className="h-auto w-full"
+						/>
 					</div>
 				</CardContent>
 			</Card>

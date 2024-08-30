@@ -9,8 +9,6 @@ import {
 	LockOpenIcon,
 	NotebookIcon,
 	SendIcon,
-	SettingsIcon,
-	TableIcon,
 } from "lucide-react";
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
@@ -31,15 +29,15 @@ export function Footer() {
 	};
 
 	return (
-		<footer className="sticky bottom-4 z-50 mx-auto w-full max-w-lg rounded-full border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700">
+		<footer className="sticky bottom-4 z-50 mx-auto w-full max-w-lg rounded-3xl border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700">
 			<Drawer open={open} onOpenChange={setOpen} snapPoints={[0.5]}>
-				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 rounded-full bg-gradient-to-r from-primary to-primary-grad text-white">
-					<Link href="/dump/blog">
+				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 rounded-3xl bg-gradient-to-r from-primary to-primary-grad text-white">
+					<Link href="/dump/blog" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							className={cn(
-								"rounded-s-full",
+								"rounded-s-3xl",
 								pathname === "/dump/blog" ? "bg-black/40" : "",
 							)}
 						>
@@ -47,7 +45,7 @@ export function Footer() {
 						</Button>
 					</Link>
 
-					<Link href="/dump/mypage" className=" ">
+					<Link href="/dump/mypage" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
@@ -61,13 +59,13 @@ export function Footer() {
 					<DrawerTrigger asChild>
 						<div className="flex items-center justify-center">
 							<Button variant="navCenter" size="navCenter" type="button">
-								{Icon("ACTION", <SendIcon className="size-6 text-white" />)}
+								{Icon("", <SendIcon className="size-6 text-white" />)}
 								<span className="sr-only">Action</span>
 							</Button>
 						</div>
 					</DrawerTrigger>
 
-					<Link href="/contents/books">
+					<Link href="/contents/books" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
@@ -78,12 +76,12 @@ export function Footer() {
 						</Button>
 					</Link>
 
-					<Link href="/contents/notes">
+					<Link href="/contents/notes" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							className={cn(
-								"rounded-e-full",
+								"rounded-e-3xl",
 								pathname === "/contents/notes" ? "bg-black/40" : "",
 							)}
 						>
