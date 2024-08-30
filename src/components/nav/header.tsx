@@ -14,7 +14,8 @@ export function Header({ title, url }: Props) {
 		<header className="sticky top-0 z-50 w-full bg-gradient-to-b from-primary to-primary-grad p-2 text-white">
 			<div className="flex items-center justify-between px-2">
 				<div className="flex items-center justify-start">
-					<Link href="/">
+					{/* FIXME: scroll behavior causes warning: https://zenn.dev/tk_c/articles/5205f44777903b */}
+					<Link href="/" scroll={false}>
 						<Image
 							src="/apple-icon.png"
 							width={50}
@@ -24,7 +25,7 @@ export function Header({ title, url }: Props) {
 						/>
 					</Link>
 					{url ? (
-						<Link href={new URL(url)} target="_blank">
+						<Link href={new URL(url)} target="_blank" scroll={false}>
 							<Button variant="link" className="text-xl font-semibold">
 								{title}
 							</Button>

@@ -32,7 +32,7 @@ export function Footer() {
 		<footer className="sticky bottom-4 z-50 mx-auto w-full max-w-lg rounded-3xl border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700">
 			<Drawer open={open} onOpenChange={setOpen} snapPoints={[0.5]}>
 				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 rounded-3xl bg-gradient-to-r from-primary to-primary-grad text-white">
-					<Link href="/dump/blog">
+					<Link href="/dump/blog" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
@@ -45,7 +45,7 @@ export function Footer() {
 						</Button>
 					</Link>
 
-					<Link href="/dump/mypage" className=" ">
+					<Link href="/dump/mypage" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
@@ -65,7 +65,7 @@ export function Footer() {
 						</div>
 					</DrawerTrigger>
 
-					<Link href="/contents/books">
+					<Link href="/contents/books" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
@@ -76,7 +76,7 @@ export function Footer() {
 						</Button>
 					</Link>
 
-					<Link href="/contents/notes">
+					<Link href="/contents/notes" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
