@@ -29,3 +29,12 @@ docker compose --profile prod up --build -d
 ```bash
 docker builder prune
 ```
+
+├─ MIT: 80
+├─ Apache-2.0: 6
+├─ ISC: 5
+├─ BSD-2-Clause: 3
+├─ MIT OR Apache-2.0: 1
+├─ Unlicense: 1
+├─ BSD-3-Clause: 1
+└─ Custom: https://github.com/s-hirano-ist/s-private.git: 1
