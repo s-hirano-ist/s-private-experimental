@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import { LOADING_STACK_SIZE } from "@/constants";
-import { Skeleton } from "../ui/skeleton";
 
 export function LoadingStack() {
 	return (

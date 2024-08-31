@@ -4,13 +4,14 @@ import { createBlog } from "@/apis/prisma/fetch-blog";
 import { createCategory } from "@/apis/prisma/fetch-category";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
 import { auth } from "@/features/auth/lib/auth";
+import type { BlogContext } from "@/features/dump/stores/blog-context";
+import { validateBlog } from "@/features/dump/utils/validate-blog";
+import { validateCategory } from "@/features/dump/utils/validate-category";
 import {
 	formatCreateCategoryMessage,
 	formatCreateContentMessage,
 } from "@/lib/format-for-line";
-import type { BlogContext } from "../stores/blog-context";
-import { validateBlog } from "../utils/validate-blog";
-import { validateCategory } from "../utils/validate-category";
+import type { ServerAction } from "@/types/server-action";
 
 type AddBlogState =
 	| (ServerAction & { success: true; data: BlogContext })

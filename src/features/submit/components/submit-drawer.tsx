@@ -6,10 +6,10 @@ import {
 	DrawerTitle,
 } from "@/components/ui/drawer";
 import { changeBlogStatus } from "@/features/dump/actions/change-blog-status";
+import { changeMypageStatus } from "@/features/dump/actions/change-mypage-status";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "next-view-transitions";
 import { type Dispatch, type SetStateAction, useState } from "react";
-import { changeMypageStatus } from "../../dump/actions/change-mypage-status";
 
 type Props = {
 	setOpen: Dispatch<SetStateAction<boolean>>;

@@ -1,7 +1,7 @@
 import { getAllMypage } from "@/apis/prisma/fetch-mypage";
 import { StatusCodeView } from "@/components/status-code-view";
 import { ContentsTable } from "@/components/table/contents-table";
-import type { MypageContext } from "../stores/mypage-context";
+import type { MypageContext } from "@/features/dump/stores/mypage-context";
 
 export async function MypageTable() {
 	try {

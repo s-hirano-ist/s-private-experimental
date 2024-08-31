@@ -1,5 +1,5 @@
 import { FORM_ERROR_MESSAGES } from "@/constants";
-import { blogSchema } from "../schemas/blog-schema";
+import { blogSchema } from "@/features/dump/schemas/blog-schema";
 
 export function validateBlog(formData: FormData) {
 	const blogValidatedFields = blogSchema.safeParse({

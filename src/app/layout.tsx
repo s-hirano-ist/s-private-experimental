@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 	description: "Private pages and admin tools for s-hirano-ist.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
 	children,
 }: Readonly<{ children: ReactNode }>) {
 	return (

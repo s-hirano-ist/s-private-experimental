@@ -2,9 +2,12 @@
 import { ContentStack } from "@/components/stack/content-stack";
 import { LoadingStack } from "@/components/stack/loading-stack";
 import { StatusCodeView } from "@/components/status-code-view";
+import {
+	type MypageContext,
+	mypageContext,
+} from "@/features/dump/stores/mypage-context";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { type MypageContext, mypageContext } from "../stores/mypage-context";
 
 type Props = {
 	mypage: MypageContext[];

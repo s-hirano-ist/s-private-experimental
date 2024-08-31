@@ -1,5 +1,5 @@
 import { FORM_ERROR_MESSAGES } from "@/constants";
-import { categorySchema } from "../schemas/category-schema";
+import { categorySchema } from "@/features/dump/schemas/category-schema";
 
 export function validateCategory(formData: FormData) {
 	const categoryValidatedFields = categorySchema.safeParse({

@@ -15,8 +15,10 @@ export function ContentsPreview({
 
 	const imageSrc: StaticImageData =
 		imagePath !== undefined
-			? require(`../../../../s-contents/image/${path}/${imagePath}`)
-			: require("../../../../s-contents/image/_no_image.svg");
+			? // eslint-disable-next-line @typescript-eslint/no-require-imports
+				require(`../../../../s-contents/image/${path}/${imagePath}`)
+			: // eslint-disable-next-line @typescript-eslint/no-require-imports
+				require("../../../../s-contents/image/_no_image.svg");
 
 	return (
 		<Link href={`${path}/${slug}` as Route} scroll={false}>

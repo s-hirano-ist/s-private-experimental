@@ -1,5 +1,5 @@
 import { FORM_ERROR_MESSAGES } from "@/constants";
-import { mypageSchema } from "../schemas/mypage-schema";
+import { mypageSchema } from "@/features/dump/schemas/mypage-schema";
 
 export function validateMypage(formData: FormData) {
 	const mypageValidatedFields = mypageSchema.safeParse({

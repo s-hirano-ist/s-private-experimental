@@ -22,7 +22,7 @@ describe("Input component", () => {
 
 	it("accepts input value", () => {
 		render(<Input placeholder="Enter text" />);
-		const input = screen.getByPlaceholderText("Enter text") as HTMLInputElement;
+		const input = screen.getByPlaceholderText("Enter text");
 		fireEvent.change(input, { target: { value: "test" } });
 		expect(input.value).toBe("test");
 	});

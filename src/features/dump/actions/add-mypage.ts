@@ -3,9 +3,10 @@ import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createMypage } from "@/apis/prisma/fetch-mypage";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
 import { auth } from "@/features/auth/lib/auth";
+import type { MypageContext } from "@/features/dump/stores/mypage-context";
 import { validateMypage } from "@/features/dump/utils/validate-mypage";
 import { formatCreateContentMessage } from "@/lib/format-for-line";
-import type { MypageContext } from "../stores/mypage-context";
+import type { ServerAction } from "@/types/server-action";
 
 type AddMypageState =
 	| (ServerAction & { success: true; data: MypageContext })

@@ -1,7 +1,7 @@
 import { getAllBlog } from "@/apis/prisma/fetch-blog";
 import { StatusCodeView } from "@/components/status-code-view";
 import { ContentsTable } from "@/components/table/contents-table";
-import type { BlogContext } from "../stores/blog-context";
+import type { BlogContext } from "@/features/dump/stores/blog-context";
 
 export async function BlogTable() {
 	try {
