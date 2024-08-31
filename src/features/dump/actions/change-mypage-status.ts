@@ -1,4 +1,5 @@
 "use server";
+import { LineNotifyError } from "@/apis/line-notify/error";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import {
 	revertMypageStatus,
@@ -7,6 +8,7 @@ import {
 import { ERROR_MESSAGES } from "@/constants";
 import { auth } from "@/features/auth/lib/auth";
 import { formatChangeStatusMessage } from "@/lib/format-for-line";
+import type { ServerAction } from "@/types/server-action";
 import { Prisma } from "@prisma/client";
 
 type Change = "UPDATE" | "REVERT";

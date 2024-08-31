@@ -7,10 +7,10 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
+import type { BlogContext } from "@/features/dump/stores/blog-context";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
-import type { BlogContext } from "../stores/blog-context";
 
 export const blogColumns = (): ColumnDef<BlogContext>[] => [
 	{

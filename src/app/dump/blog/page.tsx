@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 	description: "Dump blog data to GitHub",
 };
 
-export default async function Page() {
+export default function Page() {
 	return (
 		<>
 			<Header title="ブログへ送信" url="https://github.com/s-hirano-ist/blog" />

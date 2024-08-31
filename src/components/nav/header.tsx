@@ -1,8 +1,8 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { Link } from "next-view-transitions";
 // import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
-import { Button } from "../ui/button";
 
 type Props = {
 	title: string;

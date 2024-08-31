@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { addMypage } from "@/features/dump/actions/add-mypage";
+import { mypageContext } from "@/features/dump/stores/mypage-context";
 import { useToast } from "@/hooks/use-toast";
 import { ClipboardPasteIcon } from "lucide-react";
 import { useRef } from "react";
 import { useSetRecoilState } from "recoil";
-import { addMypage } from "../actions/add-mypage";
-import { mypageContext } from "../stores/mypage-context";
 
 export function MypageAddForm() {
 	const titleInputRef = useRef<HTMLInputElement>(null);

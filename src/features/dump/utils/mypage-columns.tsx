@@ -7,10 +7,10 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
+import type { MypageContext } from "@/features/dump/stores/mypage-context";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
-import type { MypageContext } from "../stores/mypage-context";
 
 export const mypageColumns = (): ColumnDef<MypageContext>[] => [
 	{

@@ -10,7 +10,7 @@ export const {
 	...authConfig,
 	session: { strategy: "jwt" },
 	callbacks: {
-		jwt: async ({ token }) => token,
+		jwt: ({ token }) => token,
 		session: ({ session }) => {
 			return { ...session, user: { ...session.user } };
 		},

@@ -11,13 +11,13 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { addBlog } from "@/features/dump/actions/add-blog";
+import { blogContext } from "@/features/dump/stores/blog-context";
 import { useToast } from "@/hooks/use-toast";
 import type { Category } from "@prisma/client";
 import { ClipboardPasteIcon } from "lucide-react";
 import { useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { addBlog } from "../actions/add-blog";
-import { blogContext } from "../stores/blog-context";
 
 type Props = {
 	categories: Omit<Category, "createdAt" | "updatedAt">[];

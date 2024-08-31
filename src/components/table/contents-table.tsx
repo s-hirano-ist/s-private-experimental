@@ -1,4 +1,5 @@
 "use client";
+import { StatusCodeView } from "@/components/status-code-view";
 import { TableFooter } from "@/components/table/table-footer";
 import {
 	Table,
@@ -9,6 +10,7 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { ERROR_MESSAGES } from "@/constants";
+import type { BlogContext } from "@/features/dump/stores/blog-context";
 import type { MypageContext } from "@/features/dump/stores/mypage-context";
 import { blogColumns } from "@/features/dump/utils/blog-columns";
 import { mypageColumns } from "@/features/dump/utils/mypage-columns";
@@ -25,8 +27,6 @@ import {
 	useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import type { BlogContext } from "../../features/dump/stores/blog-context";
-import { StatusCodeView } from "../status-code-view";
 
 type Props<T extends BlogContext | MypageContext> = {
 	data: T[];

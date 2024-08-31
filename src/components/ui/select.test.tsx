@@ -1,10 +1,4 @@
-import {
-	fireEvent,
-	render,
-	screen,
-	waitFor,
-	within,
-} from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import {
 	Select,
@@ -67,7 +61,7 @@ describe.skip("Select component", () => {
 		});
 	});
 
-	it("renders with a custom className", async () => {
+	it("renders with a custom className", () => {
 		render(
 			<Select>
 				<SelectTrigger className="bg-white">Open Select</SelectTrigger>

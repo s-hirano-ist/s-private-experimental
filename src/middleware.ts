@@ -1,7 +1,7 @@
 import { auth } from "@/features/auth/lib/auth";
 import { env } from "./env.mjs";
 
-export default auth(async (request) => {
+export default auth((request) => {
 	const { nextUrl } = request;
 	const auth = request.auth;
 	const isLoggedIn = !!auth;

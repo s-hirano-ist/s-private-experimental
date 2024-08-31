@@ -1,5 +1,5 @@
 import { env } from "@/env.mjs";
-import type { NextAuthConfig, User } from "next-auth";
+import type { NextAuthConfig } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
 
 export const authConfig: NextAuthConfig = {
