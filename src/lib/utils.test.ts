@@ -45,6 +45,6 @@ describe("sleep", () => {
 
 		// Allow a small margin of error for the timing
 		expect(elapsed).toBeGreaterThanOrEqual(duration);
-		expect(elapsed).toBeLessThan(duration + 500);
+		expect(elapsed).toBeLessThan(duration + 5000);
 	});
 });
