@@ -5,7 +5,12 @@ const meta = {
 	title: "Components/Nav/Header",
 	component: Header,
 	tags: ["autodocs"],
-	parameters: { layout: "fullscreen" },
+	parameters: {
+		layout: "fullscreen",
+		nextjs: {
+			appDirectory: true,
+		},
+	},
 } satisfies Meta<typeof Header>;
 
 export default meta;
