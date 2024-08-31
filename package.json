@@ -30,7 +30,9 @@
 		"commit": "git-cz",
 		"storybook": "storybook dev -p 6006",
 		"storybook:build": "storybook build -o .storybook-static",
-		"ui:diff": "shadcn-ui diff"
+		"ui:diff": "shadcn-ui diff",
+		"generate:license": "license-checker --json > license.gen.json",
+		"generate:license:summary": "license-checker --summary >> README.md"
 	},
 	"prisma": {
 		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -92,6 +94,7 @@
 		"eslint-plugin-tailwindcss": "3.17.4",
 		"git-cz": "4.9.0",
 		"jsdom": "25.0.0",
+		"license-checker": "25.0.1",
 		"markdownlint-cli2": "0.13.0",
 		"npm-run-all2": "6.2.2",
 		"postcss": "8.4.41",
