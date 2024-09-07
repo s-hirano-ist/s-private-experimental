@@ -10,7 +10,7 @@ export default function Page() {
 			<div className="pt-32 text-center">
 				<StatusCodeView statusCode="404" />
 				<Button variant="outline" asChild>
-					<Link href="/" scroll={false}>
+					<Link href="/auth" scroll={false}>
 						HOMEへ戻る
 					</Link>
 				</Button>
