@@ -35,15 +35,13 @@ export function Header({ title, url }: Props) {
 			<div className="flex items-center justify-between px-2">
 				<div className="flex items-center justify-start">
 					{/* FIXME: scroll behavior causes warning: https://zenn.dev/tk_c/articles/5205f44777903b */}
-					<Link href="/" scroll={false}>
-						<Image
-							src="/apple-icon.png"
-							width={50}
-							height={50}
-							alt=""
-							className="size-8 object-cover"
-						/>
-					</Link>
+					<Image
+						src="/apple-icon.png"
+						width={50}
+						height={50}
+						alt=""
+						className="size-8 object-cover"
+					/>
 					{url ? (
 						<Link href={new URL(url)} target="_blank" scroll={false}>
 							<Button variant="link" className="text-xl font-semibold">

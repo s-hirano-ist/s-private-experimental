@@ -45,6 +45,7 @@ export function MypageAddForm() {
 	};
 
 	return (
+		// MEMO: experimental feature of using form actions
 		<form action={formAction} className="space-y-4 p-4">
 			<div className="space-y-1">
 				<Label htmlFor="title">タイトル</Label>

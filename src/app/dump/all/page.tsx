@@ -1,6 +1,7 @@
 import { Header } from "@/components/nav/header";
 import { LoadingTable } from "@/components/table/loading-table";
 import { Separator } from "@/components/ui/separator";
+import { PAGE_NAME } from "@/constants";
 import { BlogTable } from "@/features/dump/components/blog-table";
 import { MypageTable } from "@/features/dump/components/mypage-table";
 import type { Metadata } from "next";
@@ -9,8 +10,8 @@ import { Suspense } from "react";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-	title: "All | Dump",
-	description: "Dump blog/mypage data to GitHub",
+	title: `全データ | ${PAGE_NAME}`,
+	description: "All data of blog/mypage dump",
 };
 
 export default function Home() {

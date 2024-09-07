@@ -94,7 +94,7 @@ export const blogColumns = (): ColumnDef<BlogContext>[] => [
 		accessorKey: "url",
 		header: () => <></>,
 		cell: ({ row }) => (
-			<Link href={row.getValue("url")} target="_blank">
+			<Link href={row.getValue("url")} target="_blank" scroll={false}>
 				<LinkIcon />
 			</Link>
 		),
