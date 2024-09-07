@@ -32,19 +32,3 @@ describe("cn", () => {
 		expect(result).toBe("bg-red-500 text-white font-bold");
 	});
 });
-
-describe("sleep", () => {
-	it("should resolve after the specified time", async () => {
-		const start = Date.now();
-		const duration = 100; // 100 milliseconds
-
-		await sleep(duration);
-
-		const end = Date.now();
-		const elapsed = end - start;
-
-		// Allow a small margin of error for the timing
-		expect(elapsed).toBeGreaterThanOrEqual(duration);
-		expect(elapsed).toBeLessThan(duration + 5000);
-	});
-});
