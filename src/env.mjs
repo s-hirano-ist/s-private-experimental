@@ -23,9 +23,8 @@ export const env = createEnv({
 			// VERCEL_URL doesn't include `https` so it cant be validated as a URL
 			process.env.VERCEL ? z.string() : z.string().url(),
 		),
-		GITHUB_CLIENT_ID: z.string(),
-		GITHUB_CLIENT_SECRET: z.string(),
-		ALLOWED_GITHUB_ACCOUNT_EMAIL: z.string(),
+		ALLOWED_EMAIL: z.string().email(),
+		ALLOWED_HASHED_PASSWORD: z.string(),
 	},
 
 	/**
@@ -45,9 +44,8 @@ export const env = createEnv({
 		LINE_NOTIFY_SECRET_TOKEN: process.env.LINE_NOTIFY_SECRET_TOKEN,
 		AUTH_URL: process.env.AUTH_URL,
 		AUTH_SECRET: process.env.AUTH_SECRET,
-		GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
-		GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
-		ALLOWED_GITHUB_ACCOUNT_EMAIL: process.env.ALLOWED_GITHUB_ACCOUNT_EMAIL,
+		ALLOWED_EMAIL: process.env.ALLOWED_EMAIL,
+		ALLOWED_HASHED_PASSWORD: process.env.ALLOWED_HASHED_PASSWORD,
 	},
 	/**
 	 * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

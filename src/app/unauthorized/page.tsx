@@ -8,7 +8,7 @@ export default function Page() {
 			<Header title="Unauthorized" />
 			<StatusCodeView statusCode="401" />
 			<p className="px-4 text-center text-primary-grad">
-				GitHubでログアウトし、許可済みアカウントで再ログインしてください。
+				GitHubでログアウトし、許可済みアカウントで再サインインしてください。
 			</p>
 			<form action="/api/auth/signout" className="flex flex-col">
 				<Button className="mx-auto">再サインイン</Button>

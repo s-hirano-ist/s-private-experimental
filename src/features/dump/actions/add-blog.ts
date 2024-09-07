@@ -45,7 +45,7 @@ export async function addBlog(formData: FormData): Promise<AddBlogState> {
 
 		return {
 			success: true,
-			message: SUCCESS_MESSAGES.SUCCESS,
+			message: SUCCESS_MESSAGES.INSERT,
 			data: {
 				id: newBlog.id,
 				title: blogValidatedFields.data.title,

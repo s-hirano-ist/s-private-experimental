@@ -1,6 +1,7 @@
 import { Header } from "@/components/nav/header";
 import { LoadingStack } from "@/components/stack/loading-stack";
 import { Separator } from "@/components/ui/separator";
+import { PAGE_NAME } from "@/constants";
 import { MypageAddForm } from "@/features/dump/components/mypage-add-form";
 import { MypageContents } from "@/features/dump/components/mypage-contents";
 import type { Metadata } from "next";
@@ -9,7 +10,7 @@ import { Suspense } from "react";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-	title: "Mypage | Dump",
+	title: `マイページ追加 | ${PAGE_NAME}`,
 	description: "Dump mypage data to GitHub",
 };
 

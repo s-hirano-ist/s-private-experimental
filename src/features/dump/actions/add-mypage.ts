@@ -30,7 +30,7 @@ export async function addMypage(formData: FormData): Promise<AddMypageState> {
 
 		return {
 			success: true,
-			message: SUCCESS_MESSAGES.SUCCESS,
+			message: SUCCESS_MESSAGES.INSERT,
 			data: {
 				id: newMypage.id,
 				title: mypageValidatedFields.data.title,

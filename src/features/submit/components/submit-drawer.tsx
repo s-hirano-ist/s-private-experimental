@@ -90,7 +90,7 @@ export function SubmitDrawer({ setOpen }: Props) {
 					MYPAGE REVERT
 				</Button>
 			</div>
-			<Link href="/dump/all" className="p-4">
+			<Link href="/dump/all" className="p-4" scroll={false}>
 				<Button className="w-full">ALL DATA</Button>
 			</Link>
 			<Button className="mx-4" onClick={handleReload}>

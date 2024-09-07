@@ -9,10 +9,4 @@ export const {
 } = NextAuth({
 	...authConfig,
 	session: { strategy: "jwt" },
-	callbacks: {
-		jwt: ({ token }) => token,
-		session: ({ session }) => {
-			return { ...session, user: { ...session.user } };
-		},
-	},
 });

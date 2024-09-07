@@ -1,8 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { DEFAULT_SIGN_IN_REDIRECT } from "@/constants";
+import { signOut } from "@/features/auth/actions/sign-out";
+import { useToast } from "@/hooks/use-toast";
 import { Link } from "next-view-transitions";
 // import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 
 type Props = {
 	title: string;
@@ -10,20 +14,34 @@ type Props = {
 };
 
 export function Header({ title, url }: Props) {
+	const router = useRouter();
+	const pathname = usePathname();
+	const { toast } = useToast();
+
+	async function onSignOutSubmit() {
+		const state = await signOut();
+		if (state.success) {
+			router.push(DEFAULT_SIGN_IN_REDIRECT);
+		} else {
+			toast({
+				variant: "destructive",
+				description: state.message,
+			});
+		}
+	}
+
 	return (
 		<header className="sticky top-0 z-50 w-full bg-gradient-to-b from-primary to-primary-grad p-2 text-white">
 			<div className="flex items-center justify-between px-2">
 				<div className="flex items-center justify-start">
 					{/* FIXME: scroll behavior causes warning: https://zenn.dev/tk_c/articles/5205f44777903b */}
-					<Link href="/" scroll={false}>
-						<Image
-							src="/apple-icon.png"
-							width={50}
-							height={50}
-							alt=""
-							className="size-8 object-cover"
-						/>
-					</Link>
+					<Image
+						src="/apple-icon.png"
+						width={50}
+						height={50}
+						alt=""
+						className="size-8 object-cover"
+					/>
 					{url ? (
 						<Link href={new URL(url)} target="_blank" scroll={false}>
 							<Button variant="link" className="text-xl font-semibold">
@@ -35,8 +53,11 @@ export function Header({ title, url }: Props) {
 					)}
 				</div>
 				{/* TODO: add theme button */}
-				{/* <nav>
-					<Button
+				<nav>
+					{pathname !== "/auth" && (
+						<Button onClick={onSignOutSubmit}>サインアウト</Button>
+					)}
+					{/* <Button
 						variant="ghost"
 						onClick={() => setTheme("light")}
 						className="block dark:hidden"
@@ -51,8 +72,8 @@ export function Header({ title, url }: Props) {
 					>
 						<SunIcon className="size-8" />
 						<span className="sr-only">dark theme button</span>
-					</Button>
-				</nav> */}
+					</Button> */}
+				</nav>
 			</div>
 		</header>
 	);

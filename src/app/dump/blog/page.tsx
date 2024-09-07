@@ -1,6 +1,7 @@
 import { Header } from "@/components/nav/header";
 import { LoadingStack } from "@/components/stack/loading-stack";
 import { Separator } from "@/components/ui/separator";
+import { PAGE_NAME } from "@/constants";
 import { BlogAddProvider } from "@/features/dump/components/blog-add-provider";
 import { BlogContents } from "@/features/dump/components/blog-contents";
 import { LoadingForm } from "@/features/dump/components/loading-add-form";
@@ -10,7 +11,7 @@ import { Suspense } from "react";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-	title: "Blog | Dump",
+	title: `ブログ追加 | ${PAGE_NAME}`,
 	description: "Dump blog data to GitHub",
 };
 

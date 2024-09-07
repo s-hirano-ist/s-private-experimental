@@ -18,7 +18,7 @@ type Props = {
 
 export function ContentStack({ id, title, quote, url, category }: Props) {
 	return (
-		<Link href={new URL(url)} target="_blank">
+		<Link href={new URL(url)} target="_blank" scroll={false}>
 			<Card className="hover:bg-secondary">
 				<CardHeader>
 					<div className="flex gap-4">

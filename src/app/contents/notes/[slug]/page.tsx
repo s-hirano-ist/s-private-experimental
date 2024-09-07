@@ -1,5 +1,6 @@
 import { Header } from "@/components/nav/header";
 import { MARKDOWN_PATHS } from "@/constants";
+import { PAGE_NAME } from "@/constants";
 import ContentsBody from "@/features/contents/components/contents-body";
 import type ContentsType from "@/features/contents/types/contents";
 import { getAllSlugs, getContentsBySlug } from "@/features/contents/utils/api";
@@ -13,7 +14,10 @@ export const dynamicParams = true; // FIXME: #278
 type Props = { params: ContentsType };
 
 export function generateMetadata({ params }: Props): Metadata {
-	return { title: `Notes | ${params.slug}` };
+	return {
+		title: `${params.slug} | ${PAGE_NAME}`,
+		description: `Private notes of ${params.slug}`,
+	};
 }
 
 export default async function Page({ params }: Props) {
