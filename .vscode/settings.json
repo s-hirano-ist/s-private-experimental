@@ -22,7 +22,7 @@
 		["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
 		["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
 	],
-	"cSpell.words": ["biomejs", "vaul"],
+	"cSpell.words": ["biomejs", "HSTS", "vaul"],
 	"editor.defaultFormatter": "biomejs.biome",
 	"editor.codeActionsOnSave": {
 		"quickfix.biome": "always",
