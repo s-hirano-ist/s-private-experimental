@@ -1,33 +1,83 @@
 {
-  timezone: "Asia/Tokyo",
-  baseBranches: ["main"],
-  extends: ["config:base", ":semanticCommitTypeAll(chore)"],
-  reviewers: ["s-hirano-ist"],
-  enabledManagers: ["npm", "github-actions", "docker-compose", "dockerfile"],
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  timezone: 'Asia/Tokyo',
+  baseBranches: [
+    'main',
+  ],
+  extends: [
+    'config:recommend',
+    'config:best-practices',
+    ':semanticCommitTypeAll(chore)',
+    'customManagers:biomeVersions',
+  ],
+  reviewers: [
+    's-hirano-ist',
+  ],
+  enabledManagers: [
+    'npm',
+    'github-actions',
+    'docker-compose',
+    'dockerfile',
+  ],
   dependencyDashboard: true,
-  schedule: ["before 11am on monday"],
-  labels: ["dependencies"],
-  rangeStrategy: "bump",
+  schedule: [
+    'before 11am on monday',
+  ],
+  labels: [
+    'dependencies',
+  ],
+  rangeStrategy: 'bump',
   lockFileMaintenance: {
     enabled: true,
   },
   vulnerabilityAlerts: {
-    labels: ["security"],
+    labels: [
+      'security',
+    ],
   },
   packageRules: [
     {
-      matchManagers: ["npm"],
-      matchUpdateTypes: ["patch"],
-      matchPackagePatterns: ["*"],
-      matchDepTypes: ["dependencies", "devDependencies", "peerDependencies"],
-      groupName: "patch",
+      matchPackageNames: [
+        'node',
+      ],
+      matchManagers: [
+        'dockerfile',
+      ],
+      allowedVersions: '/^[0-9]*[02468]([.-].*)?$/',
     },
     {
-      matchManagers: ["npm"],
-      matchUpdateTypes: ["minor"],
-      matchPackagePatterns: ["*"],
-      matchDepTypes: ["dependencies", "devDependencies", "peerDependencies"],
-      groupName: "minor",
+      matchManagers: [
+        'npm',
+      ],
+      matchUpdateTypes: [
+        'patch',
+      ],
+      matchPackageNames: [
+        '*',
+      ],
+      matchDepTypes: [
+        'dependencies',
+        'devDependencies',
+        'peerDependencies',
+      ],
+      groupName: 'patch',
+    },
+    {
+      matchManagers: [
+        'npm',
+      ],
+      matchUpdateTypes: [
+        'minor',
+      ],
+      matchPackageNames: [
+        '*',
+      ],
+      matchDepTypes: [
+        'dependencies',
+        'devDependencies',
+        'peerDependencies',
+      ],
+      groupName: 'minor',
     },
   ],
 }
