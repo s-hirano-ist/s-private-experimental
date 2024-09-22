@@ -90,21 +90,45 @@ export function BlogAddForm({ categories }: Props) {
 			</div>
 			{newCategoryInputOpen && (
 				<div className="space-y-1">
-					<Input id="new_category" name="new_category" required />
+					<Input
+						id="new_category"
+						name="new_category"
+						required
+						autoComplete="off"
+					/>
 				</div>
 			)}
 			<div className="space-y-1">
 				<Label htmlFor="title">タイトル</Label>
-				<Input id="title" name="title" ref={titleInputRef} required />
+				<Input
+					id="title"
+					name="title"
+					ref={titleInputRef}
+					autoComplete="off"
+					required
+				/>
 			</div>
 			<div className="space-y-1">
 				<Label htmlFor="quote">ひとこと</Label>
-				<Textarea id="quote" name="quote" ref={quoteInputRef} />
+				<Textarea
+					id="quote"
+					name="quote"
+					ref={quoteInputRef}
+					autoComplete="off"
+				/>
 			</div>
 			<div className="space-y-1">
 				<Label htmlFor="url">URL</Label>
 				<div className="flex space-x-2 px-2">
-					<Input id="url" name="url" type="url" ref={urlInputRef} required />
+					<Input
+						id="url"
+						name="url"
+						type="url"
+						inputMode="url"
+						ref={urlInputRef}
+						autoComplete="off"
+						required
+					/>
 					<Button variant="ghost" type="button" onClick={handlePasteClick}>
 						<ClipboardPasteIcon />
 					</Button>

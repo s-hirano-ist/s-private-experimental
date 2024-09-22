@@ -17,7 +17,9 @@ import {
 } from "@/features/auth/schemas/sign-in-schema";
 import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export function SignInForm() {
@@ -44,6 +46,12 @@ export function SignInForm() {
 		}
 	}
 
+	const [showPassword, setShowPassword] = useState(false);
+
+	const handleShowPassword = () => {
+		setShowPassword(!showPassword);
+	};
+
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSignInSubmit)} className="space-y-8">
@@ -54,7 +62,7 @@ export function SignInForm() {
 						<FormItem>
 							<FormLabel>メールアドレス</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input {...field} type="email" inputMode="email" />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
@@ -67,7 +75,16 @@ export function SignInForm() {
 						<FormItem>
 							<FormLabel>パスワード</FormLabel>
 							<FormControl>
-								<Input {...field} type="password" />
+								<div className="flex items-center">
+									<Input {...field} type={showPassword ? "text" : "password"} />
+									<Button
+										onClick={handleShowPassword}
+										variant="ghost"
+										type="button"
+									>
+										{showPassword ? <EyeIcon /> : <EyeOffIcon />}
+									</Button>
+								</div>
 							</FormControl>
 							<FormMessage />
 						</FormItem>
