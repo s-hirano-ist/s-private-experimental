@@ -5,7 +5,7 @@
     'main',
   ],
   extends: [
-    'config:recommend',
+    'config:recommended',
     'config:best-practices',
     ':semanticCommitTypeAll(chore)',
     'customManagers:biomeVersions',
