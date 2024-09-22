@@ -61,3 +61,7 @@ Licensed under the MIT License, Copyright © 2024
 ### Licenses of used libraries
 
 See `license.summary.txt` for summary of used licenses.
+
+## 🔒 Security
+
+[s-hirano.com/summary/coding-security](https://s-hirano.com/summary/coding-security)を参照。
