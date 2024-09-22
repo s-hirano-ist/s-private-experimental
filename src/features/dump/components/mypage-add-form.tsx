@@ -49,11 +49,22 @@ export function MypageAddForm() {
 		<form action={formAction} className="space-y-4 p-4">
 			<div className="space-y-1">
 				<Label htmlFor="title">タイトル</Label>
-				<Input id="title" name="title" ref={titleInputRef} required />
+				<Input
+					id="title"
+					name="title"
+					ref={titleInputRef}
+					autoComplete="off"
+					required
+				/>
 			</div>
 			<div className="space-y-1">
 				<Label htmlFor="quote">ひとこと</Label>
-				<Textarea id="quote" name="quote" ref={quoteInputRef} />
+				<Textarea
+					id="quote"
+					name="quote"
+					ref={quoteInputRef}
+					autoComplete="off"
+				/>
 			</div>
 			<div className="space-y-1">
 				<Label htmlFor="url">URL</Label>
@@ -63,6 +74,7 @@ export function MypageAddForm() {
 						name="url"
 						type="url"
 						inputMode="url"
+						autoComplete="off"
 						ref={urlInputRef}
 						required
 					/>
