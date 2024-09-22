@@ -2,7 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   timezone: "Asia/Tokyo",
   baseBranches: ["main"],
-  extends: ["config:base", ":semanticCommitTypeAll(chore)", "customManagers:biomeVersions"],
+  extends: ["config:base", "config:best-practices", ":semanticCommitTypeAll(chore)", "customManagers:biomeVersions"],
   reviewers: ["s-hirano-ist"],
   enabledManagers: ["npm", "github-actions", "docker-compose", "dockerfile"],
   dependencyDashboard: true,
@@ -16,6 +16,11 @@
     labels: ["security"],
   },
   packageRules: [
+    {
+      "matchPackageNames": ["node"],
+      "matchManagers": ["dockerfile"],
+      "allowedVersions": "/^[0-9]*[02468]([.-].*)?$/"
+    },
     {
       matchManagers: ["npm"],
       matchUpdateTypes: ["patch"],
