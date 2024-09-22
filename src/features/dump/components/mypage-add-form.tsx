@@ -58,7 +58,14 @@ export function MypageAddForm() {
 			<div className="space-y-1">
 				<Label htmlFor="url">URL</Label>
 				<div className="flex space-x-2 px-2">
-					<Input id="url" name="url" type="url" ref={urlInputRef} required />
+					<Input
+						id="url"
+						name="url"
+						type="url"
+						inputMode="url"
+						ref={urlInputRef}
+						required
+					/>
 					<Button variant="ghost" type="button" onClick={handlePasteClick}>
 						<ClipboardPasteIcon />
 					</Button>

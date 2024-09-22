@@ -54,7 +54,7 @@ export function SignInForm() {
 						<FormItem>
 							<FormLabel>メールアドレス</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input {...field} type="email" inputMode="email" />
 							</FormControl>
 							<FormMessage />
 						</FormItem>
