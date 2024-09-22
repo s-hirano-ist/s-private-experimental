@@ -1,7 +1,8 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   timezone: "Asia/Tokyo",
   baseBranches: ["main"],
-  extends: ["config:base", ":semanticCommitTypeAll(chore)"],
+  extends: ["config:base", ":semanticCommitTypeAll(chore)", "customManagers:biomeVersions"],
   reviewers: ["s-hirano-ist"],
   enabledManagers: ["npm", "github-actions", "docker-compose", "dockerfile"],
   dependencyDashboard: true,
