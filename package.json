@@ -31,8 +31,8 @@
 		"storybook": "storybook dev -p 6006",
 		"storybook:build": "storybook build -o .storybook-static",
 		"ui:diff": "shadcn-ui diff",
-		"generate:license": "license-checker --json > license.gen.json",
-		"generate:license:summary": "license-checker --summary >> README.md"
+		"license:summary": "license-checker --summary> license.summary.txt",
+		"security": "pnpm audit"
 	},
 	"prisma": {
 		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"

@@ -60,15 +60,4 @@ Licensed under the MIT License, Copyright © 2024
 
 ### Licenses of used libraries
 
-```txt
-├─ MIT: 80
-├─ Apache-2.0: 6
-├─ ISC: 5
-├─ BSD-2-Clause: 3
-├─ MIT OR Apache-2.0: 1
-├─ Unlicense: 1
-├─ BSD-3-Clause: 1
-└─ Custom: https://github.com/s-hirano-ist/s-private.git: 1
-```
-
-last updated on 30th of August 2024.
+See `license.summary.txt` for summary of used licenses.
