@@ -1,5 +1,5 @@
 # build
-FROM node:20.17.0-alpine AS builder
+FROM node:20.17.0-alpine@sha256:2d07db07a2df6830718ae2a47db6fedce6745f5bcd174c398f2acdda90a11c03 AS builder
 
 RUN npm install -g pnpm
 WORKDIR /app
@@ -9,7 +9,7 @@ COPY . .
 RUN pnpm run build
 
 # run
-FROM node:20.17.0-alpine AS runner
+FROM node:20.17.0-alpine@sha256:2d07db07a2df6830718ae2a47db6fedce6745f5bcd174c398f2acdda90a11c03 AS runner
 
 RUN npm install -g pnpm
 WORKDIR /app
