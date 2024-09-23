@@ -1,5 +1,6 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { sanitizeHref } from "@/lib/sanitize-href";
 import type { Route } from "next";
 import { Link } from "next-view-transitions";
 import Image, { type StaticImageData } from "next/image";
@@ -20,8 +21,10 @@ export function ContentsPreview({
 			: // eslint-disable-next-line @typescript-eslint/no-require-imports
 				require("../../../../s-contents/image/_no_image.svg");
 
+	const href = sanitizeHref(`${path}/${slug}`) as Route;
+
 	return (
-		<Link href={`${path}/${slug}` as Route} scroll={false}>
+		<Link href={href} scroll={false}>
 			<Card className="flex h-full flex-col justify-evenly">
 				<CardHeader>
 					<CardTitle className="text-center">{slug}</CardTitle>
