@@ -8,8 +8,10 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import type { BlogContext } from "@/features/dump/stores/blog-context";
+import { sanitizeHref } from "@/lib/sanitize-href";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
+import type { Route } from "next";
 import Link from "next/link";
 
 export const blogColumns = (): ColumnDef<BlogContext>[] => [
@@ -93,10 +95,13 @@ export const blogColumns = (): ColumnDef<BlogContext>[] => [
 	{
 		accessorKey: "url",
 		header: () => <></>,
-		cell: ({ row }) => (
-			<Link href={row.getValue("url")} target="_blank" scroll={false}>
-				<LinkIcon />
-			</Link>
-		),
+		cell: ({ row }) => {
+			const href = sanitizeHref(row.getValue("url")) as Route;
+			return (
+				<Link href={href} target="_blank" scroll={false}>
+					<LinkIcon />
+				</Link>
+			);
+		},
 	},
 ];

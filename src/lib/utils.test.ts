@@ -1,6 +1,6 @@
 import type { ClassValue } from "clsx";
 import { describe, expect, it } from "vitest";
-import { cn, sleep } from "./utils";
+import { cn } from "./utils";
 
 describe("cn", () => {
 	it("should merge class names correctly", () => {

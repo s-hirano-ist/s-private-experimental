@@ -20,8 +20,10 @@ export function ContentsPreview({
 			: // eslint-disable-next-line @typescript-eslint/no-require-imports
 				require("../../../../s-contents/image/_no_image.svg");
 
+	const href = `${path}/${slug}` as Route;
+
 	return (
-		<Link href={`${path}/${slug}` as Route} scroll={false}>
+		<Link href={href} scroll={false}>
 			<Card className="flex h-full flex-col justify-evenly">
 				<CardHeader>
 					<CardTitle className="text-center">{slug}</CardTitle>

@@ -3,7 +3,7 @@ import { MARKDOWN_PATHS, PAGE_NAME } from "@/constants";
 import ContentsBody from "@/features/contents/components/contents-body";
 import type ContentsType from "@/features/contents/types/contents";
 import { getAllSlugs, getContentsBySlug } from "@/features/contents/utils/api";
-import markdownToHtml from "@/features/contents/utils/markdownToHtml";
+import { markdownToReact } from "@/features/contents/utils/markdownToReact";
 import type { Metadata } from "next";
 
 const path = "books";
@@ -23,12 +23,12 @@ export default async function Page({ params }: Props) {
 	const { slug } = params;
 	const decordedSlug = decodeURIComponent(slug);
 	const content = getContentsBySlug(decordedSlug, `${MARKDOWN_PATHS}/${path}`);
-	const htmlContent = await markdownToHtml(content);
+	const reactContent = await markdownToReact(content);
 
 	return (
 		<>
 			<Header title={decordedSlug} />
-			<ContentsBody content={htmlContent} />
+			<ContentsBody content={reactContent} />
 		</>
 	);
 }
