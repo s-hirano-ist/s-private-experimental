@@ -1,3 +1,5 @@
+import parse from "html-react-parser";
+import DOMPurify from "isomorphic-dompurify"; // MEMO: Original Dompurify server side rendering causes issue on Next.js. https://www.npmjs.com/package/dompurify
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
@@ -23,15 +25,25 @@ import { unified } from "unified";
  * REF: https://qiita.com/sankentou/items/f8eadb5722f3b39bbbf8
  */
 
-export default async function markdownToHtml(markdown: string) {
+async function markdownToHtml(markdown: string) {
 	const result = await unified()
 		.use(remarkParse) // Markdown to mdast
 		.use(remarkGfm)
 		.use(remarkRehype) // mdast to hast
 		.use(rehypeExternalLinks, { target: "_blank", rel: ["nofollow"] })
 		.use(rehypeHighlight)
-		.use(rehypeStringify) // for use in dangerouslySetInnerHTML
+		.use(rehypeStringify)
 		.process(markdown);
 
 	return result.toString();
+}
+
+function htmlToReact(html: string) {
+	const sanitizedHtml = DOMPurify.sanitize(html);
+	return parse(sanitizedHtml);
+}
+
+export async function markdownToReact(markdown: string) {
+	const html = await markdownToHtml(markdown);
+	return htmlToReact(html);
 }
