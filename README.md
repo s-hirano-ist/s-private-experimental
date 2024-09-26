@@ -13,6 +13,7 @@
 **Styling** - [Shadcn/ui](https://ui.shadcn.com/)  
 **Database** - [PostgreSQL](https://www.postgresql.org/)  
 **ORM** - [Prisma](https://www.prisma.io/)  
+**Vulnerabilities Check** - [npm-audit](https://docs.npmjs.com/cli/v10/commands/npm-audit)  [Dependabot alert](https://docs.github.com/ja/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)  
 
 ## 初期設定
 
