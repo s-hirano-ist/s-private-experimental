@@ -20,6 +20,42 @@ enum Status {
   EXPORTED
 }
 
+model User {
+  id           String         @id @default(uuid(7))
+  email        String         @unique
+  password     String
+  Profile      Profile?
+  LoginHistory LoginHistory[]
+  createdAt    DateTime       @default(now()) @map("created_at")
+  updatedAt    DateTime       @updatedAt @map("updated_at")
+  Blog         Blog[]
+  Mypage       Mypage[]
+}
+
+model Profile {
+  id        String   @id @default(uuid(7))
+  name      String?
+  bio       String?
+  avatarUrl String?  @map("avatar_url")
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("profile")
+}
+
+model LoginHistory {
+  id        String   @id @default(uuid(7))
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @map("user_id")
+  ipAddress String?  @map("ip_address")
+  userAgent String?  @map("user_agent")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("login_history")
+}
+
 model Category {
   id        Int      @id @default(autoincrement())
   name      String   @unique
@@ -38,6 +74,8 @@ model Blog {
   status     Status   @default(UNEXPORTED)
   category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   categoryId Int      @map("category_id")
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @updatedAt @map("updated_at")
 
@@ -50,6 +88,8 @@ model Mypage {
   url       String
   quote     String?
   status    Status   @default(UNEXPORTED)
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
