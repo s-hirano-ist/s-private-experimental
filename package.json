@@ -30,7 +30,6 @@
 		"commit": "git-cz",
 		"storybook": "storybook dev -p 6006",
 		"storybook:build": "storybook build -o .storybook-static",
-		"ui:diff": "shadcn-ui diff",
 		"license:summary": "license-checker --summary> license.summary.txt",
 		"security": "pnpm audit"
 	},
@@ -117,7 +116,6 @@
 		"remark-gfm": "4.0.0",
 		"remark-parse": "11.0.0",
 		"remark-rehype": "11.1.0",
-		"shadcn-ui": "0.9.1",
 		"standard-version": "9.5.0",
 		"storybook": "8.3.2",
 		"storybook-dark-mode": "4.0.2",
