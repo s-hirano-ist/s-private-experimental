@@ -25,6 +25,7 @@ export const env = createEnv({
 		),
 		ALLOWED_EMAIL: z.string().email(),
 		ALLOWED_HASHED_PASSWORD: z.string(),
+		SENTRY_DSN: z.string(),
 	},
 
 	/**
@@ -46,6 +47,7 @@ export const env = createEnv({
 		AUTH_SECRET: process.env.AUTH_SECRET,
 		ALLOWED_EMAIL: process.env.ALLOWED_EMAIL,
 		ALLOWED_HASHED_PASSWORD: process.env.ALLOWED_HASHED_PASSWORD,
+		SENTRY_DSN: process.env.SENTRY_DSN,
 	},
 	/**
 	 * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
