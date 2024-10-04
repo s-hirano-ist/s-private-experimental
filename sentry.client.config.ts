@@ -6,7 +6,7 @@ import { env } from "@/env.mjs";
 import { init, replayIntegration } from "@sentry/nextjs";
 
 init({
-	dsn: env.SENTRY_DSN,
+	dsn: env.NEXT_PUBLIC_SENTRY_DSN,
 
 	// Add optional integrations for additional features
 	integrations: [replayIntegration()],
