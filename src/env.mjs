@@ -25,7 +25,6 @@ export const env = createEnv({
 		),
 		ALLOWED_EMAIL: z.string().email(),
 		ALLOWED_HASHED_PASSWORD: z.string(),
-		SENTRY_DSN: z.string(),
 		SENTRY_AUTH_TOKEN: z.string(),
 	},
 
@@ -34,7 +33,7 @@ export const env = createEnv({
 	 * isn't built with invalid env vars. To expose them to the client, prefix them with
 	 * `NEXT_PUBLIC_`.
 	 */
-	client: {},
+	client: { NEXT_PUBLIC_SENTRY_DSN: z.string() },
 
 	/**
 	 * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
@@ -48,7 +47,7 @@ export const env = createEnv({
 		AUTH_SECRET: process.env.AUTH_SECRET,
 		ALLOWED_EMAIL: process.env.ALLOWED_EMAIL,
 		ALLOWED_HASHED_PASSWORD: process.env.ALLOWED_HASHED_PASSWORD,
-		SENTRY_DSN: process.env.SENTRY_DSN,
+		NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN, // MEMO: ok to leak
 		SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
 	},
 	/**

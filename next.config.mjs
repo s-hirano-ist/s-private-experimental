@@ -4,8 +4,10 @@ await import("./src/env.mjs");
 // MEMO: scriptタグを利用する必要が出たときはnonceの利用推奨
 // https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy#reading-the-nonce
 
-//MEMO: その他のheadersについては下記参照
+// MEMO: その他のheadersについては下記参照
 // https://nextjs.org/docs/pages/api-reference/next-config-js/headers
+
+// MEMO: worker-src 'self' blob:; for Sentry
 
 const cspHeader = `
     default-src 'self';
@@ -17,6 +19,7 @@ const cspHeader = `
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
+	worker-src 'self' blob:;
     upgrade-insecure-requests;`;
 
 /** @type {import('next').NextConfig} */
