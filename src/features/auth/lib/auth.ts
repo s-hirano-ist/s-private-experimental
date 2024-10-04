@@ -1,3 +1,5 @@
+import prisma from "@/server/db";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
 import { authConfig } from "./auth.config";
 
@@ -8,5 +10,6 @@ export const {
 	handlers: { GET, POST },
 } = NextAuth({
 	...authConfig,
-	session: { strategy: "jwt" },
+	adapter: PrismaAdapter(prisma),
+	// session: { strategy: "jwt" },
 });
