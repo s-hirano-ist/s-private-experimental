@@ -10,10 +10,11 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { ERROR_MESSAGES } from "@/constants";
-import type { BlogContext } from "@/features/dump/stores/blog-context";
-import type { MypageContext } from "@/features/dump/stores/mypage-context";
-import { blogColumns } from "@/features/dump/utils/blog-columns";
+import { newsColumns } from "@/features/dump/components/news-columns";
+import type { ContentsContext } from "@/features/dump/stores/contents-context";
+import type { NewsContext } from "@/features/dump/stores/news-context";
 import { mypageColumns } from "@/features/dump/utils/mypage-columns";
+import type { ContentName } from "@/types/content-name";
 import {
 	type ColumnDef,
 	type ColumnFiltersState,
@@ -28,12 +29,12 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 
-type Props<T extends BlogContext | MypageContext> = {
+type Props<T extends NewsContext | ContentsContext> = {
 	data: T[];
-	columnType: "blog" | "mypage";
+	columnType: ContentName;
 };
 
-export function ContentsTable<T extends BlogContext | MypageContext>({
+export function DumpTable<T extends NewsContext | ContentsContext>({
 	data,
 	columnType,
 }: Props<T>) {
@@ -43,9 +44,9 @@ export function ContentsTable<T extends BlogContext | MypageContext>({
 
 	const columns = () => {
 		switch (columnType) {
-			case "blog":
-				return blogColumns();
-			case "mypage":
+			case "NEWS":
+				return newsColumns();
+			case "CONTENTS":
 				return mypageColumns();
 			default:
 				throw new Error(ERROR_MESSAGES.UNEXPECTED);

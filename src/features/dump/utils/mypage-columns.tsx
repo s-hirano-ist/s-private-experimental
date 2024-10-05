@@ -7,14 +7,14 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import type { MypageContext } from "@/features/dump/stores/mypage-context";
+import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { sanitizeHref } from "@/lib/sanitize-href";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import type { Route } from "next";
 import Link from "next/link";
 
-export const mypageColumns = (): ColumnDef<MypageContext>[] => [
+export const mypageColumns = (): ColumnDef<ContentsContext>[] => [
 	{
 		accessorKey: "id",
 		header: ({ column }) => {

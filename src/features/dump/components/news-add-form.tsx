@@ -11,32 +11,32 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { addBlog } from "@/features/dump/actions/add-blog";
-import { blogContext } from "@/features/dump/stores/blog-context";
+import { addNews } from "@/features/dump/actions/add-news";
+import { newsContext } from "@/features/dump/stores/news-context";
 import { useToast } from "@/hooks/use-toast";
-import type { Category } from "@prisma/client";
+import type { Categories } from "@prisma/client";
 import { ClipboardPasteIcon } from "lucide-react";
 import { useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
 
 type Props = {
-	categories: Omit<Category, "createdAt" | "updatedAt">[];
+	categories: Omit<Categories, "createdAt" | "updatedAt">[];
 };
 
-export function BlogAddForm({ categories }: Props) {
+export function NewsAddForm({ categories }: Props) {
 	const titleInputRef = useRef<HTMLInputElement>(null);
 	const quoteInputRef = useRef<HTMLTextAreaElement>(null);
 	const urlInputRef = useRef<HTMLInputElement>(null);
 
 	const { toast } = useToast();
 
-	const setQueuedContents = useSetRecoilState(blogContext);
+	const setQueuedContents = useSetRecoilState(newsContext);
 
 	const NEW_CATEGORY_VALUE = "new"; // 新規の場合のcategoryのvalue
 	const [newCategoryInputOpen, setNewCategoryInputOpen] = useState(false);
 
 	const formAction = async (formData: FormData) => {
-		const state = await addBlog(formData);
+		const state = await addNews(formData);
 		if (!state.success) {
 			toast({
 				variant: "destructive",

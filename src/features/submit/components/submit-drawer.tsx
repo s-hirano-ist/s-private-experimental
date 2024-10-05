@@ -5,8 +5,8 @@ import {
 	DrawerHeader,
 	DrawerTitle,
 } from "@/components/ui/drawer";
-import { changeBlogStatus } from "@/features/dump/actions/change-blog-status";
-import { changeMypageStatus } from "@/features/dump/actions/change-mypage-status";
+import { changeContentsStatus } from "@/features/dump/actions/change-contents-status";
+import { changeNewsStatus } from "@/features/dump/actions/change-news-status";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "next-view-transitions";
 import { type Dispatch, type SetStateAction, useState } from "react";
@@ -20,10 +20,10 @@ export function SubmitDrawer({ setOpen }: Props) {
 
 	const [buttonDisabled, setButtonDisabled] = useState(false);
 
-	const handleBlogUpdateStatus = async () => {
+	const handleNewsUpdateStatus = async () => {
 		setButtonDisabled(true);
 		setOpen(false);
-		const state = await changeBlogStatus("UPDATE");
+		const state = await changeNewsStatus("UPDATE");
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
@@ -31,10 +31,10 @@ export function SubmitDrawer({ setOpen }: Props) {
 		setButtonDisabled(false);
 	};
 
-	const handleBlogRevertStatus = async () => {
+	const handleNewsRevertStatus = async () => {
 		setButtonDisabled(true);
 		setOpen(false);
-		const state = await changeBlogStatus("REVERT");
+		const state = await changeNewsStatus("REVERT");
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
@@ -42,10 +42,10 @@ export function SubmitDrawer({ setOpen }: Props) {
 		setButtonDisabled(false);
 	};
 
-	const handleMypageUpdateStatus = async () => {
+	const handleContentsUpdateStatus = async () => {
 		setButtonDisabled(true);
 		setOpen(false);
-		const state = await changeMypageStatus("UPDATE");
+		const state = await changeContentsStatus("UPDATE");
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
@@ -53,10 +53,10 @@ export function SubmitDrawer({ setOpen }: Props) {
 		setButtonDisabled(false);
 	};
 
-	const handleMypageRevertStatus = async () => {
+	const handleContentsRevertStatus = async () => {
 		setButtonDisabled(true);
 		setOpen(false);
-		const state = await changeMypageStatus("REVERT");
+		const state = await changeContentsStatus("REVERT");
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
@@ -77,17 +77,17 @@ export function SubmitDrawer({ setOpen }: Props) {
 				</DrawerDescription>
 			</DrawerHeader>
 			<div className="grid grid-cols-2 gap-4 px-4">
-				<Button onClick={handleBlogUpdateStatus} disabled={buttonDisabled}>
-					BLOG UPDATE
+				<Button onClick={handleNewsUpdateStatus} disabled={buttonDisabled}>
+					NEWS UPDATE
 				</Button>
-				<Button onClick={handleBlogRevertStatus} disabled={buttonDisabled}>
-					BLOG REVERT
+				<Button onClick={handleNewsRevertStatus} disabled={buttonDisabled}>
+					NEWS REVERT
 				</Button>
-				<Button onClick={handleMypageUpdateStatus} disabled={buttonDisabled}>
-					MYPAGE UPDATE
+				<Button onClick={handleContentsUpdateStatus} disabled={buttonDisabled}>
+					CONTENTS UPDATE
 				</Button>
-				<Button onClick={handleMypageRevertStatus} disabled={buttonDisabled}>
-					MYPAGE REVERT
+				<Button onClick={handleContentsRevertStatus} disabled={buttonDisabled}>
+					CONTENTS REVERT
 				</Button>
 			</div>
 			<Link href="/dump/all" className="p-4" scroll={false}>

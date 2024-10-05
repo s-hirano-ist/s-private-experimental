@@ -4,24 +4,24 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { addMypage } from "@/features/dump/actions/add-mypage";
-import { mypageContext } from "@/features/dump/stores/mypage-context";
+import { addContents } from "@/features/dump/actions/add-contents";
+import { contentsContext } from "@/features/dump/stores/contents-context";
 import { useToast } from "@/hooks/use-toast";
 import { ClipboardPasteIcon } from "lucide-react";
 import { useRef } from "react";
 import { useSetRecoilState } from "recoil";
 
-export function MypageAddForm() {
+export function ContentsAddForm() {
 	const titleInputRef = useRef<HTMLInputElement>(null);
 	const quoteInputRef = useRef<HTMLTextAreaElement>(null);
 	const urlInputRef = useRef<HTMLInputElement>(null);
 
 	const { toast } = useToast();
 
-	const setQueuedContents = useSetRecoilState(mypageContext);
+	const setQueuedContents = useSetRecoilState(contentsContext);
 
 	const formAction = async (formData: FormData) => {
-		const state = await addMypage(formData);
+		const state = await addContents(formData);
 		if (!state.success) {
 			toast({
 				variant: "destructive",

@@ -2,23 +2,21 @@
 import { ContentStack } from "@/components/stack/content-stack";
 import { LoadingStack } from "@/components/stack/loading-stack";
 import { StatusCodeView } from "@/components/status-code-view";
-import {
-	type MypageContext,
-	mypageContext,
-} from "@/features/dump/stores/mypage-context";
+import { newsContext } from "@/features/dump/stores/news-context";
+import type { NewsContext } from "@/features/dump/stores/news-context";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
 type Props = {
-	mypage: MypageContext[];
+	news: NewsContext[];
 };
 
-export function MypageStack({ mypage }: Props) {
-	const [data, setData] = useRecoilState(mypageContext);
+export function NewsStack({ news }: Props) {
+	const [data, setData] = useRecoilState(newsContext);
 
 	useEffect(() => {
-		setData(mypage);
-	}, [mypage, setData]);
+		setData(news);
+	}, [news, setData]);
 
 	if (data === undefined) return <LoadingStack />;
 	if (data.length === 0) return <StatusCodeView statusCode="204" />;
@@ -33,6 +31,7 @@ export function MypageStack({ mypage }: Props) {
 						title={d.title}
 						quote={d.quote}
 						url={d.url}
+						category={d.category}
 					/>
 				);
 			})}

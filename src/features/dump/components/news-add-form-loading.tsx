@@ -1,7 +1,7 @@
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export function LoadingForm() {
+export function NewsAddFormLoading() {
 	return (
 		<div className="space-y-4 p-4">
 			<div className="space-y-1">

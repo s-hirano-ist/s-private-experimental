@@ -1,25 +1,25 @@
-import { getAllBlog } from "@/apis/prisma/fetch-blog";
+import { getAllNews } from "@/apis/prisma/fetch-news";
 import { StatusCodeView } from "@/components/status-code-view";
-import { ContentsTable } from "@/components/table/contents-table";
-import type { BlogContext } from "@/features/dump/stores/blog-context";
+import { DumpTable } from "@/features/dump/components/dump-table";
+import type { NewsContext } from "@/features/dump/stores/news-context";
 
-export async function BlogTable() {
+export async function NewsTable() {
 	try {
-		const blog = await getAllBlog();
+		const news = await getAllNews();
 
 		return (
-			<ContentsTable<BlogContext>
-				data={blog.map((d) => {
+			<DumpTable<NewsContext>
+				data={news.map((d) => {
 					return {
 						id: d.id,
 						title: d.title,
 						quote: d.quote,
 						url: d.url,
 						status: d.status,
-						category: d.category?.name ?? "",
+						category: d.categories.name,
 					};
 				})}
-				columnType="blog"
+				columnType="NEWS"
 			/>
 		);
 	} catch (error) {

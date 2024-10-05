@@ -1,21 +1,24 @@
-import { getUnexportedMypage } from "@/apis/prisma/fetch-mypage";
+import { getAllContents } from "@/apis/prisma/fetch-contents";
 import { StatusCodeView } from "@/components/status-code-view";
-import { MypageStack } from "./mypage-stack";
+import type { ContentsContext } from "@/features/dump/stores/contents-context";
+import { DumpTable } from "./dump-table";
 
-export async function MypageContents() {
+export async function ContentsTable() {
 	try {
-		const mypage = await getUnexportedMypage();
+		const contents = await getAllContents();
 
 		return (
-			<MypageStack
-				mypage={mypage.map((d) => {
+			<DumpTable<ContentsContext>
+				data={contents.map((d) => {
 					return {
 						id: d.id,
 						title: d.title,
 						quote: d.quote ?? "",
 						url: d.url,
+						status: d.status,
 					};
 				})}
+				columnType="CONTENTS"
 			/>
 		);
 	} catch (error) {

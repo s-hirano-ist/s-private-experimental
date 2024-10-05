@@ -2,10 +2,7 @@
 import "server-only";
 import { LineNotifyError } from "@/apis/line-notify/error";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
-import {
-	revertContentsStatus,
-	updateContentsStatus,
-} from "@/apis/prisma/fetch-contents";
+import { revertNewsStatus, updateNewsStatus } from "@/apis/prisma/fetch-news";
 import { ERROR_MESSAGES } from "@/constants";
 import { auth } from "@/features/auth/lib/auth";
 import { formatChangeStatusMessage } from "@/features/dump/utils/format-for-line";
@@ -17,15 +14,15 @@ type Change = "UPDATE" | "REVERT";
 const handleStatusChange = async (changeType: Change) => {
 	switch (changeType) {
 		case "UPDATE":
-			return await updateContentsStatus();
+			return await updateNewsStatus();
 		case "REVERT":
-			return await revertContentsStatus();
+			return await revertNewsStatus();
 		default:
 			throw new Error(ERROR_MESSAGES.UNEXPECTED);
 	}
 };
 
-export async function changeMypageStatus(
+export async function changeNewsStatus(
 	changeType: Change,
 ): Promise<ServerAction> {
 	try {
@@ -34,13 +31,12 @@ export async function changeMypageStatus(
 
 		const message = formatChangeStatusMessage(
 			await handleStatusChange(changeType),
-			"MYPAGE",
+			"NEWS",
 		);
 		await sendLineNotifyMessage(message);
 		return { success: true, message };
 	} catch (error) {
 		if (error instanceof Prisma.PrismaClientKnownRequestError) {
-			console.error(error.message);
 			await sendLineNotifyMessage(error.message);
 			return {
 				success: false,
@@ -48,7 +44,6 @@ export async function changeMypageStatus(
 			};
 		}
 		if (error instanceof LineNotifyError) {
-			console.error(error.message);
 			// MEMO: unhandled防止 await sendLineNotifyMessage(error.message);
 			return {
 				success: false,
@@ -56,10 +51,8 @@ export async function changeMypageStatus(
 			};
 		}
 		if (error instanceof Error) {
-			console.error("Unexpected error:", error.message);
 			await sendLineNotifyMessage(error.message);
 		} else {
-			console.error("Unexpected error:", error);
 			await sendLineNotifyMessage(ERROR_MESSAGES.UNEXPECTED);
 		}
 		return {

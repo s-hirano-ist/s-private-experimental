@@ -7,14 +7,14 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import type { BlogContext } from "@/features/dump/stores/blog-context";
+import type { NewsContext } from "@/features/dump/stores/news-context";
 import { sanitizeHref } from "@/lib/sanitize-href";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import type { Route } from "next";
 import Link from "next/link";
 
-export const blogColumns = (): ColumnDef<BlogContext>[] => [
+export const newsColumns = (): ColumnDef<NewsContext>[] => [
 	{
 		accessorKey: "id",
 		header: ({ column }) => {

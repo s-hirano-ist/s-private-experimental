@@ -26,7 +26,7 @@ export async function addNews(
 		if (categoryName !== null) {
 			const category = await createCategory(userId, categoryName);
 			await sendLineNotifyMessage(
-				formatCreateCategoryMessage(category.name, "BLOG"),
+				formatCreateCategoryMessage(category.name, "NEWS"),
 			);
 			formData.set("category", String(category.id));
 		}

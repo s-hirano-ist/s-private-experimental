@@ -1,20 +1,19 @@
-import { getUnexportedBlog } from "@/apis/prisma/fetch-blog";
+import { getUnexportedContents } from "@/apis/prisma/fetch-contents";
 import { StatusCodeView } from "@/components/status-code-view";
-import { BlogStack } from "./blog-stack";
+import { MypageStack } from "./contents-stack";
 
-export async function BlogContents() {
+export async function ContentsContents() {
 	try {
-		const blog = await getUnexportedBlog();
+		const mypage = await getUnexportedContents();
 
 		return (
-			<BlogStack
-				blog={blog.map((d) => {
+			<MypageStack
+				mypage={mypage.map((d) => {
 					return {
 						id: d.id,
 						title: d.title,
-						quote: d.quote,
+						quote: d.quote ?? "",
 						url: d.url,
-						category: d.category?.name ?? "",
 					};
 				})}
 			/>

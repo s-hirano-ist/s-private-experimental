@@ -6,7 +6,7 @@ export type NewsContext = {
 	title: string;
 	quote: string | null;
 	url: string;
-	categories: { name: string };
+	category: string;
 };
 
 export const newsContext = atom<NewsContext[] | undefined>({
