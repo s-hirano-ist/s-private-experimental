@@ -1,13 +1,14 @@
 "use server";
+import "server-only";
 import { LineNotifyError } from "@/apis/line-notify/error";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import {
-	revertMypageStatus,
-	updateMypageStatus,
-} from "@/apis/prisma/change-mypage-status";
+	revertContentsStatus,
+	updateContentsStatus,
+} from "@/apis/prisma/fetch-contents";
 import { ERROR_MESSAGES } from "@/constants";
 import { auth } from "@/features/auth/lib/auth";
-import { formatChangeStatusMessage } from "@/lib/format-for-line";
+import { formatChangeStatusMessage } from "@/features/dump/utils/format-for-line";
 import type { ServerAction } from "@/types/server-action";
 import { Prisma } from "@prisma/client";
 
@@ -16,9 +17,9 @@ type Change = "UPDATE" | "REVERT";
 const handleStatusChange = async (changeType: Change) => {
 	switch (changeType) {
 		case "UPDATE":
-			return await updateMypageStatus();
+			return await updateContentsStatus();
 		case "REVERT":
-			return await revertMypageStatus();
+			return await revertContentsStatus();
 		default:
 			throw new Error(ERROR_MESSAGES.UNEXPECTED);
 	}

@@ -1,8 +1,8 @@
 import { FORM_ERROR_MESSAGES } from "@/constants";
-import { mypageSchema } from "@/features/dump/schemas/mypage-schema";
+import { contentsSchema } from "@/features/dump/schemas/contents-schema";
 
-export function validateMypage(formData: FormData) {
-	const mypageValidatedFields = mypageSchema.safeParse({
+export function validateContents(formData: FormData) {
+	const mypageValidatedFields = contentsSchema.safeParse({
 		title: formData.get("title"),
 		quote: formData.get("quote"),
 		url: formData.get("url"),
@@ -10,5 +10,5 @@ export function validateMypage(formData: FormData) {
 	if (!mypageValidatedFields.success)
 		throw new Error(FORM_ERROR_MESSAGES.INVALID_FORMAT);
 
-	return mypageValidatedFields;
+	return mypageValidatedFields.data;
 }

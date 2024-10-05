@@ -2,7 +2,7 @@ import { env } from "@/env.mjs";
 import { PrismaClient } from "@prisma/client";
 
 const prismaClientSingleton = () => {
-	return new PrismaClient();
+	return new PrismaClient({ omit: { users: { password: true } } });
 };
 
 // biome-ignore lint: https://www.prisma.io/docs/orm/more/help-and-troubleshooting/help-articles/nextjs-prisma-client-dev-practices

@@ -1,3 +1,4 @@
+import "server-only";
 import { ERROR_MESSAGES } from "@/constants";
 import { env } from "@/env.mjs";
 import { LineNotifyError } from "./error";

@@ -3,7 +3,8 @@ import { describe, expect, it } from "vitest";
 import {
 	formatChangeStatusMessage,
 	formatCreateCategoryMessage,
-	formatCreateContentMessage,
+	formatCreateContentsMessage,
+	formatCreateNewsMessage,
 } from "./format-for-line";
 
 describe("formatChangeStatusMessage", () => {
