@@ -10,6 +10,7 @@ export async function NewsContents() {
 		if (!session || !userId) throw new Error("Unauthorized");
 
 		const unexportedNews = await getUnexportedNews(userId);
+
 		return (
 			<NewsStack
 				news={unexportedNews.map((d) => {
@@ -18,7 +19,7 @@ export async function NewsContents() {
 						title: d.title,
 						quote: d.quote,
 						url: d.url,
-						category: d.categories?.name ?? "",
+						category: d.categories.name,
 					};
 				})}
 			/>

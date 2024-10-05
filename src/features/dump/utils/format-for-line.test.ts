@@ -49,7 +49,7 @@ describe("formatCreateContentsMessage", () => {
 		);
 	});
 
-	it("should format the create mypage message correctly", () => {
+	it("should format the create contents message correctly", () => {
 		const title = "新しいニュース";
 		const quote = "これは引用です";
 		const url = "https://example.com";

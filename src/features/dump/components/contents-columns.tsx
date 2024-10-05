@@ -14,7 +14,7 @@ import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import type { Route } from "next";
 import Link from "next/link";
 
-export const mypageColumns = (): ColumnDef<ContentsContext>[] => [
+export const contentsColumns = (): ColumnDef<ContentsContext>[] => [
 	{
 		accessorKey: "id",
 		header: ({ column }) => {

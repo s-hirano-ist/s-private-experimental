@@ -34,7 +34,7 @@ export async function changeContentsStatus(
 
 		const message = formatChangeStatusMessage(
 			await handleStatusChange(changeType),
-			"MYPAGE",
+			"CONTENTS",
 		);
 		await sendLineNotifyMessage(message);
 		return { success: true, message };

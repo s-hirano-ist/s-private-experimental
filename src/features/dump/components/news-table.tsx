@@ -1,3 +1,4 @@
+"use server";
 import { getAllNews } from "@/apis/prisma/fetch-news";
 import { StatusCodeView } from "@/components/status-code-view";
 import { DumpTable } from "@/features/dump/components/dump-table";

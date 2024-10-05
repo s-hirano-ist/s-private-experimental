@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["omitApi"]
 }
 
 datasource db {
@@ -20,6 +21,7 @@ enum Status {
   EXPORTED
 }
 
+// TODO: add role to users
 model Users {
   id           String           @id @default(uuid(7))
   email        String           @unique
@@ -62,13 +64,14 @@ model LoginHistories {
 
 model Categories {
   id        Int      @id @default(autoincrement())
-  name      String   @unique
+  name      String
   news      News[]
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   users     Users    @relation(fields: [userId], references: [id])
   userId    String   @map("user_id")
 
+  @@unique([name, userId])
   @@map("categories")
 }
 

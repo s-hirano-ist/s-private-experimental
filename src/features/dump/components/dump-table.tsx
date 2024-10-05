@@ -13,7 +13,7 @@ import { ERROR_MESSAGES } from "@/constants";
 import { newsColumns } from "@/features/dump/components/news-columns";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import type { NewsContext } from "@/features/dump/stores/news-context";
-import { mypageColumns } from "@/features/dump/utils/mypage-columns";
+import { contentsColumns } from "@/features/dump/components/contents-columns";
 import type { ContentName } from "@/types/content-name";
 import {
 	type ColumnDef,
@@ -47,7 +47,7 @@ export function DumpTable<T extends NewsContext | ContentsContext>({
 			case "NEWS":
 				return newsColumns();
 			case "CONTENTS":
-				return mypageColumns();
+				return contentsColumns();
 			default:
 				throw new Error(ERROR_MESSAGES.UNEXPECTED);
 		}

@@ -1,18 +1,23 @@
 import { getUnexportedContents } from "@/apis/prisma/fetch-contents";
 import { StatusCodeView } from "@/components/status-code-view";
-import { MypageStack } from "./contents-stack";
+import { auth } from "@/features/auth/lib/auth";
+import { ContentsStack } from "./contents-stack";
 
 export async function ContentsContents() {
 	try {
-		const mypage = await getUnexportedContents();
+		const session = await auth();
+		const userId = session?.user?.id;
+		if (!session || !userId) throw new Error("Unauthorized");
+
+		const unexportedContents = await getUnexportedContents(userId);
 
 		return (
-			<MypageStack
-				mypage={mypage.map((d) => {
+			<ContentsStack
+				contents={unexportedContents.map((d) => {
 					return {
 						id: d.id,
 						title: d.title,
-						quote: d.quote ?? "",
+						quote: d.quote,
 						url: d.url,
 					};
 				})}

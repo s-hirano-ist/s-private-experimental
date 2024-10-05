@@ -23,7 +23,8 @@ export async function addNews(
 		if (!session || !userId) throw new Error("Unauthorized");
 
 		const categoryName = validateCategory(formData);
-		if (categoryName !== null) {
+
+		if (categoryName.name !== null) {
 			const category = await createCategory(userId, categoryName);
 			await sendLineNotifyMessage(
 				formatCreateCategoryMessage(category.name, "NEWS"),
@@ -37,7 +38,10 @@ export async function addNews(
 		return {
 			success: true,
 			message: SUCCESS_MESSAGES.INSERT,
-			data: postedNews,
+			data: {
+				...postedNews,
+				category: postedNews.categories.name,
+			},
 		};
 	} catch (error) {
 		if (error instanceof Error) {

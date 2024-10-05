@@ -3,7 +3,7 @@ import { categorySchema } from "@/features/dump/schemas/category-schema";
 
 export function validateCategory(formData: FormData) {
 	const categoryValidatedFields = categorySchema.safeParse({
-		category: formData.get("new_category"),
+		name: formData.get("new_category"),
 	});
 	if (!categoryValidatedFields.success)
 		throw new Error(FORM_ERROR_MESSAGES.INVALID_FORMAT);

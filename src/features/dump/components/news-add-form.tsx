@@ -20,8 +20,10 @@ import { useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
 
 type Props = {
-	categories: Omit<Categories, "createdAt" | "updatedAt">[];
+	categories: Omit<Categories, "createdAt" | "updatedAt" | "userId">[];
 };
+
+const NEW_CATEGORY_VALUE = "new"; // 新規の場合のcategoryのvalue
 
 export function NewsAddForm({ categories }: Props) {
 	const titleInputRef = useRef<HTMLInputElement>(null);
@@ -32,7 +34,6 @@ export function NewsAddForm({ categories }: Props) {
 
 	const setQueuedContents = useSetRecoilState(newsContext);
 
-	const NEW_CATEGORY_VALUE = "new"; // 新規の場合のcategoryのvalue
 	const [newCategoryInputOpen, setNewCategoryInputOpen] = useState(false);
 
 	const formAction = async (formData: FormData) => {

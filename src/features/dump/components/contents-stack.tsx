@@ -10,15 +10,15 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
 type Props = {
-	mypage: ContentsContext[];
+	contents: ContentsContext[];
 };
 
-export function MypageStack({ mypage }: Props) {
+export function ContentsStack({ contents }: Props) {
 	const [data, setData] = useRecoilState(contentsContext);
 
 	useEffect(() => {
-		setData(mypage);
-	}, [mypage, setData]);
+		setData(contents);
+	}, [contents, setData]);
 
 	if (data === undefined) return <LoadingStack />;
 	if (data.length === 0) return <StatusCodeView statusCode="204" />;
