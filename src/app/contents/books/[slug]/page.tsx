@@ -1,5 +1,7 @@
 import { Header } from "@/components/nav/header";
+import { Unauthorized } from "@/components/unauthorized";
 import { MARKDOWN_PATHS, PAGE_NAME } from "@/constants";
+import { checkAdminPermission } from "@/features/auth/lib/role";
 import ContentsBody from "@/features/contents/components/contents-body";
 import type ContentsType from "@/features/contents/types/contents";
 import { getAllSlugs, getContentsBySlug } from "@/features/contents/utils/api";
@@ -20,6 +22,8 @@ export function generateMetadata({ params }: Props): Metadata {
 }
 
 export default async function Page({ params }: Props) {
+	const hasAdminPermission = await checkAdminPermission();
+
 	const { slug } = params;
 	const decordedSlug = decodeURIComponent(slug);
 	const content = getContentsBySlug(decordedSlug, `${MARKDOWN_PATHS}/${path}`);
@@ -28,7 +32,11 @@ export default async function Page({ params }: Props) {
 	return (
 		<>
 			<Header title={decordedSlug} />
-			<ContentsBody content={reactContent} />
+			{hasAdminPermission ? (
+				<ContentsBody content={reactContent} />
+			) : (
+				<Unauthorized />
+			)}
 		</>
 	);
 }
