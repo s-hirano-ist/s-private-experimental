@@ -3,7 +3,6 @@ import { LoadingTable } from "@/components/table/loading-table";
 import { Separator } from "@/components/ui/separator";
 import { Unauthorized } from "@/components/unauthorized";
 import { PAGE_NAME } from "@/constants";
-import { auth } from "@/features/auth/lib/auth";
 import { checkAdminPermission } from "@/features/auth/lib/role";
 import { ContentsTable } from "@/features/submit/components/contents-table";
 import { NewsTable } from "@/features/submit/components/news-table";

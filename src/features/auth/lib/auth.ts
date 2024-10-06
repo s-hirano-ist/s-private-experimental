@@ -1,5 +1,4 @@
 import type { Role } from "@prisma/client";
-// import { Session } from "@auth/core";
 import NextAuth, { type DefaultSession } from "next-auth";
 import { authConfig } from "./auth.config";
 
