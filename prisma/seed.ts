@@ -1,23 +1,24 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
 async function main() {
-	const USER_EMAIL = process.env.USER_EMAIL;
-	// TODO: hashed password
-	const USER_PASSWORD = process.env.USER_PASSWORD;
+	const email = process.env.USER_EMAIL;
+	const password = process.env.USER_PASSWORD;
 
-	if (!USER_EMAIL || !USER_PASSWORD)
-		throw new Error("USER EMAIL or PASSWORD undefined.");
+	if (!email || !password) throw new Error("USER EMAIL or PASSWORD undefined.");
 
 	try {
+		const hashedPassword = await bcrypt.hash(password, 8);
+
 		// UPSERT: if already exists then update, otherwise create
 		await prisma.users.upsert({
-			where: { email: USER_EMAIL },
+			where: { email: email },
 			update: {},
 			create: {
-				email: USER_EMAIL,
-				password: USER_PASSWORD,
+				email: email,
+				password: hashedPassword,
 			},
 		});
 		console.log("Added user to the database");

@@ -1,7 +1,7 @@
 import { env } from "@/env.mjs";
 import { signInSchema } from "@/features/auth/schemas/sign-in-schema";
 import prisma from "@/prisma";
-// import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs";
 import type { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 // import GitHubProvider from "next-auth/providers/github";
@@ -19,14 +19,14 @@ export const authConfig: NextAuthConfig = {
 
 					const user = await prisma.users.findUnique({
 						where: { email },
-						// MEMO: only allowed to select password here for auth.
-						select: { id: true, email: true, password: true },
+						// MEMO: only allowed to select password here (for auth). See `src/prisma.ts` for more.
+						select: { id: true, email: true, role: true, password: true },
 					});
 					if (!user) return null;
-					// const passwordMatch = await bcrypt.compare(password, allowedPassword);
-					if (password !== user.password) return null;
+					const passwordMatch = await bcrypt.compare(password, user.password);
+					if (!passwordMatch) return null;
 
-					return { id: user.id, email: user.email };
+					return { id: user.id, role: user.role };
 				}
 				return null;
 			},

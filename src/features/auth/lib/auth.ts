@@ -1,5 +1,5 @@
-import NextAuth from "next-auth";
-import type { DefaultSession } from "next-auth";
+import type { Role } from "@prisma/client";
+import NextAuth, { type DefaultSession } from "next-auth";
 import { authConfig } from "./auth.config";
 
 declare module "next-auth" {
@@ -9,6 +9,10 @@ declare module "next-auth" {
 			id: string;
 			role: string;
 		} & DefaultSession["user"];
+	}
+	// eslint-disable-next-line
+	interface User {
+		role: Role;
 	}
 }
 
@@ -24,14 +28,14 @@ export const {
 		jwt({ token, user }) {
 			if (user) {
 				token.id = user.id;
-				token.role = "admin";
+				token.role = user.role;
 			}
 			return token;
 		},
 		session({ session, token }) {
 			if (token) {
 				session.user.id = token.id as string;
-				session.user.role = token.role as string;
+				session.user.role = token.role as Role;
 			}
 			return session;
 		},

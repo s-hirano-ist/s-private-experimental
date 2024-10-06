@@ -5,8 +5,8 @@ import {
 	DrawerHeader,
 	DrawerTitle,
 } from "@/components/ui/drawer";
-import { changeContentsStatus } from "@/features/submit/actions/change-contents-status";
-import { changeNewsStatus } from "@/features/submit/actions/change-news-status";
+import { changeContentsStatus } from "@/features/update-status/actions/change-contents-status";
+import { changeNewsStatus } from "@/features/update-status/actions/change-news-status";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "next-view-transitions";
 import { type Dispatch, type SetStateAction, useState } from "react";
@@ -24,6 +24,7 @@ export function SubmitDrawer({ setOpen }: Props) {
 		setButtonDisabled(true);
 		setOpen(false);
 		const state = await changeNewsStatus("UPDATE");
+		// TODO: revalidate path
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
@@ -35,6 +36,7 @@ export function SubmitDrawer({ setOpen }: Props) {
 		setButtonDisabled(true);
 		setOpen(false);
 		const state = await changeNewsStatus("REVERT");
+		// TODO: revalidate path
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
@@ -46,6 +48,7 @@ export function SubmitDrawer({ setOpen }: Props) {
 		setButtonDisabled(true);
 		setOpen(false);
 		const state = await changeContentsStatus("UPDATE");
+		// TODO: revalidate path
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
@@ -57,6 +60,7 @@ export function SubmitDrawer({ setOpen }: Props) {
 		setButtonDisabled(true);
 		setOpen(false);
 		const state = await changeContentsStatus("REVERT");
+		// TODO: revalidate path
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,

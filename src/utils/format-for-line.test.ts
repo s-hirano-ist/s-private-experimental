@@ -1,4 +1,4 @@
-import type { Status } from "@/features/submit/types";
+import type { Status } from "@/features/update-status/types";
 import { describe, expect, it } from "vitest";
 import {
 	formatChangeStatusMessage,

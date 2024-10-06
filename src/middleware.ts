@@ -1,8 +1,11 @@
 import { auth } from "@/features/auth/lib/auth";
 import { DEFAULT_SIGN_IN_REDIRECT } from "./constants";
-export const publicRoutes: string[] = []; // MEMO: アクセスが禁止されているパスではなく、アクセスが許可されているパスを記述するべき。なぜなら、アクセスが禁止されているパスのすべてを把握するのは難しいからである。
-export const authRoutes: string[] = ["/auth"];
-export const apiAuthPrefix = "/api/auth";
+
+// MEMO: アクセスが禁止されているパスではなく、アクセスが許可されているパスを記述するべき。なぜなら、アクセスが禁止されているパスのすべてを把握するのは難しいからである。
+const publicRoutes: string[] = ["/"];
+
+const authRoutes: string[] = ["/auth"];
+const apiAuthPrefix = "/api/auth";
 
 export default auth((request) => {
 	const { nextUrl } = request;

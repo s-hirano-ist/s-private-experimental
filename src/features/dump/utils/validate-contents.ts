@@ -1,4 +1,5 @@
-import { FORM_ERROR_MESSAGES } from "@/constants";
+import "server-only";
+import { InvalidFormatError } from "@/error";
 import { contentsSchema } from "@/features/dump/schemas/contents-schema";
 
 export function validateContents(formData: FormData) {
@@ -7,8 +8,7 @@ export function validateContents(formData: FormData) {
 		quote: formData.get("quote"),
 		url: formData.get("url"),
 	});
-	if (!contentsValidatedFields.success)
-		throw new Error(FORM_ERROR_MESSAGES.INVALID_FORMAT);
+	if (!contentsValidatedFields.success) throw new InvalidFormatError();
 
 	return contentsValidatedFields.data;
 }

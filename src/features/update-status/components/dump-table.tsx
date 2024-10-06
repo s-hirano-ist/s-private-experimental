@@ -9,12 +9,12 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { ERROR_MESSAGES } from "@/constants";
+import { UnexpectedError } from "@/error";
 import { newsColumns } from "@/features/dump/components/news-columns";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import type { ContentName } from "@/features/dump/types";
-import { contentsColumns } from "@/features/submit/components/contents-columns";
+import { contentsColumns } from "@/features/update-status/components/contents-columns";
 import {
 	type ColumnDef,
 	type ColumnFiltersState,
@@ -49,7 +49,7 @@ export function DumpTable<T extends NewsContext | ContentsContext>({
 			case "CONTENTS":
 				return contentsColumns();
 			default:
-				throw new Error(ERROR_MESSAGES.UNEXPECTED);
+				throw new UnexpectedError();
 		}
 	};
 

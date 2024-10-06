@@ -1,7 +1,7 @@
 "use server";
 import "server-only";
 import type { validateNews } from "@/features/dump/utils/validate-news";
-import type { Status } from "@/features/submit/types";
+import type { Status } from "@/features/update-status/types";
 import prisma from "@/prisma";
 
 export async function postNews(
@@ -34,27 +34,14 @@ export async function getUnexportedNews(userId: string) {
 	});
 }
 
-export async function getAllNews() {
-	return await prisma.news.findMany({
-		select: {
-			id: true,
-			title: true,
-			quote: true,
-			url: true,
-			status: true,
-			category: { select: { name: true } },
-		},
-	});
-}
-
-export async function updateNewsStatus(): Promise<Status> {
+export async function updateNewsStatus(userId: string): Promise<Status> {
 	return await prisma.$transaction(async (prisma) => {
 		const exportedData = await prisma.news.updateMany({
-			where: { status: "UPDATED_RECENTLY" },
+			where: { status: "UPDATED_RECENTLY", userId },
 			data: { status: "EXPORTED" },
 		});
 		const recentlyUpdatedData = await prisma.news.updateMany({
-			where: { status: "UNEXPORTED" },
+			where: { status: "UNEXPORTED", userId },
 			data: { status: "UPDATED_RECENTLY" },
 		});
 		return {
@@ -65,14 +52,14 @@ export async function updateNewsStatus(): Promise<Status> {
 	});
 }
 
-export async function revertNewsStatus(): Promise<Status> {
+export async function revertNewsStatus(userId: string): Promise<Status> {
 	return await prisma.$transaction(async (prisma) => {
 		const unexportedData = await prisma.news.updateMany({
-			where: { status: "UPDATED_RECENTLY" },
+			where: { status: "UPDATED_RECENTLY", userId },
 			data: { status: "UNEXPORTED" },
 		});
 		const recentlyUpdatedData = await prisma.news.updateMany({
-			where: { status: "EXPORTED" },
+			where: { status: "EXPORTED", userId },
 			data: { status: "UPDATED_RECENTLY" },
 		});
 		return {
@@ -80,5 +67,19 @@ export async function revertNewsStatus(): Promise<Status> {
 			recentlyUpdated: recentlyUpdatedData.count,
 			exported: 0,
 		};
+	});
+}
+
+// ROLE === "admin" only
+export async function getAllNews() {
+	return await prisma.news.findMany({
+		select: {
+			id: true,
+			title: true,
+			quote: true,
+			url: true,
+			status: true,
+			category: { select: { name: true } },
+		},
 	});
 }

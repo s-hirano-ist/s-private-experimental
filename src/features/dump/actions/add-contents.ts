@@ -2,20 +2,23 @@
 import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { postContents } from "@/apis/prisma/fetch-contents";
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
-import { auth } from "@/features/auth/lib/auth";
+import { SUCCESS_MESSAGES } from "@/constants";
+import { NotAllowedError, formatErrorForClient } from "@/error";
+import { checkPostPermission } from "@/features/auth/lib/role";
+import { getUserId } from "@/features/auth/lib/user-id";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { validateContents } from "@/features/dump/utils/validate-contents";
+import type { ServerAction } from "@/types";
 import { formatCreateContentsMessage } from "@/utils/format-for-line";
-import type { ActionState } from "./type";
 
 export async function addContents(
 	formData: FormData,
-): Promise<ActionState<ContentsContext>> {
+): Promise<ServerAction<ContentsContext>> {
 	try {
-		const session = await auth();
-		const userId = session?.user?.id;
-		if (!session || !userId) throw new Error("Unauthorized");
+		const hasPostPermission = await checkPostPermission();
+		if (!hasPostPermission) throw new NotAllowedError();
+
+		const userId = await getUserId();
 
 		const postedContents = await postContents(
 			userId,
@@ -25,23 +28,10 @@ export async function addContents(
 
 		return {
 			success: true,
-			message: SUCCESS_MESSAGES.INSERT,
+			message: SUCCESS_MESSAGES.INSERTED,
 			data: postedContents,
 		};
 	} catch (error) {
-		if (error instanceof Error) {
-			console.error(error.message);
-			await sendLineNotifyMessage(error.message);
-			return {
-				success: false,
-				message: error.message,
-			};
-		}
-		console.error("Unexpected error:", error);
-		await sendLineNotifyMessage(ERROR_MESSAGES.UNEXPECTED);
-		return {
-			success: false,
-			message: ERROR_MESSAGES.UNEXPECTED,
-		};
+		return await formatErrorForClient(error);
 	}
 }

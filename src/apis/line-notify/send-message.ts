@@ -1,6 +1,5 @@
 "use server";
 import "server-only";
-import { ERROR_MESSAGES } from "@/constants";
 import { env } from "@/env.mjs";
 import { LineNotifyError } from "@/error";
 
@@ -19,6 +18,5 @@ export async function sendLineNotifyMessage(message: string) {
 		},
 		body,
 	});
-	if (result.status !== 200)
-		throw new LineNotifyError(ERROR_MESSAGES.LINE_SEND);
+	if (result.status !== 200) throw new LineNotifyError();
 }
