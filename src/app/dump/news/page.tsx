@@ -2,6 +2,7 @@ import { Header } from "@/components/nav/header";
 import { LoadingStack } from "@/components/stack/loading-stack";
 import { Separator } from "@/components/ui/separator";
 import { PAGE_NAME } from "@/constants";
+import { checkPostPermission } from "@/features/auth/lib/role";
 import { AddFormLoading } from "@/features/dump/components/add-form-loading";
 import { NewsAddProvider } from "@/features/dump/components/news-add-provider";
 import { NewsContents } from "@/features/dump/components/news-contents";
@@ -15,16 +16,20 @@ export const metadata: Metadata = {
 	description: "Dump news data to GitHub",
 };
 
-export default function Page() {
+export default async function Page() {
+	const hasPostPermission = await checkPostPermission();
+
 	return (
 		<>
 			<Header
 				title="s-publicへ送信"
 				url="https://github.com/s-hirano-ist/s-public"
 			/>
-			<Suspense fallback={<AddFormLoading showCategory />}>
-				<NewsAddProvider />
-			</Suspense>
+			{hasPostPermission && (
+				<Suspense fallback={<AddFormLoading showCategory />}>
+					<NewsAddProvider />
+				</Suspense>
+			)}
 			<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
 			<Suspense fallback={<LoadingStack />}>
 				<NewsContents />

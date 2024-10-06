@@ -4,7 +4,8 @@ import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createCategory } from "@/apis/prisma/fetch-category";
 import { postNews } from "@/apis/prisma/fetch-news";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
-import { auth } from "@/features/auth/lib/auth";
+import { checkPostPermission } from "@/features/auth/lib/role";
+import { getUserId } from "@/features/auth/lib/user-id";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import { validateCategory } from "@/features/dump/utils/validate-category";
 import { validateNews } from "@/features/dump/utils/validate-news";
@@ -18,9 +19,10 @@ export async function addNews(
 	formData: FormData,
 ): Promise<ActionState<NewsContext>> {
 	try {
-		const session = await auth();
-		const userId = session?.user?.id;
-		if (!session || !userId) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
+		const hasPostPermission = await checkPostPermission();
+		if (!hasPostPermission) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
+
+		const userId = await getUserId();
 
 		const hasCategory = formData.get("new_category") !== null;
 

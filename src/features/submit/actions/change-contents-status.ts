@@ -7,19 +7,19 @@ import {
 } from "@/apis/prisma/fetch-contents";
 import { ERROR_MESSAGES } from "@/constants";
 import { LineNotifyError } from "@/error";
-import { auth } from "@/features/auth/lib/auth";
+import { checkUpdateStatusPermission } from "@/features/auth/lib/role";
+import { getUserId } from "@/features/auth/lib/user-id";
+import type { Change } from "@/features/submit/types";
 import type { ServerAction } from "@/types";
 import { formatChangeStatusMessage } from "@/utils/format-for-line";
 import { Prisma } from "@prisma/client";
 
-type Change = "UPDATE" | "REVERT";
-
-const handleStatusChange = async (changeType: Change) => {
+const handleStatusChange = async (userId: string, changeType: Change) => {
 	switch (changeType) {
 		case "UPDATE":
-			return await updateContentsStatus();
+			return await updateContentsStatus(userId);
 		case "REVERT":
-			return await revertContentsStatus();
+			return await revertContentsStatus(userId);
 		default:
 			throw new Error(ERROR_MESSAGES.UNEXPECTED);
 	}
@@ -29,11 +29,13 @@ export async function changeContentsStatus(
 	changeType: Change,
 ): Promise<ServerAction> {
 	try {
-		const authorized = await auth();
-		if (!authorized) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
+		const userId = await getUserId();
+		const hasUpdateStatusPermission = await checkUpdateStatusPermission();
+		if (!hasUpdateStatusPermission)
+			throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
 
 		const message = formatChangeStatusMessage(
-			await handleStatusChange(changeType),
+			await handleStatusChange(userId, changeType),
 			"CONTENTS",
 		);
 		await sendLineNotifyMessage(message);

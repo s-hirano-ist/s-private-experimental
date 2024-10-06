@@ -24,6 +24,7 @@ export function SubmitDrawer({ setOpen }: Props) {
 		setButtonDisabled(true);
 		setOpen(false);
 		const state = await changeNewsStatus("UPDATE");
+		// TODO: revalidate path
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
@@ -35,6 +36,7 @@ export function SubmitDrawer({ setOpen }: Props) {
 		setButtonDisabled(true);
 		setOpen(false);
 		const state = await changeNewsStatus("REVERT");
+		// TODO: revalidate path
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
@@ -46,6 +48,7 @@ export function SubmitDrawer({ setOpen }: Props) {
 		setButtonDisabled(true);
 		setOpen(false);
 		const state = await changeContentsStatus("UPDATE");
+		// TODO: revalidate path
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,
@@ -57,6 +60,7 @@ export function SubmitDrawer({ setOpen }: Props) {
 		setButtonDisabled(true);
 		setOpen(false);
 		const state = await changeContentsStatus("REVERT");
+		// TODO: revalidate path
 		toast({
 			variant: state.success ? "default" : "destructive",
 			description: state.message,

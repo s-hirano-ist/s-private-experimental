@@ -20,13 +20,13 @@ export const authConfig: NextAuthConfig = {
 					const user = await prisma.users.findUnique({
 						where: { email },
 						// MEMO: only allowed to select password here (for auth). See `src/prisma.ts` for more.
-						select: { id: true, email: true, password: true },
+						select: { id: true, email: true, role: true, password: true },
 					});
 					if (!user) return null;
 					const passwordMatch = await bcrypt.compare(password, user.password);
 					if (!passwordMatch) return null;
 
-					return { id: user.id };
+					return { id: user.id, role: user.role };
 				}
 				return null;
 			},

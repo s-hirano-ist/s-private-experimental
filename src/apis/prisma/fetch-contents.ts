@@ -32,26 +32,14 @@ export async function getUnexportedContents(userId: string) {
 	});
 }
 
-export async function getAllContents() {
-	return await prisma.contents.findMany({
-		select: {
-			id: true,
-			title: true,
-			quote: true,
-			url: true,
-			status: true,
-		},
-	});
-}
-
-export async function updateContentsStatus(): Promise<Status> {
+export async function updateContentsStatus(userId: string): Promise<Status> {
 	return await prisma.$transaction(async (prisma) => {
 		const exportedData = await prisma.contents.updateMany({
-			where: { status: "UPDATED_RECENTLY" },
+			where: { status: "UPDATED_RECENTLY", userId },
 			data: { status: "EXPORTED" },
 		});
 		const recentlyUpdatedData = await prisma.contents.updateMany({
-			where: { status: "UNEXPORTED" },
+			where: { status: "UNEXPORTED", userId },
 			data: { status: "UPDATED_RECENTLY" },
 		});
 		return {
@@ -62,14 +50,14 @@ export async function updateContentsStatus(): Promise<Status> {
 	});
 }
 
-export async function revertContentsStatus(): Promise<Status> {
+export async function revertContentsStatus(userId: string): Promise<Status> {
 	return await prisma.$transaction(async (prisma) => {
 		const unexportedData = await prisma.contents.updateMany({
-			where: { status: "UPDATED_RECENTLY" },
+			where: { status: "UPDATED_RECENTLY", userId },
 			data: { status: "UNEXPORTED" },
 		});
 		const recentlyUpdatedData = await prisma.contents.updateMany({
-			where: { status: "EXPORTED" },
+			where: { status: "EXPORTED", userId },
 			data: { status: "UPDATED_RECENTLY" },
 		});
 		return {
@@ -77,5 +65,18 @@ export async function revertContentsStatus(): Promise<Status> {
 			recentlyUpdated: recentlyUpdatedData.count,
 			exported: 0,
 		};
+	});
+}
+
+// ROLE === "admin" only
+export async function getAllContents() {
+	return await prisma.contents.findMany({
+		select: {
+			id: true,
+			title: true,
+			quote: true,
+			url: true,
+			status: true,
+		},
 	});
 }

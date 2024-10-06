@@ -15,18 +15,19 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-enum Status {
-  UNEXPORTED
-  UPDATED_RECENTLY
-  EXPORTED
+// Auth
+enum Role {
+  ADMIN
+  EDITOR
+  VIEWER
 }
 
-// TODO: add role to users
 model Users {
   id           String           @id @default(uuid(7))
   email        String           @unique
   password     String
   verified     Boolean          @default(false)
+  role         Role             @default(VIEWER)
   loginHistory LoginHistories[]
   profile      Profiles?
   createdAt    DateTime         @default(now()) @map("created_at")
@@ -60,6 +61,14 @@ model LoginHistories {
   createdAt DateTime @default(now()) @map("created_at")
 
   @@map("login_histories")
+}
+
+// Dump
+
+enum Status {
+  UNEXPORTED
+  UPDATED_RECENTLY
+  EXPORTED
 }
 
 model Categories {

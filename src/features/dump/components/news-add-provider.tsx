@@ -1,14 +1,10 @@
 import { getCategories } from "@/apis/prisma/fetch-category";
-import { ERROR_MESSAGES } from "@/constants";
-import { auth } from "@/features/auth/lib/auth";
+import { getUserId } from "@/features/auth/lib/user-id";
 import { NewsAddForm } from "@/features/dump/components/news-add-form";
 
 export async function NewsAddProvider() {
 	try {
-		const session = await auth();
-		const userId = session?.user?.id;
-		if (!session || !userId) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
-
+		const userId = await getUserId();
 		const categories = await getCategories(userId);
 
 		return <NewsAddForm categories={categories} />;

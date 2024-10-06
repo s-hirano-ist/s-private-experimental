@@ -3,7 +3,8 @@ import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { postContents } from "@/apis/prisma/fetch-contents";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
-import { auth } from "@/features/auth/lib/auth";
+import { checkPostPermission } from "@/features/auth/lib/role";
+import { getUserId } from "@/features/auth/lib/user-id";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { validateContents } from "@/features/dump/utils/validate-contents";
 import { formatCreateContentsMessage } from "@/utils/format-for-line";
@@ -13,9 +14,10 @@ export async function addContents(
 	formData: FormData,
 ): Promise<ActionState<ContentsContext>> {
 	try {
-		const session = await auth();
-		const userId = session?.user?.id;
-		if (!session || !userId) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
+		const hasPostPermission = await checkPostPermission();
+		if (!hasPostPermission) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
+
+		const userId = await getUserId();
 
 		const postedContents = await postContents(
 			userId,
