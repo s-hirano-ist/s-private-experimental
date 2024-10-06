@@ -1,11 +1,11 @@
 "use server";
 import "server-only";
-import { ERROR_MESSAGES } from "@/constants";
+import { UnauthorizedError, UnexpectedError } from "@/error";
 import { auth } from "./auth";
 
 export async function checkAuth() {
 	const session = await auth();
-	if (!session) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
+	if (!session) throw new UnauthorizedError();
 	return session;
 }
 
@@ -20,7 +20,7 @@ export async function checkAdminPermission() {
 		case "VIEWER":
 			return false;
 		default:
-			throw new Error(ERROR_MESSAGES.UNEXPECTED);
+			throw new UnexpectedError();
 	}
 }
 
@@ -35,7 +35,7 @@ export async function checkPostPermission() {
 		case "VIEWER":
 			return false;
 		default:
-			throw new Error(ERROR_MESSAGES.UNEXPECTED);
+			throw new UnexpectedError();
 	}
 }
 
@@ -50,6 +50,6 @@ export async function checkUpdateStatusPermission() {
 		case "VIEWER":
 			return false;
 		default:
-			throw new Error(ERROR_MESSAGES.UNEXPECTED);
+			throw new UnexpectedError();
 	}
 }

@@ -6,7 +6,7 @@ import {
 	updateContentsStatus,
 } from "@/apis/prisma/fetch-contents";
 import { ERROR_MESSAGES } from "@/constants";
-import { LineNotifyError } from "@/error";
+import { LineNotifyError, NotAllowedError, UnexpectedError } from "@/error";
 import { checkUpdateStatusPermission } from "@/features/auth/lib/role";
 import { getUserId } from "@/features/auth/lib/user-id";
 import type { Change } from "@/features/submit/types";
@@ -21,7 +21,7 @@ const handleStatusChange = async (userId: string, changeType: Change) => {
 		case "REVERT":
 			return await revertContentsStatus(userId);
 		default:
-			throw new Error(ERROR_MESSAGES.UNEXPECTED);
+			throw new UnexpectedError();
 	}
 };
 
@@ -31,8 +31,7 @@ export async function changeContentsStatus(
 	try {
 		const userId = await getUserId();
 		const hasUpdateStatusPermission = await checkUpdateStatusPermission();
-		if (!hasUpdateStatusPermission)
-			throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
+		if (!hasUpdateStatusPermission) throw new NotAllowedError();
 
 		const message = formatChangeStatusMessage(
 			await handleStatusChange(userId, changeType),

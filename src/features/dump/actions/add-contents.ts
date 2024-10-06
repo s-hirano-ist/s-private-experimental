@@ -3,6 +3,7 @@ import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { postContents } from "@/apis/prisma/fetch-contents";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
+import { NotAllowedError } from "@/error";
 import { checkPostPermission } from "@/features/auth/lib/role";
 import { getUserId } from "@/features/auth/lib/user-id";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
@@ -15,7 +16,7 @@ export async function addContents(
 ): Promise<ActionState<ContentsContext>> {
 	try {
 		const hasPostPermission = await checkPostPermission();
-		if (!hasPostPermission) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
+		if (!hasPostPermission) throw new NotAllowedError();
 
 		const userId = await getUserId();
 

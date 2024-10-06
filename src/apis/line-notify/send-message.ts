@@ -19,6 +19,5 @@ export async function sendLineNotifyMessage(message: string) {
 		},
 		body,
 	});
-	if (result.status !== 200)
-		throw new LineNotifyError(ERROR_MESSAGES.LINE_SEND);
+	if (result.status !== 200) throw new LineNotifyError();
 }

@@ -1,5 +1,5 @@
 import "server-only";
-import { FORM_ERROR_MESSAGES } from "@/constants";
+import { InvalidFormatError } from "@/error";
 import { newsSchema } from "@/features/dump/schemas/news-schema";
 
 export function validateNews(formData: FormData) {
@@ -9,8 +9,7 @@ export function validateNews(formData: FormData) {
 		quote: formData.get("quote"),
 		url: formData.get("url"),
 	});
-	if (!newsValidatedFields.success)
-		throw new Error(FORM_ERROR_MESSAGES.INVALID_FORMAT);
+	if (!newsValidatedFields.success) throw new InvalidFormatError();
 
 	return newsValidatedFields.data;
 }

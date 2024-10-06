@@ -4,6 +4,7 @@ import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createCategory } from "@/apis/prisma/fetch-category";
 import { postNews } from "@/apis/prisma/fetch-news";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
+import { NotAllowedError } from "@/error";
 import { checkPostPermission } from "@/features/auth/lib/role";
 import { getUserId } from "@/features/auth/lib/user-id";
 import type { NewsContext } from "@/features/dump/stores/news-context";
@@ -20,7 +21,7 @@ export async function addNews(
 ): Promise<ActionState<NewsContext>> {
 	try {
 		const hasPostPermission = await checkPostPermission();
-		if (!hasPostPermission) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
+		if (!hasPostPermission) throw new NotAllowedError();
 
 		const userId = await getUserId();
 
