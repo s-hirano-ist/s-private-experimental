@@ -19,7 +19,7 @@ export async function NewsContents() {
 						title: d.title,
 						quote: d.quote,
 						url: d.url,
-						category: d.categories.name,
+						category: d.category.name,
 					};
 				})}
 			/>
