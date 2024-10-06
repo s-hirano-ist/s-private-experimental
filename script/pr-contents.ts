@@ -2,7 +2,7 @@ import { access, readFile, writeFile } from "node:fs/promises";
 import dotenv from "dotenv";
 import pkg from "pg";
 
-type Mypage = {
+type Contents = {
 	id: number;
 	title: string;
 	quote: string;
@@ -11,7 +11,7 @@ type Mypage = {
 
 dotenv.config();
 
-const OUTPUT_PATH = process.env.MYPAGE_OUTPUT_PATH;
+const OUTPUT_PATH = process.env.CONTENTS_OUTPUT_PATH;
 
 const { Pool } = pkg;
 
@@ -23,7 +23,7 @@ async function getConnection() {
 	return { pool, connection };
 }
 
-async function exportData(data: Mypage[]) {
+async function exportData(data: Contents[]) {
 	try {
 		let originalData = await readFile(OUTPUT_PATH ?? "", "utf8");
 		originalData += `\n## ${new Date()}\n`;
@@ -39,15 +39,14 @@ async function exportData(data: Mypage[]) {
 
 const { pool, connection } = await getConnection();
 try {
-	const mypage = (
-		await connection.query("SELECT * FROM mypage WHERE status = $1;", [
+	const contents = (
+		await connection.query("SELECT * FROM contents WHERE status = $1;", [
 			"UNEXPORTED",
 		])
-	).rows as Mypage[];
-	console.log("mypage", mypage);
+	).rows as Contents[];
 	console.log("📊 データを取得しました。");
 
-	await exportData(mypage);
+	await exportData(contents);
 
 	console.log("💾 データがdata.jsonに書き出されました。");
 

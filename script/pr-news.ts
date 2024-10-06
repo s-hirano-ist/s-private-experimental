@@ -2,7 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import dotenv from "dotenv";
 import pkg from "pg";
 
-type Blog = {
+type News = {
 	id: number;
 	title: string;
 	url: string;
@@ -24,7 +24,7 @@ type BodyItem = {
 
 dotenv.config();
 
-const OUTPUT_PATH = process.env.BLOG_OUTPUT_PATH;
+const OUTPUT_PATH = process.env.NEWS_OUTPUT_PATH;
 
 const { Pool } = pkg;
 
@@ -44,11 +44,11 @@ type OutputType = {
 	}[];
 };
 
-function categorizeBlog(blogs: Blog[]): OutputType {
-	return blogs.reduce((acc, blog) => {
-		if (!acc[blog.name]) acc[blog.name] = [];
-		const { title, quote, url } = blog;
-		acc[blog.name].push({ title, quote: quote ?? "", url });
+function categorizeNews(news: News[]): OutputType {
+	return news.reduce((acc, d) => {
+		if (!acc[d.name]) acc[d.name] = [];
+		const { title, quote, url } = d;
+		acc[d.name].push({ title, quote: quote ?? "", url });
 		return acc;
 	}, {} as OutputType);
 }
@@ -83,15 +83,15 @@ async function exportData(data: OutputType) {
 
 const { pool, connection } = await getConnection();
 try {
-	const blogs = (
+	const news = (
 		await connection.query(
-			"SELECT nd.id, nd.title, nd.url, nd.quote, c.name FROM blog nd JOIN category c ON nd.category_id = c.id WHERE nd.status = $1;",
+			"SELECT nd.id, nd.title, nd.url, nd.quote, c.name FROM news nd JOIN category c ON nd.category_id = c.id WHERE nd.status = $1;",
 			["UNEXPORTED"],
 		)
-	).rows as Blog[];
+	).rows as News[];
 	console.log("📊 データを取得しました。");
 
-	await exportData(categorizeBlog(blogs));
+	await exportData(categorizeNews(news));
 
 	console.log("💾 データがdata.jsonに書き出されました。");
 
