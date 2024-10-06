@@ -2,7 +2,7 @@ import { Header } from "@/components/nav/header";
 import { Unauthorized } from "@/components/unauthorized";
 import { MARKDOWN_PATHS, PAGE_NAME } from "@/constants";
 import { checkAdminPermission } from "@/features/auth/lib/role";
-import ContentsBody from "@/features/contents/components/contents-body";
+import { ContentsBody } from "@/features/contents/components/contents-body";
 import type ContentsType from "@/features/contents/types/contents";
 import { getAllSlugs, getContentsBySlug } from "@/features/contents/utils/api";
 import { markdownToReact } from "@/features/contents/utils/markdownToReact";
