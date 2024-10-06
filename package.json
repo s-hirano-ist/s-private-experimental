@@ -36,7 +36,6 @@
 		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
 	},
 	"dependencies": {
-		"@auth/core": "0.36.0",
 		"@biomejs/biome": "1.9.2",
 		"@hookform/resolvers": "3.9.0",
 		"@prisma/client": "5.20.0",
