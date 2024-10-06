@@ -10,6 +10,7 @@ export const ERROR_MESSAGES = {
 	UNEXPECTED: "予期せぬエラーが発生しました。",
 	LINE_SEND: "ログの送信でエラーが発生しました。",
 	PRISMA_WRITE: "データベースへの書き込み時にエラーが発生しました。",
+	UNAUTHORIZED: "認証されていません。",
 	SIGN_IN: "メールアドレスまたはパスワードが間違っています。",
 	SIGN_IN_UNKNOWN: "サインインに失敗しました。",
 	SIGN_OUT_UNKNOWN: "サインアウトに失敗しました。",

@@ -30,7 +30,7 @@ export async function changeContentsStatus(
 ): Promise<ServerAction> {
 	try {
 		const authorized = await auth();
-		if (!authorized) throw new Error("Unauthorized");
+		if (!authorized) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
 
 		const message = formatChangeStatusMessage(
 			await handleStatusChange(changeType),

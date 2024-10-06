@@ -15,7 +15,7 @@ export async function addContents(
 	try {
 		const session = await auth();
 		const userId = session?.user?.id;
-		if (!session || !userId) throw new Error("Unauthorized");
+		if (!session || !userId) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
 
 		const postedContents = await postContents(
 			userId,

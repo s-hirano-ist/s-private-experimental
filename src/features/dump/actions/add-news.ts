@@ -20,7 +20,7 @@ export async function addNews(
 	try {
 		const session = await auth();
 		const userId = session?.user?.id;
-		if (!session || !userId) throw new Error("Unauthorized");
+		if (!session || !userId) throw new Error(ERROR_MESSAGES.UNAUTHORIZED);
 
 		const hasCategory = formData.get("new_category") !== null;
 
