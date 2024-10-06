@@ -9,20 +9,16 @@ import {
 	formatErrorForClient,
 } from "@/error";
 import { checkUpdateStatusPermission } from "@/features/auth/lib/role";
-import { getUserId } from "@/features/auth/lib/user-id";
 import type { UpdateOrRevert } from "@/features/update-status/types";
 import type { ServerAction } from "@/types";
 import { formatChangeStatusMessage } from "@/utils/format-for-line";
 
-const handleStatusChange = async (
-	userId: string,
-	changeType: UpdateOrRevert,
-) => {
+const handleStatusChange = async (changeType: UpdateOrRevert) => {
 	switch (changeType) {
 		case "UPDATE":
-			return await updateNewsStatus(userId);
+			return await updateNewsStatus();
 		case "REVERT":
-			return await revertNewsStatus(userId);
+			return await revertNewsStatus();
 		default:
 			throw new UnexpectedError();
 	}
@@ -34,12 +30,11 @@ export async function changeNewsStatus(
 	updateOrRevert: UpdateOrRevert,
 ): Promise<ServerAction<ToastMessage>> {
 	try {
-		const userId = await getUserId();
 		const hasUpdateStatusPermission = await checkUpdateStatusPermission();
 		if (!hasUpdateStatusPermission) throw new NotAllowedError();
 
 		const data = formatChangeStatusMessage(
-			await handleStatusChange(userId, updateOrRevert),
+			await handleStatusChange(updateOrRevert),
 			"NEWS",
 		);
 		await sendLineNotifyMessage(data);

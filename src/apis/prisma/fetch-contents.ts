@@ -1,13 +1,15 @@
 "use server";
 import "server-only";
+import { getUserId } from "@/features/auth/lib/user-id";
 import type { validateContents } from "@/features/dump/utils/validate-contents";
 import type { Status } from "@/features/update-status/types";
 import prisma from "@/prisma";
 
 export async function postContents(
-	userId: string,
 	validatedFields: ReturnType<typeof validateContents>,
 ) {
+	const userId = await getUserId();
+
 	return await prisma.contents.create({
 		data: { userId, ...validatedFields },
 		select: {
@@ -19,7 +21,9 @@ export async function postContents(
 	});
 }
 
-export async function getUnexportedContents(userId: string) {
+export async function getUnexportedContents() {
+	const userId = await getUserId();
+
 	return await prisma.contents.findMany({
 		where: { status: "UNEXPORTED", userId },
 		select: {
@@ -32,7 +36,9 @@ export async function getUnexportedContents(userId: string) {
 	});
 }
 
-export async function updateContentsStatus(userId: string): Promise<Status> {
+export async function updateContentsStatus(): Promise<Status> {
+	const userId = await getUserId();
+
 	return await prisma.$transaction(async (prisma) => {
 		const exportedData = await prisma.contents.updateMany({
 			where: { status: "UPDATED_RECENTLY", userId },
@@ -50,7 +56,9 @@ export async function updateContentsStatus(userId: string): Promise<Status> {
 	});
 }
 
-export async function revertContentsStatus(userId: string): Promise<Status> {
+export async function revertContentsStatus(): Promise<Status> {
+	const userId = await getUserId();
+
 	return await prisma.$transaction(async (prisma) => {
 		const unexportedData = await prisma.contents.updateMany({
 			where: { status: "UPDATED_RECENTLY", userId },

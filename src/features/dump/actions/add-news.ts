@@ -6,7 +6,6 @@ import { postNews } from "@/apis/prisma/fetch-news";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { NotAllowedError, formatErrorForClient } from "@/error";
 import { checkPostPermission } from "@/features/auth/lib/role";
-import { getUserId } from "@/features/auth/lib/user-id";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import { validateCategory } from "@/features/dump/utils/validate-category";
 import { validateNews } from "@/features/dump/utils/validate-news";
@@ -23,19 +22,17 @@ export async function addNews(
 		const hasPostPermission = await checkPostPermission();
 		if (!hasPostPermission) throw new NotAllowedError();
 
-		const userId = await getUserId();
-
 		const hasCategory = formData.get("new_category") !== null;
 
 		if (hasCategory) {
-			const category = await createCategory(userId, validateCategory(formData));
+			const category = await createCategory(validateCategory(formData));
 			await sendLineNotifyMessage(
 				formatCreateCategoryMessage(category.name, "NEWS"),
 			);
 			formData.set("category", String(category.id));
 		}
 
-		const postedNews = await postNews(userId, validateNews(formData));
+		const postedNews = await postNews(validateNews(formData));
 		await sendLineNotifyMessage(formatCreateNewsMessage(postedNews));
 
 		return {

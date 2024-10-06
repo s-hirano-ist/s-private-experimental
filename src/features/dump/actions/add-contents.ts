@@ -5,7 +5,6 @@ import { postContents } from "@/apis/prisma/fetch-contents";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { NotAllowedError, formatErrorForClient } from "@/error";
 import { checkPostPermission } from "@/features/auth/lib/role";
-import { getUserId } from "@/features/auth/lib/user-id";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { validateContents } from "@/features/dump/utils/validate-contents";
 import type { ServerAction } from "@/types";
@@ -18,12 +17,7 @@ export async function addContents(
 		const hasPostPermission = await checkPostPermission();
 		if (!hasPostPermission) throw new NotAllowedError();
 
-		const userId = await getUserId();
-
-		const postedContents = await postContents(
-			userId,
-			validateContents(formData),
-		);
+		const postedContents = await postContents(validateContents(formData));
 		await sendLineNotifyMessage(formatCreateContentsMessage(postedContents));
 
 		return {
