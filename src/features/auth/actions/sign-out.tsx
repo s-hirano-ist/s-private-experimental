@@ -1,32 +1,25 @@
 "use server";
 import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
+import { SUCCESS_MESSAGES } from "@/constants";
+import { formatErrorForClient } from "@/error";
 import { signOut as NextAuthSignOut } from "@/features/auth/lib/auth";
 import type { ServerAction } from "@/types";
 
-type SignOutState = ServerAction;
+type SignOutState = ServerAction<undefined>;
 
 export async function signOut(): Promise<SignOutState> {
 	try {
 		await NextAuthSignOut({
 			redirect: false, // MEMO: await try catch文でredirectは動かない
 		});
-		return { success: true, message: SUCCESS_MESSAGES.SIGN_OUT };
-	} catch (error) {
-		if (error instanceof Error) {
-			console.error(error.message);
-			await sendLineNotifyMessage(error.message);
-			return {
-				success: false,
-				message: error.message,
-			};
-		}
-		console.error("Unexpected error:", error);
-		await sendLineNotifyMessage(ERROR_MESSAGES.UNEXPECTED);
+		await sendLineNotifyMessage(SUCCESS_MESSAGES.SIGN_OUT);
 		return {
-			success: false,
-			message: ERROR_MESSAGES.UNEXPECTED,
+			success: true,
+			message: SUCCESS_MESSAGES.SIGN_OUT,
+			data: undefined,
 		};
+	} catch (error) {
+		return await formatErrorForClient(error);
 	}
 }

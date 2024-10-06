@@ -3,22 +3,22 @@ import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createCategory } from "@/apis/prisma/fetch-category";
 import { postNews } from "@/apis/prisma/fetch-news";
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
-import { NotAllowedError } from "@/error";
+import { SUCCESS_MESSAGES } from "@/constants";
+import { NotAllowedError, formatErrorForClient } from "@/error";
 import { checkPostPermission } from "@/features/auth/lib/role";
 import { getUserId } from "@/features/auth/lib/user-id";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import { validateCategory } from "@/features/dump/utils/validate-category";
 import { validateNews } from "@/features/dump/utils/validate-news";
+import type { ServerAction } from "@/types";
 import {
 	formatCreateCategoryMessage,
 	formatCreateNewsMessage,
 } from "@/utils/format-for-line";
-import type { ActionState } from "./type";
 
 export async function addNews(
 	formData: FormData,
-): Promise<ActionState<NewsContext>> {
+): Promise<ServerAction<NewsContext>> {
 	try {
 		const hasPostPermission = await checkPostPermission();
 		if (!hasPostPermission) throw new NotAllowedError();
@@ -40,26 +40,13 @@ export async function addNews(
 
 		return {
 			success: true,
-			message: SUCCESS_MESSAGES.INSERT,
+			message: SUCCESS_MESSAGES.INSERTED,
 			data: {
 				...postedNews,
 				category: postedNews.category.name,
 			},
 		};
 	} catch (error) {
-		if (error instanceof Error) {
-			console.error(error.message);
-			await sendLineNotifyMessage(error.message);
-			return {
-				success: false,
-				message: error.message,
-			};
-		}
-		console.error("Unexpected error:", error);
-		await sendLineNotifyMessage(ERROR_MESSAGES.UNEXPECTED);
-		return {
-			success: false,
-			message: ERROR_MESSAGES.UNEXPECTED,
-		};
+		return await formatErrorForClient(error);
 	}
 }

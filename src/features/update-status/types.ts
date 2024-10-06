@@ -4,4 +4,4 @@ export type Status = {
 	exported: number;
 };
 
-export type Change = "UPDATE" | "REVERT";
+export type UpdateOrRevert = "UPDATE" | "REVERT";

@@ -1,13 +1,13 @@
 "use server";
 import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
-import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
+import { SUCCESS_MESSAGES } from "@/constants";
+import { formatErrorForClient } from "@/error";
 import { signIn as NextAuthSignIn } from "@/features/auth/lib/auth";
 import type { SignInSchema } from "@/features/auth/schemas/sign-in-schema";
 import type { ServerAction } from "@/types";
-import { AuthError } from "next-auth";
 
-type SignInState = ServerAction;
+type SignInState = ServerAction<undefined>;
 
 export async function signIn(values: SignInSchema): Promise<SignInState> {
 	try {
@@ -16,36 +16,12 @@ export async function signIn(values: SignInSchema): Promise<SignInState> {
 			redirect: false, // MEMO: await try catch文でredirectは動かない
 		});
 		await sendLineNotifyMessage(SUCCESS_MESSAGES.SIGN_IN);
-		return { success: true, message: SUCCESS_MESSAGES.SIGN_IN };
-	} catch (error) {
-		if (error instanceof AuthError) {
-			await sendLineNotifyMessage(ERROR_MESSAGES.SIGN_IN);
-			switch (error.type) {
-				case "CredentialsSignin":
-					return {
-						success: false,
-						message: ERROR_MESSAGES.SIGN_IN,
-					};
-				default:
-					return {
-						success: false,
-						message: ERROR_MESSAGES.SIGN_IN_UNKNOWN,
-					};
-			}
-		}
-		if (error instanceof Error) {
-			console.error(error.message);
-			await sendLineNotifyMessage(error.message);
-			return {
-				success: false,
-				message: error.message,
-			};
-		}
-		console.error("Unexpected error:", error);
-		await sendLineNotifyMessage(ERROR_MESSAGES.UNEXPECTED);
 		return {
-			success: false,
-			message: ERROR_MESSAGES.UNEXPECTED,
+			success: true,
+			message: SUCCESS_MESSAGES.SIGN_IN,
+			data: undefined,
 		};
+	} catch (error) {
+		return await formatErrorForClient(error);
 	}
 }

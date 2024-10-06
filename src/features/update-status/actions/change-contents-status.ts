@@ -5,16 +5,22 @@ import {
 	revertContentsStatus,
 	updateContentsStatus,
 } from "@/apis/prisma/fetch-contents";
-import { ERROR_MESSAGES } from "@/constants";
-import { LineNotifyError, NotAllowedError, UnexpectedError } from "@/error";
+import { SUCCESS_MESSAGES } from "@/constants";
+import {
+	NotAllowedError,
+	UnexpectedError,
+	formatErrorForClient,
+} from "@/error";
 import { checkUpdateStatusPermission } from "@/features/auth/lib/role";
 import { getUserId } from "@/features/auth/lib/user-id";
-import type { Change } from "@/features/update-status/types";
+import type { UpdateOrRevert } from "@/features/update-status/types";
 import type { ServerAction } from "@/types";
 import { formatChangeStatusMessage } from "@/utils/format-for-line";
-import { Prisma } from "@prisma/client";
 
-const handleStatusChange = async (userId: string, changeType: Change) => {
+const handleStatusChange = async (
+	userId: string,
+	changeType: UpdateOrRevert,
+) => {
 	switch (changeType) {
 		case "UPDATE":
 			return await updateContentsStatus(userId);
@@ -25,47 +31,23 @@ const handleStatusChange = async (userId: string, changeType: Change) => {
 	}
 };
 
+type ToastMessage = string;
+
 export async function changeContentsStatus(
-	changeType: Change,
-): Promise<ServerAction> {
+	changeType: UpdateOrRevert,
+): Promise<ServerAction<ToastMessage>> {
 	try {
 		const userId = await getUserId();
 		const hasUpdateStatusPermission = await checkUpdateStatusPermission();
 		if (!hasUpdateStatusPermission) throw new NotAllowedError();
 
-		const message = formatChangeStatusMessage(
+		const data = formatChangeStatusMessage(
 			await handleStatusChange(userId, changeType),
 			"CONTENTS",
 		);
-		await sendLineNotifyMessage(message);
-		return { success: true, message };
+		await sendLineNotifyMessage(data);
+		return { success: true, message: SUCCESS_MESSAGES.UPDATE, data };
 	} catch (error) {
-		if (error instanceof Prisma.PrismaClientKnownRequestError) {
-			console.error(error.message);
-			await sendLineNotifyMessage(error.message);
-			return {
-				success: false,
-				message: ERROR_MESSAGES.PRISMA_WRITE,
-			};
-		}
-		if (error instanceof LineNotifyError) {
-			console.error(error.message);
-			// MEMO: unhandled防止 await sendLineNotifyMessage(error.message);
-			return {
-				success: false,
-				message: ERROR_MESSAGES.LINE_SEND,
-			};
-		}
-		if (error instanceof Error) {
-			console.error("Unexpected error:", error.message);
-			await sendLineNotifyMessage(error.message);
-		} else {
-			console.error("Unexpected error:", error);
-			await sendLineNotifyMessage(ERROR_MESSAGES.UNEXPECTED);
-		}
-		return {
-			success: false,
-			message: ERROR_MESSAGES.UNEXPECTED,
-		};
+		return await formatErrorForClient(error);
 	}
 }
