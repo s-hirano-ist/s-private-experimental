@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["omitApi"]
 }
 
 datasource db {
@@ -20,38 +21,86 @@ enum Status {
   EXPORTED
 }
 
-model Category {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  blog      Blog[]
+// TODO: add role to users
+model Users {
+  id           String           @id @default(uuid(7))
+  email        String           @unique
+  password     String
+  verified     Boolean          @default(false)
+  loginHistory LoginHistories[]
+  profile      Profiles?
+  createdAt    DateTime         @default(now()) @map("created_at")
+  updatedAt    DateTime         @updatedAt @map("updated_at")
+  categories   Categories[]
+  news         News[]
+  contents     Contents[]
+
+  @@map("users")
+}
+
+model Profiles {
+  id        String   @id @default(uuid(7))
+  name      String?
+  bio       String?
+  avatarUrl String?  @map("avatar_url")
+  users     Users    @relation(fields: [userId], references: [id])
+  userId    String   @unique @map("user_id")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  @@map("category")
+  @@map("profiles")
 }
 
-model Blog {
-  id         Int      @id @default(autoincrement())
+model LoginHistories {
+  id        String   @id @default(uuid(7))
+  users     Users    @relation(fields: [userId], references: [id])
+  userId    String   @map("user_id")
+  ipAddress String?  @map("ip_address")
+  userAgent String?  @map("user_agent")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("login_histories")
+}
+
+model Categories {
+  id        Int      @id @default(autoincrement())
+  name      String
+  news      News[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  users     Users    @relation(fields: [userId], references: [id])
+  userId    String   @map("user_id")
+
+  @@unique([name, userId])
+  @@map("categories")
+}
+
+model News {
+  id         Int        @id @default(autoincrement())
   title      String
   url        String
   quote      String?
-  status     Status   @default(UNEXPORTED)
-  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  categoryId Int      @map("category_id")
-  createdAt  DateTime @default(now()) @map("created_at")
-  updatedAt  DateTime @updatedAt @map("updated_at")
+  status     Status     @default(UNEXPORTED)
+  category   Categories @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  categoryId Int        @map("category_id")
+  users      Users      @relation(fields: [userId], references: [id])
+  userId     String
+  createdAt  DateTime   @default(now()) @map("created_at")
+  updatedAt  DateTime   @updatedAt @map("updated_at")
 
-  @@map("blog")
+  @@map("news")
 }
 
-model Mypage {
+model Contents {
   id        Int      @id @default(autoincrement())
   title     String
   url       String
   quote     String?
   status    Status   @default(UNEXPORTED)
+  users     Users    @relation(fields: [userId], references: [id])
+  userId    String   @map("user_id")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  @@map("mypage")
+  @@map("contents")
 }

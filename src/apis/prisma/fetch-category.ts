@@ -1,13 +1,20 @@
+"use server";
+import "server-only";
+import type { validateCategory } from "@/features/dump/utils/validate-category";
 import prisma from "@/server/db";
 
-export async function createCategory(newCategory: string) {
-	return await prisma.category.create({
-		data: { name: newCategory },
+export async function createCategory(
+	userId: string,
+	validatedCategory: ReturnType<typeof validateCategory>,
+) {
+	return await prisma.categories.create({
+		data: { userId, ...validatedCategory },
 	});
 }
 
-export async function getCategories() {
-	return await prisma.category.findMany({
+export async function getCategories(userId: string) {
+	return await prisma.categories.findMany({
+		where: { userId },
 		select: { id: true, name: true },
 	});
 }

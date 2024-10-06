@@ -1,1 +1,1 @@
-export type ContentName = "BLOG" | "MYPAGE";
+export type ContentName = "NEWS" | "CONTENTS";

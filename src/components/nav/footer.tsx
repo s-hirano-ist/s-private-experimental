@@ -32,25 +32,25 @@ export function Footer() {
 		<footer className="sticky bottom-4 z-50 mx-auto w-full max-w-lg rounded-3xl border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700">
 			<Drawer open={open} onOpenChange={setOpen} snapPoints={[0.5]}>
 				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 rounded-3xl bg-gradient-to-r from-primary to-primary-grad text-white">
-					<Link href="/dump/blog" scroll={false}>
+					<Link href="/dump/news" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							className={cn(
 								"rounded-s-3xl",
-								pathname === "/dump/blog" ? "bg-black/40" : "",
+								pathname === "/dump/news" ? "bg-black/40" : "",
 							)}
 						>
 							{Icon("PUBLIC", <LockOpenIcon className="size-6" />)}
 						</Button>
 					</Link>
 
-					<Link href="/dump/mypage" scroll={false}>
+					<Link href="/dump/contents" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							type="button"
-							className={pathname === "/dump/mypage" ? "bg-black/40" : ""}
+							className={pathname === "/dump/contents" ? "bg-black/40" : ""}
 						>
 							{Icon("PRIVATE", <LockIcon className="size-6" />)}
 						</Button>
