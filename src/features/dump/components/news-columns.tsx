@@ -8,7 +8,7 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import type { NewsContext } from "@/features/dump/stores/news-context";
-import { sanitizeHref } from "@/lib/sanitize-href";
+import { sanitizeHref } from "@/utils/sanitize-href";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
 import type { Route } from "next";

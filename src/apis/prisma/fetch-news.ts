@@ -1,5 +1,5 @@
 "use server";
-import "server-only"; // TODO: 検証 client-onlyとかになったときのbuildエラー
+import "server-only";
 import type { validateNews } from "@/features/dump/utils/validate-news";
 import type { Status } from "@/features/submit/types";
 import prisma from "@/prisma";

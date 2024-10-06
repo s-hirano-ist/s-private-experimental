@@ -1,15 +1,15 @@
 "use server";
 import "server-only";
-import { LineNotifyError } from "@/apis/line-notify/error";
-import { formatChangeStatusMessage } from "@/apis/line-notify/format-for-line";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import {
 	revertContentsStatus,
 	updateContentsStatus,
 } from "@/apis/prisma/fetch-contents";
 import { ERROR_MESSAGES } from "@/constants";
+import { LineNotifyError } from "@/error";
 import { auth } from "@/features/auth/lib/auth";
 import type { ServerAction } from "@/types";
+import { formatChangeStatusMessage } from "@/utils/format-for-line";
 import { Prisma } from "@prisma/client";
 
 type Change = "UPDATE" | "REVERT";

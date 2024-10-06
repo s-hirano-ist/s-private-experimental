@@ -1,9 +1,5 @@
 "use server";
 import "server-only";
-import {
-	formatCreateCategoryMessage,
-	formatCreateNewsMessage,
-} from "@/apis/line-notify/format-for-line";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createCategory } from "@/apis/prisma/fetch-category";
 import { postNews } from "@/apis/prisma/fetch-news";
@@ -12,6 +8,10 @@ import { auth } from "@/features/auth/lib/auth";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import { validateCategory } from "@/features/dump/utils/validate-category";
 import { validateNews } from "@/features/dump/utils/validate-news";
+import {
+	formatCreateCategoryMessage,
+	formatCreateNewsMessage,
+} from "@/utils/format-for-line";
 import type { ActionState } from "./type";
 
 export async function addNews(

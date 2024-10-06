@@ -45,6 +45,7 @@ module.exports = {
 			},
 		],
 		"@typescript-eslint/consistent-type-definitions": ["error", "type"],
+		"@typescript-eslint/require-await": "off", // Conflict with import "server-only";
 		// FIXME:
 		"@typescript-eslint/no-unsafe-call": "off",
 		"@typescript-eslint/no-unsafe-assignment": "off",

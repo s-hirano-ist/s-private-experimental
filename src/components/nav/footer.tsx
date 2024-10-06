@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { SubmitDrawer } from "@/features/submit/components/submit-drawer";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/tailwindcss";
 import {
 	BookOpenIcon,
 	LockIcon,

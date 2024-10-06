@@ -1,12 +1,12 @@
 "use server";
 import "server-only";
-import { formatCreateContentsMessage } from "@/apis/line-notify/format-for-line";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { postContents } from "@/apis/prisma/fetch-contents";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
 import { auth } from "@/features/auth/lib/auth";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { validateContents } from "@/features/dump/utils/validate-contents";
+import { formatCreateContentsMessage } from "@/utils/format-for-line";
 import type { ActionState } from "./type";
 
 export async function addContents(
