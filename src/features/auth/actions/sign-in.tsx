@@ -3,7 +3,7 @@ import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
 import { signIn as NextAuthSignIn } from "@/features/auth/lib/auth";
 import type { SignInSchema } from "@/features/auth/schemas/sign-in-schema";
-import type { ServerAction } from "@/types/server-action";
+import type { ServerAction } from "@/types";
 import { AuthError } from "next-auth";
 
 type SignInState = ServerAction;

@@ -2,7 +2,7 @@
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
 import { signOut as NextAuthSignOut } from "@/features/auth/lib/auth";
-import type { ServerAction } from "@/types/server-action";
+import type { ServerAction } from "@/types";
 
 type SignOutState = ServerAction;
 

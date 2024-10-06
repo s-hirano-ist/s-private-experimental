@@ -1,4 +1,4 @@
-import type { ServerAction } from "@/types/server-action";
+import type { ServerAction } from "@/types";
 
 export type ActionState<T> =
 	| (ServerAction & { success: true; data: T })

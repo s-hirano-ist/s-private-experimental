@@ -1,7 +1,7 @@
 import type { postContents } from "@/apis/prisma/fetch-contents";
 import type { postNews } from "@/apis/prisma/fetch-news";
-import type { ContentName } from "@/types/content-name";
-import type { Status } from "@/types/status";
+import type { ContentName } from "@/features/dump/types";
+import type { Status } from "@/features/submit/types";
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
 
 export function formatChangeStatusMessage(

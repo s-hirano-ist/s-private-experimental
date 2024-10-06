@@ -1,6 +1,5 @@
 import { atom } from "recoil";
 
-// FIXME: refactor use types of prisma
 export type ContentsContext = {
 	id: number;
 	title: string;

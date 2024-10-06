@@ -1,6 +1,6 @@
 import { env } from "@/env.mjs";
 import { signInSchema } from "@/features/auth/schemas/sign-in-schema";
-import prisma from "@/server/db";
+import prisma from "@/prisma";
 // import bcrypt from "bcryptjs";
 import type { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";

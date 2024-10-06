@@ -1,8 +1,8 @@
 "use server";
 import "server-only"; // TODO: 検証 client-onlyとかになったときのbuildエラー
 import type { validateNews } from "@/features/dump/utils/validate-news";
-import prisma from "@/server/db";
-import type { Status } from "@/types/status";
+import type { Status } from "@/features/submit/types";
+import prisma from "@/prisma";
 
 export async function postNews(
 	userId: string,

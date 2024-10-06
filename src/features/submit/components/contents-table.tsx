@@ -1,8 +1,8 @@
 "use server";
 import { getAllContents } from "@/apis/prisma/fetch-contents";
 import { StatusCodeView } from "@/components/status-code-view";
-import { DumpTable } from "@/features/dump/components/dump-table";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
+import { DumpTable } from "@/features/submit/components/dump-table";
 
 export async function ContentsTable() {
 	try {
