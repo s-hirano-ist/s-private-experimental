@@ -28,7 +28,7 @@ export async function getUnexportedNews(userId: string) {
 			title: true,
 			quote: true,
 			url: true,
-			categories: { select: { name: true } },
+			category: { select: { name: true } },
 		},
 		orderBy: { id: "desc" },
 	});
@@ -42,7 +42,7 @@ export async function getAllNews() {
 			quote: true,
 			url: true,
 			status: true,
-			categories: { select: { name: true } },
+			category: { select: { name: true } },
 		},
 	});
 }
