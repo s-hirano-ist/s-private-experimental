@@ -1,6 +1,6 @@
 import type { ClassValue } from "clsx";
 import { describe, expect, it } from "vitest";
-import { cn } from "./utils";
+import { cn } from "./tailwindcss";
 
 describe("cn", () => {
 	it("should merge class names correctly", () => {

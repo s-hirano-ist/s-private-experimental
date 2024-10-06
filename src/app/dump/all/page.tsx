@@ -2,8 +2,8 @@ import { Header } from "@/components/nav/header";
 import { LoadingTable } from "@/components/table/loading-table";
 import { Separator } from "@/components/ui/separator";
 import { PAGE_NAME } from "@/constants";
-import { ContentsTable } from "@/features/dump/components/contents-table";
-import { NewsTable } from "@/features/dump/components/news-table";
+import { ContentsTable } from "@/features/submit/components/contents-table";
+import { NewsTable } from "@/features/submit/components/news-table";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 

@@ -1,7 +1,7 @@
 "use server";
 import "server-only";
 import type { validateCategory } from "@/features/dump/utils/validate-category";
-import prisma from "@/server/db";
+import prisma from "@/prisma";
 
 export async function createCategory(
 	userId: string,

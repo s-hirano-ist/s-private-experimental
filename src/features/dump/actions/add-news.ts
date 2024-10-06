@@ -6,12 +6,12 @@ import { postNews } from "@/apis/prisma/fetch-news";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
 import { auth } from "@/features/auth/lib/auth";
 import type { NewsContext } from "@/features/dump/stores/news-context";
+import { validateCategory } from "@/features/dump/utils/validate-category";
+import { validateNews } from "@/features/dump/utils/validate-news";
 import {
 	formatCreateCategoryMessage,
 	formatCreateNewsMessage,
-} from "@/features/dump/utils/format-for-line";
-import { validateCategory } from "@/features/dump/utils/validate-category";
-import { validateNews } from "@/features/dump/utils/validate-news";
+} from "@/utils/format-for-line";
 import type { ActionState } from "./type";
 
 export async function addNews(

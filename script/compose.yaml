@@ -1,9 +1,9 @@
 services:
-  create_blog_pr:
-    container_name: create_blog_pr
+  create_news_pr:
+    container_name: create_news_pr
     build:
       context: .
-      dockerfile: create_blog_pr.Dockerfile
+      dockerfile: create_news_pr.Dockerfile
       args:
         - no-cache=true
     environment:
@@ -14,11 +14,11 @@ services:
     networks:
       - s-dev-network
 
-  create_mypage_pr:
-    container_name: create_mypage_pr
+  create_contents_pr:
+    container_name: create_contents_pr
     build:
       context: .
-      dockerfile: create_mypage_pr.Dockerfile
+      dockerfile: create_contents_pr.Dockerfile
       args:
         - no-cache=true
     environment:

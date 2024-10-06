@@ -1,8 +1,8 @@
 "use server";
 import { getAllNews } from "@/apis/prisma/fetch-news";
 import { StatusCodeView } from "@/components/status-code-view";
-import { DumpTable } from "@/features/dump/components/dump-table";
 import type { NewsContext } from "@/features/dump/stores/news-context";
+import { DumpTable } from "@/features/submit/components/dump-table";
 
 export async function NewsTable() {
 	try {
