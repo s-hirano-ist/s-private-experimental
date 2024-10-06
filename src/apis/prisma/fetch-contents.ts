@@ -1,7 +1,7 @@
 "use server";
 import "server-only";
 import type { validateContents } from "@/features/dump/utils/validate-contents";
-import type { Status } from "@/features/submit/types";
+import type { Status } from "@/features/update-status/types";
 import prisma from "@/prisma";
 
 export async function postContents(

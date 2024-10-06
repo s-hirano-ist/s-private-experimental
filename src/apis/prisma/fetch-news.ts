@@ -1,7 +1,7 @@
 "use server";
 import "server-only";
 import type { validateNews } from "@/features/dump/utils/validate-news";
-import type { Status } from "@/features/submit/types";
+import type { Status } from "@/features/update-status/types";
 import prisma from "@/prisma";
 
 export async function postNews(

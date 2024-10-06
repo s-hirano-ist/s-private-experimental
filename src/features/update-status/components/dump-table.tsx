@@ -14,7 +14,7 @@ import { newsColumns } from "@/features/dump/components/news-columns";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import type { ContentName } from "@/features/dump/types";
-import { contentsColumns } from "@/features/submit/components/contents-columns";
+import { contentsColumns } from "@/features/update-status/components/contents-columns";
 import {
 	type ColumnDef,
 	type ColumnFiltersState,

@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { SubmitDrawer } from "@/features/submit/components/submit-drawer";
+import { SubmitDrawer } from "@/features/update-status/components/submit-drawer";
 import { cn } from "@/utils/tailwindcss";
 import {
 	BookOpenIcon,

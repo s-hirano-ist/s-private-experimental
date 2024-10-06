@@ -2,7 +2,7 @@
 import { getAllContents } from "@/apis/prisma/fetch-contents";
 import { StatusCodeView } from "@/components/status-code-view";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
-import { DumpTable } from "@/features/submit/components/dump-table";
+import { DumpTable } from "@/features/update-status/components/dump-table";
 
 export async function ContentsTable() {
 	try {

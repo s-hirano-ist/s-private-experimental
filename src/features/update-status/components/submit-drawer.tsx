@@ -5,8 +5,8 @@ import {
 	DrawerHeader,
 	DrawerTitle,
 } from "@/components/ui/drawer";
-import { changeContentsStatus } from "@/features/submit/actions/change-contents-status";
-import { changeNewsStatus } from "@/features/submit/actions/change-news-status";
+import { changeContentsStatus } from "@/features/update-status/actions/change-contents-status";
+import { changeNewsStatus } from "@/features/update-status/actions/change-news-status";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "next-view-transitions";
 import { type Dispatch, type SetStateAction, useState } from "react";

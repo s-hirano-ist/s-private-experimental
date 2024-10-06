@@ -4,8 +4,8 @@ import { Separator } from "@/components/ui/separator";
 import { Unauthorized } from "@/components/unauthorized";
 import { PAGE_NAME } from "@/constants";
 import { checkAdminPermission } from "@/features/auth/lib/role";
-import { ContentsTable } from "@/features/submit/components/contents-table";
-import { NewsTable } from "@/features/submit/components/news-table";
+import { ContentsTable } from "@/features/update-status/components/contents-table";
+import { NewsTable } from "@/features/update-status/components/news-table";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 

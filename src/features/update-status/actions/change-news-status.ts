@@ -6,7 +6,7 @@ import { ERROR_MESSAGES } from "@/constants";
 import { LineNotifyError, NotAllowedError, UnexpectedError } from "@/error";
 import { checkUpdateStatusPermission } from "@/features/auth/lib/role";
 import { getUserId } from "@/features/auth/lib/user-id";
-import type { Change } from "@/features/submit/types";
+import type { Change } from "@/features/update-status/types";
 import type { ServerAction } from "@/types";
 import { formatChangeStatusMessage } from "@/utils/format-for-line";
 import { Prisma } from "@prisma/client";
