@@ -1,6 +1,16 @@
-import prisma from "@/server/db";
 import NextAuth from "next-auth";
+import type { DefaultSession } from "next-auth";
 import { authConfig } from "./auth.config";
+
+declare module "next-auth" {
+	// eslint-disable-next-line
+	interface Session extends DefaultSession {
+		user: {
+			id: string;
+			role: string;
+		} & DefaultSession["user"];
+	}
+}
 
 export const {
 	auth,
@@ -11,20 +21,18 @@ export const {
 	...authConfig,
 	session: { strategy: "jwt" },
 	callbacks: {
-		async signIn({ user, account, profile, email, credentials }) {
-			// ログイン成功時の処理
-			console.log("signin");
-			// const ipAddress = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
-			// const userAgent = req.headers["user-agent"] || "";
-			return true;
-		},
-		async jwt({ token, user }) {
-			if (user) token.user = user;
-
+		jwt({ token, user }) {
+			if (user) {
+				token.id = user.id;
+				token.role = "admin";
+			}
 			return token;
 		},
-		async session({ session, token }) {
-			session.user = token.user;
+		session({ session, token }) {
+			if (token) {
+				session.user.id = token.id as string;
+				session.user.role = token.role as string;
+			}
 			return session;
 		},
 	},

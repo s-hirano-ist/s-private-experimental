@@ -18,19 +18,19 @@ export function formatCreateCategoryMessage(
 	return `**${contentName}**\n\nカテゴリー\n${category}\nの登録ができました`;
 }
 
+export function formatCreateNewsMessage({
+	title,
+	quote,
+	url,
+	category,
+}: UnwrapPromise<ReturnType<typeof postNews>>) {
+	return `**【NEWS】**\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\ncategory: ${category.name}\nの登録ができました`;
+}
+
 export function formatCreateContentsMessage({
 	title,
 	quote,
 	url,
 }: UnwrapPromise<ReturnType<typeof postContents>>) {
 	return `**【CONTENTS】**\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\nの登録ができました`;
-}
-
-export function formatCreateNewsMessage({
-	title,
-	quote,
-	url,
-	categories,
-}: UnwrapPromise<ReturnType<typeof postNews>>) {
-	return `**【CONTENTS】**\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\ncategory: ${categories.name}\nの登録ができました`;
 }

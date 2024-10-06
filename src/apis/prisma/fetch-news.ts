@@ -15,7 +15,7 @@ export async function postNews(
 			title: true,
 			quote: true,
 			url: true,
-			categories: true,
+			category: true,
 		},
 	});
 }

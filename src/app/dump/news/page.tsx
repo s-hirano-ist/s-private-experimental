@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 	description: "Dump news data to GitHub",
 };
 
-export default async function Page() {
+export default function Page() {
 	return (
 		<>
 			<Header

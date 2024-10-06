@@ -35,29 +35,37 @@ describe("formatCreateCategoryMessage", () => {
 	});
 });
 
-describe("formatCreateContentsMessage", () => {
+describe("formatCreateNewsMessage", () => {
 	it("should format the create news message correctly", () => {
+		const id = 1;
 		const title = "新しいニュース";
 		const quote = "これは引用です";
 		const url = "https://example.com";
-		const category = "カテゴリー";
+		const category = {
+			id: 1,
+			name: "カテゴリー",
+			userId: "xxx",
+			createdAt: new Date(),
+			updatedAt: new Date(),
+		};
 
-		const result = formatCreateNewsMessage(title, quote, url, "NEWS", category);
+		const result = formatCreateNewsMessage({ id, title, quote, url, category });
 
 		expect(result).toBe(
-			"**NEWS**\n\nコンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\ncategory: カテゴリー\nの登録ができました",
+			"**【NEWS】**\n\nコンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\ncategory: カテゴリー\nの登録ができました",
 		);
 	});
 
 	it("should format the create contents message correctly", () => {
+		const id = 1;
 		const title = "新しいニュース";
 		const quote = "これは引用です";
 		const url = "https://example.com";
 
-		const result = formatCreateContentsMessage(title, quote, url, "CONTENTS");
+		const result = formatCreateContentsMessage({ id, title, quote, url });
 
 		expect(result).toBe(
-			"**CONTENTS**\n\nコンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\nの登録ができました",
+			"**【CONTENTS】**\n\nコンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\nの登録ができました",
 		);
 	});
 });

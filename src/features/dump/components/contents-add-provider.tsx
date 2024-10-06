@@ -1,6 +1,6 @@
 import { ContentsAddForm } from "./contents-add-form";
 
-export async function ContentsAddProvider() {
+export function ContentsAddProvider() {
 	try {
 		return <ContentsAddForm />;
 	} catch (error) {

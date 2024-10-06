@@ -5,8 +5,8 @@ import { postContents } from "@/apis/prisma/fetch-contents";
 import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@/constants";
 import { auth } from "@/features/auth/lib/auth";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
+import { formatCreateContentsMessage } from "@/features/dump/utils/format-for-line";
 import { validateContents } from "@/features/dump/utils/validate-contents";
-import { formatCreateContentsMessage } from "../utils/format-for-line";
 import type { ActionState } from "./type";
 
 export async function addContents(
