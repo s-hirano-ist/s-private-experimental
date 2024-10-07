@@ -1,4 +1,5 @@
 import { withSentryConfig } from "@sentry/nextjs";
+import { env } from "./src/env.mjs";
 await import("./src/env.mjs");
 
 // MEMO: scriptタグを利用する必要が出たときはnonceの利用推奨
@@ -8,6 +9,10 @@ await import("./src/env.mjs");
 // https://nextjs.org/docs/pages/api-reference/next-config-js/headers
 
 // MEMO: worker-src 'self' blob:; for Sentry
+
+// FIXME: CSP alerts won't work
+// MEMO: CSP report to for Sentry report
+// https://docs.sentry.io/security-legal-pii/security/security-policy-reporting/
 
 const cspHeader = `
     default-src 'self';
@@ -20,7 +25,10 @@ const cspHeader = `
     form-action 'self';
     frame-ancestors 'none';
 	worker-src 'self' blob:;
-    upgrade-insecure-requests;`;
+    upgrade-insecure-requests;
+	report-uri ${env.SENTRY_REPORT_URL};
+    report-to csp-endpoint;
+	`;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -45,6 +53,10 @@ const nextConfig = {
 					{
 						key: "Content-Security-Policy",
 						value: cspHeader.replace(/\n/g, ""),
+					},
+					{
+						key: "Report-To",
+						value: `{"group":"csp-endpoint","max_age":10886400,"endpoints":[{"url":"${env.SENTRY_REPORT_URL}"}],"include_subdomains":true}`,
 					},
 				],
 			},
