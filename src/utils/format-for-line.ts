@@ -1,5 +1,5 @@
-import type { postContents } from "@/apis/prisma/fetch-contents";
-import type { postNews } from "@/apis/prisma/fetch-news";
+import type { createContents } from "@/apis/prisma/fetch-contents";
+import type { createNews } from "@/apis/prisma/fetch-news";
 import type { ContentName } from "@/features/dump/types";
 import type { Status } from "@/features/update-status/types";
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
@@ -23,7 +23,7 @@ export function formatCreateNewsMessage({
 	quote,
 	url,
 	category,
-}: UnwrapPromise<ReturnType<typeof postNews>>) {
+}: UnwrapPromise<ReturnType<typeof createNews>>) {
 	return `**【NEWS】**\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\ncategory: ${category.name}\nの登録ができました`;
 }
 
@@ -31,6 +31,6 @@ export function formatCreateContentsMessage({
 	title,
 	quote,
 	url,
-}: UnwrapPromise<ReturnType<typeof postContents>>) {
+}: UnwrapPromise<ReturnType<typeof createContents>>) {
 	return `**【CONTENTS】**\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\nの登録ができました`;
 }

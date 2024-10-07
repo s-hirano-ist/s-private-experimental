@@ -5,7 +5,7 @@ import type { validateContents } from "@/features/dump/utils/validate-contents";
 import type { Status } from "@/features/update-status/types";
 import prisma from "@/prisma";
 
-export async function postContents(
+export async function createContents(
 	validatedFields: ReturnType<typeof validateContents>,
 ) {
 	const userId = await getUserId();

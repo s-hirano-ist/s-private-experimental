@@ -5,7 +5,9 @@ import type { validateNews } from "@/features/dump/utils/validate-news";
 import type { Status } from "@/features/update-status/types";
 import prisma from "@/prisma";
 
-export async function postNews(validatedNews: ReturnType<typeof validateNews>) {
+export async function createNews(
+	validatedNews: ReturnType<typeof validateNews>,
+) {
 	const userId = await getUserId();
 
 	return await prisma.news.create({

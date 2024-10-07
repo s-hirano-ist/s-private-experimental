@@ -2,7 +2,7 @@
 import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createCategory } from "@/apis/prisma/fetch-category";
-import { postNews } from "@/apis/prisma/fetch-news";
+import { createNews } from "@/apis/prisma/fetch-news";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { NotAllowedError, formatErrorForClient } from "@/error";
 import { checkPostPermission } from "@/features/auth/lib/role";
@@ -32,15 +32,15 @@ export async function addNews(
 			formData.set("category", String(category.id));
 		}
 
-		const postedNews = await postNews(validateNews(formData));
-		await sendLineNotifyMessage(formatCreateNewsMessage(postedNews));
+		const createdNews = await createNews(validateNews(formData));
+		await sendLineNotifyMessage(formatCreateNewsMessage(createdNews));
 
 		return {
 			success: true,
 			message: SUCCESS_MESSAGES.INSERTED,
 			data: {
-				...postedNews,
-				category: postedNews.category.name,
+				...createdNews,
+				category: createdNews.category.name,
 			},
 		};
 	} catch (error) {

@@ -1,7 +1,7 @@
 "use server";
 import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
-import { postContents } from "@/apis/prisma/fetch-contents";
+import { createContents } from "@/apis/prisma/fetch-contents";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { NotAllowedError, formatErrorForClient } from "@/error";
 import { checkPostPermission } from "@/features/auth/lib/role";
@@ -17,13 +17,13 @@ export async function addContents(
 		const hasPostPermission = await checkPostPermission();
 		if (!hasPostPermission) throw new NotAllowedError();
 
-		const postedContents = await postContents(validateContents(formData));
-		await sendLineNotifyMessage(formatCreateContentsMessage(postedContents));
+		const createdContents = await createContents(validateContents(formData));
+		await sendLineNotifyMessage(formatCreateContentsMessage(createdContents));
 
 		return {
 			success: true,
 			message: SUCCESS_MESSAGES.INSERTED,
-			data: postedContents,
+			data: createdContents,
 		};
 	} catch (error) {
 		return await formatErrorForClient(error);
