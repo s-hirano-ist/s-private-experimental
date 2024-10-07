@@ -10,11 +10,11 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { UnexpectedError } from "@/error";
-import { newsColumns } from "@/features/dump/components/news-columns";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import type { ContentName } from "@/features/dump/types";
 import { contentsColumns } from "@/features/update-status/components/contents-columns";
+import { newsColumns } from "@/features/update-status/components/news-columns";
 import {
 	type ColumnDef,
 	type ColumnFiltersState,

@@ -4,11 +4,13 @@ import type { Route } from "next";
 import { Link } from "next-view-transitions";
 import Image, { type StaticImageData } from "next/image";
 
-export function ContentsPreview({
-	path,
-	slug,
-	imagePath,
-}: { path: string; slug: string; imagePath: string }) {
+type Props = {
+	path: string;
+	slug: string;
+	imagePath: string;
+};
+
+export function ContentsPreview({ path, slug, imagePath }: Props) {
 	// TODO: imageをblobから取ってくる
 	// TODO: Image on errorの実装
 	// FIXME: 相対パスの記述
