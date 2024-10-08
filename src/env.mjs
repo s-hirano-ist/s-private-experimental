@@ -22,6 +22,7 @@ export const env = createEnv({
 				? z.string()
 				: z.string().optional(),
 		SENTRY_AUTH_TOKEN: z.string(),
+		SENTRY_REPORT_URL: z.string(),
 	},
 
 	/**
@@ -39,6 +40,7 @@ export const env = createEnv({
 		AUTH_URL: process.env.AUTH_URL,
 		AUTH_SECRET: process.env.AUTH_SECRET,
 		SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
+		SENTRY_REPORT_URL: process.env.SENTRY_REPORT_URL,
 		NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN, // MEMO: ok to leak
 	},
 	/**
