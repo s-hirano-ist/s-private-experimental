@@ -14,7 +14,7 @@ services:
     networks:
       - s-network
     env_file:
-      - ./.env.prod
+      - .env
 
   prod_frontend:
     container_name: prod-frontend
@@ -52,7 +52,7 @@ services:
     networks:
       - s-dev-network
     env_file:
-      - .env.local
+      - .env
 
 volumes:
   prod-db-data:
