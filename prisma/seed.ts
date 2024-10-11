@@ -4,17 +4,17 @@ import bcrypt from "bcryptjs";
 const prisma = new PrismaClient();
 
 async function main() {
-	const email = process.env.USER_EMAIL;
-	const password = process.env.USER_PASSWORD;
+	const email = process.env.SEED_EMAIL;
+	const password = process.env.SEED_PASSWORD;
 
-	if (!email || !password) throw new Error("USER EMAIL or PASSWORD undefined.");
+	if (!email || !password) throw new Error("EMAIL or PASSWORD undefined.");
 
 	try {
 		const hashedPassword = await bcrypt.hash(password, 8);
 
 		// UPSERT: if already exists then update, otherwise create
 		await prisma.users.upsert({
-			where: { email: email },
+			where: { email },
 			update: {},
 			create: {
 				email: email,
