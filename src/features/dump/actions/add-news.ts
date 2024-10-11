@@ -5,7 +5,7 @@ import { createCategory } from "@/apis/prisma/fetch-category";
 import { createNews } from "@/apis/prisma/fetch-news";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { NotAllowedError, formatErrorForClient } from "@/error";
-import { checkPostPermission } from "@/features/auth/lib/role";
+import { checkPostPermission } from "@/features/auth/utils/role";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import { validateCategory } from "@/features/dump/utils/validate-category";
 import { validateNews } from "@/features/dump/utils/validate-news";

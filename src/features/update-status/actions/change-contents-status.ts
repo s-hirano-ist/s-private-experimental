@@ -11,7 +11,7 @@ import {
 	UnexpectedError,
 	formatErrorForClient,
 } from "@/error";
-import { checkUpdateStatusPermission } from "@/features/auth/lib/role";
+import { checkUpdateStatusPermission } from "@/features/auth/utils/role";
 import type { UpdateOrRevert } from "@/features/update-status/types";
 import type { ServerAction } from "@/types";
 import { formatChangeStatusMessage } from "@/utils/format-for-line";

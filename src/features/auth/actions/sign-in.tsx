@@ -3,8 +3,8 @@ import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { formatErrorForClient } from "@/error";
-import { signIn as NextAuthSignIn } from "@/features/auth/lib/auth";
 import type { SignInSchema } from "@/features/auth/schemas/sign-in-schema";
+import { signIn as NextAuthSignIn } from "@/features/auth/utils/auth";
 import type { ServerAction } from "@/types";
 
 type SignInState = ServerAction<undefined>;

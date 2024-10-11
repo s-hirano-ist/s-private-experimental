@@ -1,4 +1,4 @@
-import { auth } from "@/features/auth/lib/auth";
+import { auth } from "@/features/auth/utils/auth";
 import { DEFAULT_SIGN_IN_REDIRECT } from "./constants";
 
 // MEMO: アクセスが禁止されているパスではなく、アクセスが許可されているパスを記述するべき。なぜなら、アクセスが禁止されているパスのすべてを把握するのは難しいからである。

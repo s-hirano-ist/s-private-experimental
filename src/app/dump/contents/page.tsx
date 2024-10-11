@@ -2,7 +2,7 @@ import { Header } from "@/components/nav/header";
 import { LoadingStack } from "@/components/stack/loading-stack";
 import { Separator } from "@/components/ui/separator";
 import { PAGE_NAME } from "@/constants";
-import { checkPostPermission } from "@/features/auth/lib/role";
+import { checkPostPermission } from "@/features/auth/utils/role";
 import { AddFormLoading } from "@/features/dump/components/add-form-loading";
 import { ContentsAddProvider } from "@/features/dump/components/contents-add-provider";
 import { ContentsContents } from "@/features/dump/components/contents-contents";

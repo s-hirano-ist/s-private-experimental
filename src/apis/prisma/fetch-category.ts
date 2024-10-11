@@ -1,6 +1,6 @@
 "use server";
 import "server-only";
-import { getUserId } from "@/features/auth/lib/user-id";
+import { getUserId } from "@/features/auth/utils/user-id";
 import type { validateCategory } from "@/features/dump/utils/validate-category";
 import prisma from "@/prisma";
 
