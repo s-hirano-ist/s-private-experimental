@@ -22,9 +22,9 @@ export function formatCreateNewsMessage({
 	title,
 	quote,
 	url,
-	category,
+	Category,
 }: UnwrapPromise<ReturnType<typeof createNews>>) {
-	return `**【NEWS】**\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\ncategory: ${category.name}\nの登録ができました`;
+	return `**【NEWS】**\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\ncategory: ${Category.name}\nの登録ができました`;
 }
 
 export function formatCreateContentsMessage({

@@ -40,7 +40,7 @@ export async function addNews(
 			message: SUCCESS_MESSAGES.INSERTED,
 			data: {
 				...createdNews,
-				category: createdNews.category.name,
+				category: createdNews.Category.name,
 			},
 		};
 	} catch (error) {

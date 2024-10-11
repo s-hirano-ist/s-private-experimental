@@ -14,7 +14,7 @@ export async function NewsContents() {
 						title: d.title,
 						quote: d.quote,
 						url: d.url,
-						category: d.category.name,
+						category: d.Category.name,
 					};
 				})}
 			/>

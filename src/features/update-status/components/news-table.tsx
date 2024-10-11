@@ -17,7 +17,7 @@ export async function NewsTable() {
 						quote: d.quote,
 						url: d.url,
 						status: d.status,
-						category: d.category.name,
+						category: d.Category.name,
 					};
 				})}
 				columnType="NEWS"
