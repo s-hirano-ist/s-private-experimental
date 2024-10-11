@@ -5,9 +5,11 @@ const prisma = new PrismaClient();
 
 async function main() {
 	const email = process.env.SEED_EMAIL;
+	const username = process.env.SEED_USERNAME;
 	const password = process.env.SEED_PASSWORD;
 
-	if (!email || !password) throw new Error("EMAIL or PASSWORD undefined.");
+	if (!email || !username || !password)
+		throw new Error("EMAIL, USERNAME or PASSWORD undefined.");
 
 	try {
 		const hashedPassword = await bcrypt.hash(password, 8);
@@ -17,7 +19,8 @@ async function main() {
 			where: { email },
 			update: {},
 			create: {
-				email: email,
+				email,
+				username,
 				password: hashedPassword,
 			},
 		});
