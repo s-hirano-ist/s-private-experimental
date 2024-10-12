@@ -15,7 +15,7 @@ type Props = { params: { username: string } };
 export function generateMetadata({ params }: Props): Metadata {
 	return {
 		title: `${params.username} | DUMPED NEWS & CONTENTS | ${PAGE_NAME}`,
-		description: "Dumped contents data to GitHub",
+		description: "Dumped news and contents data to GitHub",
 	};
 }
 
@@ -29,12 +29,9 @@ export default async function Page({ params }: Props) {
 			{viewStatus === "PROHIBITED" && <Unauthorized />}
 			{viewStatus === "NOT_FOUND" && <NotFound />}
 			{viewStatus === "VIEW_ONLY" && (
-				<>
-					{/* TODO: タイトル追加 */}
-					<Suspense fallback={<LoadingStack />}>
-						<ProfileContents />
-					</Suspense>
-				</>
+				<Suspense fallback={<LoadingStack />}>
+					<ProfileContents username={params.username} />
+				</Suspense>
 			)}
 		</>
 	);
