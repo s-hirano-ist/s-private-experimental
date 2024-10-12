@@ -2,7 +2,7 @@ import { auth } from "@/features/auth/utils/auth";
 import { DEFAULT_SIGN_IN_REDIRECT } from "./constants";
 
 // MEMO: アクセスが禁止されているパスではなく、アクセスが許可されているパスを記述するべき。なぜなら、アクセスが禁止されているパスのすべてを把握するのは難しいからである。
-const publicRoutes: string[] = ["/"];
+const publicRoutes: string[] = [];
 
 const authRoutes: string[] = ["/auth"];
 const apiAuthPrefix = "/api/auth";

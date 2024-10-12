@@ -22,7 +22,7 @@ export default async function Page() {
 	return (
 		<>
 			<Header
-				title="s-publicへ送信"
+				title="DUMP NEWS"
 				url="https://github.com/s-hirano-ist/s-public"
 			/>
 			{/* TODO: EDT profileを追加 */}

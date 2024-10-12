@@ -21,7 +21,7 @@ export default async function Page() {
 	return (
 		<>
 			<Header
-				title="s-privateへ送信"
+				title="DUMP CONTENTS"
 				url="https://github.com/s-hirano-ist/s-private"
 			/>
 			{/* TODO: EDIT profileを追加 */}

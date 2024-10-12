@@ -15,7 +15,7 @@ type Props = {
 	setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-export function SubmitDrawer({ setOpen }: Props) {
+export function AdminDrawer({ setOpen }: Props) {
 	const { toast } = useToast();
 
 	const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -94,10 +94,13 @@ export function SubmitDrawer({ setOpen }: Props) {
 					CONTENTS REVERT
 				</Button>
 			</div>
-			<Link href="/dump/all" className="p-4" scroll={false}>
+			<Link href="/profile" className="p-4">
+				<Button className="w-full">PROFILE</Button>
+			</Link>
+			<Link href="/dump/all" className="px-4 pb-4" scroll={false}>
 				<Button className="w-full">ALL DATA</Button>
 			</Link>
-			<Button className="mx-4" onClick={handleReload}>
+			<Button className="mx-4 p-4" onClick={handleReload}>
 				RELOAD PAGE
 			</Button>
 		</>

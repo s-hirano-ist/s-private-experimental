@@ -1,4 +1,4 @@
-export const PAGE_NAME = "s-private";
+export const PAGE_NAME = "private.s-hirano.com";
 
 export const FORM_ERROR_MESSAGES = {
 	REQUIRED: "必須項目です。",
