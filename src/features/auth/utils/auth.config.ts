@@ -15,18 +15,23 @@ export const authConfig: NextAuthConfig = {
 			async authorize(credentials) {
 				const parsedCredentials = signInSchema.safeParse(credentials);
 				if (parsedCredentials.success) {
-					const { email, password } = parsedCredentials.data;
+					const { username, password } = parsedCredentials.data;
 
 					const user = await prisma.users.findUnique({
-						where: { email },
+						where: { username },
 						// MEMO: only allowed to select password here (for auth). See `src/prisma.ts` for more.
-						select: { id: true, email: true, role: true, password: true },
+						select: {
+							id: true,
+							username: true,
+							role: true,
+							password: true,
+						},
 					});
 					if (!user) return null;
 					const passwordMatch = await bcrypt.compare(password, user.password);
 					if (!passwordMatch) return null;
 
-					return { id: user.id, role: user.role };
+					return { id: user.id, role: user.role, username: user.username };
 				}
 				return null;
 			},

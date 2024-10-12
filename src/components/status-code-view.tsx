@@ -1,12 +1,14 @@
-type StatusCode = "204" | "401" | "404" | "500";
+type StatusCode = "204" /*| "401" */ | "403" | "404" | "500";
 
 export function StatusCodeView({ statusCode }: { statusCode: StatusCode }) {
 	const statusMessage = () => {
 		switch (statusCode) {
 			case "204":
 				return "No Content";
-			case "401":
-				return "Unauthorized";
+			// case "401":
+			// return "Unauthorized";
+			case "403":
+				return "Forbidden";
 			case "404":
 				return "Not Found";
 			case "500":

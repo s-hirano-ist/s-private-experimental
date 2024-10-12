@@ -4,7 +4,7 @@ import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
 import { createContents } from "@/apis/prisma/fetch-contents";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { NotAllowedError, formatErrorForClient } from "@/error";
-import { checkPostPermission } from "@/features/auth/lib/role";
+import { checkPostPermission } from "@/features/auth/utils/role";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { validateContents } from "@/features/dump/utils/validate-contents";
 import type { ServerAction } from "@/types";

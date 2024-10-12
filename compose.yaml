@@ -8,15 +8,13 @@ services:
       - prod-db-data:/var/lib/postgresql/data
     ports:
       - 5432:5432 # FIXME: disable after #274
-    environment:
-      POSTGRES_USER: ${USERNAME}
-      POSTGRES_PASSWORD: ${PASSWORD}
-      POSTGRES_DB: dump-db
     profiles:
       - prod
     restart: always
     networks:
       - s-network
+    env_file:
+      - .env
 
   prod_frontend:
     container_name: prod-frontend
@@ -49,14 +47,12 @@ services:
       - dev-db-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
-    environment:
-      POSTGRES_USER: ${USERNAME}
-      POSTGRES_PASSWORD: ${PASSWORD}
-      POSTGRES_DB: dump-db
     profiles:
       - dev
     networks:
       - s-dev-network
+    env_file:
+      - .env
 
 volumes:
   prod-db-data:

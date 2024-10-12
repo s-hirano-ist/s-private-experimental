@@ -3,6 +3,7 @@ export const PAGE_NAME = "s-private";
 export const FORM_ERROR_MESSAGES = {
 	REQUIRED: "必須項目です。",
 	TOO_LONG: "文字数が多すぎます。",
+	ALPHABET_ONLY: "アルファベットとハイフンのみが入力可能です。",
 	INVALID_FORMAT: "無効なフォーマットで入力されています。",
 } as const;
 
@@ -30,4 +31,4 @@ export const LOADING_TABLE_ROWS = 5;
 
 export const MARKDOWN_PATHS = "s-contents/markdown";
 
-export const DEFAULT_SIGN_IN_REDIRECT = "/dump/news";
+export const DEFAULT_SIGN_IN_REDIRECT = "/";

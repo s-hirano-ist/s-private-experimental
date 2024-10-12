@@ -29,7 +29,7 @@ export function SignInForm() {
 	const form = useForm<SignInSchema>({
 		resolver: zodResolver(signInSchema),
 		defaultValues: {
-			email: "",
+			username: "",
 			password: "",
 		},
 	});
@@ -57,12 +57,12 @@ export function SignInForm() {
 			<form onSubmit={form.handleSubmit(onSignInSubmit)} className="space-y-8">
 				<FormField
 					control={form.control}
-					name="email"
+					name="username"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>メールアドレス</FormLabel>
+							<FormLabel>ユーザー名</FormLabel>
 							<FormControl>
-								<Input {...field} type="email" inputMode="email" />
+								<Input {...field} type="text" inputMode="text" />
 							</FormControl>
 							<FormMessage />
 						</FormItem>

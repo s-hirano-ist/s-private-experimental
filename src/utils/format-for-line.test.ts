@@ -41,7 +41,7 @@ describe("formatCreateNewsMessage", () => {
 		const title = "新しいニュース";
 		const quote = "これは引用です";
 		const url = "https://example.com";
-		const category = {
+		const Category = {
 			id: 1,
 			name: "カテゴリー",
 			userId: "xxx",
@@ -49,7 +49,7 @@ describe("formatCreateNewsMessage", () => {
 			updatedAt: new Date(),
 		};
 
-		const result = formatCreateNewsMessage({ id, title, quote, url, category });
+		const result = formatCreateNewsMessage({ id, title, quote, url, Category });
 
 		expect(result).toBe(
 			"**【NEWS】**\n\nコンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\ncategory: カテゴリー\nの登録ができました",
