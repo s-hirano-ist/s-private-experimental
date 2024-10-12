@@ -30,7 +30,6 @@ enum Scope {
 
 model Users {
   id           String           @id @default(uuid(7))
-  email        String           @unique
   username     String           @unique
   password     String
   role         Role             @default(VIEWER)

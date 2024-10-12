@@ -8,11 +8,13 @@ declare module "next-auth" {
 		user: {
 			id: string;
 			role: string;
+			username: string;
 		} & DefaultSession["user"];
 	}
 	// eslint-disable-next-line
 	interface User {
 		role: Role;
+		username: string;
 	}
 }
 
@@ -29,6 +31,7 @@ export const {
 			if (user) {
 				token.id = user.id;
 				token.role = user.role;
+				token.username = user.username;
 			}
 			return token;
 		},
@@ -36,6 +39,7 @@ export const {
 			if (token) {
 				session.user.id = token.id as string;
 				session.user.role = token.role as Role;
+				session.user.username = token.username as string;
 			}
 			return session;
 		},

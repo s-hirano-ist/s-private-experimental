@@ -3,10 +3,10 @@ import { z } from "zod";
 
 export const signInSchema = z.object({
 	// TODO: sanitizing
-	email: z
+	username: z
 		.string()
 		.trim()
-		.email({ message: FORM_ERROR_MESSAGES.INVALID_FORMAT })
+		.regex(/^[A-Za-z-]+$/, FORM_ERROR_MESSAGES.ALPHABET_ONLY)
 		.min(1, { message: FORM_ERROR_MESSAGES.REQUIRED })
 		.max(32, { message: FORM_ERROR_MESSAGES.TOO_LONG }),
 	password: z
