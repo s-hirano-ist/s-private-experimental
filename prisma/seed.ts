@@ -10,6 +10,8 @@ const SEED_USERS: { username: string; role: Role; scope: Scope }[] = [
 	{ username: "editor-private", role: "EDITOR", scope: "PRIVATE" },
 	{ username: "viewer-public", role: "VIEWER", scope: "PUBLIC" },
 	{ username: "viewer-private", role: "VIEWER", scope: "PRIVATE" },
+	{ username: "unauthorized-public", role: "UNAUTHORIZED", scope: "PUBLIC" },
+	{ username: "unauthorized-private", role: "UNAUTHORIZED", scope: "PRIVATE" },
 ];
 
 async function addSampleData(
@@ -34,7 +36,7 @@ async function addSampleData(
 	await prisma.news.create({
 		data: {
 			title: `news-title-${role}-${scope}`,
-			url: `news-url-${role}-${scope}`,
+			url: "https://example.com",
 			userId: user.id,
 			categoryId: user.Categories[0].id,
 		},
@@ -42,7 +44,7 @@ async function addSampleData(
 	await prisma.contents.create({
 		data: {
 			title: `contents-title-${role}-${scope}`,
-			url: `contents-url-${role}-${scope}`,
+			url: "https://example.com",
 			userId: user.id,
 		},
 	});

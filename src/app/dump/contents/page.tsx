@@ -12,7 +12,7 @@ import { Suspense } from "react";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-	title: `s-private追加 | ${PAGE_NAME}`,
+	title: `DUMP CONTENTS | ${PAGE_NAME}`,
 	description: "Dump contents data to GitHub",
 };
 
@@ -24,6 +24,7 @@ export default async function Page() {
 				title="s-privateへ送信"
 				url="https://github.com/s-hirano-ist/s-private"
 			/>
+			{/* TODO: EDIT profileを追加 */}
 			{hasPostPermission && (
 				<Suspense fallback={<AddFormLoading showCategory={false} />}>
 					<ContentsAddProvider />

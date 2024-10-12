@@ -14,3 +14,11 @@ export async function createLoginHistory(ipAddress: string, userAgent: string) {
 		},
 	});
 }
+
+export async function fetchUserScope(username: string) {
+	const user = await prisma.users.findUnique({
+		where: { username },
+		select: { scope: true },
+	});
+	return user?.scope;
+}
