@@ -31,4 +31,4 @@ export const LOADING_TABLE_ROWS = 5;
 
 export const MARKDOWN_PATHS = "s-contents/markdown";
 
-export const DEFAULT_SIGN_IN_REDIRECT = "/dump/news";
+export const DEFAULT_SIGN_IN_REDIRECT = "/";

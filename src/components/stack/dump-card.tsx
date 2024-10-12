@@ -6,6 +6,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 
 type Props = {
@@ -16,7 +17,7 @@ type Props = {
 	category?: string;
 };
 
-export function ContentStack({ id, title, quote, url, category }: Props) {
+export function DumpCard({ id, title, quote, url, category }: Props) {
 	return (
 		<Link href={new URL(url)} target="_blank" scroll={false}>
 			<Card className="hover:bg-secondary">
@@ -34,5 +35,22 @@ export function ContentStack({ id, title, quote, url, category }: Props) {
 				</CardContent>
 			</Card>
 		</Link>
+	);
+}
+
+export function DumpLoadingCard() {
+	return (
+		<Card className="hover:bg-primary/10">
+			<CardHeader>
+				<div className="flex gap-4">
+					<Skeleton className="h-6 w-8" />
+					<Skeleton className="h-6 w-24" />
+				</div>
+			</CardHeader>
+			<CardContent>
+				<Skeleton className="h-4 w-full" />
+				<Skeleton className="h-4 w-full" />
+			</CardContent>
+		</Card>
 	);
 }
