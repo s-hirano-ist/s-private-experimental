@@ -20,6 +20,7 @@ enum Role {
   ADMIN // 自分の投稿を追加・編集可能・/allにて全データ閲覧可能
   EDITOR // 自分の投稿を追加・編集可能・Scope==PUBLICのユーザーを閲覧可能
   VIEWER // 自分の投稿を閲覧可能・Scope==PUBLICのユーザーを閲覧可能
+  UNAUTHORIZED // 全投稿閲覧不可
 }
 
 enum Scope {
@@ -32,7 +33,6 @@ model Users {
   email        String           @unique
   username     String           @unique
   password     String
-  verified     Boolean          @default(false)
   role         Role             @default(VIEWER)
   scope        Scope            @default(PUBLIC)
   LoginHistory LoginHistories[]
