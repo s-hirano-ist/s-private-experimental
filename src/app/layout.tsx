@@ -6,11 +6,12 @@ import { ViewTransitions } from "next-view-transitions";
 import { Noto_Sans_JP } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
+import { PAGE_NAME } from "@/constants";
 
 const notoSansJp = Noto_Sans_JP({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "s-private",
+	title: `${PAGE_NAME}`,
 	description: "Private pages and admin tools for s-hirano-ist.",
 };
 

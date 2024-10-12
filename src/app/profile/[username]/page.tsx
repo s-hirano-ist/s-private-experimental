@@ -14,7 +14,7 @@ type Props = { params: { username: string } };
 
 export function generateMetadata({ params }: Props): Metadata {
 	return {
-		title: `${params.username} | DUMPED NEWS & CONTENTS | ${PAGE_NAME}`,
+		title: `${params.username} | PROFILE | ${PAGE_NAME}`,
 		description: "Dumped news and contents data to GitHub",
 	};
 }

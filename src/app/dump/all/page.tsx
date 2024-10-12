@@ -24,12 +24,12 @@ export default async function Home() {
 			<Header title="全データ" />
 			{hasAdminPermission ? (
 				<>
-					<h2 className="px-4">s-public</h2>
+					<h2 className="px-4">NEWS</h2>
 					<Suspense fallback={<LoadingTable />}>
 						<NewsTable />
 					</Suspense>
 					<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
-					<h2 className="px-4">s-private</h2>
+					<h2 className="px-4">CONTENTS</h2>
 					<Suspense fallback={<LoadingTable />}>
 						<ContentsTable />
 					</Suspense>
