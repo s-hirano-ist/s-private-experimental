@@ -13,7 +13,7 @@ export async function ProfileContents({ username }: Props) {
 
 		return (
 			<>
-				<p className="font-bold px-6 pt-2 text-primary">NEWS</p>
+				<p className="px-6 pt-2 font-bold text-primary">NEWS</p>
 				{News.length === 0 ? (
 					<StatusCodeView statusCode="204" />
 				) : (
@@ -33,7 +33,7 @@ export async function ProfileContents({ username }: Props) {
 					</div>
 				)}
 				<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
-				<p className="font-bold px-6 pt-2 text-primary">NOTES</p>
+				<p className="px-6 pt-2 font-bold text-primary">NOTES</p>
 				{Contents.length === 0 ? (
 					<StatusCodeView statusCode="204" />
 				) : (
