@@ -40,4 +40,6 @@ export const UTIL_URLS = [
 	{ name: "SUMMARY", url: "https://s-hirano.com/summary" },
 	{ name: "BOOK", url: "https://s-hirano.com/book" },
 	{ name: "BLOG", url: "https://s-hirano.com/blog" },
+	{ name: "PORTAINER", url: "https://private.s-hirano.com:9443" },
+	{ name: "GRAFANA", url: "https://private.s-hirano.com:3001" },
 ] as const;
