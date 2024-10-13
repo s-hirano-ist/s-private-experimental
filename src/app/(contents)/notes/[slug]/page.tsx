@@ -40,6 +40,6 @@ export default async function Page({ params }: Props) {
 	);
 }
 
-export function generateStaticParams() {
-	return getAllSlugs(path);
-}
+// export function generateStaticParams() {
+// 	return getAllSlugs(path);
+// }

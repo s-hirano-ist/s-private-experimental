@@ -1,3 +1,4 @@
+"use client";
 type Props = {
 	content: JSX.Element | JSX.Element[] | string;
 };
