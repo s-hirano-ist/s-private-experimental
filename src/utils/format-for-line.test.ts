@@ -18,7 +18,7 @@ describe("formatChangeStatusMessage", () => {
 
 		const result = formatChangeStatusMessage(changeStatus, contentName);
 
-		expect(result).toBe("**NEWS**\n\n更新\n未処理: 5\n直近更新: 3\n確定: 7");
+		expect(result).toBe("【NEWS】\n\n更新\n未処理: 5\n直近更新: 3\n確定: 7");
 	});
 });
 
@@ -30,7 +30,7 @@ describe("formatCreateCategoryMessage", () => {
 		const result = formatCreateCategoryMessage(category, contentName);
 
 		expect(result).toBe(
-			"**NEWS**\n\nカテゴリー\n新しいカテゴリー\nの登録ができました",
+			"【NEWS】\n\nカテゴリー\n新しいカテゴリー\nの登録ができました",
 		);
 	});
 });
@@ -52,7 +52,7 @@ describe("formatCreateNewsMessage", () => {
 		const result = formatCreateNewsMessage({ id, title, quote, url, Category });
 
 		expect(result).toBe(
-			"**【NEWS】**\n\nコンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\ncategory: カテゴリー\nの登録ができました",
+			"【NEWS】\n\nコンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\ncategory: カテゴリー\nの登録ができました",
 		);
 	});
 
@@ -65,7 +65,7 @@ describe("formatCreateNewsMessage", () => {
 		const result = formatCreateContentsMessage({ id, title, quote, url });
 
 		expect(result).toBe(
-			"**【CONTENTS】**\n\nコンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\nの登録ができました",
+			"【CONTENTS】\n\nコンテンツ\ntitle: 新しいニュース \nquote: これは引用です \nurl: https://example.com\nの登録ができました",
 		);
 	});
 });

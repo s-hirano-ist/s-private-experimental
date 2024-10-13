@@ -10,14 +10,14 @@ export function formatChangeStatusMessage(
 	status: Status,
 	contentName: ContentName,
 ) {
-	return `**${contentName}**\n\n更新\n未処理: ${status.unexported}\n直近更新: ${status.recentlyUpdated}\n確定: ${status.exported}`;
+	return `【${contentName}】\n\n更新\n未処理: ${status.unexported}\n直近更新: ${status.recentlyUpdated}\n確定: ${status.exported}`;
 }
 
 export function formatCreateCategoryMessage(
 	category: string,
 	contentName: ContentName,
 ) {
-	return `**${contentName}**\n\nカテゴリー\n${category}\nの登録ができました`;
+	return `【${contentName}】\n\nカテゴリー\n${category}\nの登録ができました`;
 }
 
 export function formatCreateNewsMessage({
@@ -26,7 +26,7 @@ export function formatCreateNewsMessage({
 	url,
 	Category,
 }: UnwrapPromise<ReturnType<typeof createNews>>) {
-	return `**【NEWS】**\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\ncategory: ${Category.name}\nの登録ができました`;
+	return `【NEWS】\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\ncategory: ${Category.name}\nの登録ができました`;
 }
 
 export function formatCreateContentsMessage({
@@ -34,13 +34,13 @@ export function formatCreateContentsMessage({
 	quote,
 	url,
 }: UnwrapPromise<ReturnType<typeof createContents>>) {
-	return `**【CONTENTS】**\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\nの登録ができました`;
+	return `【CONTENTS】\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\nの登録ができました`;
 }
 
 export function formatUpdateScopeMessage(scope: Scope) {
-	return `**【SCOPE】**\n\nscope: ${scope}\nに変更しました`;
+	return `【SCOPE】\n\nscope: ${scope}\nに変更しました`;
 }
 
 export function formatUpsertProfileMessage(data: ProfileSchema) {
-	return `**【PROFILE】**\n\nname: ${data.name}\nに変更しました`;
+	return `【PROFILE】\n\nname: ${data.name}\nに変更しました`;
 }
