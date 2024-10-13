@@ -7,13 +7,8 @@ import {
 } from "@/components/ui/drawer";
 import { UTIL_URLS } from "@/constants";
 import { Link } from "next-view-transitions";
-import { type Dispatch, type SetStateAction, useState } from "react";
 
-type Props = {
-	setOpen: Dispatch<SetStateAction<boolean>>;
-};
-
-export function UtilsDrawer({ setOpen }: Props) {
+export function UtilsDrawer() {
 	const handleReload = () => {
 		window.location.reload();
 	};

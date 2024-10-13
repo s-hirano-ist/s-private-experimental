@@ -95,7 +95,7 @@ export function Footer() {
 					</Link>
 				</div>
 				<DrawerContent>
-					<UtilsDrawer setOpen={setOpen} />
+					<UtilsDrawer />
 				</DrawerContent>
 			</Drawer>
 		</footer>
