@@ -1,5 +1,5 @@
 import { getNewsAndContents } from "@/apis/prisma/fetch-user";
-import { DumpCard } from "@/components/stack/dump-card";
+import { SmallCard } from "@/components/stack/small-card";
 import { StatusCodeView } from "@/components/status-code-view";
 import { Separator } from "@/components/ui/separator";
 
@@ -20,7 +20,7 @@ export async function ProfileContents({ username }: Props) {
 					<div className="grid grid-cols-1 gap-2 p-2 sm:grid-cols-2 sm:gap-4 sm:p-4">
 						{News.map((d) => {
 							return (
-								<DumpCard
+								<SmallCard
 									key={d.id}
 									id={d.id}
 									title={d.title}
@@ -40,7 +40,7 @@ export async function ProfileContents({ username }: Props) {
 					<div className="grid grid-cols-1 gap-2 p-2 sm:grid-cols-2 sm:gap-4 sm:p-4">
 						{Contents.map((d) => {
 							return (
-								<DumpCard
+								<SmallCard
 									key={d.id}
 									id={d.id}
 									title={d.title}

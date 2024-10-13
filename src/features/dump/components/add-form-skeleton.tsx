@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 type Props = { showCategory: boolean };
 
-export function AddFormLoading({ showCategory }: Props) {
+export function AddFormSkeleton({ showCategory }: Props) {
 	return (
 		<div className="space-y-4 p-4">
 			{showCategory && (

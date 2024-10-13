@@ -1,6 +1,6 @@
 import { Header } from "@/components/nav/header";
 import { NotFound } from "@/components/not-found";
-import { LoadingStack } from "@/components/stack/loading-stack";
+import { StackSkeleton } from "@/components/stack/stack-skeleton";
 import { Separator } from "@/components/ui/separator";
 import { Unauthorized } from "@/components/unauthorized";
 import { PAGE_NAME } from "@/constants";
@@ -32,7 +32,7 @@ export default async function Page({ params }: Props) {
 			{viewStatus === "PROHIBITED" && <Unauthorized />}
 			{viewStatus === "NOT_FOUND" && <NotFound />}
 			{viewStatus === "VIEW_ONLY" && (
-				<Suspense fallback={<LoadingStack />}>
+				<Suspense fallback={<StackSkeleton />}>
 					<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
 
 					<ProfileContents username={username} />

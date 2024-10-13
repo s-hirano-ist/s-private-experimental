@@ -1,7 +1,7 @@
-import { LoadingStack } from "@/components/stack/loading-stack";
+import { StackSkeleton } from "@/components/stack/stack-skeleton";
 import { Separator } from "@/components/ui/separator";
 import { checkPostPermission } from "@/features/auth/utils/role";
-import { AddFormLoading } from "@/features/dump/components/add-form-loading";
+import { AddFormSkeleton } from "@/features/dump/components/add-form-skeleton";
 import { AddNewsProvider } from "@/features/dump/components/add-news-provider";
 import { NewsStackProvider } from "@/features/dump/components/news-stack-provider";
 import { Suspense } from "react";
@@ -14,12 +14,12 @@ export default async function Page() {
 	return (
 		<>
 			{hasPostPermission && (
-				<Suspense fallback={<AddFormLoading showCategory />}>
+				<Suspense fallback={<AddFormSkeleton showCategory />}>
 					<AddNewsProvider />
 				</Suspense>
 			)}
 			<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
-			<Suspense fallback={<LoadingStack />}>
+			<Suspense fallback={<StackSkeleton />}>
 				<NewsStackProvider />
 			</Suspense>
 		</>

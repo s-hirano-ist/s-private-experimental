@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { DumpCard } from "./dump-card";
+import { SmallCard } from "./small-card";
 
 const meta = {
-	title: "Components/Stack/ContentStack",
-	component: DumpCard,
+	title: "Components/Stack/SmallCard",
+	component: SmallCard,
 	tags: ["autodocs"],
-} satisfies Meta<typeof DumpCard>;
+} satisfies Meta<typeof SmallCard>;
 
 export default meta;
 

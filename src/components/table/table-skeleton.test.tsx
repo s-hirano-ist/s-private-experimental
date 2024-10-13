@@ -1,11 +1,11 @@
-import { LOADING_TABLE_ROWS } from "@/constants";
+import { SKELETON_TABLE_ROWS } from "@/constants";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { LoadingTable } from "./loading-table";
+import { TableSkeleton } from "./table-skeleton";
 
-describe("LoadingTable", () => {
+describe("TableSkeleton", () => {
 	it("should render the table with skeleton headers and rows", () => {
-		render(<LoadingTable />);
+		render(<TableSkeleton />);
 
 		// Check for the presence of the table headers
 		const headers = screen.getAllByRole("columnheader");
@@ -19,7 +19,7 @@ describe("LoadingTable", () => {
 
 		// Check for the presence of the table rows
 		const rows = screen.getAllByRole("row");
-		expect(rows).toHaveLength(LOADING_TABLE_ROWS);
+		expect(rows).toHaveLength(SKELETON_TABLE_ROWS);
 
 		// Check for the presence of the skeleton elements in rows
 		for (const row of rows) {
@@ -32,7 +32,7 @@ describe("LoadingTable", () => {
 	});
 
 	it("should render the TableFooter with 0 rows", () => {
-		render(<LoadingTable />);
+		render(<TableSkeleton />);
 
 		// Check for the presence of the TableFooter
 		expect(screen.getByText("0")).toBeInTheDocument();

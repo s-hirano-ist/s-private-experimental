@@ -1,4 +1,4 @@
-import { LoadingTable } from "@/components/table/loading-table";
+import { TableSkeleton } from "@/components/table/table-skeleton";
 import { Separator } from "@/components/ui/separator";
 import { Unauthorized } from "@/components/unauthorized";
 import { checkAdminPermission } from "@/features/auth/utils/role";
@@ -16,12 +16,12 @@ export default async function Page() {
 			{hasAdminPermission ? (
 				<div className="space-y-2">
 					<h2 className="px-4">NEWS</h2>
-					<Suspense fallback={<LoadingTable />}>
+					<Suspense fallback={<TableSkeleton />}>
 						<NewsTable />
 					</Suspense>
 					<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
 					<h2 className="px-4">CONTENTS</h2>
-					<Suspense fallback={<LoadingTable />}>
+					<Suspense fallback={<TableSkeleton />}>
 						<ContentsTable />
 					</Suspense>
 				</div>

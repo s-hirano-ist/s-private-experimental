@@ -28,8 +28,8 @@ export const SUCCESS_MESSAGES = {
 	UPDATE: "更新が完了しました。",
 } as const;
 
-export const LOADING_STACK_SIZE = 32;
-export const LOADING_TABLE_ROWS = 5;
+export const SKELETON_STACK_SIZE = 32;
+export const SKELETON_TABLE_ROWS = 5;
 
 export const MARKDOWN_PATHS = "s-contents/markdown";
 

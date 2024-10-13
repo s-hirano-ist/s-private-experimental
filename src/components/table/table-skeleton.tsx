@@ -7,10 +7,10 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { LOADING_TABLE_ROWS } from "@/constants";
+import { SKELETON_TABLE_ROWS } from "@/constants";
 import { TableFooter } from "./table-footer";
 
-export function LoadingTable() {
+export function TableSkeleton() {
 	return (
 		<div className="w-full">
 			<Table>
@@ -25,7 +25,7 @@ export function LoadingTable() {
 					</TableRow>
 				</TableHeader>
 				<TableBody>
-					{[...Array(LOADING_TABLE_ROWS - 1)].map((_, key) => {
+					{[...Array(SKELETON_TABLE_ROWS - 1)].map((_, key) => {
 						return (
 							<TableRow key={String(key)}>
 								<TableCell className="h-12">
