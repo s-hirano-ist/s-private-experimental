@@ -1,3 +1,4 @@
+"use client";
 import { ContentsPreview } from "./contents-preview";
 
 type Props = { path: string; data: Record<string, string> };
