@@ -97,7 +97,7 @@ export function AdminDrawer({ setOpen }: Props) {
 			<Link href="/profile" className="p-4">
 				<Button className="w-full">PROFILE</Button>
 			</Link>
-			<Link href="/dump/all" className="px-4 pb-4" scroll={false}>
+			<Link href="/admin" className="px-4 pb-4" scroll={false}>
 				<Button className="w-full">ALL DATA</Button>
 			</Link>
 			<Button className="mx-4 p-4" onClick={handleReload}>

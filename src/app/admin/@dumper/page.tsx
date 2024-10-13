@@ -1,29 +1,20 @@
-import { Header } from "@/components/nav/header";
 import { LoadingTable } from "@/components/table/loading-table";
 import { Separator } from "@/components/ui/separator";
 import { Unauthorized } from "@/components/unauthorized";
-import { PAGE_NAME } from "@/constants";
 import { checkAdminPermission } from "@/features/auth/utils/role";
 import { ContentsTable } from "@/features/update-status/components/contents-table";
 import { NewsTable } from "@/features/update-status/components/news-table";
-import type { Metadata } from "next";
 import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-	title: `全データ | ${PAGE_NAME}`,
-	description: "All data of news/contents dump",
-};
-
-export default async function Home() {
+export default async function Page() {
 	const hasAdminPermission = await checkAdminPermission();
 
 	return (
-		<div className="space-y-2">
-			<Header title="全データ" />
+		<>
 			{hasAdminPermission ? (
-				<>
+				<div className="space-y-2">
 					<h2 className="px-4">NEWS</h2>
 					<Suspense fallback={<LoadingTable />}>
 						<NewsTable />
@@ -33,10 +24,10 @@ export default async function Home() {
 					<Suspense fallback={<LoadingTable />}>
 						<ContentsTable />
 					</Suspense>
-				</>
+				</div>
 			) : (
 				<Unauthorized />
 			)}
-		</div>
+		</>
 	);
 }
