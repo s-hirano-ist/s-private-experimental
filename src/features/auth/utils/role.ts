@@ -1,6 +1,6 @@
 "use server";
 import "server-only";
-import { fetchUserScope } from "@/apis/prisma/fetch-user";
+import { getUserScope } from "@/apis/prisma/fetch-user";
 import { UnexpectedError } from "@/error";
 import { checkSelfAuth } from "./get-session";
 
@@ -32,7 +32,7 @@ export async function checkViewStatus(pathname: string): Promise<ViewRole> {
 
 	if (user.username === pathname) return "VIEW_ONLY";
 
-	const scope = await fetchUserScope(pathname);
+	const scope = await getUserScope(pathname);
 	if (!scope) return "NOT_FOUND";
 	if (scope === "PUBLIC") return "VIEW_ONLY";
 	if (scope === "PRIVATE") return "PROHIBITED";
