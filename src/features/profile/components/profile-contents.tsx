@@ -1,4 +1,4 @@
-import { getProfile } from "@/apis/prisma/fetch-profile";
+import { getNewsAndContents } from "@/apis/prisma/fetch-profile";
 import { DumpCard } from "@/components/stack/dump-card";
 import { StatusCodeView } from "@/components/status-code-view";
 import { Separator } from "@/components/ui/separator";
@@ -9,7 +9,7 @@ type Props = {
 
 export async function ProfileContents({ username }: Props) {
 	try {
-		const { News, Contents } = await getProfile(username);
+		const { News, Contents } = await getNewsAndContents(username);
 
 		return (
 			<>

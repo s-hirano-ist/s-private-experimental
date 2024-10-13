@@ -24,7 +24,6 @@ export default async function Page() {
 				title="DUMP CONTENTS"
 				url="https://github.com/s-hirano-ist/s-private"
 			/>
-			{/* TODO: EDIT profileを追加 */}
 			{hasPostPermission && (
 				<Suspense fallback={<AddFormLoading showCategory={false} />}>
 					<ContentsAddProvider />
