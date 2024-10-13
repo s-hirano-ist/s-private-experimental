@@ -28,6 +28,7 @@ import {
 	useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
+import { EditDialog } from "./edit-dialog";
 
 type Props<T extends NewsContext | ContentsContext> = {
 	data: T[];
@@ -41,6 +42,9 @@ export function DumpTable<T extends NewsContext | ContentsContext>({
 	const [sorting, setSorting] = useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 	const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+
+	const [open, setOpen] = useState(false);
+	const [dialogData, setDialogData] = useState<NewsContext | ContentsContext>();
 
 	const columns = () => {
 		switch (columnType) {
@@ -66,6 +70,11 @@ export function DumpTable<T extends NewsContext | ContentsContext>({
 		state: { sorting, columnFilters, columnVisibility },
 	});
 
+	const handleClick = (rowData: NewsContext | ContentsContext) => {
+		setDialogData(rowData);
+		setOpen(true);
+	};
+
 	return (
 		<div className="p-4">
 			<Table className="min-w-[1080px] overflow-x-scroll">
@@ -90,7 +99,7 @@ export function DumpTable<T extends NewsContext | ContentsContext>({
 				<TableBody>
 					{table.getRowModel().rows?.length ? (
 						table.getRowModel().rows.map((row) => (
-							<TableRow key={row.id}>
+							<TableRow key={row.id} onClick={() => handleClick(row.original)}>
 								{row.getVisibleCells().map((cell) => (
 									<TableCell key={cell.id}>
 										{flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -113,6 +122,12 @@ export function DumpTable<T extends NewsContext | ContentsContext>({
 				previousButtonDisabled={!table.getCanPreviousPage()}
 				onClickNext={() => table.nextPage()}
 				nextButtonDisabled={!table.getCanNextPage()}
+			/>
+			<EditDialog
+				title={dialogData?.title ?? ""}
+				quote={dialogData?.quote ?? ""}
+				open={open}
+				setOpen={setOpen}
 			/>
 		</div>
 	);

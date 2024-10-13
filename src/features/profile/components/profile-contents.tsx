@@ -1,4 +1,4 @@
-import { getProfile } from "@/apis/prisma/fetch-profile";
+import { getNewsAndContents } from "@/apis/prisma/fetch-profile";
 import { DumpCard } from "@/components/stack/dump-card";
 import { StatusCodeView } from "@/components/status-code-view";
 import { Separator } from "@/components/ui/separator";
@@ -9,11 +9,11 @@ type Props = {
 
 export async function ProfileContents({ username }: Props) {
 	try {
-		const { News, Contents } = await getProfile(username);
+		const { News, Contents } = await getNewsAndContents(username);
 
 		return (
 			<>
-				<p className="font-bold px-6 pt-2 text-primary">NEWS</p>
+				<p className="px-6 pt-2 font-bold text-primary">NEWS</p>
 				{News.length === 0 ? (
 					<StatusCodeView statusCode="204" />
 				) : (
@@ -33,7 +33,7 @@ export async function ProfileContents({ username }: Props) {
 					</div>
 				)}
 				<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
-				<p className="font-bold px-6 pt-2 text-primary">NOTES</p>
+				<p className="px-6 pt-2 font-bold text-primary">NOTES</p>
 				{Contents.length === 0 ? (
 					<StatusCodeView statusCode="204" />
 				) : (

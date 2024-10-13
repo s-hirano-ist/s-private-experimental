@@ -1,7 +1,9 @@
 import type { createContents } from "@/apis/prisma/fetch-contents";
 import type { createNews } from "@/apis/prisma/fetch-news";
 import type { ContentName } from "@/features/dump/types";
+import type { ProfileSchema } from "@/features/profile/schemas/profile-schema";
 import type { Status } from "@/features/update-status/types";
+import type { Scope } from "@prisma/client";
 type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
 
 export function formatChangeStatusMessage(
@@ -33,4 +35,12 @@ export function formatCreateContentsMessage({
 	url,
 }: UnwrapPromise<ReturnType<typeof createContents>>) {
 	return `**【CONTENTS】**\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\nの登録ができました`;
+}
+
+export function formatUpdateScopeMessage(scope: Scope) {
+	return `**【SCOPE】**\n\nscope: ${scope}\nに変更しました`;
+}
+
+export function formatUpsertProfileMessage(data: ProfileSchema) {
+	return `**【PROFILE】**\n\nname: ${data.name}\nに変更しました`;
 }

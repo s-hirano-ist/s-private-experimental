@@ -2,7 +2,6 @@ import { FORM_ERROR_MESSAGES } from "@/constants";
 import { z } from "zod";
 
 export const signInSchema = z.object({
-	// TODO: sanitizing
 	username: z
 		.string()
 		.trim()

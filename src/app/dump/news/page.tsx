@@ -25,7 +25,6 @@ export default async function Page() {
 				title="DUMP NEWS"
 				url="https://github.com/s-hirano-ist/s-public"
 			/>
-			{/* TODO: EDT profileを追加 */}
 			{hasPostPermission && (
 				<Suspense fallback={<AddFormLoading showCategory />}>
 					<NewsAddProvider />

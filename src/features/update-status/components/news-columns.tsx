@@ -1,16 +1,8 @@
 import { Button } from "@/components/ui/button";
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from "@/components/ui/dialog";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import { sanitizeHref } from "@/utils/sanitize-href";
 import type { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, Lightbulb, Link as LinkIcon } from "lucide-react";
+import { ArrowUpDown, Link as LinkIcon } from "lucide-react";
 import type { Route } from "next";
 import Link from "next/link";
 
@@ -69,27 +61,6 @@ export const newsColumns = (): ColumnDef<NewsContext>[] => [
 		header: "タイトル",
 		cell: ({ row }) => {
 			return <div className="font-bold">{row.getValue("title")}</div>;
-		},
-	},
-	{
-		accessorKey: "quote",
-		header: () => <></>,
-		cell: ({ row }) => {
-			return (
-				row.getValue("quote") !== null && (
-					<Dialog>
-						<DialogTrigger>
-							<Lightbulb />
-						</DialogTrigger>
-						<DialogContent>
-							<DialogHeader>
-								<DialogTitle>{row.getValue("title")}</DialogTitle>
-								<DialogDescription>{row.getValue("quote")}</DialogDescription>
-							</DialogHeader>
-						</DialogContent>
-					</Dialog>
-				)
-			);
 		},
 	},
 	{
