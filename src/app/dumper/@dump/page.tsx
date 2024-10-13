@@ -12,44 +12,44 @@ export default function Page() {
 
 	const handleNewsUpdateStatus = async () => {
 		setButtonDisabled(true);
-		const state = await changeNewsStatus("UPDATE");
+		const response = await changeNewsStatus("UPDATE");
 		// TODO: revalidate path
 		toast({
-			variant: state.success ? "default" : "destructive",
-			description: state.message,
+			variant: response.success ? "default" : "destructive",
+			description: response.message,
 		});
 		setButtonDisabled(false);
 	};
 
 	const handleNewsRevertStatus = async () => {
 		setButtonDisabled(true);
-		const state = await changeNewsStatus("REVERT");
+		const response = await changeNewsStatus("REVERT");
 		// TODO: revalidate path
 		toast({
-			variant: state.success ? "default" : "destructive",
-			description: state.message,
+			variant: response.success ? "default" : "destructive",
+			description: response.message,
 		});
 		setButtonDisabled(false);
 	};
 
 	const handleContentsUpdateStatus = async () => {
 		setButtonDisabled(true);
-		const state = await changeContentsStatus("UPDATE");
+		const response = await changeContentsStatus("UPDATE");
 		// TODO: revalidate path
 		toast({
-			variant: state.success ? "default" : "destructive",
-			description: state.message,
+			variant: response.success ? "default" : "destructive",
+			description: response.message,
 		});
 		setButtonDisabled(false);
 	};
 
 	const handleContentsRevertStatus = async () => {
 		setButtonDisabled(true);
-		const state = await changeContentsStatus("REVERT");
+		const response = await changeContentsStatus("REVERT");
 		// TODO: revalidate path
 		toast({
-			variant: state.success ? "default" : "destructive",
-			description: state.message,
+			variant: response.success ? "default" : "destructive",
+			description: response.message,
 		});
 		setButtonDisabled(false);
 	};

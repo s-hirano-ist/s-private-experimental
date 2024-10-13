@@ -17,17 +17,17 @@ export function ScopeUpdateSwitch({ scope }: Props) {
 	);
 
 	async function handleScopeChange(checked: boolean) {
-		const state = await toggleScope(checked);
-		if (!state.success) {
+		const response = await toggleScope(checked);
+		if (!response.success) {
 			toast({
 				variant: "destructive",
-				description: state.message,
+				description: response.message,
 			});
 			return;
 		}
 		toast({
 			variant: "default",
-			description: state.message,
+			description: response.message,
 		});
 		if (checked) setSwitchChecked(true);
 		else setSwitchChecked(false);

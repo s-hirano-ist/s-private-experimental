@@ -31,17 +31,17 @@ export function ProfileUpsertForm({ defaultValues }: Props) {
 	});
 
 	async function onProfileSubmit(values: ProfileSchema) {
-		const state = await profileUpsert(values);
-		if (!state.success) {
+		const response = await profileUpsert(values);
+		if (!response.success) {
 			toast({
 				variant: "destructive",
-				description: state.message,
+				description: response.message,
 			});
 			return;
 		}
 		toast({
 			variant: "default",
-			description: state.message,
+			description: response.message,
 		});
 	}
 
