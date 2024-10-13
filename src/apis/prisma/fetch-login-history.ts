@@ -1,15 +1,15 @@
 "use server";
 import "server-only";
-import { getUserId } from "@/features/auth/utils/get-session";
 import prisma from "@/prisma";
+import { getUserIdForLoginHistory } from "./fetch-user";
 
 // SELF
 export async function createSelfLoginHistory(
-	ipAddress: string,
-	userAgent: string,
+	username: string,
+	ipAddress: string | undefined,
+	userAgent: string | undefined,
 ) {
-	const userId = await getUserId();
-
+	const userId = await getUserIdForLoginHistory(username);
 	return await prisma.loginHistories.create({
 		data: {
 			userId,

@@ -6,12 +6,21 @@ import prisma from "@/prisma";
 import type { Scope } from "@prisma/client";
 
 // everyone can access
-export async function fetchUserScope(username: string) {
+export async function getUserScope(username: string) {
 	const user = await prisma.users.findUnique({
 		where: { username },
 		select: { scope: true },
 	});
 	return user?.scope;
+}
+
+// restricted from specific usage
+export async function getUserIdForLoginHistory(username: string) {
+	const user = await prisma.users.findUniqueOrThrow({
+		where: { username },
+		select: { id: true },
+	});
+	return user.id;
 }
 
 // SELF
