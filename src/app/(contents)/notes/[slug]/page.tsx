@@ -24,7 +24,7 @@ export function generateMetadata({ params }: Props): Metadata {
 export default async function Page({ params }: Props) {
 	const hasAdminPermission = await checkAdminPermission();
 
-	const { slug } = params;
+	const slug = params.slug; // MEMO: no need to decode due to english file name
 	const content = getContentsBySlug(slug, `${MARKDOWN_PATHS}/${path}`);
 	const reactContent = await markdownToReact(content);
 
