@@ -22,8 +22,8 @@ export async function Profile({ username }: Props) {
 				{!Profile ? (
 					<StatusCodeView statusCode="204" />
 				) : (
-					<div className="grid grid-cols-1 gap-2 p-2 sm:grid-cols-2 sm:gap-4 sm:p-4">
-						<Card className="hover:bg-secondary">
+					<div className="gap-2 p-2 sm:p-4">
+						<Card>
 							<CardHeader>
 								<CardTitle>{Profile.name}</CardTitle>
 							</CardHeader>
@@ -34,7 +34,6 @@ export async function Profile({ username }: Props) {
 								{Profile.avatarUrl}
 							</CardContent>
 						</Card>
-						);
 					</div>
 				)}
 			</>
