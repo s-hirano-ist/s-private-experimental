@@ -9,7 +9,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { profileUpsert } from "@/features/profile/actions/profile-upsert";
+import { changeProfile } from "@/features/profile/actions/change-profile";
 import {
 	type ProfileSchema,
 	profileSchema,
@@ -22,7 +22,7 @@ type Props = {
 	defaultValues: ProfileSchema | undefined;
 };
 
-export function ProfileUpsertForm({ defaultValues }: Props) {
+export function UpsertProfileForm({ defaultValues }: Props) {
 	const { toast } = useToast();
 
 	const form = useForm<ProfileSchema>({
@@ -31,7 +31,7 @@ export function ProfileUpsertForm({ defaultValues }: Props) {
 	});
 
 	async function onProfileSubmit(values: ProfileSchema) {
-		const response = await profileUpsert(values);
+		const response = await changeProfile(values);
 		if (!response.success) {
 			toast({
 				variant: "destructive",

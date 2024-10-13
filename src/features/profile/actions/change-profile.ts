@@ -8,7 +8,7 @@ import type { ProfileSchema } from "@/features/profile/schemas/profile-schema";
 import type { ServerAction } from "@/types";
 import { formatUpsertProfileMessage } from "@/utils/format-for-line";
 
-export async function profileUpsert(
+export async function changeProfile(
 	values: ProfileSchema,
 ): Promise<ServerAction<undefined>> {
 	try {

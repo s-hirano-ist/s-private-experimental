@@ -7,7 +7,7 @@ import { wrapServerSideErrorForClient } from "@/error";
 import type { ServerAction } from "@/types";
 import { formatUpdateScopeMessage } from "@/utils/format-for-line";
 
-export async function toggleScope(
+export async function changeScope(
 	checked: boolean,
 ): Promise<ServerAction<undefined>> {
 	try {
