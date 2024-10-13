@@ -10,6 +10,7 @@ import {
 	SendIcon,
 	UserRoundPenIcon,
 } from "lucide-react";
+import type { Route } from "next";
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { type ReactNode, useState } from "react";
@@ -65,7 +66,9 @@ export function Footer() {
 						</div>
 					</DrawerTrigger>
 
-					<Link href="/dumper" scroll={false}>
+					{/* FIXME: bug with parallel routes
+					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
+					<Link href={"/dumper" as Route} scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
@@ -76,7 +79,9 @@ export function Footer() {
 						</Button>
 					</Link>
 
-					<Link href="/contents" scroll={false}>
+					{/* FIXME: bug with parallel routes
+					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
+					<Link href={"/contents" as Route} scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
