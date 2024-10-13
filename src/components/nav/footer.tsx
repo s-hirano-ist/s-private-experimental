@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { AdminDrawer } from "@/features/update-status/components/admin-drawer";
+import { UtilsDrawer } from "@/features/update-status/components/utils-drawer";
 import { cn } from "@/utils/tailwindcss";
 import {
 	FileUpIcon,
@@ -95,7 +95,7 @@ export function Footer() {
 					</Link>
 				</div>
 				<DrawerContent>
-					<AdminDrawer setOpen={setOpen} />
+					<UtilsDrawer />
 				</DrawerContent>
 			</Drawer>
 		</footer>

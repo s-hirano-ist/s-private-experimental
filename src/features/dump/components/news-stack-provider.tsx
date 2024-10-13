@@ -1,19 +1,22 @@
-import { getUnexportedContents } from "@/apis/prisma/fetch-contents";
+"use server";
+import "server-only";
+import { getSelfUnexportedNews } from "@/apis/prisma/fetch-news";
 import { StatusCodeView } from "@/components/status-code-view";
-import { ContentsStack } from "./contents-stack";
+import { NewsStack } from "./news-stack";
 
-export async function ContentsContents() {
+export async function NewsStackProvider() {
 	try {
-		const unexportedContents = await getUnexportedContents();
+		const unexportedNews = await getSelfUnexportedNews();
 
 		return (
-			<ContentsStack
-				contents={unexportedContents.map((d) => {
+			<NewsStack
+				news={unexportedNews.map((d) => {
 					return {
 						id: d.id,
 						title: d.title,
 						quote: d.quote,
 						url: d.url,
+						category: d.Category.name,
 					};
 				})}
 			/>

@@ -1,15 +1,15 @@
 "use server";
 import "server-only";
-import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
+import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import {
-	revertContentsStatus,
-	updateContentsStatus,
+	revertSelfContentsStatus,
+	updateSelfContentsStatus,
 } from "@/apis/prisma/fetch-contents";
 import { SUCCESS_MESSAGES } from "@/constants";
 import {
 	NotAllowedError,
 	UnexpectedError,
-	formatErrorForClient,
+	wrapServerSideErrorForClient,
 } from "@/error";
 import { checkUpdateStatusPermission } from "@/features/auth/utils/role";
 import type { UpdateOrRevert } from "@/features/update-status/types";
@@ -19,9 +19,9 @@ import { formatChangeStatusMessage } from "@/utils/format-for-line";
 const handleStatusChange = async (changeType: UpdateOrRevert) => {
 	switch (changeType) {
 		case "UPDATE":
-			return await updateContentsStatus();
+			return await updateSelfContentsStatus();
 		case "REVERT":
-			return await revertContentsStatus();
+			return await revertSelfContentsStatus();
 		default:
 			throw new UnexpectedError();
 	}
@@ -43,6 +43,6 @@ export async function changeContentsStatus(
 		await sendLineNotifyMessage(data);
 		return { success: true, message: SUCCESS_MESSAGES.UPDATE, data };
 	} catch (error) {
-		return await formatErrorForClient(error);
+		return await wrapServerSideErrorForClient(error);
 	}
 }

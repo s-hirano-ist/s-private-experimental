@@ -35,7 +35,7 @@ module.exports = {
 		"react/prop-types": "off",
 		"@next/next/no-img-element": "off",
 		"no-console": ["warn", { allow: ["error"] }],
-		"no-restricted-imports": ["error", { patterns: ["../"] }],
+		"no-restricted-imports": ["error", { patterns: ["../"] }], // TODO: src/apis/prisma/**/* 配下の全ファイルに対して、**/actions/**/* あるいは、**/page.tsx からしか読み込めないようにする
 		"@typescript-eslint/no-unused-vars": [
 			"warn",
 			{

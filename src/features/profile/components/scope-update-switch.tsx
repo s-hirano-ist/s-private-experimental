@@ -1,6 +1,6 @@
 "use client";
 import { Switch } from "@/components/ui/switch";
-import { toggleScope } from "@/features/profile/actions/toggle-scope";
+import { changeScope } from "@/features/profile/actions/change-scope";
 import { useToast } from "@/hooks/use-toast";
 import type { Scope } from "@prisma/client";
 import { useState } from "react";
@@ -17,17 +17,17 @@ export function ScopeUpdateSwitch({ scope }: Props) {
 	);
 
 	async function handleScopeChange(checked: boolean) {
-		const state = await toggleScope(checked);
-		if (!state.success) {
+		const response = await changeScope(checked);
+		if (!response.success) {
 			toast({
 				variant: "destructive",
-				description: state.message,
+				description: response.message,
 			});
 			return;
 		}
 		toast({
 			variant: "default",
-			description: state.message,
+			description: response.message,
 		});
 		if (checked) setSwitchChecked(true);
 		else setSwitchChecked(false);

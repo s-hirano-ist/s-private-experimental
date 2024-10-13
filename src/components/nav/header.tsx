@@ -19,13 +19,13 @@ export function Header({ title, url }: Props) {
 	const { toast } = useToast();
 
 	async function onSignOutSubmit() {
-		const state = await signOut();
-		if (state.success) {
+		const response = await signOut();
+		if (response.success) {
 			router.push(DEFAULT_SIGN_IN_REDIRECT);
 		} else {
 			toast({
 				variant: "destructive",
-				description: state.message,
+				description: response.message,
 			});
 		}
 	}

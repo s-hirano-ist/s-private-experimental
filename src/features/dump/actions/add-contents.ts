@@ -1,9 +1,9 @@
 "use server";
 import "server-only";
-import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
-import { createContents } from "@/apis/prisma/fetch-contents";
+import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
+import { createSelfContents } from "@/apis/prisma/fetch-contents";
 import { SUCCESS_MESSAGES } from "@/constants";
-import { NotAllowedError, formatErrorForClient } from "@/error";
+import { NotAllowedError, wrapServerSideErrorForClient } from "@/error";
 import { checkPostPermission } from "@/features/auth/utils/role";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { validateContents } from "@/features/dump/utils/validate-contents";
@@ -17,7 +17,9 @@ export async function addContents(
 		const hasPostPermission = await checkPostPermission();
 		if (!hasPostPermission) throw new NotAllowedError();
 
-		const createdContents = await createContents(validateContents(formData));
+		const createdContents = await createSelfContents(
+			validateContents(formData),
+		);
 		await sendLineNotifyMessage(formatCreateContentsMessage(createdContents));
 
 		return {
@@ -26,6 +28,6 @@ export async function addContents(
 			data: createdContents,
 		};
 	} catch (error) {
-		return await formatErrorForClient(error);
+		return await wrapServerSideErrorForClient(error);
 	}
 }

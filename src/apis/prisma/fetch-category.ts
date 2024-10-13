@@ -1,10 +1,11 @@
 "use server";
 import "server-only";
-import { getUserId } from "@/features/auth/utils/user-id";
+import { getUserId } from "@/features/auth/utils/get-session";
 import type { validateCategory } from "@/features/dump/utils/validate-category";
 import prisma from "@/prisma";
 
-export async function createCategory(
+// SELF
+export async function createSelfCategory(
 	validatedCategory: ReturnType<typeof validateCategory>,
 ) {
 	const userId = await getUserId();
@@ -14,7 +15,7 @@ export async function createCategory(
 	});
 }
 
-export async function getCategories() {
+export async function getSelfCategories() {
 	const userId = await getUserId();
 
 	return await prisma.categories.findMany({

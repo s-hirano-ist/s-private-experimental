@@ -35,13 +35,13 @@ export function SignInForm() {
 	});
 
 	async function onSignInSubmit(values: SignInSchema) {
-		const state = await signIn(values);
-		if (state.success) {
+		const response = await signIn(values);
+		if (response.success) {
 			router.push(DEFAULT_SIGN_IN_REDIRECT);
 		} else {
 			toast({
 				variant: "destructive",
-				description: state.message,
+				description: response.message,
 			});
 		}
 	}

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { LoadingStack } from "./loading-stack";
+import { StackSkeleton } from "./stack-skeleton";
 
 const meta = {
-	title: "Components/Stack/LoadingStack",
-	component: LoadingStack,
+	title: "Components/Stack/StackSkeleton",
+	component: StackSkeleton,
 	tags: ["autodocs"],
-} satisfies Meta<typeof LoadingStack>;
+} satisfies Meta<typeof StackSkeleton>;
 
 export default meta;
 

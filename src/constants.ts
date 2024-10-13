@@ -28,9 +28,16 @@ export const SUCCESS_MESSAGES = {
 	UPDATE: "更新が完了しました。",
 } as const;
 
-export const LOADING_STACK_SIZE = 32;
-export const LOADING_TABLE_ROWS = 5;
+export const SKELETON_STACK_SIZE = 32;
+export const SKELETON_TABLE_ROWS = 5;
 
 export const MARKDOWN_PATHS = "s-contents/markdown";
 
 export const DEFAULT_SIGN_IN_REDIRECT = "/";
+
+export const UTIL_URLS = [
+	{ name: "NEWS", url: "https://s-hirano.com/news" },
+	{ name: "SUMMARY", url: "https://s-hirano.com/summary" },
+	{ name: "BOOK", url: "https://s-hirano.com/book" },
+	{ name: "BLOG", url: "https://s-hirano.com/blog" },
+] as const;

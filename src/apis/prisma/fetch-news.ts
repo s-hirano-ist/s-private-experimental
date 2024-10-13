@@ -1,11 +1,13 @@
 "use server";
 import "server-only";
-import { getUserId } from "@/features/auth/utils/user-id";
+import { NotAllowedError } from "@/error";
+import { getSelfRole, getUserId } from "@/features/auth/utils/get-session";
 import type { validateNews } from "@/features/dump/utils/validate-news";
 import type { Status } from "@/features/update-status/types";
 import prisma from "@/prisma";
 
-export async function createNews(
+// SELF
+export async function createSelfNews(
 	validatedNews: ReturnType<typeof validateNews>,
 ) {
 	const userId = await getUserId();
@@ -22,7 +24,7 @@ export async function createNews(
 	});
 }
 
-export async function getUnexportedNews() {
+export async function getSelfUnexportedNews() {
 	const userId = await getUserId();
 
 	return await prisma.news.findMany({
@@ -38,7 +40,7 @@ export async function getUnexportedNews() {
 	});
 }
 
-export async function updateNewsStatus(): Promise<Status> {
+export async function updateSelfNewsStatus(): Promise<Status> {
 	const userId = await getUserId();
 
 	return await prisma.$transaction(async (prisma) => {
@@ -58,7 +60,7 @@ export async function updateNewsStatus(): Promise<Status> {
 	});
 }
 
-export async function revertNewsStatus(): Promise<Status> {
+export async function revertSelfNewsStatus(): Promise<Status> {
 	const userId = await getUserId();
 
 	return await prisma.$transaction(async (prisma) => {
@@ -80,6 +82,10 @@ export async function revertNewsStatus(): Promise<Status> {
 
 // ROLE === "admin" only
 export async function getAllNews() {
+	const role = await getSelfRole();
+
+	if (role !== "ADMIN") throw new NotAllowedError();
+
 	return await prisma.news.findMany({
 		select: {
 			id: true,

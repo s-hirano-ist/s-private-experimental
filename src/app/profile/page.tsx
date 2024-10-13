@@ -1,10 +1,10 @@
-import { getScope } from "@/apis/prisma/fetch-user";
+import { getSelfProfile } from "@/apis/prisma/fetch-profile";
+import { getSelfScope } from "@/apis/prisma/fetch-user";
 import { Header } from "@/components/nav/header";
 import { PAGE_NAME } from "@/constants";
-import { getProfile } from "@/features/auth/utils/profile";
-import { checkAuth } from "@/features/auth/utils/role";
-import { ProfileUpsertForm } from "@/features/profile/components/profile-upsert-form";
+import { checkSelfAuth } from "@/features/auth/utils/get-session";
 import { ScopeUpdateSwitch } from "@/features/profile/components/scope-update-switch";
+import { UpsertProfileForm } from "@/features/profile/components/upsert-profile-form";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -15,15 +15,15 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-	const session = await checkAuth();
-	const profile = await getProfile();
-	const scope = await getScope();
+	const session = await checkSelfAuth();
+	const profile = await getSelfProfile();
+	const scope = await getSelfScope();
 
 	return (
 		<>
 			<Header title={`Profile of ${session.user.username}`} />
 			<div className="space-y-4 p-4">
-				<ProfileUpsertForm defaultValues={profile} />
+				<UpsertProfileForm defaultValues={profile} />
 				<ScopeUpdateSwitch scope={scope} />
 			</div>
 		</>

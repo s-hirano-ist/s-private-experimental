@@ -8,7 +8,7 @@ import type { ContentsType } from "@/features/contents/types";
 import { markdownToReact } from "@/features/contents/utils/markdownToReact";
 import type { Metadata } from "next";
 
-const path = "notes";
+const path = "books";
 
 export const dynamicParams = true; // FIXME: #278
 
@@ -16,21 +16,21 @@ type Props = { params: ContentsType };
 
 export function generateMetadata({ params }: Props): Metadata {
 	return {
-		title: `${params.slug} | ${PAGE_NAME}`,
-		description: `Private notes of ${params.slug}`,
+		title: `${decodeURIComponent(params.slug)} | ${PAGE_NAME}`,
+		description: `Private book review of ${decodeURIComponent(params.slug)}`,
 	};
 }
 
 export default async function Page({ params }: Props) {
 	const hasAdminPermission = await checkAdminPermission();
 
-	const { slug } = params;
-	const content = getContentsBySlug(slug, `${MARKDOWN_PATHS}/${path}`);
+	const decordedSlug = decodeURIComponent(params.slug);
+	const content = getContentsBySlug(decordedSlug, `${MARKDOWN_PATHS}/${path}`);
 	const reactContent = await markdownToReact(content);
 
 	return (
 		<>
-			<Header title={slug} />
+			<Header title={decordedSlug} />
 			{hasAdminPermission ? (
 				<ContentsBody content={reactContent} />
 			) : (

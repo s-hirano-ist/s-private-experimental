@@ -1,10 +1,10 @@
 import { Prisma } from "@prisma/client";
 import { AuthError } from "next-auth";
-import { sendLineNotifyMessage } from "./apis/line-notify/send-message";
+import { sendLineNotifyMessage } from "./apis/line-notify/fetch-message";
 import { ERROR_MESSAGES, FORM_ERROR_MESSAGES } from "./constants";
 import type { ServerAction } from "./types";
 
-export async function formatErrorForClient<T>(
+export async function wrapServerSideErrorForClient<T>(
 	error: unknown,
 ): Promise<ServerAction<T>> {
 	if (error instanceof LineNotifyError) {

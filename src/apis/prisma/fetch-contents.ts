@@ -1,11 +1,13 @@
 "use server";
 import "server-only";
-import { getUserId } from "@/features/auth/utils/user-id";
+import { NotAllowedError } from "@/error";
+import { getSelfRole, getUserId } from "@/features/auth/utils/get-session";
 import type { validateContents } from "@/features/dump/utils/validate-contents";
 import type { Status } from "@/features/update-status/types";
 import prisma from "@/prisma";
 
-export async function createContents(
+// SELF
+export async function createSelfContents(
 	validatedFields: ReturnType<typeof validateContents>,
 ) {
 	const userId = await getUserId();
@@ -21,7 +23,7 @@ export async function createContents(
 	});
 }
 
-export async function getUnexportedContents() {
+export async function getSelfUnexportedContents() {
 	const userId = await getUserId();
 
 	return await prisma.contents.findMany({
@@ -36,7 +38,7 @@ export async function getUnexportedContents() {
 	});
 }
 
-export async function updateContentsStatus(): Promise<Status> {
+export async function updateSelfContentsStatus(): Promise<Status> {
 	const userId = await getUserId();
 
 	return await prisma.$transaction(async (prisma) => {
@@ -56,7 +58,7 @@ export async function updateContentsStatus(): Promise<Status> {
 	});
 }
 
-export async function revertContentsStatus(): Promise<Status> {
+export async function revertSelfContentsStatus(): Promise<Status> {
 	const userId = await getUserId();
 
 	return await prisma.$transaction(async (prisma) => {
@@ -78,6 +80,10 @@ export async function revertContentsStatus(): Promise<Status> {
 
 // ROLE === "admin" only
 export async function getAllContents() {
+	const role = await getSelfRole();
+
+	if (role !== "ADMIN") throw new NotAllowedError();
+
 	return await prisma.contents.findMany({
 		select: {
 			id: true,
