@@ -1,6 +1,12 @@
 import { auth } from "@/features/auth/utils/auth";
 import { DEFAULT_SIGN_IN_REDIRECT } from "./constants";
 
+// FIXME: issue with edge compatibility
+// https://authjs.dev/guides/edge-compatibility
+// import authConfig from "@/features/auth/utils/auth.config";
+// import NextAuth from "next-auth";
+// export const { auth: middleware } = NextAuth(authConfig);
+
 // MEMO: アクセスが禁止されているパスではなく、アクセスが許可されているパスを記述するべき。なぜなら、アクセスが禁止されているパスのすべてを把握するのは難しいからである。
 const publicRoutes: string[] = [];
 

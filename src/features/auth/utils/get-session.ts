@@ -1,11 +1,15 @@
 "use server";
 import "server-only";
 import { UnauthorizedError } from "@/error";
+// import { redirect } from "next/navigation";
 import { auth } from "./auth";
 
 export async function checkSelfAuth() {
 	const session = await auth();
-	if (!session) throw new UnauthorizedError();
+	if (!session) {
+		throw new UnauthorizedError();
+		// redirect("/auth"); // WHEN MIDDLEWARE DO NOT WORK
+	}
 	return session;
 }
 
