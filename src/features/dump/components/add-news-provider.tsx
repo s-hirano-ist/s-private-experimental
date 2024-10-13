@@ -1,11 +1,11 @@
 import { getSelfCategories } from "@/apis/prisma/fetch-category";
-import { NewsAddForm } from "@/features/dump/components/news-add-form";
+import { AddNewsForm } from "@/features/dump/components/add-news-form";
 
-export async function NewsAddProvider() {
+export async function AddNewsProvider() {
 	try {
 		const categories = await getSelfCategories();
 
-		return <NewsAddForm categories={categories} />;
+		return <AddNewsForm categories={categories} />;
 	} catch (error) {
 		console.error("Unexpected error.", error);
 		return <></>;
