@@ -1,10 +1,21 @@
 "use server";
 import "server-only";
-import { getUserId } from "@/features/auth/utils/user-id";
+import { NotAllowedError } from "@/error";
+import { getUserId } from "@/features/auth/utils/get-session";
 import prisma from "@/prisma";
 import type { Scope } from "@prisma/client";
 
-export async function getScope() {
+// everyone can access
+export async function fetchUserScope(username: string) {
+	const user = await prisma.users.findUnique({
+		where: { username },
+		select: { scope: true },
+	});
+	return user?.scope;
+}
+
+// SELF
+export async function getSelfScope() {
 	const userId = await getUserId();
 	const user = await prisma.users.findUniqueOrThrow({
 		where: { id: userId },
@@ -13,10 +24,46 @@ export async function getScope() {
 	return user.scope;
 }
 
-export async function updateScope(scope: Scope) {
+export async function updateSelfScope(scope: Scope) {
 	const userId = await getUserId();
 	return await prisma.users.update({
 		where: { id: userId },
 		data: { scope },
 	});
+}
+
+// accessed path's username.scope === private || user's own page
+export async function getNewsAndContents(username: string) {
+	const userId = await getUserId();
+
+	const user = await prisma.users.findUniqueOrThrow({ where: { id: userId } });
+	if (user.role === "UNAUTHORIZED") throw new NotAllowedError();
+
+	const newsAndContents = await prisma.users.findUniqueOrThrow({
+		where: { username },
+		select: {
+			scope: true,
+			News: {
+				select: {
+					id: true,
+					title: true,
+					quote: true,
+					url: true,
+					Category: { select: { name: true } },
+				},
+			},
+			Contents: {
+				select: {
+					id: true,
+					title: true,
+					quote: true,
+					url: true,
+				},
+			},
+		},
+	});
+	if (newsAndContents.scope === "PRIVATE" && username !== user.username)
+		throw new NotAllowedError();
+
+	return newsAndContents;
 }

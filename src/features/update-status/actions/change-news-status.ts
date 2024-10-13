@@ -1,7 +1,10 @@
 "use server";
 import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
-import { revertNewsStatus, updateNewsStatus } from "@/apis/prisma/fetch-news";
+import {
+	revertSelfNewsStatus,
+	updateSelfNewsStatus,
+} from "@/apis/prisma/fetch-news";
 import { SUCCESS_MESSAGES } from "@/constants";
 import {
 	NotAllowedError,
@@ -16,9 +19,9 @@ import { formatChangeStatusMessage } from "@/utils/format-for-line";
 const handleStatusChange = async (changeType: UpdateOrRevert) => {
 	switch (changeType) {
 		case "UPDATE":
-			return await updateNewsStatus();
+			return await updateSelfNewsStatus();
 		case "REVERT":
-			return await revertNewsStatus();
+			return await revertSelfNewsStatus();
 		default:
 			throw new UnexpectedError();
 	}

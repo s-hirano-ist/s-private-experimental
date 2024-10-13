@@ -28,7 +28,7 @@ export default async function Page({ params }: Props) {
 	return (
 		<>
 			<Header title={`Profile of ${params.username}`} />
-			<Profile username={username} />
+			{viewStatus !== "NOT_FOUND" && <Profile username={username} />}
 			{viewStatus === "PROHIBITED" && <Unauthorized />}
 			{viewStatus === "NOT_FOUND" && <NotFound />}
 			{viewStatus === "VIEW_ONLY" && (

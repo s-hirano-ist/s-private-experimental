@@ -1,7 +1,7 @@
 "use server";
 import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
-import { updateScope } from "@/apis/prisma/fetch-user";
+import { updateSelfScope } from "@/apis/prisma/fetch-user";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { formatErrorForClient } from "@/error";
 import type { ServerAction } from "@/types";
@@ -12,7 +12,7 @@ export async function toggleScope(
 ): Promise<ServerAction<undefined>> {
 	try {
 		const scope = checked ? "PUBLIC" : "PRIVATE";
-		await updateScope(scope);
+		await updateSelfScope(scope);
 		await sendLineNotifyMessage(formatUpdateScopeMessage(scope));
 
 		return {

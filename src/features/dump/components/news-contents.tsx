@@ -1,10 +1,10 @@
-import { getUnexportedNews } from "@/apis/prisma/fetch-news";
+import { getSelfUnexportedNews } from "@/apis/prisma/fetch-news";
 import { StatusCodeView } from "@/components/status-code-view";
 import { NewsStack } from "./news-stack";
 
 export async function NewsContents() {
 	try {
-		const unexportedNews = await getUnexportedNews();
+		const unexportedNews = await getSelfUnexportedNews();
 
 		return (
 			<NewsStack

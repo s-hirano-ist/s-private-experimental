@@ -1,10 +1,10 @@
-import { getUnexportedContents } from "@/apis/prisma/fetch-contents";
+import { getSelfUnexportedContents } from "@/apis/prisma/fetch-contents";
 import { StatusCodeView } from "@/components/status-code-view";
 import { ContentsStack } from "./contents-stack";
 
 export async function ContentsContents() {
 	try {
-		const unexportedContents = await getUnexportedContents();
+		const unexportedContents = await getSelfUnexportedContents();
 
 		return (
 			<ContentsStack

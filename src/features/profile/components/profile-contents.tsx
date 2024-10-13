@@ -1,4 +1,4 @@
-import { getNewsAndContents } from "@/apis/prisma/fetch-profile";
+import { getNewsAndContents } from "@/apis/prisma/fetch-user";
 import { DumpCard } from "@/components/stack/dump-card";
 import { StatusCodeView } from "@/components/status-code-view";
 import { Separator } from "@/components/ui/separator";

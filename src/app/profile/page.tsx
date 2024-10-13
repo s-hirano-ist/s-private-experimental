@@ -1,8 +1,8 @@
-import { getScope } from "@/apis/prisma/fetch-user";
+import { getSelfProfile } from "@/apis/prisma/fetch-profile";
+import { getSelfScope } from "@/apis/prisma/fetch-user";
 import { Header } from "@/components/nav/header";
 import { PAGE_NAME } from "@/constants";
-import { getProfile } from "@/features/auth/utils/profile";
-import { checkAuth } from "@/features/auth/utils/role";
+import { checkSelfAuth } from "@/features/auth/utils/get-session";
 import { ProfileUpsertForm } from "@/features/profile/components/profile-upsert-form";
 import { ScopeUpdateSwitch } from "@/features/profile/components/scope-update-switch";
 import type { Metadata } from "next";
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-	const session = await checkAuth();
-	const profile = await getProfile();
-	const scope = await getScope();
+	const session = await checkSelfAuth();
+	const profile = await getSelfProfile();
+	const scope = await getSelfScope();
 
 	return (
 		<>
