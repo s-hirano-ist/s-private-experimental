@@ -1,73 +1,9 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { changeContentsStatus } from "@/features/update-status/actions/change-contents-status";
-import { changeNewsStatus } from "@/features/update-status/actions/change-news-status";
-import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { Unauthorized } from "@/components/unauthorized";
+import { checkAdminPermission } from "@/features/auth/utils/role";
+import { ChangeStatusButtons } from "@/features/dump/components/change-status-buttons";
 
-export default function Page() {
-	const { toast } = useToast();
+export default async function Page() {
+	const hasAdminPermission = await checkAdminPermission();
 
-	const [buttonDisabled, setButtonDisabled] = useState(false);
-
-	const handleNewsUpdateStatus = async () => {
-		setButtonDisabled(true);
-		const response = await changeNewsStatus("UPDATE");
-		// TODO: revalidate path
-		toast({
-			variant: response.success ? "default" : "destructive",
-			description: response.message,
-		});
-		setButtonDisabled(false);
-	};
-
-	const handleNewsRevertStatus = async () => {
-		setButtonDisabled(true);
-		const response = await changeNewsStatus("REVERT");
-		// TODO: revalidate path
-		toast({
-			variant: response.success ? "default" : "destructive",
-			description: response.message,
-		});
-		setButtonDisabled(false);
-	};
-
-	const handleContentsUpdateStatus = async () => {
-		setButtonDisabled(true);
-		const response = await changeContentsStatus("UPDATE");
-		// TODO: revalidate path
-		toast({
-			variant: response.success ? "default" : "destructive",
-			description: response.message,
-		});
-		setButtonDisabled(false);
-	};
-
-	const handleContentsRevertStatus = async () => {
-		setButtonDisabled(true);
-		const response = await changeContentsStatus("REVERT");
-		// TODO: revalidate path
-		toast({
-			variant: response.success ? "default" : "destructive",
-			description: response.message,
-		});
-		setButtonDisabled(false);
-	};
-
-	return (
-		<div className="grid grid-cols-2 gap-4 p-4">
-			<Button onClick={handleNewsUpdateStatus} disabled={buttonDisabled}>
-				NEWS UPDATE
-			</Button>
-			<Button onClick={handleNewsRevertStatus} disabled={buttonDisabled}>
-				NEWS REVERT
-			</Button>
-			<Button onClick={handleContentsUpdateStatus} disabled={buttonDisabled}>
-				CONTENTS UPDATE
-			</Button>
-			<Button onClick={handleContentsRevertStatus} disabled={buttonDisabled}>
-				CONTENTS REVERT
-			</Button>
-		</div>
-	);
+	return <>{hasAdminPermission ? <ChangeStatusButtons /> : <Unauthorized />}</>;
 }

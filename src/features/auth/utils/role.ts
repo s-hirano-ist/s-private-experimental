@@ -15,6 +15,8 @@ export async function checkAdminPermission() {
 			return false;
 		case "VIEWER":
 			return false;
+		case "UNAUTHORIZED":
+			return false;
 		default:
 			throw new UnexpectedError();
 	}
@@ -49,6 +51,8 @@ export async function checkPostPermission() {
 			return true;
 		case "VIEWER":
 			return false;
+		case "UNAUTHORIZED":
+			return false;
 		default:
 			throw new UnexpectedError();
 	}
@@ -64,6 +68,8 @@ export async function checkUpdateStatusPermission() {
 		case "EDITOR":
 			return true;
 		case "VIEWER":
+			return false;
+		case "UNAUTHORIZED":
 			return false;
 		default:
 			throw new UnexpectedError();
