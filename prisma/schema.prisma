@@ -47,7 +47,7 @@ model Users {
 
 model Profiles {
   id        String   @id @default(uuid(7))
-  name      String   @unique
+  name      String
   bio       String?
   avatarUrl String?  @map("avatar_url")
   Users     Users    @relation(fields: [userId], references: [id])
