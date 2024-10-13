@@ -1,6 +1,6 @@
 "use server";
 import "server-only";
-import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
+import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import {
 	revertContentsStatus,
 	updateContentsStatus,

@@ -1,6 +1,6 @@
 "use server";
 import "server-only";
-import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
+import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { formatErrorForClient } from "@/error";
 import { signOut as NextAuthSignOut } from "@/features/auth/utils/auth";

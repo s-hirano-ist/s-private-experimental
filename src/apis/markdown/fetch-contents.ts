@@ -1,3 +1,5 @@
+// "use server"; // MEMO: commented because functions are not async functions.
+import "server-only";
 import fs from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";

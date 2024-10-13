@@ -1,6 +1,6 @@
 "use server";
 import "server-only";
-import { sendLineNotifyMessage } from "@/apis/line-notify/send-message";
+import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { updateScope } from "@/apis/prisma/fetch-user";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { formatErrorForClient } from "@/error";
