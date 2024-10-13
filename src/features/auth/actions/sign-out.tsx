@@ -2,7 +2,7 @@
 import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { SUCCESS_MESSAGES } from "@/constants";
-import { formatErrorForClient } from "@/error";
+import { wrapServerSideErrorForClient } from "@/error";
 import { signOut as NextAuthSignOut } from "@/features/auth/utils/auth";
 import type { ServerAction } from "@/types";
 
@@ -20,6 +20,6 @@ export async function signOut(): Promise<SignOutState> {
 			data: undefined,
 		};
 	} catch (error) {
-		return await formatErrorForClient(error);
+		return await wrapServerSideErrorForClient(error);
 	}
 }

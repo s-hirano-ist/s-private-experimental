@@ -2,7 +2,7 @@
 import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { SUCCESS_MESSAGES } from "@/constants";
-import { formatErrorForClient } from "@/error";
+import { wrapServerSideErrorForClient } from "@/error";
 import type { SignInSchema } from "@/features/auth/schemas/sign-in-schema";
 import { signIn as NextAuthSignIn } from "@/features/auth/utils/auth";
 import type { ServerAction } from "@/types";
@@ -22,6 +22,6 @@ export async function signIn(values: SignInSchema): Promise<SignInState> {
 			data: undefined,
 		};
 	} catch (error) {
-		return await formatErrorForClient(error);
+		return await wrapServerSideErrorForClient(error);
 	}
 }

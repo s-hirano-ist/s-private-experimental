@@ -4,7 +4,7 @@ import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { createSelfCategory } from "@/apis/prisma/fetch-category";
 import { createSelfNews } from "@/apis/prisma/fetch-news";
 import { SUCCESS_MESSAGES } from "@/constants";
-import { NotAllowedError, formatErrorForClient } from "@/error";
+import { NotAllowedError, wrapServerSideErrorForClient } from "@/error";
 import { checkPostPermission } from "@/features/auth/utils/role";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import { validateCategory } from "@/features/dump/utils/validate-category";
@@ -44,6 +44,6 @@ export async function addNews(
 			},
 		};
 	} catch (error) {
-		return await formatErrorForClient(error);
+		return await wrapServerSideErrorForClient(error);
 	}
 }

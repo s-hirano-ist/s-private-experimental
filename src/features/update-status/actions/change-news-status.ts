@@ -9,7 +9,7 @@ import { SUCCESS_MESSAGES } from "@/constants";
 import {
 	NotAllowedError,
 	UnexpectedError,
-	formatErrorForClient,
+	wrapServerSideErrorForClient,
 } from "@/error";
 import { checkUpdateStatusPermission } from "@/features/auth/utils/role";
 import type { UpdateOrRevert } from "@/features/update-status/types";
@@ -43,6 +43,6 @@ export async function changeNewsStatus(
 		await sendLineNotifyMessage(data);
 		return { success: true, message: SUCCESS_MESSAGES.UPDATE, data };
 	} catch (error) {
-		return await formatErrorForClient(error);
+		return await wrapServerSideErrorForClient(error);
 	}
 }
