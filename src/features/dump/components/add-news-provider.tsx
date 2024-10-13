@@ -1,3 +1,5 @@
+"use server";
+import "server-only";
 import { getSelfCategories } from "@/apis/prisma/fetch-category";
 import { AddNewsForm } from "@/features/dump/components/add-news-form";
 

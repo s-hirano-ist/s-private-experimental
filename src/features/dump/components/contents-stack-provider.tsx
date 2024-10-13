@@ -1,3 +1,5 @@
+"use server";
+import "server-only";
 import { getSelfUnexportedContents } from "@/apis/prisma/fetch-contents";
 import { StatusCodeView } from "@/components/status-code-view";
 import { ContentsStack } from "./contents-stack";

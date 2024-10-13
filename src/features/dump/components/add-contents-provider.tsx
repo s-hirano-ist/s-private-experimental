@@ -1,6 +1,8 @@
+"use server";
+import "server-only";
 import { AddContentsForm } from "./add-contents-form";
 
-export function AddContentsProvider() {
+export async function AddContentsProvider() {
 	try {
 		return <AddContentsForm />;
 	} catch (error) {

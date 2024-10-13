@@ -1,3 +1,5 @@
+"use server";
+import "server-only";
 import { getSelfUnexportedNews } from "@/apis/prisma/fetch-news";
 import { StatusCodeView } from "@/components/status-code-view";
 import { NewsStack } from "./news-stack";
