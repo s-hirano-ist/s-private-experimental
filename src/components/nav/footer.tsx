@@ -4,11 +4,11 @@ import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { AdminDrawer } from "@/features/update-status/components/admin-drawer";
 import { cn } from "@/utils/tailwindcss";
 import {
-	BookOpenIcon,
+	FileUpIcon,
 	LockIcon,
-	LockOpenIcon,
 	NotebookIcon,
 	SendIcon,
+	UserRoundPenIcon,
 } from "lucide-react";
 import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
@@ -32,27 +32,27 @@ export function Footer() {
 		<footer className="sticky bottom-4 z-50 mx-auto w-full max-w-lg rounded-3xl border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700">
 			<Drawer open={open} onOpenChange={setOpen} snapPoints={[0.5]}>
 				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 rounded-3xl bg-gradient-to-r from-primary to-primary-grad text-white">
-					<Link href="/dump/news" scroll={false}>
+					<Link href="/profile" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							className={cn(
 								"rounded-s-3xl",
-								pathname === "/dump/news" ? "bg-black/40" : "",
+								pathname === "/profile" ? "bg-black/40" : "",
 							)}
 						>
-							{Icon("PUBLIC", <LockOpenIcon className="size-6" />)}
+							{Icon("PROFILE", <UserRoundPenIcon className="size-6" />)}
 						</Button>
 					</Link>
 
-					<Link href="/dump/contents" scroll={false}>
+					<Link href="/admin" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							type="button"
-							className={pathname === "/dump/contents" ? "bg-black/40" : ""}
+							className={pathname === "/admin" ? "bg-black/40" : ""}
 						>
-							{Icon("PRIVATE", <LockIcon className="size-6" />)}
+							{Icon("ADMIN", <LockIcon className="size-6" />)}
 						</Button>
 					</Link>
 
@@ -65,27 +65,27 @@ export function Footer() {
 						</div>
 					</DrawerTrigger>
 
-					<Link href="/contents/books" scroll={false}>
+					<Link href="/dumper" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							type="button"
-							className={pathname === "/contents/books" ? "bg-black/40" : ""}
+							className={pathname === "/dumper" ? "bg-black/40" : ""}
 						>
-							{Icon("BOOKS", <BookOpenIcon className="size-6" />)}
+							{Icon("DUMPER", <FileUpIcon className="size-6" />)}
 						</Button>
 					</Link>
 
-					<Link href="/contents/notes" scroll={false}>
+					<Link href="/contents" scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							className={cn(
 								"rounded-e-3xl",
-								pathname === "/contents/notes" ? "bg-black/40" : "",
+								pathname === "/contents" ? "bg-black/40" : "",
 							)}
 						>
-							{Icon("NOTES", <NotebookIcon className="size-6" />)}
+							{Icon("CONTENTS", <NotebookIcon className="size-6" />)}
 						</Button>
 					</Link>
 				</div>
