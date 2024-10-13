@@ -7,6 +7,7 @@ import { init, replayIntegration } from "@sentry/nextjs";
 
 init({
 	dsn: env.NEXT_PUBLIC_SENTRY_DSN,
+	enabled: process.env.NODE_ENV === "production",
 
 	// Add optional integrations for additional features
 	integrations: [replayIntegration()],
