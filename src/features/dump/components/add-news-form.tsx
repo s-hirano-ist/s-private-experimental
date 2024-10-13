@@ -45,7 +45,10 @@ export function AddNewsForm({ categories }: Props) {
 			});
 			return;
 		}
-		setQueuedContents((previousData) => [response.data, ...(previousData ?? [])]);
+		setQueuedContents((previousData) => [
+			response.data,
+			...(previousData ?? []),
+		]);
 		toast({
 			variant: "default",
 			description: response.message,
