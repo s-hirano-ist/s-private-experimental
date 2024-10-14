@@ -1,6 +1,5 @@
 "use server";
 import "server-only";
-import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import type { SignInSchema } from "@/features/auth/schemas/sign-in-schema";
@@ -8,6 +7,7 @@ import { signIn as NextAuthSignIn } from "@/features/auth/utils/auth";
 import { getLoginUserInfo } from "@/features/auth/utils/header-info";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
+import { sendLineNotifyMessage } from "@/utils/fetch-message";
 
 type SignInState = ServerAction<undefined>;
 

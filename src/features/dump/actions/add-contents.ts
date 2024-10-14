@@ -1,6 +1,5 @@
 "use server";
 import "server-only";
-import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { NotAllowedError } from "@/error-classes";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
@@ -10,6 +9,7 @@ import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { validateContents } from "@/features/dump/utils/validate-contents";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
+import { sendLineNotifyMessage } from "@/utils/fetch-message";
 import { formatCreateContentsMessage } from "@/utils/format-for-line";
 
 export async function addContents(

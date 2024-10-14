@@ -1,6 +1,5 @@
 "use server";
 import "server-only";
-import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { NotAllowedError } from "@/error-classes";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
@@ -11,6 +10,7 @@ import { validateCategory } from "@/features/dump/utils/validate-category";
 import { validateNews } from "@/features/dump/utils/validate-news";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
+import { sendLineNotifyMessage } from "@/utils/fetch-message";
 import {
 	formatCreateCategoryMessage,
 	formatCreateNewsMessage,

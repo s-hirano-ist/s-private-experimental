@@ -1,6 +1,5 @@
 "use server";
 import "server-only";
-import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { NotAllowedError, UnexpectedError } from "@/error-classes";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
@@ -10,6 +9,7 @@ import type { UpdateOrRevert } from "@/features/update-status/types";
 import type { Status } from "@/features/update-status/types";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
+import { sendLineNotifyMessage } from "@/utils/fetch-message";
 import { formatChangeStatusMessage } from "@/utils/format-for-line";
 
 async function updateSelfNewsStatus(): Promise<Status> {

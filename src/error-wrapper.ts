@@ -2,7 +2,6 @@
 import "server-only";
 import { Prisma } from "@prisma/client";
 import { AuthError } from "next-auth";
-import { sendLineNotifyMessage } from "./apis/line-notify/fetch-message";
 import { ERROR_MESSAGES } from "./constants";
 import {
 	InvalidFormatError,
@@ -12,6 +11,7 @@ import {
 	UnexpectedError,
 } from "./error-classes";
 import type { ServerAction } from "./types";
+import { sendLineNotifyMessage } from "./utils/fetch-message";
 
 export async function wrapServerSideErrorForClient<T>(
 	error: unknown,
