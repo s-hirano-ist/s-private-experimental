@@ -1,16 +1,13 @@
 "use server";
 import { StatusCodeView } from "@/components/status-code-view";
-import { NotAllowedError } from "@/error-classes";
-import { getSelfRole } from "@/features/auth/utils/get-session";
+import { checkSelfAdminRoleOrThrow } from "@/features/auth/utils/get-session";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { DumpTable } from "@/features/update-status/components/dump-table";
 import prisma from "@/prisma";
 
 export async function ContentsTable() {
 	try {
-		// FIXME: hasAdminRoleOrThrow関数を作る
-		const role = await getSelfRole();
-		if (role !== "ADMIN") throw new NotAllowedError();
+		await checkSelfAdminRoleOrThrow();
 
 		const contents = await prisma.contents.findMany({
 			select: {

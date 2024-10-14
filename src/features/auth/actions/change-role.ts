@@ -1,9 +1,8 @@
 "use server";
 import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
-import { NotAllowedError } from "@/error-classes";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
-import { getSelfRole } from "@/features/auth/utils/get-session";
+import { checkSelfAdminRoleOrThrow } from "@/features/auth/utils/get-session";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
@@ -15,8 +14,7 @@ export async function changeRole(
 	role: Role,
 ): Promise<ServerAction<undefined>> {
 	try {
-		const selfRole = await getSelfRole();
-		if (selfRole !== "ADMIN") throw new NotAllowedError();
+		await checkSelfAdminRoleOrThrow();
 
 		await prisma.users.update({
 			where: { id: userId },

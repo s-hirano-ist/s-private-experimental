@@ -1,6 +1,6 @@
 "use server";
 import "server-only";
-import { UnauthorizedError } from "@/error-classes";
+import { NotAllowedError, UnauthorizedError } from "@/error-classes";
 // import { redirect } from "next/navigation";
 import { auth } from "./auth";
 
@@ -11,6 +11,11 @@ export async function checkSelfAuth() {
 		// redirect("/auth"); // WHEN MIDDLEWARE DO NOT WORK
 	}
 	return session;
+}
+
+export async function checkSelfAdminRoleOrThrow() {
+	const role = await getSelfRole();
+	if (role !== "ADMIN") throw new NotAllowedError();
 }
 
 export async function getUserId() {
