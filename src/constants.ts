@@ -1,3 +1,5 @@
+import type { Role } from "@prisma/client";
+
 export const PAGE_NAME = "private.s-hirano.com";
 
 export const FORM_ERROR_MESSAGES = {
@@ -22,6 +24,7 @@ export const ERROR_MESSAGES = {
 export const SUCCESS_MESSAGES = {
 	INSERTED: "正常に登録できました。",
 	SCOPE_UPDATED: "スコープを正常に変更しました。",
+	ROLE_UPDATED: "ロールを正常に更新しました。",
 	PROFILE_UPSERTED: "プロフィールを更新しました。",
 	SIGN_IN: "サインインに成功しました。",
 	SIGN_OUT: "サインアウトに成功しました。",
@@ -43,3 +46,5 @@ export const UTIL_URLS = [
 	{ name: "PORTAINER", url: "https://private.s-hirano.com:9443" },
 	{ name: "GRAFANA", url: "https://private.s-hirano.com:3001" },
 ] as const;
+
+export const ROLES: Role[] = ["ADMIN", "EDITOR", "VIEWER", "UNAUTHORIZED"];

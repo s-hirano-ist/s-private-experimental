@@ -3,8 +3,8 @@ import type { createSelfNews } from "@/apis/prisma/fetch-news";
 import type { ContentName } from "@/features/dump/types";
 import type { ProfileSchema } from "@/features/profile/schemas/profile-schema";
 import type { Status } from "@/features/update-status/types";
-import type { Scope } from "@prisma/client";
-type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
+import type { UnwrapPromise } from "@/types";
+import type { Role, Scope } from "@prisma/client";
 
 export function formatChangeStatusMessage(
 	status: Status,
@@ -43,4 +43,8 @@ export function formatUpdateScopeMessage(scope: Scope) {
 
 export function formatUpsertProfileMessage(data: ProfileSchema) {
 	return `【PROFILE】\n\nname: ${data.name}\nに変更しました`;
+}
+
+export function formatUpdateRoleMessage(role: Role) {
+	return `【ROLE】\n\nrole: ${role}\nに変更しました`;
 }

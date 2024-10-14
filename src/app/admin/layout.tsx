@@ -13,9 +13,10 @@ export const metadata: Metadata = {
 
 type Props = {
 	dumper: ReactNode;
+	users: ReactNode;
 };
 
-export default async function Layout({ dumper }: Props) {
+export default async function Layout({ dumper, users }: Props) {
 	return (
 		<>
 			<Header title={displayName} />
@@ -24,8 +25,12 @@ export default async function Layout({ dumper }: Props) {
 					<TabsTrigger className="w-full" value="dumper">
 						DUMPER
 					</TabsTrigger>
+					<TabsTrigger className="w-full" value="users">
+						USERS
+					</TabsTrigger>
 				</TabsList>
 				<TabsContent value="dumper"> {dumper}</TabsContent>
+				<TabsContent value="users"> {users}</TabsContent>
 			</Tabs>
 		</>
 	);
