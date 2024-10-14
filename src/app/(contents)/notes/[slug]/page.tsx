@@ -1,4 +1,6 @@
-import { getAllSlugs, getContentsBySlug } from "@/apis/markdown/fetch-contents";
+import {
+	/*getAllSlugs,*/ getContentsBySlug,
+} from "@/apis/markdown/fetch-contents";
 import { Header } from "@/components/nav/header";
 import { Unauthorized } from "@/components/unauthorized";
 import { MARKDOWN_PATHS, PAGE_NAME } from "@/constants";
