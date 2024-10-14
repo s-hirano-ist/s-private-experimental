@@ -7,10 +7,10 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { ROLES } from "@/constants";
+import { changeRole } from "@/features/auth/actions/change-role";
 import { useToast } from "@/hooks/use-toast";
 import type { Role } from "@prisma/client";
 import { useState } from "react";
-import { changeRole } from "../actions/change-role";
 
 type Props = {
 	userId: string;
