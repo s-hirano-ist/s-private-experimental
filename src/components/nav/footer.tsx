@@ -46,7 +46,9 @@ export function Footer() {
 						</Button>
 					</Link>
 
-					<Link href="/admin" scroll={false}>
+					{/* FIXME: bug with parallel routes
+					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
+					<Link href={"/admin" as Route} scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
