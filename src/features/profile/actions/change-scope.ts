@@ -2,7 +2,7 @@
 import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
-import { getSelfRole, getUserId } from "@/features/auth/utils/get-session";
+import { getUserId } from "@/features/auth/utils/get-session";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";

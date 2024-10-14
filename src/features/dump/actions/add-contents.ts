@@ -3,7 +3,7 @@ import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { NotAllowedError } from "@/error-classes";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
-import { getSelfRole, getUserId } from "@/features/auth/utils/get-session";
+import { getUserId } from "@/features/auth/utils/get-session";
 import { checkPostPermission } from "@/features/auth/utils/role";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { validateContents } from "@/features/dump/utils/validate-contents";

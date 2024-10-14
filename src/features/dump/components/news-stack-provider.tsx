@@ -1,8 +1,7 @@
 "use server";
 import "server-only";
 import { StatusCodeView } from "@/components/status-code-view";
-import { NotAllowedError } from "@/error-classes";
-import { getSelfRole, getUserId } from "@/features/auth/utils/get-session";
+import { getUserId } from "@/features/auth/utils/get-session";
 import prisma from "@/prisma";
 import { NewsStack } from "./news-stack";
 
