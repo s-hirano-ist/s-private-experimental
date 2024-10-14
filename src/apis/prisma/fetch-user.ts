@@ -1,8 +1,8 @@
 import "server-only";
 import { NotAllowedError } from "@/error-classes";
-import { getUserId } from "@/features/auth/utils/get-session";
+import { getSelfRole, getUserId } from "@/features/auth/utils/get-session";
 import prisma from "@/prisma";
-import type { Scope } from "@prisma/client";
+import type { Role, Scope } from "@prisma/client";
 
 // everyone can access
 export async function getUserScope(username: string) {
@@ -74,4 +74,31 @@ export async function getNewsAndContents(username: string) {
 		throw new NotAllowedError();
 
 	return newsAndContents;
+}
+
+// ROLE === "admin" only
+export async function getUsers() {
+	const role = await getSelfRole();
+
+	if (role !== "ADMIN") throw new NotAllowedError();
+
+	return await prisma.users.findMany({
+		select: {
+			id: true,
+			username: true,
+			role: true,
+			Profile: true,
+		},
+	});
+}
+
+export async function updateRole(userId: string, role: Role) {
+	const selfRole = await getSelfRole();
+
+	if (selfRole !== "ADMIN") throw new NotAllowedError();
+
+	return await prisma.users.update({
+		where: { id: userId },
+		data: { role },
+	});
 }
