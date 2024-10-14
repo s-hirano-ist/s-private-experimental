@@ -1,5 +1,5 @@
 import "server-only";
-import { InvalidFormatError } from "@/error";
+import { InvalidFormatError } from "@/error-classes";
 import { newsSchema } from "@/features/dump/schemas/news-schema";
 
 export function validateNews(formData: FormData) {

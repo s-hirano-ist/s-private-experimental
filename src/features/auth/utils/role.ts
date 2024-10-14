@@ -1,7 +1,7 @@
 "use server";
 import "server-only";
 import { getUserScope } from "@/apis/prisma/fetch-user";
-import { UnexpectedError } from "@/error";
+import { UnexpectedError } from "@/error-classes";
 import { checkSelfAuth } from "./get-session";
 
 // FOR /contents/* and /all

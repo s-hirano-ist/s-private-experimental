@@ -1,6 +1,6 @@
 "use server";
 import "server-only";
-import { UnauthorizedError } from "@/error";
+import { UnauthorizedError } from "@/error-classes";
 // import { redirect } from "next/navigation";
 import { auth } from "./auth";
 

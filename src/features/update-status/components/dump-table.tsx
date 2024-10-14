@@ -9,7 +9,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { UnexpectedError } from "@/error";
+import { UnexpectedError } from "@/error-classes";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import type { ContentName } from "@/features/dump/types";

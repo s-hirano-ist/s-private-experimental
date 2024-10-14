@@ -1,4 +1,3 @@
-"use server";
 import "server-only";
 import { getUserId } from "@/features/auth/utils/get-session";
 import type { ProfileSchema } from "@/features/profile/schemas/profile-schema";

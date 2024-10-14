@@ -2,7 +2,7 @@
 import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { SUCCESS_MESSAGES } from "@/constants";
-import { wrapServerSideErrorForClient } from "@/error";
+import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import { signOut as NextAuthSignOut } from "@/features/auth/utils/auth";
 import type { ServerAction } from "@/types";
 

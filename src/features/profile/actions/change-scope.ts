@@ -3,7 +3,7 @@ import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { updateSelfScope } from "@/apis/prisma/fetch-user";
 import { SUCCESS_MESSAGES } from "@/constants";
-import { wrapServerSideErrorForClient } from "@/error";
+import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import type { ServerAction } from "@/types";
 import { formatUpdateScopeMessage } from "@/utils/format-for-line";
 

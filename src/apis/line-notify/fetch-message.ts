@@ -1,7 +1,6 @@
-"use server";
 import "server-only";
 import { env } from "@/env.mjs";
-import { LineNotifyError } from "@/error";
+import { LineNotifyError } from "@/error-classes";
 
 export async function sendLineNotifyMessage(message: string) {
 	const LINE_NOTIFY_URL = env.LINE_NOTIFY_URL;
