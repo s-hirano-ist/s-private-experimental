@@ -1,5 +1,5 @@
 import "server-only";
-import { InvalidFormatError } from "@/error";
+import { InvalidFormatError } from "@/error-classes";
 import { categorySchema } from "@/features/dump/schemas/category-schema";
 
 export function validateCategory(formData: FormData) {

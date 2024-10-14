@@ -1,4 +1,3 @@
-"use server";
 import "server-only";
 import prisma from "@/prisma";
 import { getUserIdForLoginHistory } from "./fetch-user";

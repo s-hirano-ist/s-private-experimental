@@ -3,7 +3,7 @@ import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
 import { createSelfLoginHistory } from "@/apis/prisma/fetch-login-history";
 import { SUCCESS_MESSAGES } from "@/constants";
-import { wrapServerSideErrorForClient } from "@/error";
+import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import type { SignInSchema } from "@/features/auth/schemas/sign-in-schema";
 import { signIn as NextAuthSignIn } from "@/features/auth/utils/auth";
 import { getLoginUserInfo } from "@/features/auth/utils/header-info";

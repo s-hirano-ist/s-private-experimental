@@ -1,4 +1,3 @@
-"use server";
 import "server-only";
 import { getUserId } from "@/features/auth/utils/get-session";
 import type { validateCategory } from "@/features/dump/utils/validate-category";

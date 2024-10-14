@@ -1,6 +1,5 @@
-"use server";
 import "server-only";
-import { NotAllowedError } from "@/error";
+import { NotAllowedError } from "@/error-classes";
 import { getSelfRole, getUserId } from "@/features/auth/utils/get-session";
 import type { validateNews } from "@/features/dump/utils/validate-news";
 import type { Status } from "@/features/update-status/types";

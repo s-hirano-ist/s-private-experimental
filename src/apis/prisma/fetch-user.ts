@@ -1,6 +1,5 @@
-"use server";
 import "server-only";
-import { NotAllowedError } from "@/error";
+import { NotAllowedError } from "@/error-classes";
 import { getUserId } from "@/features/auth/utils/get-session";
 import prisma from "@/prisma";
 import type { Scope } from "@prisma/client";

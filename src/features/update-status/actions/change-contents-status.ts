@@ -6,11 +6,8 @@ import {
 	updateSelfContentsStatus,
 } from "@/apis/prisma/fetch-contents";
 import { SUCCESS_MESSAGES } from "@/constants";
-import {
-	NotAllowedError,
-	UnexpectedError,
-	wrapServerSideErrorForClient,
-} from "@/error";
+import { NotAllowedError, UnexpectedError } from "@/error-classes";
+import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import { checkUpdateStatusPermission } from "@/features/auth/utils/role";
 import type { UpdateOrRevert } from "@/features/update-status/types";
 import type { ServerAction } from "@/types";

@@ -1,7 +1,16 @@
+"use server";
+import "server-only";
 import { Prisma } from "@prisma/client";
 import { AuthError } from "next-auth";
 import { sendLineNotifyMessage } from "./apis/line-notify/fetch-message";
-import { ERROR_MESSAGES, FORM_ERROR_MESSAGES } from "./constants";
+import { ERROR_MESSAGES } from "./constants";
+import {
+	InvalidFormatError,
+	LineNotifyError,
+	NotAllowedError,
+	UnauthorizedError,
+	UnexpectedError,
+} from "./error-classes";
 import type { ServerAction } from "./types";
 
 export async function wrapServerSideErrorForClient<T>(
@@ -63,39 +72,4 @@ export async function wrapServerSideErrorForClient<T>(
 		await sendLineNotifyMessage(ERROR_MESSAGES.UNEXPECTED);
 	}
 	return { success: false, message: ERROR_MESSAGES.UNEXPECTED };
-}
-
-export class LineNotifyError extends Error {
-	constructor() {
-		super(ERROR_MESSAGES.LINE_SEND);
-		this.name = "LineNotifyError";
-	}
-}
-
-export class NotAllowedError extends Error {
-	constructor() {
-		super(ERROR_MESSAGES.NOT_ALLOWED);
-		this.name = "NotAllowedError";
-	}
-}
-
-export class UnauthorizedError extends Error {
-	constructor() {
-		super(ERROR_MESSAGES.UNAUTHORIZED);
-		this.name = "UnauthorizedError";
-	}
-}
-
-export class UnexpectedError extends Error {
-	constructor() {
-		super(ERROR_MESSAGES.UNEXPECTED);
-		this.name = "UnexpectedError";
-	}
-}
-
-export class InvalidFormatError extends Error {
-	constructor() {
-		super(FORM_ERROR_MESSAGES.INVALID_FORMAT);
-		this.name = "InvalidFormatError";
-	}
 }
