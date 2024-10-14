@@ -1,4 +1,3 @@
-import type { createSelfContents } from "@/apis/prisma/fetch-contents";
 import type { createSelfNews } from "@/apis/prisma/fetch-news";
 import type { ContentName } from "@/features/dump/types";
 import type { ProfileSchema } from "@/features/profile/schemas/profile-schema";
@@ -33,7 +32,7 @@ export function formatCreateContentsMessage({
 	title,
 	quote,
 	url,
-}: UnwrapPromise<ReturnType<typeof createSelfContents>>) {
+}: { title: string; quote: string | null; url: string }) {
 	return `【CONTENTS】\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\nの登録ができました`;
 }
 

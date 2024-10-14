@@ -1,8 +1,17 @@
 "use server";
 import "server-only";
-import { getUserScope } from "@/apis/prisma/fetch-user";
 import { UnexpectedError } from "@/error-classes";
+import prisma from "@/prisma";
 import { checkSelfAuth } from "./get-session";
+
+// everyone can access
+async function getUserScope(username: string) {
+	const user = await prisma.users.findUnique({
+		where: { username },
+		select: { scope: true },
+	});
+	return user?.scope;
+}
 
 // FOR /contents/* and /all
 export async function checkAdminPermission() {

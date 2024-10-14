@@ -1,12 +1,26 @@
 "use server";
-import { getAllNews } from "@/apis/prisma/fetch-news";
 import { StatusCodeView } from "@/components/status-code-view";
+import { NotAllowedError } from "@/error-classes";
+import { getSelfRole } from "@/features/auth/utils/get-session";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import { DumpTable } from "@/features/update-status/components/dump-table";
+import prisma from "@/prisma";
 
 export async function NewsTable() {
 	try {
-		const news = await getAllNews();
+		const role = await getSelfRole();
+
+		if (role !== "ADMIN") throw new NotAllowedError();
+		const news = await prisma.news.findMany({
+			select: {
+				id: true,
+				title: true,
+				quote: true,
+				url: true,
+				status: true,
+				Category: { select: { name: true } },
+			},
+		});
 
 		return (
 			<DumpTable<NewsContext>

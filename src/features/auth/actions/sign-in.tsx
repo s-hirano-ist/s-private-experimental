@@ -1,15 +1,35 @@
 "use server";
 import "server-only";
 import { sendLineNotifyMessage } from "@/apis/line-notify/fetch-message";
-import { createSelfLoginHistory } from "@/apis/prisma/fetch-login-history";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import type { SignInSchema } from "@/features/auth/schemas/sign-in-schema";
 import { signIn as NextAuthSignIn } from "@/features/auth/utils/auth";
 import { getLoginUserInfo } from "@/features/auth/utils/header-info";
+import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 
 type SignInState = ServerAction<undefined>;
+
+async function createSelfLoginHistory(
+	username: string,
+	ipAddress: string | undefined,
+	userAgent: string | undefined,
+) {
+	const user = await prisma.users.findUniqueOrThrow({
+		where: { username },
+		select: { id: true },
+	});
+	const userId = user.id;
+
+	return await prisma.loginHistories.create({
+		data: {
+			userId,
+			ipAddress,
+			userAgent,
+		},
+	});
+}
 
 export async function signIn(values: SignInSchema): Promise<SignInState> {
 	try {
