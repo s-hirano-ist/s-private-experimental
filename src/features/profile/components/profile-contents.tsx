@@ -1,7 +1,45 @@
-import { getNewsAndContents } from "@/apis/prisma/fetch-user";
 import { SmallCard } from "@/components/stack/small-card";
 import { StatusCodeView } from "@/components/status-code-view";
 import { Separator } from "@/components/ui/separator";
+import { NotAllowedError } from "@/error-classes";
+import { getUserId } from "@/features/auth/utils/get-session";
+import prisma from "@/prisma";
+
+// accessed path's username.scope === private || user's own page
+async function getNewsAndContents(username: string) {
+	const userId = await getUserId();
+
+	const user = await prisma.users.findUniqueOrThrow({ where: { id: userId } });
+	if (user.role === "UNAUTHORIZED") throw new NotAllowedError();
+
+	const newsAndContents = await prisma.users.findUniqueOrThrow({
+		where: { username },
+		select: {
+			scope: true,
+			News: {
+				select: {
+					id: true,
+					title: true,
+					quote: true,
+					url: true,
+					Category: { select: { name: true } },
+				},
+			},
+			Contents: {
+				select: {
+					id: true,
+					title: true,
+					quote: true,
+					url: true,
+				},
+			},
+		},
+	});
+	if (newsAndContents.scope === "PRIVATE" && username !== user.username)
+		throw new NotAllowedError();
+
+	return newsAndContents;
+}
 
 type Props = {
 	username: string;

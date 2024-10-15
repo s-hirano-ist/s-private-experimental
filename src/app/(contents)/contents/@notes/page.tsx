@@ -1,7 +1,10 @@
-import { getAllImages, getAllSlugs } from "@/apis/markdown/fetch-contents";
 import { Badge } from "@/components/ui/badge";
 import { Unauthorized } from "@/components/unauthorized";
 import { checkAdminPermission } from "@/features/auth/utils/role";
+import {
+	getAllImages,
+	getAllSlugs,
+} from "@/features/contents/actions/fetch-contents";
 import { ContentsStack } from "@/features/contents/components/contents-stack";
 import { formatSlugsAndImages } from "@/features/contents/utils/format";
 

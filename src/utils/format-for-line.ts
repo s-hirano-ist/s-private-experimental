@@ -1,9 +1,6 @@
-import type { createSelfContents } from "@/apis/prisma/fetch-contents";
-import type { createSelfNews } from "@/apis/prisma/fetch-news";
 import type { ContentName } from "@/features/dump/types";
 import type { ProfileSchema } from "@/features/profile/schemas/profile-schema";
 import type { Status } from "@/features/update-status/types";
-import type { UnwrapPromise } from "@/types";
 import type { Role, Scope } from "@prisma/client";
 
 export function formatChangeStatusMessage(
@@ -25,7 +22,12 @@ export function formatCreateNewsMessage({
 	quote,
 	url,
 	Category,
-}: UnwrapPromise<ReturnType<typeof createSelfNews>>) {
+}: {
+	title: string;
+	quote: string | null;
+	url: string;
+	Category: { name: string };
+}) {
 	return `【NEWS】\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\ncategory: ${Category.name}\nの登録ができました`;
 }
 
@@ -33,7 +35,7 @@ export function formatCreateContentsMessage({
 	title,
 	quote,
 	url,
-}: UnwrapPromise<ReturnType<typeof createSelfContents>>) {
+}: { title: string; quote: string | null; url: string }) {
 	return `【CONTENTS】\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\nの登録ができました`;
 }
 

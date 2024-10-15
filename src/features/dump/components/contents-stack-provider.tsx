@@ -1,12 +1,23 @@
 "use server";
 import "server-only";
-import { getSelfUnexportedContents } from "@/apis/prisma/fetch-contents";
 import { StatusCodeView } from "@/components/status-code-view";
+import { getUserId } from "@/features/auth/utils/get-session";
+import prisma from "@/prisma";
 import { ContentsStack } from "./contents-stack";
 
 export async function ContentsStackProvider() {
 	try {
-		const unexportedContents = await getSelfUnexportedContents();
+		const userId = await getUserId();
+		const unexportedContents = await prisma.contents.findMany({
+			where: { status: "UNEXPORTED", userId },
+			select: {
+				id: true,
+				title: true,
+				quote: true,
+				url: true,
+			},
+			orderBy: { id: "desc" },
+		});
 
 		return (
 			<ContentsStack

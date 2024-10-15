@@ -1,10 +1,13 @@
 "use client";
-import type { getUsers } from "@/apis/prisma/fetch-user";
-import type { UnwrapPromise } from "@/types";
+import type { Role } from "@prisma/client";
 import { RoleUpdateSelector } from "./role-update-selector";
 
 type Props = {
-	user: UnwrapPromise<ReturnType<typeof getUsers>>[0];
+	user: {
+		id: string;
+		username: string;
+		role: Role;
+	};
 };
 
 export function UserCard({ user }: Props) {

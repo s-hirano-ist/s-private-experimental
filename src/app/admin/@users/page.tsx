@@ -1,13 +1,21 @@
-import { getUsers } from "@/apis/prisma/fetch-user";
 import { Unauthorized } from "@/components/unauthorized";
 import { UserCard } from "@/features/auth/components/user-card";
 import { checkAdminPermission } from "@/features/auth/utils/role";
+import prisma from "@/prisma";
+
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
 	const hasAdminPermission = await checkAdminPermission();
 
-	const users = await getUsers();
+	const users = await prisma.users.findMany({
+		select: {
+			id: true,
+			username: true,
+			role: true,
+			Profile: true,
+		},
+	});
 
 	return (
 		<>

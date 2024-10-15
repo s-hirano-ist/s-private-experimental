@@ -1,4 +1,3 @@
-import { getProfile } from "@/apis/prisma/fetch-profile";
 import { StatusCodeView } from "@/components/status-code-view";
 import {
 	Card,
@@ -7,6 +6,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import prisma from "@/prisma";
 
 type Props = {
 	username: string;
@@ -14,7 +14,10 @@ type Props = {
 
 export async function Profile({ username }: Props) {
 	try {
-		const { Profile } = await getProfile(username);
+		const { Profile } = await prisma.users.findUniqueOrThrow({
+			where: { username },
+			select: { Profile: true },
+		});
 
 		return (
 			<>

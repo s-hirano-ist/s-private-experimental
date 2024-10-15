@@ -1,12 +1,23 @@
 "use server";
-import { getAllContents } from "@/apis/prisma/fetch-contents";
 import { StatusCodeView } from "@/components/status-code-view";
+import { hasAdminPermissionOrThrow } from "@/features/auth/utils/get-session";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { DumpTable } from "@/features/update-status/components/dump-table";
+import prisma from "@/prisma";
 
 export async function ContentsTable() {
 	try {
-		const contents = await getAllContents();
+		await hasAdminPermissionOrThrow();
+
+		const contents = await prisma.contents.findMany({
+			select: {
+				id: true,
+				title: true,
+				quote: true,
+				url: true,
+				status: true,
+			},
+		});
 
 		return (
 			<DumpTable<ContentsContext>

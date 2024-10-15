@@ -1,10 +1,10 @@
-import {
-	/*getAllSlugs,*/ getContentsBySlug,
-} from "@/apis/markdown/fetch-contents";
 import { Header } from "@/components/nav/header";
 import { Unauthorized } from "@/components/unauthorized";
 import { MARKDOWN_PATHS, PAGE_NAME } from "@/constants";
 import { checkAdminPermission } from "@/features/auth/utils/role";
+import {
+	/*getAllSlugs,*/ getContentsBySlug,
+} from "@/features/contents/actions/fetch-contents";
 import { ContentsBody } from "@/features/contents/components/contents-body";
 import type { ContentsType } from "@/features/contents/types";
 import { markdownToReact } from "@/features/contents/utils/markdownToReact";
