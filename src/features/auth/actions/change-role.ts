@@ -2,7 +2,7 @@
 import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
-import { checkSelfAdminRoleOrThrow } from "@/features/auth/utils/get-session";
+import { hasAdminPermissionOrThrow } from "@/features/auth/utils/get-session";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
@@ -14,7 +14,7 @@ export async function changeRole(
 	role: Role,
 ): Promise<ServerAction<undefined>> {
 	try {
-		await checkSelfAdminRoleOrThrow();
+		await hasAdminPermissionOrThrow();
 
 		await prisma.users.update({
 			where: { id: userId },

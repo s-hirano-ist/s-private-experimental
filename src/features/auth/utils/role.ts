@@ -1,4 +1,3 @@
-"use server";
 import "server-only";
 import { UnexpectedError } from "@/error-classes";
 import prisma from "@/prisma";

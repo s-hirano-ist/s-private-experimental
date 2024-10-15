@@ -12,9 +12,9 @@ export async function changeScope(
 	checked: boolean,
 ): Promise<ServerAction<undefined>> {
 	try {
-		const scope = checked ? "PUBLIC" : "PRIVATE";
-
 		const userId = await getUserId();
+
+		const scope = checked ? "PUBLIC" : "PRIVATE";
 		await prisma.users.update({
 			where: { id: userId },
 			data: { scope },

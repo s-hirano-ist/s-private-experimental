@@ -1,10 +1,11 @@
 "use server";
 import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
-import { NotAllowedError } from "@/error-classes";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
-import { getUserId } from "@/features/auth/utils/get-session";
-import { checkPostPermission } from "@/features/auth/utils/role";
+import {
+	getUserId,
+	hasSelfPostPermissionOrThrow,
+} from "@/features/auth/utils/get-session";
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import { validateCategory } from "@/features/dump/utils/validate-category";
 import { validateNews } from "@/features/dump/utils/validate-news";
@@ -20,13 +21,13 @@ export async function addNews(
 	formData: FormData,
 ): Promise<ServerAction<NewsContext>> {
 	try {
-		const hasPostPermission = await checkPostPermission();
-		if (!hasPostPermission) throw new NotAllowedError();
+		await hasSelfPostPermissionOrThrow();
+
+		const userId = await getUserId();
 
 		const hasCategory = formData.get("new_category") !== null;
 
 		if (hasCategory) {
-			const userId = await getUserId();
 			const category = await prisma.categories.create({
 				data: { userId, ...validateCategory(formData) },
 			});
@@ -37,7 +38,6 @@ export async function addNews(
 			formData.set("category", String(category.id));
 		}
 
-		const userId = await getUserId();
 		const createdNews = await prisma.news.create({
 			data: { userId, ...validateNews(formData) },
 			select: {

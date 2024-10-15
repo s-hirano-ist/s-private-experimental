@@ -16,15 +16,15 @@ async function createSelfLoginHistory(
 	ipAddress: string | undefined,
 	userAgent: string | undefined,
 ) {
+	// MEMO: auth()によって制限をかけると動かない
 	const user = await prisma.users.findUniqueOrThrow({
 		where: { username },
 		select: { id: true },
 	});
-	const userId = user.id;
 
 	return await prisma.loginHistories.create({
 		data: {
-			userId,
+			userId: user.id,
 			ipAddress,
 			userAgent,
 		},

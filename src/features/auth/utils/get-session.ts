@@ -1,8 +1,12 @@
-"use server";
 import "server-only";
 import { NotAllowedError, UnauthorizedError } from "@/error-classes";
 // import { redirect } from "next/navigation";
 import { auth } from "./auth";
+import {
+	checkAdminPermission,
+	checkPostPermission,
+	checkUpdateStatusPermission,
+} from "./role";
 
 export async function checkSelfAuth() {
 	const session = await auth();
@@ -13,9 +17,19 @@ export async function checkSelfAuth() {
 	return session;
 }
 
-export async function checkSelfAdminRoleOrThrow() {
-	const role = await getSelfRole();
-	if (role !== "ADMIN") throw new NotAllowedError();
+export async function hasAdminPermissionOrThrow() {
+	const hasAdminPermission = await checkAdminPermission();
+	if (!hasAdminPermission) throw new NotAllowedError();
+}
+
+export async function hasSelfPostPermissionOrThrow() {
+	const hasPostPermission = await checkPostPermission();
+	if (!hasPostPermission) throw new NotAllowedError();
+}
+
+export async function hasUpdateStatusPermissionOrThrow() {
+	const hasUpdateStatusPermission = await checkUpdateStatusPermission();
+	if (!hasUpdateStatusPermission) throw new NotAllowedError();
 }
 
 export async function getUserId() {

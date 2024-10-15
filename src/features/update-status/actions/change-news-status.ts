@@ -1,10 +1,12 @@
 "use server";
 import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
-import { NotAllowedError, UnexpectedError } from "@/error-classes";
+import { UnexpectedError } from "@/error-classes";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
-import { getUserId } from "@/features/auth/utils/get-session";
-import { checkUpdateStatusPermission } from "@/features/auth/utils/role";
+import {
+	getUserId,
+	hasUpdateStatusPermissionOrThrow,
+} from "@/features/auth/utils/get-session";
 import type { Status, UpdateOrRevert } from "@/features/update-status/types";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
@@ -68,8 +70,7 @@ export async function changeNewsStatus(
 	updateOrRevert: UpdateOrRevert,
 ): Promise<ServerAction<ToastMessage>> {
 	try {
-		const hasUpdateStatusPermission = await checkUpdateStatusPermission();
-		if (!hasUpdateStatusPermission) throw new NotAllowedError();
+		await hasUpdateStatusPermissionOrThrow();
 
 		const data = formatChangeStatusMessage(
 			await handleStatusChange(updateOrRevert),

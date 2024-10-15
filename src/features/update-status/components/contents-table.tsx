@@ -1,13 +1,13 @@
 "use server";
 import { StatusCodeView } from "@/components/status-code-view";
-import { checkSelfAdminRoleOrThrow } from "@/features/auth/utils/get-session";
+import { hasAdminPermissionOrThrow } from "@/features/auth/utils/get-session";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { DumpTable } from "@/features/update-status/components/dump-table";
 import prisma from "@/prisma";
 
 export async function ContentsTable() {
 	try {
-		await checkSelfAdminRoleOrThrow();
+		await hasAdminPermissionOrThrow();
 
 		const contents = await prisma.contents.findMany({
 			select: {
