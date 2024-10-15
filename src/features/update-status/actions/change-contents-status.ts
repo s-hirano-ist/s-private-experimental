@@ -12,6 +12,7 @@ import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
 import { formatChangeStatusMessage } from "@/utils/format-for-line";
+import { revalidatePath } from "next/cache";
 
 async function updateSelfContentsStatus(): Promise<Status> {
 	const userId = await getUserId();
@@ -77,6 +78,7 @@ export async function changeContentsStatus(
 			"CONTENTS",
 		);
 		await sendLineNotifyMessage(data);
+		revalidatePath("/dumper");
 		return { success: true, message: SUCCESS_MESSAGES.UPDATE, data };
 	} catch (error) {
 		return await wrapServerSideErrorForClient(error);
