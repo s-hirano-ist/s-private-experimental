@@ -9,5 +9,5 @@ COPY . .
 RUN pnpm run storybook:build
 
 # run
-FROM httpd:2.4.62@sha256:7204bce27072f97f244337ebe93c1dfc93d358d103beefc4107ee359d74d9148 AS runner
+FROM httpd:2.4.62@sha256:bbea29057f25d9543e6a96a8e3cc7c7c937206d20eab2323f478fdb2469d536d AS runner
 COPY --from=builder /app/.storybook-static /usr/local/apache2/htdocs/
