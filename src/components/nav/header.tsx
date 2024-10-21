@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { DEFAULT_SIGN_IN_REDIRECT } from "@/constants";
 import { signOut } from "@/features/auth/actions/sign-out";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "next-view-transitions";
@@ -21,7 +20,9 @@ export function Header({ title, url }: Props) {
 	async function onSignOutSubmit() {
 		const response = await signOut();
 		if (response.success) {
-			router.push(DEFAULT_SIGN_IN_REDIRECT);
+			// FIXME: need refresh due to sign-out non-refresh bug?
+			// https://github.com/nextauthjs/next-auth/issues/11125
+			router.refresh();
 		} else {
 			toast({
 				variant: "destructive",
