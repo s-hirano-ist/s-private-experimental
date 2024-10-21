@@ -66,7 +66,8 @@ export const {
 		// 	clientSecret: env.GITHUB_CLIENT_SECRET,
 		// }),
 	],
-	session: { strategy: "jwt" },
+	session: { strategy: "jwt", maxAge: 24 * 60 * 60 },
+	jwt: { maxAge: 30 * 24 * 60 * 60 },
 	callbacks: {
 		jwt({ token, user }) {
 			if (user) {
