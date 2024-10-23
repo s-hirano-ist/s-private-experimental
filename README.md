@@ -61,7 +61,7 @@ Licensed under the MIT License, Copyright © 2024
 
 ### Licenses of used libraries
 
-See `license.summary.txt` for summary of used licenses.
+See [library-license.txt](https://github.com/s-hirano-ist/s-private/blob/main/library-license.txt) for summary of used licenses.
 
 ## 🔒 Security
 
