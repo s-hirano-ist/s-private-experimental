@@ -109,7 +109,6 @@
 		"git-cz": "4.9.0",
 		"license-checker": "25.0.1",
 		"markdownlint-cli2": "0.14.0",
-		"npm-run-all2": "6.2.3",
 		"postcss": "8.4.47",
 		"rehype": "13.0.2",
 		"rehype-external-links": "3.0.0",
