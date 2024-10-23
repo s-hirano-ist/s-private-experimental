@@ -5,7 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Link } from "next-view-transitions";
 // import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 type Props = {
 	title: string;
@@ -13,7 +13,6 @@ type Props = {
 };
 
 export function Header({ title, url }: Props) {
-	const router = useRouter();
 	const pathname = usePathname();
 	const { toast } = useToast();
 
@@ -22,7 +21,7 @@ export function Header({ title, url }: Props) {
 		if (response.success) {
 			// FIXME: need refresh due to sign-out non-refresh bug?
 			// https://github.com/nextauthjs/next-auth/issues/11125
-			router.replace("/");
+			window.location.reload();
 		} else {
 			toast({
 				variant: "destructive",
