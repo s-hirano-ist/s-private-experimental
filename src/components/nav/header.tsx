@@ -22,7 +22,7 @@ export function Header({ title, url }: Props) {
 		if (response.success) {
 			// FIXME: need refresh due to sign-out non-refresh bug?
 			// https://github.com/nextauthjs/next-auth/issues/11125
-			router.refresh();
+			router.replace("/");
 		} else {
 			toast({
 				variant: "destructive",
