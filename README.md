@@ -37,14 +37,6 @@ pnpm dev
 docker compose --profile prod up --build -d
 ```
 
-## その他
-
-### 容量圧迫時
-
-```bash
-docker builder prune
-```
-
 ## 🪝 Tags & Realease
 
 1. Run one of the following commands
