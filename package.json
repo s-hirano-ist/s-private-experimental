@@ -29,7 +29,7 @@
 		"commit": "git-cz",
 		"storybook": "storybook dev -p 6006",
 		"storybook:build": "storybook build -o .storybook-static",
-		"license:summary": "license-checker --summary> license.summary.txt",
+		"license:summary": "license-checker --summary> library-license.txt",
 		"security": "pnpm audit"
 	},
 	"prisma": {
