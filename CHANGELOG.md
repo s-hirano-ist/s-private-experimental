@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/s-hirano-ist/s-private/compare/v1.4.0...v1.5.0) (2024-10-23)
+
+
+### ドキュメント
+
+* ✏️ update license ([0e935e4](https://github.com/s-hirano-ist/s-private/commit/0e935e456ea57c817a1768f4d0a7f8365799ff7d))
+* ✏️ update README ([a729a33](https://github.com/s-hirano-ist/s-private/commit/a729a33d5c5f37479884abd8413767f47ff00487))
+
+
+### ビルドプロセスまたは補助ツールの変更
+
+* 🤖 delete scripts for dump ([b5b3c26](https://github.com/s-hirano-ist/s-private/commit/b5b3c26d066c03de1021b49d676b4b397c71846c))
+* 🤖 downgrade vaul ([9a125d5](https://github.com/s-hirano-ist/s-private/commit/9a125d53682c9f89f969413bee04e216c9c206cf))
+* 🤖 separate storybook from prod env ([3a1dc2e](https://github.com/s-hirano-ist/s-private/commit/3a1dc2e17c523c8f91beaf950d5129e0bd6cec73))
+* **deps:** update patch ([cb8ce8f](https://github.com/s-hirano-ist/s-private/commit/cb8ce8f457b4c4e60b4ec9b1dc21c5ff5bba711b))
+
+
+### バグ修正
+
+* 🐛 add more envs to compose.yaml ([4d3f503](https://github.com/s-hirano-ist/s-private/commit/4d3f50369816c7c011be022f3a950b65448ecf8b))
+* 🐛 change router.replace with window.reload ([c2aa6a1](https://github.com/s-hirano-ist/s-private/commit/c2aa6a1cdb2d83ba95370f5512d0d3ac685f16b4))
+* 🐛 router.reload ([6bbfc0b](https://github.com/s-hirano-ist/s-private/commit/6bbfc0b68e17f81aca1f700996e346858b67b15a))
+* 🐛 tsconfig to ignore fetch-contents.ts ([2222e77](https://github.com/s-hirano-ist/s-private/commit/2222e77c7141d84bea2e2458b364a38c477cf6de))
+
+
+### リファクタリング
+
+* 💡 add more to dockerignore ([3ff0a2e](https://github.com/s-hirano-ist/s-private/commit/3ff0a2ea171d778b88d80918a6ac33e9ec5f6044))
+* 💡 add security and operation to dockerfile ([454258a](https://github.com/s-hirano-ist/s-private/commit/454258afbd6795ede494abce8ef1b755350775fc))
+* 💡 dockerfile ([22ca854](https://github.com/s-hirano-ist/s-private/commit/22ca8541b316f83a03666cf15227cb77a53b5b68))
+* 💡 library licenses ([9d34cdb](https://github.com/s-hirano-ist/s-private/commit/9d34cdbc1b5a06984c42f1c99cfa4faa52db372c))
+
 ## [1.4.0](https://github.com/s-hirano-ist/s-private/compare/v1.3.0...v1.4.0) (2024-10-22)
 
 
