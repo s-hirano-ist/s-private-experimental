@@ -22,6 +22,9 @@ RUN pnpm run build
 # run stage
 FROM node:20.18.0-alpine@sha256:c13b26e7e602ef2f1074aef304ce6e9b7dd284c419b35d89fcf3cc8e44a8def9 AS runner
 
+# Create non-root user
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
 # Install pnpm
 RUN npm install -g pnpm
 
@@ -41,8 +44,16 @@ COPY --from=builder /app/s-contents ./s-contents
 # Install production dependencies only
 RUN pnpm install --prod --frozen-lockfile
 
+# Change ownership of the application files
+RUN chown -R appuser:appgroup .
+
+# Switch to non-root user
+USER appuser
+
 # Expose port 3000
 EXPOSE 3000
+
+HEALTHCHECK --interval=30s --timeout=3s CMD wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1
 
 # Command to start the application
 CMD ["pnpm", "start"]
