@@ -33,7 +33,7 @@ services:
       context: .
       dockerfile: docker/storybook.Dockerfile
     profiles:
-      - prod
+      - storybook
     restart: always
     networks:
       - s-network

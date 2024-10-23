@@ -37,6 +37,12 @@ pnpm dev
 docker compose --profile prod up --build -d
 ```
 
+### Storybook
+
+```bash
+docker compose --profile storybook up --build -d
+```
+
 ## 🪝 Tags & Realease
 
 1. Run one of the following commands
