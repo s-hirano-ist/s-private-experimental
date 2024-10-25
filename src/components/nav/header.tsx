@@ -21,6 +21,9 @@ export function Header({ title, url }: Props) {
 		if (response.success) {
 			// FIXME: need refresh due to sign-out non-refresh bug?
 			// https://github.com/nextauthjs/next-auth/issues/11125
+			// https://github.com/s-hirano-ist/s-private/issues/495
+			// FIXME: want to reload without flash
+			// https://github.com/s-hirano-ist/s-private/issues/528
 			window.location.reload();
 		} else {
 			toast({
