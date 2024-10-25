@@ -14,7 +14,7 @@ export default function Page() {
 	return (
 		<div className="space-y-2">
 			<Header title="サインイン" />
-			<div className="mx-auto max-w-screen-sm pt-4">
+			<div className="mx-auto max-w-screen-sm px-2 pt-4 sm:px-0">
 				<SignInForm />
 			</div>
 		</div>

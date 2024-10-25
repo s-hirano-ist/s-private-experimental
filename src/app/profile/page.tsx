@@ -46,7 +46,7 @@ export default async function Page() {
 	return (
 		<>
 			<Header title={`Profile of ${session.user.username}`} />
-			<div className="space-y-4 p-4">
+			<div className="space-y-4 px-2 sm:px-0">
 				<UpsertProfileForm defaultValues={profile} />
 				<ScopeUpdateSwitch scope={scope} />
 			</div>

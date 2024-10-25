@@ -12,15 +12,15 @@ export default async function Page() {
 	const hasAdminPermission = await checkAdminPermission();
 
 	return (
-		<>
+		<div className="px-2 sm:px-0">
 			{hasAdminPermission ? (
 				<div className="space-y-2">
-					<h2 className="px-4">NEWS</h2>
+					<h2 className="px-4 pt-4">NEWS</h2>
 					<Suspense fallback={<TableSkeleton />}>
 						<NewsTable />
 					</Suspense>
 					<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
-					<h2 className="px-4">CONTENTS</h2>
+					<h2 className="px-4 pt-4">CONTENTS</h2>
 					<Suspense fallback={<TableSkeleton />}>
 						<ContentsTable />
 					</Suspense>
@@ -28,6 +28,6 @@ export default async function Page() {
 			) : (
 				<Unauthorized />
 			)}
-		</>
+		</div>
 	);
 }

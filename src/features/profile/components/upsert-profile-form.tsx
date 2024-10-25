@@ -47,7 +47,10 @@ export function UpsertProfileForm({ defaultValues }: Props) {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onProfileSubmit)} className="space-y-8">
+			<form
+				onSubmit={form.handleSubmit(onProfileSubmit)}
+				className="space-y-8 pt-4"
+			>
 				<FormField
 					control={form.control}
 					name="name"
