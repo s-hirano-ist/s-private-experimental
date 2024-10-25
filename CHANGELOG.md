@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/s-hirano-ist/s-private/compare/v1.5.0...v1.6.0) (2024-10-25)
+
+
+### リファクタリング
+
+* 💡 add comments on window.reload ([9a8a712](https://github.com/s-hirano-ist/s-private/commit/9a8a7127209161353c7ddfa1c1c8787d50a12eb9))
+* 💡 smartphone padding ([5c36889](https://github.com/s-hirano-ist/s-private/commit/5c368893d10f6935e6073e0825c10e154ee1c8dc)), closes [#526](https://github.com/s-hirano-ist/s-private/issues/526)
+
 ## [1.5.0](https://github.com/s-hirano-ist/s-private/compare/v1.4.0...v1.5.0) (2024-10-23)
 
 
