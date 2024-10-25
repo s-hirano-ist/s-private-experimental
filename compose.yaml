@@ -18,9 +18,11 @@ services:
 
   prod_frontend:
     container_name: prod-frontend
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
+    image: s0hirano/s-private:${TAG}
+    # MEMO: if want to build locally
+    # build:
+    #   context: .
+    #   dockerfile: docker/Dockerfile
     profiles:
       - prod
     restart: always
