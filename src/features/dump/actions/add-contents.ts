@@ -8,6 +8,7 @@ import {
 } from "@/features/auth/utils/get-session";
 import type { ContentsContext } from "@/features/dump/stores/contents-context";
 import { validateContents } from "@/features/dump/utils/validate-contents";
+import { loggerInfo } from "@/pino";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
@@ -30,8 +31,12 @@ export async function addContents(
 				url: true,
 			},
 		});
-
-		await sendLineNotifyMessage(formatCreateContentsMessage(createdContents));
+		const message = formatCreateContentsMessage(createdContents);
+		loggerInfo(message, {
+			caller: "addContents",
+			status: 200,
+		});
+		await sendLineNotifyMessage(message);
 
 		return {
 			success: true,

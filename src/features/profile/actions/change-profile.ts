@@ -4,6 +4,7 @@ import { SUCCESS_MESSAGES } from "@/constants";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import { getUserId } from "@/features/auth/utils/get-session";
 import type { ProfileSchema } from "@/features/profile/schemas/profile-schema";
+import { loggerInfo } from "@/pino";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
@@ -21,7 +22,12 @@ export async function changeProfile(
 			create: { userId, ...data },
 		});
 
-		await sendLineNotifyMessage(formatUpsertProfileMessage(data));
+		const message = formatUpsertProfileMessage(data);
+		loggerInfo(message, {
+			caller: "changeProfile",
+			status: 200,
+		});
+		await sendLineNotifyMessage(message);
 
 		return {
 			success: true,

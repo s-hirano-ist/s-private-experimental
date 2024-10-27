@@ -3,6 +3,7 @@ import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import { getUserId } from "@/features/auth/utils/get-session";
+import { loggerInfo } from "@/pino";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
@@ -19,8 +20,12 @@ export async function changeScope(
 			where: { id: userId },
 			data: { scope },
 		});
-
-		await sendLineNotifyMessage(formatUpdateScopeMessage(scope));
+		const message = formatUpdateScopeMessage(scope);
+		loggerInfo(message, {
+			caller: "changeScope",
+			status: 200,
+		});
+		await sendLineNotifyMessage(message);
 
 		return {
 			success: true,

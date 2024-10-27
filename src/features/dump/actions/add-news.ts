@@ -9,6 +9,7 @@ import {
 import type { NewsContext } from "@/features/dump/stores/news-context";
 import { validateCategory } from "@/features/dump/utils/validate-category";
 import { validateNews } from "@/features/dump/utils/validate-news";
+import { loggerInfo } from "@/pino";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
@@ -32,9 +33,12 @@ export async function addNews(
 				data: { userId, ...validateCategory(formData) },
 			});
 
-			await sendLineNotifyMessage(
-				formatCreateCategoryMessage(category.name, "NEWS"),
-			);
+			const message = formatCreateCategoryMessage(category.name, "NEWS");
+			loggerInfo(message, {
+				caller: "addNews",
+				status: 200,
+			});
+			await sendLineNotifyMessage(message);
 			formData.set("category", String(category.id));
 		}
 
@@ -48,8 +52,12 @@ export async function addNews(
 				Category: true,
 			},
 		});
-
-		await sendLineNotifyMessage(formatCreateNewsMessage(createdNews));
+		const message = formatCreateNewsMessage(createdNews);
+		loggerInfo(message, {
+			caller: "addNews",
+			status: 200,
+		});
+		await sendLineNotifyMessage(message);
 
 		return {
 			success: true,

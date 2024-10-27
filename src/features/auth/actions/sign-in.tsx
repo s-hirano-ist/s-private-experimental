@@ -5,6 +5,7 @@ import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import type { SignInSchema } from "@/features/auth/schemas/sign-in-schema";
 import { signIn as NextAuthSignIn } from "@/features/auth/utils/auth";
 import { getLoginUserInfo } from "@/features/auth/utils/header-info";
+import { loggerInfo } from "@/pino";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
@@ -39,7 +40,10 @@ export async function signIn(values: SignInSchema): Promise<SignInState> {
 		});
 		const { ipAddress, userAgent } = getLoginUserInfo();
 		await createSelfLoginHistory(values.username, ipAddress, userAgent);
-
+		loggerInfo(SUCCESS_MESSAGES.SIGN_IN, {
+			caller: "signIn",
+			status: 200,
+		});
 		await sendLineNotifyMessage(SUCCESS_MESSAGES.SIGN_IN);
 		return {
 			success: true,
