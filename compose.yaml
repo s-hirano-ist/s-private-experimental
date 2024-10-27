@@ -10,7 +10,7 @@ services:
       - dev
     restart: always
     networks:
-      - s-network
+      - s-dev-network
     environment:
       - LINE_NOTIFY_URL=${LINE_NOTIFY_URL}
       - LINE_NOTIFY_SECRET_TOKEN=${LINE_NOTIFY_SECRET_TOKEN}
@@ -31,8 +31,6 @@ services:
       - dev-db-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
-    profiles:
-      - dev
     networks:
       - s-dev-network
     env_file:
