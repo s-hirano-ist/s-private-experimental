@@ -8,7 +8,7 @@ import {
 	checkUpdateStatusPermission,
 } from "./role";
 
-export async function checkSelfAuth() {
+export async function checkSelfAuthOrRedirectToAuth() {
 	const session = await auth();
 	if (!session) {
 		// throw new UnauthorizedError();
@@ -34,11 +34,11 @@ export async function hasUpdateStatusPermissionOrThrow() {
 }
 
 export async function getUserId() {
-	const { user } = await checkSelfAuth();
+	const { user } = await checkSelfAuthOrRedirectToAuth();
 	return user.id;
 }
 
 export async function getSelfRole() {
-	const { user } = await checkSelfAuth();
+	const { user } = await checkSelfAuthOrRedirectToAuth();
 	return user.role;
 }

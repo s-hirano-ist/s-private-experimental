@@ -1,6 +1,9 @@
 import { Header } from "@/components/nav/header";
 import { PAGE_NAME } from "@/constants";
-import { checkSelfAuth, getUserId } from "@/features/auth/utils/get-session";
+import {
+	checkSelfAuthOrRedirectToAuth,
+	getUserId,
+} from "@/features/auth/utils/get-session";
 import { ScopeUpdateSwitch } from "@/features/profile/components/scope-update-switch";
 import { UpsertProfileForm } from "@/features/profile/components/upsert-profile-form";
 import prisma from "@/prisma";
@@ -39,7 +42,7 @@ async function getSelfScope() {
 }
 
 export default async function Page() {
-	const session = await checkSelfAuth();
+	const session = await checkSelfAuthOrRedirectToAuth();
 	const profile = await getSelfProfile();
 	const scope = await getSelfScope();
 

@@ -1,7 +1,7 @@
 import "server-only";
 import { UnexpectedError } from "@/error-classes";
 import prisma from "@/prisma";
-import { checkSelfAuth } from "./get-session";
+import { checkSelfAuthOrRedirectToAuth } from "./get-session";
 
 // everyone can access
 async function getUserScope(username: string) {
@@ -14,7 +14,7 @@ async function getUserScope(username: string) {
 
 // FOR /contents/* and /all
 export async function checkAdminPermission() {
-	const { user } = await checkSelfAuth();
+	const { user } = await checkSelfAuthOrRedirectToAuth();
 
 	switch (user.role) {
 		case "ADMIN":
@@ -34,7 +34,7 @@ export async function checkAdminPermission() {
 type ViewRole = "VIEW_ONLY" | "PROHIBITED" | "NOT_FOUND";
 
 export async function checkViewStatus(pathname: string): Promise<ViewRole> {
-	const { user } = await checkSelfAuth();
+	const { user } = await checkSelfAuthOrRedirectToAuth();
 
 	if (user.role === "UNAUTHORIZED") return "PROHIBITED";
 
@@ -50,7 +50,7 @@ export async function checkViewStatus(pathname: string): Promise<ViewRole> {
 
 // FOR /dump/* posts action
 export async function checkPostPermission() {
-	const { user } = await checkSelfAuth();
+	const { user } = await checkSelfAuthOrRedirectToAuth();
 
 	switch (user.role) {
 		case "ADMIN":
@@ -68,7 +68,7 @@ export async function checkPostPermission() {
 
 // FOR drawer
 export async function checkUpdateStatusPermission() {
-	const { user } = await checkSelfAuth();
+	const { user } = await checkSelfAuthOrRedirectToAuth();
 
 	switch (user.role) {
 		case "ADMIN":
