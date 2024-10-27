@@ -1,6 +1,6 @@
 import "server-only";
-import { NotAllowedError, UnauthorizedError } from "@/error-classes";
-// import { redirect } from "next/navigation";
+import { NotAllowedError /*, UnauthorizedError*/ } from "@/error-classes";
+import { redirect } from "next/navigation";
 import { auth } from "./auth";
 import {
 	checkAdminPermission,
@@ -11,8 +11,9 @@ import {
 export async function checkSelfAuth() {
 	const session = await auth();
 	if (!session) {
-		throw new UnauthorizedError();
-		// redirect("/auth"); // WHEN MIDDLEWARE DO NOT WORK
+		// throw new UnauthorizedError();
+		// FIXME: https://github.com/s-hirano-ist/s-private/issues/440
+		redirect("/auth"); // WHEN MIDDLEWARE DO NOT WORK
 	}
 	return session;
 }
