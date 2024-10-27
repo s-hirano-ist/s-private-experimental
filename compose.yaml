@@ -1,30 +1,13 @@
 services:
-  prod_db:
-    container_name: prod-db
+  # 本番環境のcontainerは https://s-hirano.com/s-tools/s-private/compose.yaml を参照
+
+  dev_frontend:
+    container_name: dev-frontend
     build:
       context: .
-      dockerfile: docker/db.Dockerfile
-    volumes:
-      - prod-db-data:/var/lib/postgresql/data
-    ports:
-      - 5432:5432 # FIXME: disable after #274
+      dockerfile: docker/Dockerfile
     profiles:
-      - prod
-    restart: always
-    networks:
-      - s-network
-    env_file:
-      - .env
-
-  prod_frontend:
-    container_name: prod-frontend
-    image: s0hirano/s-private:${TAG}
-    # MEMO: if want to build locally
-    # build:
-    #   context: .
-    #   dockerfile: docker/Dockerfile
-    profiles:
-      - prod
+      - dev
     restart: always
     networks:
       - s-network
@@ -38,17 +21,6 @@ services:
       - NEXT_PUBLIC_SENTRY_DSN=${NEXT_PUBLIC_SENTRY_DSN}
       - POSTGRES_PRISMA_URL=${POSTGRES_PRISMA_URL}
       - POSTGRES_URL_NON_POOLING=${POSTGRES_URL_NON_POOLING}
-
-  prod_storybook:
-    container_name: prod-storybook
-    build:
-      context: .
-      dockerfile: docker/storybook.Dockerfile
-    profiles:
-      - storybook
-    restart: always
-    networks:
-      - s-network
 
   dev_db:
     container_name: dev-db
@@ -67,11 +39,8 @@ services:
       - .env
 
 volumes:
-  prod-db-data:
   dev-db-data:
 
 networks:
-  s-network:
-    external: true
   s-dev-network:
     external: true
