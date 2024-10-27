@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/s-hirano-ist/s-private/compare/v1.6.0...v1.6.1) (2024-10-27)
+
+
+### ビルドプロセスまたは補助ツールの変更
+
+* 🤖 add docker hub option ([79d72d6](https://github.com/s-hirano-ist/s-private/commit/79d72d677a2a8511e066477f626cdd120da70c14))
+* **deps:** update dependency @chromatic-com/storybook to v3 ([4bfc171](https://github.com/s-hirano-ist/s-private/commit/4bfc17124b25128ace019c17909e9fe7f871938d))
+* **deps:** update minor ([2dad6de](https://github.com/s-hirano-ist/s-private/commit/2dad6dece37b5d1d329b532658f70f6ffb5db735))
+
+
+### 新機能
+
+* 🎸 add docker push command for db and storybook ([564b3ef](https://github.com/s-hirano-ist/s-private/commit/564b3ef5bd4f1ae5bb8f8b7453876d18f8695b99))
+
+
+### ドキュメント
+
+* ✏️ update description of docker hub ([5c758a7](https://github.com/s-hirano-ist/s-private/commit/5c758a72eeb4f3a824714d75d2e0fd731ce2fc75))
+* ✏️ update prod description of README ([4fc19cb](https://github.com/s-hirano-ist/s-private/commit/4fc19cba40441e9d1ab14c987cbe84709a980b24))
+
+
+### バグ修正
+
+* 🐛 bcryptjs error ([aec7843](https://github.com/s-hirano-ist/s-private/commit/aec7843b451b339ab495535038238153a3216adc)), closes [#508](https://github.com/s-hirano-ist/s-private/issues/508)
+
+
+### リファクタリング
+
+* 💡 add comments to refactor docker hub push ([10a6022](https://github.com/s-hirano-ist/s-private/commit/10a6022a4d342ec30a8745a95b1318457d5cbdb8))
+* 💡 add todo on health check ([e953d3a](https://github.com/s-hirano-ist/s-private/commit/e953d3a0a044f3f804dacc390b0f2b63ef3190da))
+* 💡 delete docker compose for s-tools ([ab758e8](https://github.com/s-hirano-ist/s-private/commit/ab758e8443fb87742cd6f9ee9ff8175257a0b7e2))
+* 💡 docker network and profile ([2b4864c](https://github.com/s-hirano-ist/s-private/commit/2b4864c196f5442619269a2dde08ee032b773af5))
+
 ## [1.6.0](https://github.com/s-hirano-ist/s-private/compare/v1.5.0...v1.6.0) (2024-10-25)
 
 
