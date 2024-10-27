@@ -24,6 +24,8 @@ cd s-private
 
 ## DockerImageのビルドとプッシュ
 
+詳細は[DockerHub](https://hub.docker.com/repository/docker/s0hirano/s-private/general)を参照願う。
+
 ```bash
 docker login
 bash ./docker/docker-push.sh
