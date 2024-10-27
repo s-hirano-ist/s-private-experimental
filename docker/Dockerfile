@@ -53,7 +53,9 @@ USER appuser
 # Expose port 3000
 EXPOSE 3000
 
-HEALTHCHECK --interval=30s --timeout=3s CMD wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1
+# FIXME: health check
+# https://github.com/s-hirano-ist/s-private/issues/536
+# HEALTHCHECK --interval=30s --timeout=3s CMD wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1
 
 # Command to start the application
 CMD ["pnpm", "start"]

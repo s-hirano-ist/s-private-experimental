@@ -22,6 +22,15 @@ git clone --recursive https://github.com/s-hirano-ist/s-private.git
 cd s-private
 ```
 
+## DockerImageのビルドとプッシュ
+
+詳細は[DockerHub](https://hub.docker.com/repository/docker/s0hirano/s-private/general)を参照願う。
+
+```bash
+docker login
+bash ./docker/docker-push.sh
+```
+
 ## 起動方法
 
 ### 開発環境
@@ -34,6 +43,7 @@ pnpm dev
 ### 本番環境
 
 ```bash
+vim .env # TAG="X.X.X" の箇所を変更する
 docker compose --profile prod up --build -d
 ```
 
