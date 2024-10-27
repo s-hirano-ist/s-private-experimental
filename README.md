@@ -42,16 +42,11 @@ pnpm dev
 
 ### 本番環境
 
-```bash
-vim .env # TAG="X.X.X" の箇所を変更する
-docker compose --profile prod up --build -d
-```
+[s-tools/s-private](https://github.com/s-hirano-ist/s-tools/tree/main/s-private)を参照。
 
 ### Storybook
 
-```bash
-docker compose --profile storybook up --build -d
-```
+[s-tools/s-storybook](https://github.com/s-hirano-ist/s-tools/tree/main/s-private)を参照。
 
 ## 🪝 Tags & Realease
 
