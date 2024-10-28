@@ -33,4 +33,4 @@ echo "Start pushing image..."
   exit 1
 }
 
-+echo "success: Successfully pushed image s0hirano/s-private:${TAG}."
+echo "success: Successfully pushed image s0hirano/s-private:${TAG}."
