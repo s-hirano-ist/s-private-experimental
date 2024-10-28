@@ -1,7 +1,7 @@
 # Build Stage
 # MEMO: alpine iamges are not recommended https://zenn.dev/jrsyo/articles/e42de409e62f5d
 # FROM node:20.18.0-alpine AS base
-FROM node:20.18.0-slim AS base
+FROM node:20.18.0-slim@sha256:ec35a66c9a0a275b027debde05247c081f8b2f0c43d7399d3a6ad5660cee2f6a AS base
 RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates
 
 # Install pnpm
