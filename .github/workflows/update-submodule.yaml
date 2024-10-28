@@ -1,0 +1,30 @@
+name: update-submodules
+
+on:
+  schedule:
+    - cron: "0 23 * * 2"
+  workflow_dispatch:
+
+jobs:
+  update-submodules:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: Checkout files
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          submodules: true
+
+      - name: Update submodules
+        run: git submodule update --remote --merge
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@5e914681df9dc83aa4e4905692ca88beb2f9e91f # v7
+        with:
+          token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+          commit-message: "contents: update submodule"
+          title: "contents: update submodule"
+          body: Submoduleのupdate。
