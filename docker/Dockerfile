@@ -1,13 +1,18 @@
 # Build Stage
-FROM node:20.18.0-alpine@sha256:c13b26e7e602ef2f1074aef304ce6e9b7dd284c419b35d89fcf3cc8e44a8def9 AS base
+# MEMO: alpine iamges are not recommended https://zenn.dev/jrsyo/articles/e42de409e62f5d
+# FROM node:20.18.0-alpine AS base
+FROM node:20.18.0-slim AS base
+RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates
 
 # Install pnpm
 RUN npm install -g pnpm
 
 # Install dependencies only when needed
 FROM base AS deps
+
+# MEMO: only uncommennt when using node-alpine
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
+# RUN apk add --no-cache libc6-compat
 
 # Set working directory
 WORKDIR /app
