@@ -9,6 +9,8 @@ services:
     profiles:
       - dev
     restart: always
+    ports:
+      - "3000:3000"
     networks:
       - s-dev-network
     environment:

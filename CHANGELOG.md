@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/s-hirano-ist/s-private/compare/v1.6.3...v1.7.0) (2024-10-28)
+
+
+### リファクタリング
+
+* 💡 dockerfile ([a0ba2bb](https://github.com/s-hirano-ist/s-private/commit/a0ba2bb7eefbe52e7368dbf023dd7a89e8d279af))
+
+
+### ビルドプロセスまたは補助ツールの変更
+
+* 🤖 add docker compose port for dev dockerfile ([d2b84af](https://github.com/s-hirano-ist/s-private/commit/d2b84af94e8df7b0f167fd4baabb3f35eaaacfd6))
+
 ### [1.6.3](https://github.com/s-hirano-ist/s-private/compare/v1.6.2...v1.6.3) (2024-10-28)
 
 

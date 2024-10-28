@@ -1,8 +1,18 @@
-# build stage
-FROM node:20.18.0-alpine@sha256:c13b26e7e602ef2f1074aef304ce6e9b7dd284c419b35d89fcf3cc8e44a8def9 AS builder
+# Build Stage
+# MEMO: alpine iamges are not recommended https://zenn.dev/jrsyo/articles/e42de409e62f5d
+# FROM node:20.18.0-alpine AS base
+FROM node:20.18.0-slim AS base
+RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates
 
 # Install pnpm
 RUN npm install -g pnpm
+
+# Install dependencies only when needed
+FROM base AS deps
+
+# MEMO: only uncommennt when using node-alpine
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+# RUN apk add --no-cache libc6-compat
 
 # Set working directory
 WORKDIR /app
@@ -11,51 +21,59 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml prisma ./
 
 # Install dependencies
-RUN pnpm install
+RUN pnpm install --frozen-lockfile
+
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 
 # Copy rest of the application code
 COPY . .
 
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry during the build.
+ENV NEXT_TELEMETRY_DISABLED=1
+
 # Build the application
 RUN pnpm run build
 
-# run stage
-FROM node:20.18.0-alpine@sha256:c13b26e7e602ef2f1074aef304ce6e9b7dd284c419b35d89fcf3cc8e44a8def9 AS runner
-
-# Create non-root user
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-
-# Install pnpm
-RUN npm install -g pnpm
-
-# Set working directory
+# Production image, copy all the files and run Next.js
+FROM base AS runner
 WORKDIR /app
 
-# Copy the built application and necessary files from the builder stage
-COPY --from=builder /app/.next ./.next
+ENV NODE_ENV=production
+# Uncomment the following line in case you want to disable telemetry during runtime.
+ENV NEXT_TELEMETRY_DISABLED=1
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copy public assets
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/pnpm-lock.yaml ./
-COPY --from=builder /app/prisma ./prisma
 
-# FIXME: disable when dynamicParams enabled
-COPY --from=builder /app/s-contents ./s-contents
+# Set the correct permission for prerender cache
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
 
-# Install production dependencies only
-RUN pnpm install --prod --frozen-lockfile
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Change ownership of the application files
-RUN chown -R appuser:appgroup .
-
-# Switch to non-root user
-USER appuser
+USER nextjs
 
 # Expose port 3000
 EXPOSE 3000
+ENV PORT=3000
 
-# FIXME: health check
-# https://github.com/s-hirano-ist/s-private/issues/536
-# HEALTHCHECK --interval=30s --timeout=3s CMD wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s CMD wget --no-verbose --tries=1 --spider http://0.0.0.0:3000/api/health || exit 1
+
+# server.js is created by Next.js build from the standalone output
+# https://nextjs.org/docs/pages/api-reference/next-config-js/output
+ENV HOSTNAME="0.0.0.0"
 
 # Command to start the application
-CMD ["pnpm", "start"]
+CMD ["node", "server.js"]
