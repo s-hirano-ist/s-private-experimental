@@ -1,8 +1,10 @@
 # Build Stage
-# MEMO: alpine iamges are not recommended https://zenn.dev/jrsyo/articles/e42de409e62f5d
-# FROM node:20.18.0-alpine AS base
-FROM node:20.18.0-slim@sha256:ec35a66c9a0a275b027debde05247c081f8b2f0c43d7399d3a6ad5660cee2f6a AS base
-RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates
+# MEMO: alpine iamges may snot recommended? https://zenn.dev/jrsyo/articles/e42de409e62f5d
+FROM node:20.18.0-alpine AS base
+
+# MEMO: when using node-slim
+# FROM node:20.18.0-slim@sha256:ec35a66c9a0a275b027debde05247c081f8b2f0c43d7399d3a6ad5660cee2f6a AS base
+# RUN apt-get update && apt-get install -y ca-certificates && update-ca-certificates
 
 # Install pnpm
 RUN npm install -g pnpm
@@ -12,7 +14,7 @@ FROM base AS deps
 
 # MEMO: only uncommennt when using node-alpine
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-# RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache libc6-compat
 
 # Set working directory
 WORKDIR /app
