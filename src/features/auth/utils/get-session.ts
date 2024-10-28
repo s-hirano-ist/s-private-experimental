@@ -15,7 +15,7 @@ export async function checkSelfAuthOrRedirectToAuth() {
 	if (!session) {
 		loggerWarn(ERROR_MESSAGES.UNAUTHORIZED, {
 			caller: "Unauthorized on checkSelfAuth",
-			status: 403,
+			status: 401,
 		});
 		// throw new UnauthorizedError();
 		// FIXME: https://github.com/s-hirano-ist/s-private/issues/440
