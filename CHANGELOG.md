@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.3](https://github.com/s-hirano-ist/s-private/compare/v1.6.2...v1.6.3) (2024-10-28)
+
+
+### リファクタリング
+
+* 💡 file name to show it redirects ([393595d](https://github.com/s-hirano-ist/s-private/commit/393595dca4b951806d5766cfb2b1dae324ae2091))
+
+
+### 新機能
+
+* 🎸 add pino ([644eb0b](https://github.com/s-hirano-ist/s-private/commit/644eb0bbdde9a222a3af24367fed7e507cbfefce))
+
+
+### バグ修正
+
+* 🐛 change 403 to 401 for precise ([eb38c51](https://github.com/s-hirano-ist/s-private/commit/eb38c51c72e4f32dbf7b8b5d57a8bcf2a3d6cf89))
+* 🐛 security issue on root page ([c2a22cb](https://github.com/s-hirano-ist/s-private/commit/c2a22cb2ecaf4914defe8d0590f93b5df6126ccf))
+
+
+### ビルドプロセスまたは補助ツールの変更
+
+* 🤖 change webmanifest to ts file ([d1c2997](https://github.com/s-hirano-ist/s-private/commit/d1c299704196b3c3acc0f1fcfe6325223a042649))
+* 🤖 renovate github actions all in one place ([3504a58](https://github.com/s-hirano-ist/s-private/commit/3504a58ebc3d1798a5fa2342a8023be5448a238a))
+* **deps:** update actions/cache digest to 6849a64 ([0ca3c74](https://github.com/s-hirano-ist/s-private/commit/0ca3c748f1f8175eac192019d06beeed47535c82))
+* **deps:** update actions/checkout digest to 11bd719 ([60b21a0](https://github.com/s-hirano-ist/s-private/commit/60b21a0484e77346f9a1b9b81e5882fd71ceb964))
+* **deps:** update actions/setup-node digest to 39370e3 ([01b5297](https://github.com/s-hirano-ist/s-private/commit/01b529760c2569c1acdc723232a5e44a1c21ca4b))
+
 ### [1.6.2](https://github.com/s-hirano-ist/s-private/compare/v1.6.1...v1.6.2) (2024-10-27)
 
 ### [1.6.1](https://github.com/s-hirano-ist/s-private/compare/v1.6.0...v1.6.1) (2024-10-27)
