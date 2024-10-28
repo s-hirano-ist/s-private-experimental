@@ -8,6 +8,7 @@ import {
 	hasUpdateStatusPermissionOrThrow,
 } from "@/features/auth/utils/get-session";
 import type { Status, UpdateOrRevert } from "@/features/update-status/types";
+import { loggerInfo } from "@/pino";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
@@ -73,13 +74,16 @@ export async function changeContentsStatus(
 	try {
 		await hasUpdateStatusPermissionOrThrow();
 
-		const data = formatChangeStatusMessage(
-			await handleStatusChange(changeType),
-			"CONTENTS",
-		);
-		await sendLineNotifyMessage(data);
+		const status = await handleStatusChange(changeType);
+
+		const message = formatChangeStatusMessage(status, "CONTENTS");
+		loggerInfo(message, {
+			caller: "changeContentsStatus",
+			status: 200,
+		});
+		await sendLineNotifyMessage(message);
 		revalidatePath("/dumper");
-		return { success: true, message: SUCCESS_MESSAGES.UPDATE, data };
+		return { success: true, message: SUCCESS_MESSAGES.UPDATE, data: message };
 	} catch (error) {
 		return await wrapServerSideErrorForClient(error);
 	}

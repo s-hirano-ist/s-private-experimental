@@ -3,6 +3,7 @@ import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import { hasAdminPermissionOrThrow } from "@/features/auth/utils/get-session";
+import { loggerInfo } from "@/pino";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
@@ -20,8 +21,12 @@ export async function changeRole(
 			where: { id: userId },
 			data: { role },
 		});
-
-		await sendLineNotifyMessage(formatUpdateRoleMessage(role));
+		const message = formatUpdateRoleMessage(role);
+		loggerInfo(message, {
+			caller: "changeRole",
+			status: 200,
+		});
+		await sendLineNotifyMessage(message);
 
 		return {
 			success: true,
