@@ -61,12 +61,10 @@ USER nextjs
 
 # Expose port 3000
 EXPOSE 3000
-
 ENV PORT=3000
 
-# FIXME: Health Check
-# https://github.com/s-hirano-ist/s-private/issues/536
-# HEALTHCHECK --interval=30s --timeout=3s CMD wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s CMD wget --no-verbose --tries=1 --spider http://0.0.0.0:3000/api/health || exit 1
 
 # server.js is created by Next.js build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
