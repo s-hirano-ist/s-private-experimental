@@ -13,6 +13,7 @@ import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
 import { formatCreateContentsMessage } from "@/utils/format-for-line";
+import { revalidatePath } from "next/cache";
 
 export async function addContents(
 	formData: FormData,
@@ -37,6 +38,7 @@ export async function addContents(
 			status: 200,
 		});
 		await sendLineNotifyMessage(message);
+		revalidatePath("/dumper");
 
 		return {
 			success: true,

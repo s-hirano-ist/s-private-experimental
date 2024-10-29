@@ -17,6 +17,7 @@ import {
 	formatCreateCategoryMessage,
 	formatCreateNewsMessage,
 } from "@/utils/format-for-line";
+import { revalidatePath } from "next/cache";
 
 export async function addNews(
 	formData: FormData,
@@ -58,6 +59,7 @@ export async function addNews(
 			status: 200,
 		});
 		await sendLineNotifyMessage(message);
+		revalidatePath("/dumper");
 
 		return {
 			success: true,
