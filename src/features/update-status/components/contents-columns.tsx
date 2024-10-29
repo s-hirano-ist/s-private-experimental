@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import type { ContentsContext } from "@/features/dump/stores/contents-context";
+import type { ContentsAtom } from "@/features/dump/stores/contents-atom";
 import { sanitizeHref } from "@/utils/sanitize-href";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Link as LinkIcon } from "lucide-react";
 import type { Route } from "next";
 import Link from "next/link";
 
-export const contentsColumns = (): ColumnDef<ContentsContext>[] => [
+export const contentsColumns = (): ColumnDef<ContentsAtom>[] => [
 	{
 		accessorKey: "id",
 		header: ({ column }) => {
@@ -50,9 +50,12 @@ export const contentsColumns = (): ColumnDef<ContentsContext>[] => [
 		accessorKey: "url",
 		header: () => <></>,
 		cell: ({ row }) => {
-			const href = sanitizeHref(row.getValue("url")) as Route;
 			return (
-				<Link href={href} target="_blank" scroll={false}>
+				<Link
+					href={sanitizeHref(row.getValue("url")) as Route}
+					target="_blank"
+					scroll={false}
+				>
 					<LinkIcon />
 				</Link>
 			);

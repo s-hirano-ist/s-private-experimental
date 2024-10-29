@@ -6,6 +6,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { sanitizeHref } from "@/utils/sanitize-href";
 import Link from "next/link";
 
 type Props = {
@@ -18,7 +19,7 @@ type Props = {
 
 export function SmallCard({ id, title, quote, url, category }: Props) {
 	return (
-		<Link href={new URL(url)} target="_blank" scroll={false}>
+		<Link href={new URL(sanitizeHref(url))} target="_blank" scroll={false}>
 			<Card className="hover:bg-secondary">
 				<CardHeader>
 					<div className="flex gap-4">

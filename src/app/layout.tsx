@@ -1,4 +1,3 @@
-import AppProvider from "@/components/app-provider";
 import { Footer } from "@/components/nav/footer";
 import { Toaster } from "@/components/ui/toaster";
 import type { Metadata } from "next";
@@ -22,13 +21,11 @@ export default function RootLayout({
 		<ViewTransitions>
 			<html lang="ja">
 				<body className={notoSansJp.className}>
-					<AppProvider>
-						<main className="flex h-screen flex-col justify-between">
-							<div className="grow pb-4">{children}</div>
-							<Footer />
-						</main>
-						<Toaster />
-					</AppProvider>
+					<main className="flex h-screen flex-col justify-between">
+						<div className="grow pb-4">{children}</div>
+						<Footer />
+					</main>
+					<Toaster />
 				</body>
 			</html>
 		</ViewTransitions>

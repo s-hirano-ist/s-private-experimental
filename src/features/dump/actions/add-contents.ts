@@ -6,17 +6,18 @@ import {
 	getUserId,
 	hasSelfPostPermissionOrThrow,
 } from "@/features/auth/utils/get-session";
-import type { ContentsContext } from "@/features/dump/stores/contents-context";
+import type { ContentsAtom } from "@/features/dump/stores/contents-atom";
 import { validateContents } from "@/features/dump/utils/validate-contents";
 import { loggerInfo } from "@/pino";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
 import { formatCreateContentsMessage } from "@/utils/format-for-line";
+import { revalidatePath } from "next/cache";
 
 export async function addContents(
 	formData: FormData,
-): Promise<ServerAction<ContentsContext>> {
+): Promise<ServerAction<ContentsAtom>> {
 	try {
 		await hasSelfPostPermissionOrThrow();
 
@@ -37,6 +38,7 @@ export async function addContents(
 			status: 200,
 		});
 		await sendLineNotifyMessage(message);
+		revalidatePath("/dumper");
 
 		return {
 			success: true,

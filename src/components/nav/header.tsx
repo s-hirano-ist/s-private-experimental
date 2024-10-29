@@ -1,11 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { DEFAULT_SIGN_IN_REDIRECT } from "@/constants";
 import { signOut } from "@/features/auth/actions/sign-out";
 import { useToast } from "@/hooks/use-toast";
+import { sanitizeHref } from "@/utils/sanitize-href";
 import { Link } from "next-view-transitions";
 // import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type Props = {
 	title: string;
@@ -15,16 +17,12 @@ type Props = {
 export function Header({ title, url }: Props) {
 	const pathname = usePathname();
 	const { toast } = useToast();
+	const router = useRouter();
 
 	async function onSignOutSubmit() {
 		const response = await signOut();
 		if (response.success) {
-			// FIXME: need refresh due to sign-out non-refresh bug?
-			// https://github.com/nextauthjs/next-auth/issues/11125
-			// https://github.com/s-hirano-ist/s-private/issues/495
-			// FIXME: want to reload without flash
-			// https://github.com/s-hirano-ist/s-private/issues/528
-			window.location.reload();
+			router.push(DEFAULT_SIGN_IN_REDIRECT);
 		} else {
 			toast({
 				variant: "destructive",
@@ -46,7 +44,11 @@ export function Header({ title, url }: Props) {
 						className="size-8 object-cover"
 					/>
 					{url ? (
-						<Link href={new URL(url)} target="_blank" scroll={false}>
+						<Link
+							href={new URL(sanitizeHref(url))}
+							target="_blank"
+							scroll={false}
+						>
 							<Button variant="link" className="text-xl font-semibold">
 								{title}
 							</Button>

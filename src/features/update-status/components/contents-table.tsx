@@ -1,7 +1,7 @@
 "use server";
 import { StatusCodeView } from "@/components/status-code-view";
 import { hasAdminPermissionOrThrow } from "@/features/auth/utils/get-session";
-import type { ContentsContext } from "@/features/dump/stores/contents-context";
+import type { ContentsAtom } from "@/features/dump/stores/contents-atom";
 import { DumpTable } from "@/features/update-status/components/dump-table";
 import prisma from "@/prisma";
 
@@ -20,7 +20,7 @@ export async function ContentsTable() {
 		});
 
 		return (
-			<DumpTable<ContentsContext>
+			<DumpTable<ContentsAtom>
 				data={contents.map((d) => {
 					return {
 						id: d.id,
