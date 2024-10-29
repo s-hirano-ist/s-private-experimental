@@ -3,18 +3,18 @@ import { SmallCard } from "@/components/stack/small-card";
 import { StackSkeleton } from "@/components/stack/stack-skeleton";
 import { StatusCodeView } from "@/components/status-code-view";
 import {
-	type ContentsContext,
-	contentsContext,
-} from "@/features/dump/stores/contents-context";
+	type ContentsAtom,
+	contentsAtom,
+} from "@/features/dump/stores/contents-atom";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
 
 type Props = {
-	contents: ContentsContext[];
+	contents: ContentsAtom[];
 };
 
 export function ContentsStack({ contents }: Props) {
-	const [data, setData] = useAtom(contentsContext);
+	const [data, setData] = useAtom(contentsAtom);
 
 	useEffect(() => {
 		setData(contents);

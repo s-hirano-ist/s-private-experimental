@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { addNews } from "@/features/dump/actions/add-news";
-import { newsContext } from "@/features/dump/stores/news-context";
+import { newsAtom } from "@/features/dump/stores/news-atom";
 import { useToast } from "@/hooks/use-toast";
 import type { Categories } from "@prisma/client";
 import { useSetAtom } from "jotai";
@@ -32,7 +32,7 @@ export function AddNewsForm({ categories }: Props) {
 
 	const { toast } = useToast();
 
-	const setQueuedContents = useSetAtom(newsContext);
+	const setQueuedContents = useSetAtom(newsAtom);
 
 	const [newCategoryInputOpen, setNewCategoryInputOpen] = useState(false);
 

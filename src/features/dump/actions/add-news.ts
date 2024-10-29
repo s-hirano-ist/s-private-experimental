@@ -6,7 +6,7 @@ import {
 	getUserId,
 	hasSelfPostPermissionOrThrow,
 } from "@/features/auth/utils/get-session";
-import type { NewsContext } from "@/features/dump/stores/news-context";
+import type { NewsAtom } from "@/features/dump/stores/news-atom";
 import { validateCategory } from "@/features/dump/utils/validate-category";
 import { validateNews } from "@/features/dump/utils/validate-news";
 import { loggerInfo } from "@/pino";
@@ -20,7 +20,7 @@ import {
 
 export async function addNews(
 	formData: FormData,
-): Promise<ServerAction<NewsContext>> {
+): Promise<ServerAction<NewsAtom>> {
 	try {
 		await hasSelfPostPermissionOrThrow();
 

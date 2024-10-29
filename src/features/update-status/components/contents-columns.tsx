@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import type { ContentsContext } from "@/features/dump/stores/contents-context";
+import type { ContentsAtom } from "@/features/dump/stores/contents-atom";
 import { sanitizeHref } from "@/utils/sanitize-href";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Link as LinkIcon } from "lucide-react";
 import type { Route } from "next";
 import Link from "next/link";
 
-export const contentsColumns = (): ColumnDef<ContentsContext>[] => [
+export const contentsColumns = (): ColumnDef<ContentsAtom>[] => [
 	{
 		accessorKey: "id",
 		header: ({ column }) => {

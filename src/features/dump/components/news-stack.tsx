@@ -2,17 +2,17 @@
 import { SmallCard } from "@/components/stack/small-card";
 import { StackSkeleton } from "@/components/stack/stack-skeleton";
 import { StatusCodeView } from "@/components/status-code-view";
-import { newsContext } from "@/features/dump/stores/news-context";
-import type { NewsContext } from "@/features/dump/stores/news-context";
+import { newsAtom } from "@/features/dump/stores/news-atom";
+import type { NewsAtom } from "@/features/dump/stores/news-atom";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
 
 type Props = {
-	news: NewsContext[];
+	news: NewsAtom[];
 };
 
 export function NewsStack({ news }: Props) {
-	const [data, setData] = useAtom(newsContext);
+	const [data, setData] = useAtom(newsAtom);
 
 	useEffect(() => {
 		setData(news);

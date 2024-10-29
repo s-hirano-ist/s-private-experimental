@@ -10,8 +10,8 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { UnexpectedError } from "@/error-classes";
-import type { ContentsContext } from "@/features/dump/stores/contents-context";
-import type { NewsContext } from "@/features/dump/stores/news-context";
+import type { ContentsAtom } from "@/features/dump/stores/contents-atom";
+import type { NewsAtom } from "@/features/dump/stores/news-atom";
 import type { ContentName } from "@/features/dump/types";
 import { contentsColumns } from "@/features/update-status/components/contents-columns";
 import { newsColumns } from "@/features/update-status/components/news-columns";
@@ -30,12 +30,12 @@ import {
 import { useState } from "react";
 import { EditDialog } from "./edit-dialog";
 
-type Props<T extends NewsContext | ContentsContext> = {
+type Props<T extends NewsAtom | ContentsAtom> = {
 	data: T[];
 	columnType: ContentName;
 };
 
-export function DumpTable<T extends NewsContext | ContentsContext>({
+export function DumpTable<T extends NewsAtom | ContentsAtom>({
 	data,
 	columnType,
 }: Props<T>) {
@@ -44,7 +44,7 @@ export function DumpTable<T extends NewsContext | ContentsContext>({
 	const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
 	const [open, setOpen] = useState(false);
-	const [dialogData, setDialogData] = useState<NewsContext | ContentsContext>();
+	const [dialogData, setDialogData] = useState<NewsAtom | ContentsAtom>();
 
 	const columns = () => {
 		switch (columnType) {
@@ -70,7 +70,7 @@ export function DumpTable<T extends NewsContext | ContentsContext>({
 		state: { sorting, columnFilters, columnVisibility },
 	});
 
-	const handleClick = (rowData: NewsContext | ContentsContext) => {
+	const handleClick = (rowData: NewsAtom | ContentsAtom) => {
 		setDialogData(rowData);
 		setOpen(true);
 	};

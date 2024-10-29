@@ -1,7 +1,7 @@
 "use server";
 import { StatusCodeView } from "@/components/status-code-view";
 import { hasAdminPermissionOrThrow } from "@/features/auth/utils/get-session";
-import type { NewsContext } from "@/features/dump/stores/news-context";
+import type { NewsAtom } from "@/features/dump/stores/news-atom";
 import { DumpTable } from "@/features/update-status/components/dump-table";
 import prisma from "@/prisma";
 
@@ -21,7 +21,7 @@ export async function NewsTable() {
 		});
 
 		return (
-			<DumpTable<NewsContext>
+			<DumpTable<NewsAtom>
 				data={news.map((d) => {
 					return {
 						id: d.id,

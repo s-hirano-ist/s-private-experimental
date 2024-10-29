@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 
-export type NewsContext = {
+export type NewsAtom = {
 	id: number;
 	title: string;
 	quote: string | null;
@@ -8,4 +8,4 @@ export type NewsContext = {
 	category: string;
 };
 
-export const newsContext = atom<NewsContext[] | undefined>(undefined);
+export const newsAtom = atom<NewsAtom[] | undefined>(undefined);

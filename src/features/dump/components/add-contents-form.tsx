@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { addContents } from "@/features/dump/actions/add-contents";
-import { contentsContext } from "@/features/dump/stores/contents-context";
+import { contentsAtom } from "@/features/dump/stores/contents-atom";
 import { useToast } from "@/hooks/use-toast";
 import { useSetAtom } from "jotai";
 import { ClipboardPasteIcon } from "lucide-react";
@@ -18,7 +18,7 @@ export function AddContentsForm() {
 
 	const { toast } = useToast();
 
-	const setQueuedContents = useSetAtom(contentsContext);
+	const setQueuedContents = useSetAtom(contentsAtom);
 
 	const formAction = async (formData: FormData) => {
 		const response = await addContents(formData);
