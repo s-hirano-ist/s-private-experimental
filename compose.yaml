@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+    profiles:
+      - dev
     ports:
       - "3000:3000"
     networks:
