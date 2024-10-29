@@ -15,9 +15,9 @@ import { addNews } from "@/features/dump/actions/add-news";
 import { newsContext } from "@/features/dump/stores/news-context";
 import { useToast } from "@/hooks/use-toast";
 import type { Categories } from "@prisma/client";
+import { useSetAtom } from "jotai";
 import { ClipboardPasteIcon } from "lucide-react";
 import { useRef, useState } from "react";
-import { useSetRecoilState } from "recoil";
 
 type Props = {
 	categories: Omit<Categories, "createdAt" | "updatedAt" | "userId">[];
@@ -32,7 +32,7 @@ export function AddNewsForm({ categories }: Props) {
 
 	const { toast } = useToast();
 
-	const setQueuedContents = useSetRecoilState(newsContext);
+	const setQueuedContents = useSetAtom(newsContext);
 
 	const [newCategoryInputOpen, setNewCategoryInputOpen] = useState(false);
 

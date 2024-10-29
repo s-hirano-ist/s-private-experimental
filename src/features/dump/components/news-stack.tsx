@@ -4,15 +4,15 @@ import { StackSkeleton } from "@/components/stack/stack-skeleton";
 import { StatusCodeView } from "@/components/status-code-view";
 import { newsContext } from "@/features/dump/stores/news-context";
 import type { NewsContext } from "@/features/dump/stores/news-context";
+import { useAtom } from "jotai";
 import { useEffect } from "react";
-import { useRecoilState } from "recoil";
 
 type Props = {
 	news: NewsContext[];
 };
 
 export function NewsStack({ news }: Props) {
-	const [data, setData] = useRecoilState(newsContext);
+	const [data, setData] = useAtom(newsContext);
 
 	useEffect(() => {
 		setData(news);

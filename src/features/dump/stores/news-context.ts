@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom } from "jotai";
 
 export type NewsContext = {
 	id: number;
@@ -8,7 +8,4 @@ export type NewsContext = {
 	category: string;
 };
 
-export const newsContext = atom<NewsContext[] | undefined>({
-	key: "news",
-	default: undefined,
-});
+export const newsContext = atom<NewsContext[] | undefined>(undefined);

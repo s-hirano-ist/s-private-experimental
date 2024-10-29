@@ -6,15 +6,15 @@ import {
 	type ContentsContext,
 	contentsContext,
 } from "@/features/dump/stores/contents-context";
+import { useAtom } from "jotai";
 import { useEffect } from "react";
-import { useRecoilState } from "recoil";
 
 type Props = {
 	contents: ContentsContext[];
 };
 
 export function ContentsStack({ contents }: Props) {
-	const [data, setData] = useRecoilState(contentsContext);
+	const [data, setData] = useAtom(contentsContext);
 
 	useEffect(() => {
 		setData(contents);

@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom } from "jotai";
 
 export type ContentsContext = {
 	id: number;
@@ -7,7 +7,4 @@ export type ContentsContext = {
 	url: string;
 };
 
-export const contentsContext = atom<ContentsContext[] | undefined>({
-	key: "contents",
-	default: undefined,
-});
+export const contentsContext = atom<ContentsContext[] | undefined>(undefined);
