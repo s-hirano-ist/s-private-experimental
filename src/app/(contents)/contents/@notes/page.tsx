@@ -5,7 +5,7 @@ import {
 	getAllImages,
 	getAllSlugs,
 } from "@/features/contents/actions/fetch-contents";
-import { ContentsStack } from "@/features/contents/components/contents-stack";
+import { ContentStack } from "@/features/contents/components/content-stack";
 import { formatSlugsAndImages } from "@/features/contents/utils/format";
 
 const path = "notes";
@@ -23,7 +23,7 @@ export default async function Page() {
 					<Badge className="m-2 flex justify-center">
 						ノート数: {slugs.length}
 					</Badge>
-					<ContentsStack
+					<ContentStack
 						path={path}
 						data={formatSlugsAndImages(slugs, images)}
 					/>

@@ -5,7 +5,7 @@ import { checkAdminPermission } from "@/features/auth/utils/role";
 import {
 	/*getAllSlugs,*/ getContentsBySlug,
 } from "@/features/contents/actions/fetch-contents";
-import { ContentsBody } from "@/features/contents/components/contents-body";
+import { ContentBody } from "@/features/contents/components/content-body";
 import type { ContentsType } from "@/features/contents/types";
 import { markdownToReact } from "@/features/contents/utils/markdownToReact";
 import type { Metadata } from "next";
@@ -34,7 +34,7 @@ export default async function Page({ params }: Props) {
 		<>
 			<Header title={decordedSlug} />
 			{hasAdminPermission ? (
-				<ContentsBody content={reactContent} />
+				<ContentBody content={reactContent} />
 			) : (
 				<Unauthorized />
 			)}
