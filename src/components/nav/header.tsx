@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { DEFAULT_SIGN_IN_REDIRECT } from "@/constants";
 import { signOut } from "@/features/auth/actions/sign-out";
 import { useToast } from "@/hooks/use-toast";
+import { sanitizeHref } from "@/utils/sanitize-href";
 import { Link } from "next-view-transitions";
 // import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
@@ -43,7 +44,11 @@ export function Header({ title, url }: Props) {
 						className="size-8 object-cover"
 					/>
 					{url ? (
-						<Link href={new URL(url)} target="_blank" scroll={false}>
+						<Link
+							href={new URL(sanitizeHref(url))}
+							target="_blank"
+							scroll={false}
+						>
 							<Button variant="link" className="text-xl font-semibold">
 								{title}
 							</Button>

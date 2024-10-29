@@ -50,9 +50,12 @@ export const contentsColumns = (): ColumnDef<ContentsContext>[] => [
 		accessorKey: "url",
 		header: () => <></>,
 		cell: ({ row }) => {
-			const href = sanitizeHref(row.getValue("url")) as Route;
 			return (
-				<Link href={href} target="_blank" scroll={false}>
+				<Link
+					href={sanitizeHref(row.getValue("url")) as Route}
+					target="_blank"
+					scroll={false}
+				>
 					<LinkIcon />
 				</Link>
 			);
