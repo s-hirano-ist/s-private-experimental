@@ -8,12 +8,13 @@ on:
 jobs:
   update-submodules:
     runs-on: ubuntu-24.04
+    permissions: {}
     timeout-minutes: 20
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - name: Checkout files
-        uses: actions/checkout@v3
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
           submodules: true
