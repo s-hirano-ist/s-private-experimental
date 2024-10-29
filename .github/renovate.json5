@@ -80,7 +80,9 @@
       groupName: 'minor',
     },
     {
-      "matchManagers": ["github-actions"],
+      "matchManagers": [
+        "github-actions",
+      ],
       "groupName": "GitHub Actions Updates",
       "groupSlug": "github-actions-updates"
     }
