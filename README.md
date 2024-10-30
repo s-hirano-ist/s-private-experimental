@@ -50,7 +50,7 @@ pnpm dev
 
 ## 🪝 Tags & Realease
 
-1. Run one of the following commands
+1. Run one of the following commands // FIXME:
 
 ```bash
 pnpm release:major
