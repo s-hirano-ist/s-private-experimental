@@ -5,7 +5,6 @@
 	"description": "Private pages and admin tools for s-hirano-ist.",
 	"packageManager": "pnpm@9.12.2",
 	"scripts": {
-		"corepack": "corepack enable pnpm",
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
