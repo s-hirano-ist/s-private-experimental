@@ -49,7 +49,7 @@ export function AddContentsForm() {
 
 	return (
 		// MEMO: experimental feature of using form actions
-		<form action={formAction} className="space-y-4 p-4">
+		<form action={formAction} className="space-y-4 px-2 py-4">
 			<div className="space-y-1">
 				<Label htmlFor="title">タイトル</Label>
 				<Input

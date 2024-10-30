@@ -9,11 +9,13 @@ import { UpsertProfileForm } from "@/features/profile/components/upsert-profile-
 import prisma from "@/prisma";
 import type { Metadata } from "next";
 
+const displayName = "PROFILE";
+
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-	title: `MY PROFILE | ${PAGE_NAME}`,
-	description: "My profile",
+	title: `${displayName} | ${PAGE_NAME}`,
+	description: "My profile.",
 };
 
 async function getSelfProfile() {
@@ -42,14 +44,14 @@ async function getSelfScope() {
 }
 
 export default async function Page() {
-	const session = await checkSelfAuthOrRedirectToAuth();
+	await checkSelfAuthOrRedirectToAuth();
 	const profile = await getSelfProfile();
 	const scope = await getSelfScope();
 
 	return (
 		<>
-			<Header title={`Profile of ${session.user.username}`} />
-			<div className="space-y-4 px-2 sm:px-0">
+			<Header title={displayName} />
+			<div className="mx-auto max-w-5xl space-y-4 px-2">
 				<UpsertProfileForm defaultValues={profile} />
 				<ScopeUpdateSwitch scope={scope} />
 			</div>
