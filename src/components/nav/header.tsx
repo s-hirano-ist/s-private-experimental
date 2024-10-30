@@ -4,6 +4,7 @@ import { DEFAULT_SIGN_IN_REDIRECT } from "@/constants";
 import { signOut } from "@/features/auth/actions/sign-out";
 import { useToast } from "@/hooks/use-toast";
 import { sanitizeHref } from "@/utils/sanitize-href";
+import { LogOutIcon } from "lucide-react";
 import { Link } from "next-view-transitions";
 // import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
@@ -32,8 +33,8 @@ export function Header({ title, url }: Props) {
 	}
 
 	return (
-		<header className="sticky top-0 z-50 w-full bg-gradient-to-b from-primary to-primary-grad p-2 text-white">
-			<div className="flex items-center justify-between px-2">
+		<header className="sticky top-0 z-50 w-full bg-gradient-to-b from-primary to-primary-grad py-2 text-white sm:px-2">
+			<div className="flex items-center justify-between sm:px-2">
 				<div className="flex items-center justify-start">
 					{/* FIXME: scroll behavior causes warning: https://zenn.dev/tk_c/articles/5205f44777903b */}
 					<Image
@@ -61,7 +62,7 @@ export function Header({ title, url }: Props) {
 				<nav>
 					{pathname !== "/auth" && (
 						<Button variant="ghost" onClick={onSignOutSubmit}>
-							サインアウト
+							<LogOutIcon className="size-6" />
 						</Button>
 					)}
 					{/* <Button
