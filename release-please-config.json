@@ -1,8 +1,8 @@
 {
 	"changelog-type": "default",
+	"release-type": "node",
 	"packages": {
 		".": {
-			"release-type": "node",
 			"changelog-sections": [
 				{ "type": "feat", "section": "🎸 新機能" },
 				{ "type": "fix", "section": "🐛 バグ修正" },
