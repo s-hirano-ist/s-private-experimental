@@ -60,11 +60,6 @@ module.exports = {
 			emoji: "💡",
 			value: "refactor",
 		},
-		release: {
-			description: "リリースコミット",
-			emoji: "🏹",
-			value: "release",
-		},
 		contents: {
 			description: "コンテンツ追加",
 			emoji: "💄",
