@@ -16,5 +16,3 @@ jobs:
             token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
             # this is a built-in strategy in release-please, see "Action Inputs" for more options
             release-type: node
-            config-file: release-please-config.json
-
