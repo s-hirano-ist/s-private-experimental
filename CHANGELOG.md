@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/s-hirano-ist/s-private/compare/v1.7.2...v1.8.0) (2024-10-30)
+
+
+### Features
+
+* 🎸 delete corepack as pnpm install ([a8dd219](https://github.com/s-hirano-ist/s-private/commit/a8dd219b534d7cca237e1da9319c1c844ab3e285))
+
 ## [1.7.2](https://github.com/s-hirano-ist/s-private/compare/v1.7.1...v1.7.2) (2024-10-30)
 
 
