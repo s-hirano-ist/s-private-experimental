@@ -23,14 +23,13 @@
 		"prisma:seed": "prisma db seed",
 		"prisma:studio": "prisma studio",
 		"postinstall": "prisma generate",
-		"release:patch": "standard-version --release-as patch",
-		"release:minor": "standard-version --release-as minor",
-		"release:major": "standard-version --release-as major",
 		"commit": "git-cz",
 		"storybook": "storybook dev -p 6006",
 		"storybook:build": "storybook build -o .storybook-static",
 		"license:summary": "license-checker --summary> library-license.txt",
-		"security": "pnpm audit"
+		"security": "pnpm audit",
+		"actionlint": "actionlint",
+		"ghalint": "ghalint run"
 	},
 	"prisma": {
 		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -118,7 +117,6 @@
 		"remark-gfm": "4.0.0",
 		"remark-parse": "11.0.0",
 		"remark-rehype": "11.1.1",
-		"standard-version": "9.5.0",
 		"storybook": "8.3.6",
 		"storybook-dark-mode": "4.0.2",
 		"tailwindcss": "3.4.14",
