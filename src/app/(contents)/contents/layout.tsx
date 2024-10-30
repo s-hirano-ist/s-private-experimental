@@ -20,7 +20,7 @@ export default async function Layout({ books, notes }: Props) {
 	return (
 		<>
 			<Header title={displayName} />
-			<Tabs defaultValue="books">
+			<Tabs defaultValue="books" className="mx-auto max-w-5xl sm:px-2">
 				<TabsList className="w-full">
 					<TabsTrigger className="w-full" value="books">
 						BOOKS

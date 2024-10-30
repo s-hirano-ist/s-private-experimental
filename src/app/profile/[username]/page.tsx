@@ -28,16 +28,18 @@ export default async function Page({ params }: Props) {
 	return (
 		<>
 			<Header title={`Profile of ${params.username}`} />
-			{viewStatus !== "NOT_FOUND" && <Profile username={username} />}
-			{viewStatus === "PROHIBITED" && <Unauthorized />}
-			{viewStatus === "NOT_FOUND" && <NotFound />}
-			{viewStatus === "VIEW_ONLY" && (
-				<Suspense fallback={<StackSkeleton />}>
-					<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
+			<div className="mx-auto max-w-5xl  sm:px-2">
+				{viewStatus !== "NOT_FOUND" && <Profile username={username} />}
+				{viewStatus === "PROHIBITED" && <Unauthorized />}
+				{viewStatus === "NOT_FOUND" && <NotFound />}
+				{viewStatus === "VIEW_ONLY" && (
+					<Suspense fallback={<StackSkeleton />}>
+						<Separator className="h-px bg-gradient-to-r from-primary to-primary-grad" />
 
-					<ProfileContents username={username} />
-				</Suspense>
-			)}
+						<ProfileContents username={username} />
+					</Suspense>
+				)}
+			</div>
 		</>
 	);
 }

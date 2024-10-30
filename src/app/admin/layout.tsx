@@ -20,7 +20,7 @@ export default async function Layout({ dumper, users }: Props) {
 	return (
 		<>
 			<Header title={displayName} />
-			<Tabs defaultValue="dumper">
+			<Tabs defaultValue="dumper" className="mx-auto max-w-5xl sm:px-2">
 				<TabsList className="w-full">
 					<TabsTrigger className="w-full" value="dumper">
 						DUMPER

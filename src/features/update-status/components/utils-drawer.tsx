@@ -19,7 +19,7 @@ export function UtilsDrawer() {
 				<DrawerTitle>便利ツール集</DrawerTitle>
 				<DrawerDescription>リンクをクリックしてください。</DrawerDescription>
 			</DrawerHeader>
-			<div className="grid grid-cols-2 gap-4 px-4">
+			<div className="grid grid-cols-2 gap-2 px-2">
 				{UTIL_URLS.map((url) => {
 					return (
 						<Link href={url.url} scroll={false} key={url.name}>

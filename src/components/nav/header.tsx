@@ -33,7 +33,7 @@ export function Header({ title, url }: Props) {
 	}
 
 	return (
-		<header className="sticky top-0 z-50 w-full bg-gradient-to-b from-primary to-primary-grad py-2 text-white sm:px-2">
+		<header className="sticky top-0 z-50 w-full bg-gradient-to-b from-primary to-primary-grad py-2 pl-2 text-white">
 			<div className="flex items-center justify-between sm:px-2">
 				<div className="flex items-center justify-start">
 					{/* FIXME: scroll behavior causes warning: https://zenn.dev/tk_c/articles/5205f44777903b */}
