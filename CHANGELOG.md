@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.1](https://github.com/s-hirano-ist/s-private/compare/v1.8.0...v1.8.1) (2024-10-30)
+
+
+### Bug Fixes
+
+* 🐛 document (test release please) ([148fd65](https://github.com/s-hirano-ist/s-private/commit/148fd65c04beb46fed85c86cba517dc401381510))
+
 ## [1.8.0](https://github.com/s-hirano-ist/s-private/compare/v1.7.2...v1.8.0) (2024-10-30)
 
 
