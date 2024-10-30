@@ -1,5 +1,3 @@
-import { Header } from "@/components/nav/header";
-import { PAGE_NAME } from "@/constants";
 import {
 	checkSelfAuthOrRedirectToAuth,
 	getUserId,
@@ -7,16 +5,8 @@ import {
 import { ScopeUpdateSwitch } from "@/features/profile/components/scope-update-switch";
 import { UpsertProfileForm } from "@/features/profile/components/upsert-profile-form";
 import prisma from "@/prisma";
-import type { Metadata } from "next";
-
-const displayName = "PROFILE";
 
 export const dynamic = "force-dynamic";
-
-export const metadata: Metadata = {
-	title: `${displayName} | ${PAGE_NAME}`,
-	description: "My profile.",
-};
 
 async function getSelfProfile() {
 	const userId = await getUserId();
@@ -33,7 +23,6 @@ async function getSelfProfile() {
 	};
 }
 
-// SELF
 async function getSelfScope() {
 	const userId = await getUserId();
 	const user = await prisma.users.findUniqueOrThrow({
@@ -50,11 +39,8 @@ export default async function Page() {
 
 	return (
 		<>
-			<Header title={displayName} />
-			<div className="mx-auto max-w-5xl space-y-4 px-2">
-				<UpsertProfileForm defaultValues={profile} />
-				<ScopeUpdateSwitch scope={scope} />
-			</div>
+			<UpsertProfileForm defaultValues={profile} />
+			<ScopeUpdateSwitch scope={scope} />
 		</>
 	);
 }

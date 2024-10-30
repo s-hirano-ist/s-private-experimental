@@ -33,7 +33,9 @@ export function Footer() {
 		<footer className="sticky bottom-4 z-50 mx-auto w-full max-w-lg rounded-3xl border border-gray-200 bg-white px-2 dark:border-gray-600 dark:bg-gray-700 sm:px-0">
 			<Drawer open={open} onOpenChange={setOpen} snapPoints={[0.5]}>
 				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 rounded-3xl bg-gradient-to-r from-primary to-primary-grad text-white">
-					<Link href="/profile" scroll={false}>
+					{/* FIXME: bug with parallel routes
+					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
+					<Link href={"/profile" as Route} scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
