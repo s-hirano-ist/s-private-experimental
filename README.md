@@ -48,16 +48,6 @@ pnpm dev
 
 [s-tools/s-storybook](https://github.com/s-hirano-ist/s-tools/tree/main/s-private)を参照。
 
-## 🪝 Tags & Realease
-
-1. Run one of the following commands // FIXME:
-
-```bash
-pnpm release:major
-pnpm release:minor
-pnpm release:patch
-```
-
 ## 📜 License
 
 Licensed under the MIT License, Copyright © 2024
