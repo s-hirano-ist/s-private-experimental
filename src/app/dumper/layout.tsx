@@ -21,7 +21,7 @@ export default async function Layout({ news, contents, dump }: Props) {
 	return (
 		<>
 			<Header title={displayName} />
-			<Tabs defaultValue="news" className="mx-auto max-w-5xl  sm:px-2">
+			<Tabs defaultValue="news" className="mx-auto max-w-5xl sm:px-2">
 				<TabsList className="w-full">
 					<TabsTrigger className="w-full" value="news">
 						NEWS
