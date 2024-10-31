@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/s-hirano-ist/s-private/compare/v1.8.1...v1.9.0) (2024-10-30)
+
+
+### Features
+
+* 🎸 add search bar to profile page ([cf8bb19](https://github.com/s-hirano-ist/s-private/commit/cf8bb1986abe107837f9aa6f26bb2ab3ac20f705))
+
 ## [1.8.1](https://github.com/s-hirano-ist/s-private/compare/v1.8.0...v1.8.1) (2024-10-30)
 
 
