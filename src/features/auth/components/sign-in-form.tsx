@@ -18,12 +18,12 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useTransitionRouter } from "next-view-transitions";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export function SignInForm() {
-	const router = useRouter();
+	const router = useTransitionRouter();
 	const { toast } = useToast();
 
 	const form = useForm<SignInSchema>({
