@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.1](https://github.com/s-hirano-ist/s-private/compare/v1.9.0...v1.9.1) (2024-10-31)
+
+
+### Bug Fixes
+
+* 🐛 padding ([6d99d2c](https://github.com/s-hirano-ist/s-private/commit/6d99d2cddae6a7bda4484888eade943cd4c2b89e))
+* 🐛 profile page with no auth ([5b1308e](https://github.com/s-hirano-ist/s-private/commit/5b1308e68ccbfc1f354712e54355b3b6ebd38e2f))
+* 🐛 sign out redirect path ([ae97406](https://github.com/s-hirano-ist/s-private/commit/ae974064db69ce2cc5944725657e2a67bd7f7ff3))
+
 ## [1.9.0](https://github.com/s-hirano-ist/s-private/compare/v1.8.1...v1.9.0) (2024-10-30)
 
 
