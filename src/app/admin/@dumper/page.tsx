@@ -12,7 +12,7 @@ export default async function Page() {
 	const hasAdminPermission = await checkAdminPermission();
 
 	return (
-		<div className="px-2 sm:px-0">
+		<div className="px-2">
 			{hasAdminPermission ? (
 				<div className="space-y-2">
 					<h2 className="px-4 pt-4">NEWS</h2>

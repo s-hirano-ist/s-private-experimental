@@ -18,7 +18,7 @@ export default async function Page() {
 	});
 
 	return (
-		<>
+		<div className="px-2">
 			{hasAdminPermission ? (
 				<div className="space-y-2">
 					{users.map((user) => (
@@ -28,6 +28,6 @@ export default async function Page() {
 			) : (
 				<Unauthorized />
 			)}
-		</>
+		</div>
 	);
 }

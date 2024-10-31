@@ -1,14 +1,14 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { DEFAULT_SIGN_IN_REDIRECT } from "@/constants";
+import { DEFAULT_SIGN_OUT_REDIRECT } from "@/constants";
 import { signOut } from "@/features/auth/actions/sign-out";
 import { useToast } from "@/hooks/use-toast";
 import { sanitizeHref } from "@/utils/sanitize-href";
 import { LogOutIcon } from "lucide-react";
-import { Link } from "next-view-transitions";
+import { Link, useTransitionRouter } from "next-view-transitions";
 // import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 type Props = {
 	title: string;
@@ -18,12 +18,12 @@ type Props = {
 export function Header({ title, url }: Props) {
 	const pathname = usePathname();
 	const { toast } = useToast();
-	const router = useRouter();
+	const router = useTransitionRouter();
 
 	async function onSignOutSubmit() {
 		const response = await signOut();
 		if (response.success) {
-			router.push(DEFAULT_SIGN_IN_REDIRECT);
+			router.push(DEFAULT_SIGN_OUT_REDIRECT);
 		} else {
 			toast({
 				variant: "destructive",

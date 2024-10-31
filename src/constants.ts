@@ -37,6 +37,7 @@ export const SKELETON_TABLE_ROWS = 5;
 export const MARKDOWN_PATHS = "s-contents/markdown";
 
 export const DEFAULT_SIGN_IN_REDIRECT = "/";
+export const DEFAULT_SIGN_OUT_REDIRECT = "/auth";
 
 export const UTIL_URLS = [
 	{ name: "NEWS", url: "https://s-hirano.com/news" },
