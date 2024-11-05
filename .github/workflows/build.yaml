@@ -25,7 +25,8 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2 # v4
         with:
-          version: 9.12.2
+          # version: X.X.X
+          # Optional when there is a packageManager field in the package.json.
           run_install: false
 
       - name: Get pnpm directory
