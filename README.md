@@ -1,6 +1,6 @@
 # s-private
 
-![License](https://img.shields.io/badge/license-MIT-blue)
+![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)
 ![Build status](https://img.shields.io/github/actions/workflow/status/s-hirano-ist/s-private/build.yaml?branch=main)
 ![GitHub stars](https://img.shields.io/github/stars/s-hirano-ist/s-private.svg)
 
@@ -54,7 +54,7 @@ Add commits to main branch using `git-cz` command will automatically create a ta
 
 ## 📜 License
 
-Licensed under the MIT License, Copyright © 2024
+Licensed under the AGPL-3.0 License, Copyright © 2024
 
 ### Licenses of used libraries
 
