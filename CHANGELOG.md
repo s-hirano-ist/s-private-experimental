@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.1](https://github.com/s-hirano-ist/s-private/compare/v2.0.0...v2.0.1) (2024-11-10)
+
+
+### Bug Fixes
+
+* 🐛 license script in readme ([62854d3](https://github.com/s-hirano-ist/s-private/commit/62854d3845fa45d9970318e92f1042778d6808d2))
+
 ## [2.0.0](https://github.com/s-hirano-ist/s-private/compare/v1.9.1...v2.0.0) (2024-11-10)
 
 
