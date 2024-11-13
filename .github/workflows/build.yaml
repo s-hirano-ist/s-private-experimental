@@ -46,6 +46,7 @@ jobs:
       - run: pnpm lint
         env:
           SKIP_ENV_VALIDATION: true
+          MINIO_HOST: ${{ secrets.MINIO_HOST }}
       - run: pnpm test
       - name: Show coverage
         if: always()
@@ -58,7 +59,9 @@ jobs:
       - run: pnpm storybook:build
         env:
           SKIP_ENV_VALIDATION: true
+          MINIO_HOST: ${{ secrets.MINIO_HOST }}
       - run: pnpm build
         env:
           SKIP_ENV_VALIDATION: true
           POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
+          MINIO_HOST: ${{ secrets.MINIO_HOST }}

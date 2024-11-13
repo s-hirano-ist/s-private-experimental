@@ -20,11 +20,12 @@ export async function wrapServerSideErrorForClient<T>(
 	if (error instanceof LineNotifyError) {
 		loggerWarn(error.message, {
 			caller: "wrapServerSideErrorForClient",
-			status: 403,
+			status: 500,
 		});
 		//MEMO: 右記は意味なし await sendLineNotifyMessage(error.message);
 		return { success: false, message: error.message };
 	}
+	// FIXME: add error handling for MinIO errors
 	if (
 		error instanceof NotAllowedError ||
 		error instanceof UnauthorizedError ||
@@ -33,7 +34,7 @@ export async function wrapServerSideErrorForClient<T>(
 	) {
 		loggerWarn(error.message, {
 			caller: "wrapServerSideErrorForClient",
-			status: 403,
+			status: 500,
 		});
 		await sendLineNotifyMessage(error.message);
 		return { success: false, message: error.message };
@@ -41,7 +42,7 @@ export async function wrapServerSideErrorForClient<T>(
 	if (error instanceof AuthError) {
 		loggerWarn(error.message, {
 			caller: "wrapServerSideErrorForClient",
-			status: 403,
+			status: 500,
 		});
 		await sendLineNotifyMessage(error.message);
 		switch (error.type) {
@@ -66,7 +67,7 @@ export async function wrapServerSideErrorForClient<T>(
 	) {
 		loggerWarn(error.message, {
 			caller: "wrapServerSideErrorForClient",
-			status: 403,
+			status: 500,
 		});
 		await sendLineNotifyMessage(error.message);
 		return { success: false, message: ERROR_MESSAGES.PRISMA_UNEXPECTED };
@@ -74,7 +75,7 @@ export async function wrapServerSideErrorForClient<T>(
 	if (error instanceof Prisma.PrismaClientKnownRequestError) {
 		loggerWarn(error.message, {
 			caller: "wrapServerSideErrorForClient",
-			status: 403,
+			status: 500,
 		});
 		await sendLineNotifyMessage(error.message);
 		return { success: false, message: ERROR_MESSAGES.PRISMA_DUPLICATE };
@@ -83,14 +84,14 @@ export async function wrapServerSideErrorForClient<T>(
 	if (error instanceof Error) {
 		loggerWarn(error.message, {
 			caller: "wrapServerSideErrorForClient",
-			status: 403,
+			status: 500,
 		});
 		await sendLineNotifyMessage(error.message);
 	} else {
 		console.error(error);
 		loggerWarn(ERROR_MESSAGES.UNEXPECTED, {
 			caller: "wrapServerSideErrorForClient",
-			status: 403,
+			status: 500,
 		});
 		await sendLineNotifyMessage(ERROR_MESSAGES.UNEXPECTED);
 	}

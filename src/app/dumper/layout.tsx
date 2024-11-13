@@ -15,9 +15,10 @@ type Props = {
 	news: ReactNode;
 	contents: ReactNode;
 	dump: ReactNode;
+	image: ReactNode;
 };
 
-export default async function Layout({ news, contents, dump }: Props) {
+export default async function Layout({ news, contents, dump, image }: Props) {
 	return (
 		<>
 			<Header title={displayName} />
@@ -29,12 +30,16 @@ export default async function Layout({ news, contents, dump }: Props) {
 					<TabsTrigger className="w-full" value="contents">
 						CONTENTS
 					</TabsTrigger>
+					<TabsTrigger className="w-full" value="image">
+						IMAGE
+					</TabsTrigger>
 					<TabsTrigger className="w-full" value="dump">
 						DUMP
 					</TabsTrigger>
 				</TabsList>
-				<TabsContent value="news"> {news}</TabsContent>
-				<TabsContent value="contents"> {contents}</TabsContent>
+				<TabsContent value="news">{news}</TabsContent>
+				<TabsContent value="contents">{contents}</TabsContent>
+				<TabsContent value="image">{image}</TabsContent>
 				<TabsContent value="dump">{dump}</TabsContent>
 			</Tabs>
 		</>

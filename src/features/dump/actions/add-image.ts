@@ -1,0 +1,61 @@
+"use server";
+import "server-only";
+import { SUCCESS_MESSAGES } from "@/constants";
+import { env } from "@/env.mjs";
+import { UnexpectedError } from "@/error-classes";
+import { wrapServerSideErrorForClient } from "@/error-wrapper";
+import {
+	getUserId,
+	hasSelfPostPermissionOrThrow,
+} from "@/features/auth/utils/get-session";
+import { minioClient } from "@/minio";
+import { loggerInfo } from "@/pino";
+import prisma from "@/prisma";
+import type { ServerAction } from "@/types";
+import { sendLineNotifyMessage } from "@/utils/fetch-message";
+import { formatCreateImageMessage } from "@/utils/format-for-line";
+import { revalidatePath } from "next/cache";
+import { v7 as uuidv7 } from "uuid";
+
+export async function addImage(
+	formData: FormData,
+): Promise<ServerAction<undefined>> {
+	try {
+		await hasSelfPostPermissionOrThrow();
+
+		const userId = await getUserId();
+
+		const file = formData.get("file") as File;
+		if (!file) throw new UnexpectedError();
+
+		const buffer = Buffer.from(await file.arrayBuffer());
+		const id = `${uuidv7()}-${file.name}`;
+
+		await minioClient.putObject(env.MINIO_BUCKET_NAME, id, buffer);
+
+		const createdImage = await prisma.images.create({
+			data: {
+				id: id,
+				userId,
+			},
+			select: { id: true },
+		});
+		const message = formatCreateImageMessage({
+			fileName: createdImage.id,
+		});
+		loggerInfo(message, {
+			caller: "addImage",
+			status: 200,
+		});
+		await sendLineNotifyMessage(message);
+		revalidatePath("/dumper");
+
+		return {
+			success: true,
+			message: SUCCESS_MESSAGES.INSERTED,
+			data: undefined,
+		};
+	} catch (error) {
+		return await wrapServerSideErrorForClient(error);
+	}
+}
