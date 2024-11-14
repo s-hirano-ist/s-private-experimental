@@ -14,6 +14,7 @@ import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
 import { sendLineNotifyMessage } from "@/utils/fetch-message";
 import { formatCreateImageMessage } from "@/utils/format-for-line";
+import { sanitizeFileName } from "@/utils/sanitize-file-name";
 import { revalidatePath } from "next/cache";
 import { v7 as uuidv7 } from "uuid";
 
@@ -29,15 +30,14 @@ export async function addImage(
 		if (!file) throw new UnexpectedError();
 
 		const buffer = Buffer.from(await file.arrayBuffer());
-		const id = `${uuidv7()}-${file.name}`;
+		const sanitizedFileName = sanitizeFileName(file.name);
+
+		const id = `${uuidv7()}-${sanitizedFileName}`;
 
 		await minioClient.putObject(env.MINIO_BUCKET_NAME, id, buffer);
 
 		const createdImage = await prisma.images.create({
-			data: {
-				id: id,
-				userId,
-			},
+			data: { id, userId },
 			select: { id: true },
 		});
 		const message = formatCreateImageMessage({
