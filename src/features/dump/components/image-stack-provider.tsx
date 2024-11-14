@@ -9,10 +9,8 @@ export async function ImageStackProvider() {
 	try {
 		const userId = await getUserId();
 
-		// TODO: exportedのものとそれ以外のものを分かりやすくわける（star付与?）
-		// TODO: pagination
 		const images = await prisma.images.findMany({
-			where: { userId },
+			where: { userId, status: "UNEXPORTED" },
 			select: {
 				id: true,
 			},
