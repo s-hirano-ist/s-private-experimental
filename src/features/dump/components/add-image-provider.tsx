@@ -2,16 +2,16 @@
 import "server-only";
 import { ERROR_MESSAGES } from "@/constants";
 import { loggerError } from "@/pino";
-import { AddContentsForm } from "./add-contents-form";
+import { AddImageForm } from "./add-image-form";
 
-export async function AddContentsProvider() {
+export async function AddImageProvider() {
 	try {
-		return <AddContentsForm />;
+		return <AddImageForm />;
 	} catch (error) {
 		loggerError(
 			ERROR_MESSAGES.UNEXPECTED,
 			{
-				caller: "AddContentsProvider",
+				caller: "AddImageProvider",
 				status: 500,
 			},
 			error,

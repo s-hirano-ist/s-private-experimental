@@ -41,6 +41,7 @@ model Users {
   Categories   Categories[]
   News         News[]
   Contents     Contents[]
+  Images       Images[]
 
   @@map("users")
 }
@@ -118,4 +119,15 @@ model Contents {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("contents")
+}
+
+model Images {
+  id        String   @id @default(uuid(7))
+  status    Status   @default(UNEXPORTED)
+  Users     Users    @relation(fields: [userId], references: [id])
+  userId    String   @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("images")
 }

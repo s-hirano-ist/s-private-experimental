@@ -23,6 +23,11 @@ export const env = createEnv({
 				: z.string().optional(),
 		SENTRY_AUTH_TOKEN: z.string(),
 		SENTRY_REPORT_URL: z.string(),
+		MINIO_HOST: z.string(),
+		MINIO_PORT: z.number(),
+		MINIO_BUCKET_NAME: z.string(),
+		MINIO_ACCESS_KEY: z.string(),
+		MINIO_SECRET_KEY: z.string(),
 	},
 
 	/**
@@ -41,6 +46,11 @@ export const env = createEnv({
 		AUTH_SECRET: process.env.AUTH_SECRET,
 		SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
 		SENTRY_REPORT_URL: process.env.SENTRY_REPORT_URL,
+		MINIO_HOST: process.env.MINIO_HOST,
+		MINIO_PORT: Number(process.env.MINIO_PORT),
+		MINIO_BUCKET_NAME: process.env.MINIO_BUCKET_NAME,
+		MINIO_ACCESS_KEY: process.env.MINIO_ACCESS_KEY,
+		MINIO_SECRET_KEY: process.env.MINIO_SECRET_KEY,
 		NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN, // MEMO: ok to leak
 	},
 	/**

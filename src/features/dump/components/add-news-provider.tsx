@@ -1,7 +1,9 @@
 "use server";
 import "server-only";
+import { ERROR_MESSAGES } from "@/constants";
 import { getUserId } from "@/features/auth/utils/get-session";
 import { AddNewsForm } from "@/features/dump/components/add-news-form";
+import { loggerError } from "@/pino";
 import prisma from "@/prisma";
 
 export async function AddNewsProvider() {
@@ -14,7 +16,14 @@ export async function AddNewsProvider() {
 
 		return <AddNewsForm categories={categories} />;
 	} catch (error) {
-		console.error("Unexpected error.", error);
+		loggerError(
+			ERROR_MESSAGES.UNEXPECTED,
+			{
+				caller: "AddNewsProvider",
+				status: 500,
+			},
+			error,
+		);
 		return <></>;
 	}
 }

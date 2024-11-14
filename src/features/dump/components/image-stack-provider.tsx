@@ -5,39 +5,26 @@ import { ERROR_MESSAGES } from "@/constants";
 import { getUserId } from "@/features/auth/utils/get-session";
 import { loggerError } from "@/pino";
 import prisma from "@/prisma";
-import { ContentsStack } from "./contents-stack";
+import { ImageStack } from "./image-stack";
 
-export async function ContentsStackProvider() {
+export async function ImageStackProvider() {
 	try {
 		const userId = await getUserId();
-		const unexportedContents = await prisma.contents.findMany({
-			where: { status: "UNEXPORTED", userId },
+
+		const images = await prisma.images.findMany({
+			where: { userId, status: "UNEXPORTED" },
 			select: {
 				id: true,
-				title: true,
-				quote: true,
-				url: true,
 			},
 			orderBy: { id: "desc" },
 		});
 
-		return (
-			<ContentsStack
-				contents={unexportedContents.map((d) => {
-					return {
-						id: d.id,
-						title: d.title,
-						quote: d.quote,
-						url: d.url,
-					};
-				})}
-			/>
-		);
+		return <ImageStack images={images} />;
 	} catch (error) {
 		loggerError(
 			ERROR_MESSAGES.UNEXPECTED,
 			{
-				caller: "ContentsStackProvider",
+				caller: "ImageStackProvider",
 				status: 500,
 			},
 			error,

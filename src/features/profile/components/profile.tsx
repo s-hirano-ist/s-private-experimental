@@ -6,6 +6,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { ERROR_MESSAGES } from "@/constants";
+import { loggerError } from "@/pino";
 import prisma from "@/prisma";
 
 type Props = {
@@ -42,7 +44,14 @@ export async function Profile({ username }: Props) {
 			</>
 		);
 	} catch (error) {
-		console.error("Unexpected error.", error);
+		loggerError(
+			ERROR_MESSAGES.UNEXPECTED,
+			{
+				caller: "Profile",
+				status: 500,
+			},
+			error,
+		);
 		return (
 			<div className="flex flex-col items-center">
 				<StatusCodeView statusCode="500" />

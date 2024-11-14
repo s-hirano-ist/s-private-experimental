@@ -1,7 +1,9 @@
 "use server";
 import "server-only";
 import { StatusCodeView } from "@/components/status-code-view";
+import { ERROR_MESSAGES } from "@/constants";
 import { getUserId } from "@/features/auth/utils/get-session";
+import { loggerError } from "@/pino";
 import prisma from "@/prisma";
 import { NewsStack } from "./news-stack";
 
@@ -35,7 +37,14 @@ export async function NewsStackProvider() {
 			/>
 		);
 	} catch (error) {
-		console.error("Unexpected error.", error);
+		loggerError(
+			ERROR_MESSAGES.UNEXPECTED,
+			{
+				caller: "NewsStackProvider",
+				status: 500,
+			},
+			error,
+		);
 		return (
 			<div className="flex flex-col items-center">
 				<StatusCodeView statusCode="500" />

@@ -39,6 +39,10 @@ export function formatCreateContentsMessage({
 	return `【CONTENTS】\n\nコンテンツ\ntitle: ${title} \nquote: ${quote} \nurl: ${url}\nの登録ができました`;
 }
 
+export function formatCreateImageMessage({ fileName }: { fileName: string }) {
+	return `【IMAGE】\n\nコンテンツ\nfileName: ${fileName}\nの登録ができました`;
+}
+
 export function formatUpdateScopeMessage(scope: Scope) {
 	return `【SCOPE】\n\nscope: ${scope}\nに変更しました`;
 }

@@ -1,8 +1,10 @@
 import { SmallCard } from "@/components/stack/small-card";
 import { StatusCodeView } from "@/components/status-code-view";
 import { Separator } from "@/components/ui/separator";
+import { ERROR_MESSAGES } from "@/constants";
 import { NotAllowedError } from "@/error-classes";
 import { getUserId } from "@/features/auth/utils/get-session";
+import { loggerError } from "@/pino";
 import prisma from "@/prisma";
 
 // accessed path's username.scope === private || user's own page
@@ -92,7 +94,14 @@ export async function ProfileContents({ username }: Props) {
 			</>
 		);
 	} catch (error) {
-		console.error("Unexpected error.", error);
+		loggerError(
+			ERROR_MESSAGES.UNEXPECTED,
+			{
+				caller: "ProfileContents",
+				status: 500,
+			},
+			error,
+		);
 		return (
 			<div className="flex flex-col items-center">
 				<StatusCodeView statusCode="500" />

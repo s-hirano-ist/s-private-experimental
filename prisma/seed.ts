@@ -4,15 +4,14 @@ import bcrypt from "bcryptjs";
 const prisma = new PrismaClient();
 
 const SEED_USERS: { username: string; role: Role; scope: Scope }[] = [
-	{ username: "s-hirano-ist", role: "ADMIN", scope: "PUBLIC" },
-	// { username: "admin-public", role: "ADMIN", scope: "PUBLIC" },
-	// { username: "admin-private", role: "ADMIN", scope: "PRIVATE" },
-	// { username: "editor-public", role: "EDITOR", scope: "PUBLIC" },
-	// { username: "editor-private", role: "EDITOR", scope: "PRIVATE" },
-	// { username: "viewer-public", role: "VIEWER", scope: "PUBLIC" },
-	// { username: "viewer-private", role: "VIEWER", scope: "PRIVATE" },
-	// { username: "unauthorized-public", role: "UNAUTHORIZED", scope: "PUBLIC" },
-	// { username: "unauthorized-private", role: "UNAUTHORIZED", scope: "PRIVATE" },
+	{ username: "admin-public", role: "ADMIN", scope: "PUBLIC" },
+	{ username: "admin-private", role: "ADMIN", scope: "PRIVATE" },
+	{ username: "editor-public", role: "EDITOR", scope: "PUBLIC" },
+	{ username: "editor-private", role: "EDITOR", scope: "PRIVATE" },
+	{ username: "viewer-public", role: "VIEWER", scope: "PUBLIC" },
+	{ username: "viewer-private", role: "VIEWER", scope: "PRIVATE" },
+	{ username: "unauthorized-public", role: "UNAUTHORIZED", scope: "PUBLIC" },
+	{ username: "unauthorized-private", role: "UNAUTHORIZED", scope: "PRIVATE" },
 ];
 
 async function addSampleData(
