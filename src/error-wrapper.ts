@@ -19,7 +19,7 @@ export async function wrapServerSideErrorForClient<T>(
 	error: unknown,
 ): Promise<ServerAction<T>> {
 	if (error instanceof LineNotifyError) {
-		loggerWarn(error.message, {
+		loggerError(error.message, {
 			caller: "wrapServerSideErrorForClient",
 			status: 500,
 		});
@@ -67,7 +67,7 @@ export async function wrapServerSideErrorForClient<T>(
 		error instanceof Prisma.PrismaClientRustPanicError ||
 		error instanceof Prisma.PrismaClientInitializationError
 	) {
-		loggerWarn(error.message, {
+		loggerError(error.message, {
 			caller: "wrapServerSideErrorForClient",
 			status: 500,
 		});
