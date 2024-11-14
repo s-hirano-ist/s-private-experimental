@@ -30,7 +30,7 @@ export function Footer() {
 	};
 
 	return (
-		<footer className="sticky bottom-4 z-50 mx-auto w-full max-w-lg rounded-3xl border border-gray-200 bg-white px-2 dark:border-gray-600 dark:bg-gray-700 sm:px-0">
+		<footer className="sticky bottom-4 z-50 mx-auto w-full max-w-lg rounded-3xl border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700 ">
 			<Drawer open={open} onOpenChange={setOpen} snapPoints={[0.5]}>
 				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 rounded-3xl bg-gradient-to-r from-primary to-primary-grad text-white">
 					{/* FIXME: bug with parallel routes
