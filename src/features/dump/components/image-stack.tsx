@@ -2,7 +2,7 @@ import { ImageSkeleton } from "@/components/stack/image-skeleton";
 import { StackSkeleton } from "@/components/stack/stack-skeleton";
 import { StatusCodeView } from "@/components/status-code-view";
 import { Suspense } from "react";
-import { ImageContainer } from "./image-container";
+import { ImagePreview } from "./image-preview";
 
 type Props = {
 	images: {
@@ -18,7 +18,7 @@ export function ImageStack({ images }: Props) {
 		<div className="grid grid-cols-4 gap-2 p-2 sm:p-4">
 			{images.map(async (image) => (
 				<Suspense fallback={<ImageSkeleton />} key={image.id}>
-					<ImageContainer id={image.id} key={image.id} />
+					<ImagePreview id={image.id} key={image.id} />
 				</Suspense>
 			))}
 		</div>
