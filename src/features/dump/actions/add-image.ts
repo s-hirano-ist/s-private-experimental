@@ -2,7 +2,7 @@
 import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { env } from "@/env.mjs";
-import { UnexpectedError } from "@/error-classes";
+import { FileNotAllowedError, UnexpectedError } from "@/error-classes";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import {
 	getUserId,
@@ -28,6 +28,11 @@ export async function addImage(
 
 		const file = formData.get("file") as File;
 		if (!file) throw new UnexpectedError();
+
+		const allowedMimeTypes = ["image/jpeg", "image/png", "image/gif"];
+		const maxFileSize = 5 * 1024 * 1024; // 5MB
+		if (!allowedMimeTypes.includes(file.type)) throw new FileNotAllowedError();
+		if (file.size > maxFileSize) throw new FileNotAllowedError();
 
 		const buffer = Buffer.from(await file.arrayBuffer());
 		const sanitizedFileName = sanitizeFileName(file.name);
