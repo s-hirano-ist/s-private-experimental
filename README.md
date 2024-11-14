@@ -5,7 +5,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/s-hirano-ist/s-private.svg)
 
 > [!IMPORTANT]
-> This is a sample app made by s-hirano.
+> This is a sample app made by s-hirano. Some codes are not best practices due to trying experimental features and new techs.
 
 **Main Framework** - [Next.js](https://nextjs.org/)  
 **Type Checking** - [TypeScript](https://www.typescriptlang.org/)  

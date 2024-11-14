@@ -38,9 +38,9 @@ export default async function Page() {
 	const scope = await getSelfScope();
 
 	return (
-		<>
+		<div className="px-2">
 			<UpsertProfileForm defaultValues={profile} />
 			<ScopeUpdateSwitch scope={scope} />
-		</>
+		</div>
 	);
 }

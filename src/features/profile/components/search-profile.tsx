@@ -49,8 +49,8 @@ export function SearchProfile() {
 	};
 
 	return (
-		<div className="mx-auto max-w-5xl sm:px-2">
-			<div className="container mx-auto p-4">
+		<div className="mx-auto max-w-5xl px-2">
+			<div className="w-full">
 				<Input
 					type="search"
 					placeholder="プロフィールを検索..."
@@ -66,7 +66,7 @@ export function SearchProfile() {
 							key={result.username}
 						>
 							<Card>
-								<CardContent className="p-4">
+								<CardContent>
 									<p>{result.username}</p>
 									<p>{result.role}</p>
 								</CardContent>
