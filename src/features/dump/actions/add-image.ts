@@ -30,7 +30,8 @@ export async function addImage(
 		if (!file) throw new UnexpectedError();
 
 		const allowedMimeTypes = ["image/jpeg", "image/png", "image/gif"];
-		const maxFileSize = 5 * 1024 * 1024; // 5MB
+		const maxFileSize = 100 * 1024 * 1024; // 100MB
+		console.log("file.type", file.type);
 		if (!allowedMimeTypes.includes(file.type)) throw new FileNotAllowedError();
 		if (file.size > maxFileSize) throw new FileNotAllowedError();
 

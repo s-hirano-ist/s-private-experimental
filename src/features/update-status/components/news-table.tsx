@@ -41,7 +41,7 @@ export async function NewsTable() {
 		loggerError(
 			ERROR_MESSAGES.UNEXPECTED,
 			{
-				caller: "ImageStackProvider",
+				caller: "NewsTable",
 				status: 500,
 			},
 			error,

@@ -19,7 +19,7 @@ export const ERROR_MESSAGES = {
 	SIGN_IN: "メールアドレスまたはパスワードが間違っています。",
 	SIGN_IN_UNKNOWN: "サインインに失敗しました。",
 	SIGN_OUT_UNKNOWN: "サインアウトに失敗しました。",
-	INVALID_FILE_FORMAT: "ファイルのフォーマットが向こうです。",
+	INVALID_FILE_FORMAT: "ファイルのフォーマットが無効です。",
 } as const;
 
 export const SUCCESS_MESSAGES = {
