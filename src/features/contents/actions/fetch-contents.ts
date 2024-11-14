@@ -1,6 +1,7 @@
 import "server-only";
 import fs from "node:fs";
 import { join } from "node:path";
+import { loggerError } from "@/pino";
 import matter from "gray-matter";
 
 export function getContentsBySlug(slug: string, path: string) {
@@ -10,7 +11,14 @@ export function getContentsBySlug(slug: string, path: string) {
 		const fileContents = fs.readFileSync(fullPath, "utf8");
 		return matter(fileContents).content;
 	} catch (error) {
-		console.error(`Error reading file ${fullPath}:`, error);
+		loggerError(
+			`Error reading file ${fullPath}:`,
+			{
+				caller: "getContentsBySlug",
+				status: 500,
+			},
+			error,
+		);
 		return "";
 	}
 }
@@ -22,7 +30,14 @@ export function getAllSlugs(path: string) {
 			.readdirSync(contentsDirectory)
 			.filter((slug) => slug !== ".DS_Store");
 	} catch (error) {
-		console.error(`Error reading directory ${contentsDirectory}:`, error);
+		loggerError(
+			`Error reading directory ${contentsDirectory}:`,
+			{
+				caller: "getAllSlugs",
+				status: 500,
+			},
+			error,
+		);
 		return [];
 	}
 }
@@ -34,7 +49,14 @@ export function getAllImages(path: string) {
 			.readdirSync(imagesDirectory)
 			.filter((slug) => slug !== ".DS_Store");
 	} catch (error) {
-		console.error(`Error reading directory ${imagesDirectory}:`, error);
+		loggerError(
+			`Error reading directory ${imagesDirectory}:`,
+			{
+				caller: "getAllImages",
+				status: 500,
+			},
+			error,
+		);
 		return [];
 	}
 }

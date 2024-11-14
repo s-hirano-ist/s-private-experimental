@@ -11,7 +11,12 @@ type Option = {
 	status: number;
 };
 
-export const loggerError = (message: string, option: Option) => {
+export const loggerError = (
+	message: string,
+	option: Option,
+	error?: unknown,
+) => {
+	console.error(error);
 	return logger.error(option, message);
 };
 

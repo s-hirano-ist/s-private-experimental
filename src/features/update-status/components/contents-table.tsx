@@ -1,8 +1,10 @@
 "use server";
 import { StatusCodeView } from "@/components/status-code-view";
+import { ERROR_MESSAGES } from "@/constants";
 import { hasAdminPermissionOrThrow } from "@/features/auth/utils/get-session";
 import type { ContentsAtom } from "@/features/dump/stores/contents-atom";
 import { DumpTable } from "@/features/update-status/components/dump-table";
+import { loggerError } from "@/pino";
 import prisma from "@/prisma";
 
 export async function ContentsTable() {
@@ -34,7 +36,14 @@ export async function ContentsTable() {
 			/>
 		);
 	} catch (error) {
-		console.error("Unexpected error.", error);
+		loggerError(
+			ERROR_MESSAGES.UNEXPECTED,
+			{
+				caller: "ContentsTable",
+				status: 500,
+			},
+			error,
+		);
 		return (
 			<div className="flex flex-col items-center">
 				<StatusCodeView statusCode="500" />

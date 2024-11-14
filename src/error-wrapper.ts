@@ -4,13 +4,14 @@ import { Prisma } from "@prisma/client";
 import { AuthError } from "next-auth";
 import { ERROR_MESSAGES } from "./constants";
 import {
+	FileNotAllowedError,
 	InvalidFormatError,
 	LineNotifyError,
 	NotAllowedError,
 	UnauthorizedError,
 	UnexpectedError,
 } from "./error-classes";
-import { loggerWarn } from "./pino";
+import { loggerError, loggerWarn } from "./pino";
 import type { ServerAction } from "./types";
 import { sendLineNotifyMessage } from "./utils/fetch-message";
 
@@ -30,7 +31,8 @@ export async function wrapServerSideErrorForClient<T>(
 		error instanceof NotAllowedError ||
 		error instanceof UnauthorizedError ||
 		error instanceof UnexpectedError ||
-		error instanceof InvalidFormatError
+		error instanceof InvalidFormatError ||
+		error instanceof FileNotAllowedError
 	) {
 		loggerWarn(error.message, {
 			caller: "wrapServerSideErrorForClient",
@@ -82,17 +84,20 @@ export async function wrapServerSideErrorForClient<T>(
 	}
 
 	if (error instanceof Error) {
-		loggerWarn(error.message, {
+		loggerError(error.message, {
 			caller: "wrapServerSideErrorForClient",
 			status: 500,
 		});
 		await sendLineNotifyMessage(error.message);
 	} else {
-		console.error(error);
-		loggerWarn(ERROR_MESSAGES.UNEXPECTED, {
-			caller: "wrapServerSideErrorForClient",
-			status: 500,
-		});
+		loggerError(
+			ERROR_MESSAGES.UNEXPECTED,
+			{
+				caller: "wrapServerSideErrorForClient",
+				status: 500,
+			},
+			error,
+		);
 		await sendLineNotifyMessage(ERROR_MESSAGES.UNEXPECTED);
 	}
 	return { success: false, message: ERROR_MESSAGES.UNEXPECTED };
