@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/s-hirano-ist/s-private/compare/v2.0.1...v2.1.0) (2024-11-14)
+
+
+### Features
+
+* 🎸 add dump image ([ae4670d](https://github.com/s-hirano-ist/s-private/commit/ae4670d0d695cb63362a221cf0e0595e499b82d0))
+* 🎸 add dump image ([ed275e9](https://github.com/s-hirano-ist/s-private/commit/ed275e9c7decd57861fe8a323c9c505182b50900))
+* 🎸 add image size restrictions on add image ([cd24ef8](https://github.com/s-hirano-ist/s-private/commit/cd24ef8a16d490222751cac6b55d1e1e7b8b2c0b))
+
+
+### Bug Fixes
+
+* 🐛 add sanitize to filename ([0aa04b6](https://github.com/s-hirano-ist/s-private/commit/0aa04b661db9c2968e0b0d2e0ea1102ef3d5106a))
+* 🐛 only unexported to show ([42c6cb5](https://github.com/s-hirano-ist/s-private/commit/42c6cb59e94ba75d1d3d7195250fd57679335bf4))
+* 🐛 small bugs on upload ([da28a71](https://github.com/s-hirano-ist/s-private/commit/da28a717c2dea81af496d5fa9646d6fe4fdb8161))
+
 ## [2.0.1](https://github.com/s-hirano-ist/s-private/compare/v2.0.0...v2.0.1) (2024-11-10)
 
 
