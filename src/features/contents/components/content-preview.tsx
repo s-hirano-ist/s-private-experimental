@@ -34,8 +34,8 @@ export function ContentPreview({ path, slug, imagePath }: Props) {
 					<div className="flex justify-center">
 						<Image
 							src={imageSrc}
-							height={96}
-							width={96}
+							fill
+							objectFit="contain"
 							alt={slug}
 							className="h-auto w-full"
 						/>
