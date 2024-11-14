@@ -35,29 +35,29 @@ export function Footer() {
 				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 rounded-3xl bg-gradient-to-r from-primary to-primary-grad text-white">
 					{/* FIXME: bug with parallel routes
 					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
-					<Link href={"/profile" as Route} scroll={false}>
+					<Link href={"/" as Route} scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							className={cn(
 								"rounded-s-3xl",
-								pathname === "/profile" ? "bg-black/40" : "",
+								pathname === "/" ? "bg-black/40" : "",
 							)}
 						>
-							{Icon("PROFILE", <UserRoundPenIcon className="size-6" />)}
+							{Icon("DUMPER", <FileUpIcon className="size-6" />)}
 						</Button>
 					</Link>
 
 					{/* FIXME: bug with parallel routes
 					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
-					<Link href={"/admin" as Route} scroll={false}>
+					<Link href={"/contents" as Route} scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							type="button"
-							className={pathname === "/admin" ? "bg-black/40" : ""}
+							className={pathname === "/contents" ? "bg-black/40" : ""}
 						>
-							{Icon("ADMIN", <LockIcon className="size-6" />)}
+							{Icon("CONTENTS", <NotebookIcon className="size-6" />)}
 						</Button>
 					</Link>
 
@@ -72,29 +72,29 @@ export function Footer() {
 
 					{/* FIXME: bug with parallel routes
 					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
-					<Link href={"/dumper" as Route} scroll={false}>
+					<Link href={"/profile" as Route} scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							type="button"
-							className={pathname === "/dumper" ? "bg-black/40" : ""}
+							className={pathname === "/profile" ? "bg-black/40" : ""}
 						>
-							{Icon("DUMPER", <FileUpIcon className="size-6" />)}
+							{Icon("PROFILE", <UserRoundPenIcon className="size-6" />)}
 						</Button>
 					</Link>
 
 					{/* FIXME: bug with parallel routes
 					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
-					<Link href={"/contents" as Route} scroll={false}>
+					<Link href={"/admin" as Route} scroll={false}>
 						<Button
 							variant="navSide"
 							size="navSide"
 							className={cn(
 								"rounded-e-3xl",
-								pathname === "/contents" ? "bg-black/40" : "",
+								pathname === "/admin" ? "bg-black/40" : "",
 							)}
 						>
-							{Icon("CONTENTS", <NotebookIcon className="size-6" />)}
+							{Icon("ADMIN", <LockIcon className="size-6" />)}
 						</Button>
 					</Link>
 				</div>
