@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/s-hirano-ist/s-private/compare/v2.1.0...v2.2.0) (2024-11-14)
+
+
+### Features
+
+* 🎸 header layout ([d582664](https://github.com/s-hirano-ist/s-private/commit/d58266477579581e54520f83dcdb716ab3345e28))
+
+
+### Bug Fixes
+
+* 🐛 image size bug ([239fde1](https://github.com/s-hirano-ist/s-private/commit/239fde1384a1155900fa00149275b041c65bbfb7))
+* 🐛 logger warning to error ([56c7deb](https://github.com/s-hirano-ist/s-private/commit/56c7deb218ceb9dd4fcb84a3974da389d8bed834))
+* 🐛 padding of profile page ([1e04a4d](https://github.com/s-hirano-ist/s-private/commit/1e04a4dcce99aebd6f27c5e75e9ba8e761480831))
+* 🐛 tab radius ([ebe15f3](https://github.com/s-hirano-ist/s-private/commit/ebe15f34d7b2b4861e1cc565c001b2d887055082))
+
 ## [2.1.0](https://github.com/s-hirano-ist/s-private/compare/v2.0.1...v2.1.0) (2024-11-14)
 
 
