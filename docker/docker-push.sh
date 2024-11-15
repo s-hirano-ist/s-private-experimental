@@ -13,12 +13,6 @@ if ! docker info > /dev/null 2>&1; then
   exit 1
 fi
 
-if ! docker info | grep -q "Username
-: s0hirano"; then
-  echo "error: You are not logged in to Docker Hub. Please run 'docker login.'"
-  exit 1
-fi
-
 TAG=$1
 
 echo "Start building image..."
