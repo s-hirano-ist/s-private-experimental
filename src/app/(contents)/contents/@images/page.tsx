@@ -2,8 +2,8 @@ import { StatusCodeView } from "@/components/status-code-view";
 import { Unauthorized } from "@/components/unauthorized";
 import { ERROR_MESSAGES } from "@/constants";
 import { checkAdminPermission } from "@/features/auth/utils/role";
-import { ImagePagination } from "@/features/contents/components/image-pagination";
-import { ImageStackProvider } from "@/features/contents/components/image-stack-provider";
+import { AllImageStackProvider } from "@/features/image/components/all-image-stack-provider";
+import { ImagePagination } from "@/features/image/components/image-pagination";
 import { ImageStackSkeleton } from "@/features/image/components/image-stack-skeleton";
 import { loggerError } from "@/pino";
 import { Suspense } from "react";
@@ -28,7 +28,7 @@ export default async function Page({
 					<>
 						<ImagePagination currentPage={currentPage} />
 						<Suspense key={currentPage} fallback={<ImageStackSkeleton />}>
-							<ImageStackProvider page={currentPage} />
+							<AllImageStackProvider page={currentPage} />
 						</Suspense>
 					</>
 				) : (

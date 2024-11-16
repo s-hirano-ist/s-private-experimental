@@ -5,22 +5,20 @@ import { useSearchParams } from "next/navigation";
 import { type ReactNode, useEffect, useState } from "react";
 
 const TABS = {
-	news: "NEWS",
-	contents: "CONTENTS",
-	image: "IMAGE",
-	dump: "DUMP",
+	books: "BOOKS",
+	notes: "notes",
+	images: "IMAGES",
 };
 
 type Props = {
-	news: ReactNode;
-	contents: ReactNode;
-	dump: ReactNode;
-	image: ReactNode;
+	books: ReactNode;
+	notes: ReactNode;
+	images: ReactNode;
 };
 
-const DEFAULT_TAB = "news";
+const DEFAULT_TAB = "books";
 
-export function RootTab({ news, contents, dump, image }: Props) {
+export function RootTab({ books, notes, images }: Props) {
 	const router = useTransitionRouter();
 	const searchParams = useSearchParams();
 
@@ -61,10 +59,9 @@ export function RootTab({ news, contents, dump, image }: Props) {
 					);
 				})}
 			</TabsList>
-			<TabsContent value="news">{news}</TabsContent>
-			<TabsContent value="contents">{contents}</TabsContent>
-			<TabsContent value="image">{image}</TabsContent>
-			<TabsContent value="dump">{dump}</TabsContent>
+			<TabsContent value="books"> {books}</TabsContent>
+			<TabsContent value="notes"> {notes}</TabsContent>
+			<TabsContent value="images"> {images}</TabsContent>
 		</Tabs>
 	);
 }

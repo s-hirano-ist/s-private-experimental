@@ -4,9 +4,9 @@ import { checkAdminPermission } from "@/features/auth/utils/role";
 import {
 	getAllImages,
 	getAllSlugs,
-} from "@/features/contents/actions/fetch-contents";
-import { ContentStack } from "@/features/contents/components/content-stack";
-import { formatSlugsAndImages } from "@/features/contents/utils/format";
+} from "@/features/markdown/actions/fetch-contents";
+import { ContentStack } from "@/features/markdown/components/content-stack";
+import { formatSlugsAndImages } from "@/features/markdown/utils/format";
 
 const path = "notes";
 
