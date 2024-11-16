@@ -14,13 +14,14 @@ export const metadata: Metadata = {
 type Props = {
 	books: ReactNode;
 	notes: ReactNode;
+	images: ReactNode;
 };
 
-export default async function Layout({ books, notes }: Props) {
+export default async function Layout({ books, notes, images }: Props) {
 	return (
 		<>
 			<Header title={displayName} />
-			<Tabs defaultValue="books" className="mx-auto max-w-5xl sm:px-2">
+			<Tabs defaultValue="notes" className="mx-auto max-w-5xl sm:px-2">
 				<TabsList className="w-full">
 					<TabsTrigger className="w-full" value="books">
 						BOOKS
@@ -28,9 +29,13 @@ export default async function Layout({ books, notes }: Props) {
 					<TabsTrigger className="w-full" value="notes">
 						NOTES
 					</TabsTrigger>
+					<TabsTrigger className="w-full" value="images">
+						IMAGES
+					</TabsTrigger>
 				</TabsList>
 				<TabsContent value="books"> {books}</TabsContent>
 				<TabsContent value="notes"> {notes}</TabsContent>
+				<TabsContent value="images"> {images}</TabsContent>
 			</Tabs>
 		</>
 	);

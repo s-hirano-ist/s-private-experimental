@@ -2,6 +2,8 @@ import type { Role } from "@prisma/client";
 
 export const PAGE_NAME = "private.s-hirano.com";
 
+export const PAGE_SIZE = 12;
+
 export const FORM_ERROR_MESSAGES = {
 	REQUIRED: "必須項目です。",
 	TOO_LONG: "文字数が多すぎます。",
