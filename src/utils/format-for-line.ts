@@ -1,6 +1,5 @@
-import type { ContentName } from "@/features/dump/types";
+import type { ContentName, Status } from "@/features/dump/types";
 import type { ProfileSchema } from "@/features/profile/schemas/profile-schema";
-import type { Status } from "@/features/update-status/types";
 import type { Role, Scope } from "@prisma/client";
 
 export function formatDeleteMessage(id: number, contentName: ContentName) {

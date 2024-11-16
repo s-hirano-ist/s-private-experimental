@@ -1,9 +1,9 @@
 import { StackSkeleton } from "@/components/stack/stack-skeleton";
 import { Separator } from "@/components/ui/separator";
 import { checkPostPermission } from "@/features/auth/utils/role";
-import { AddContentsProvider } from "@/features/dump/components/add-contents-provider";
+import { AddContentsProvider } from "@/features/con/components/add-contents-provider";
+import { ContentsStackProvider } from "@/features/con/components/contents-stack-provider";
 import { AddFormSkeleton } from "@/features/dump/components/add-form-skeleton";
-import { ContentsStackProvider } from "@/features/dump/components/contents-stack-provider";
 import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
