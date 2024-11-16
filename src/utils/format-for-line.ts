@@ -3,6 +3,10 @@ import type { ProfileSchema } from "@/features/profile/schemas/profile-schema";
 import type { Status } from "@/features/update-status/types";
 import type { Role, Scope } from "@prisma/client";
 
+export function formatDeleteMessage(id: number, contentName: ContentName) {
+	return `【${contentName}】\n\n更新\nID: ${id}`;
+}
+
 export function formatChangeStatusMessage(
 	status: Status,
 	contentName: ContentName,
