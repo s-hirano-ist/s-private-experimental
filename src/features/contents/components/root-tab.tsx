@@ -45,7 +45,7 @@ export function RootTab({ books, notes, images }: Props) {
 
 	return (
 		<Tabs
-			defaultValue="news"
+			defaultValue={DEFAULT_TAB}
 			className="mx-auto max-w-5xl sm:px-2"
 			value={tab}
 			onValueChange={handleTabChange}
