@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/s-hirano-ist/s-private/compare/v2.5.0...v2.6.0) (2024-11-16)
+
+
+### Features
+
+* 🎸 add delete news and contents ([7cc722f](https://github.com/s-hirano-ist/s-private/commit/7cc722f41fe71bdfd0036f10abbc6e332d482e24))
+* 🎸 add delete news and contents ([a8bf4de](https://github.com/s-hirano-ist/s-private/commit/a8bf4deb6b72c93dcd9ddf9c8ca03ca93aaf90e3))
+
+
+### Bug Fixes
+
+* 🐛 lint ([cc9fbd0](https://github.com/s-hirano-ist/s-private/commit/cc9fbd0d4fbe123724135d39a1b6feb190830086))
+
 ## [2.5.0](https://github.com/s-hirano-ist/s-private/compare/v2.4.0...v2.5.0) (2024-11-16)
 
 
