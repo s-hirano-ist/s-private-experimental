@@ -1,4 +1,5 @@
 import { atom } from "jotai";
+import { atomWithReset } from "jotai/utils";
 
 export type ContentsAtom = {
 	id: number;
@@ -7,4 +8,6 @@ export type ContentsAtom = {
 	url: string;
 };
 
-export const contentsAtom = atom<ContentsAtom[] | undefined>(undefined);
+export const contentsAtom = atomWithReset<ContentsAtom[] | undefined>(
+	undefined,
+);

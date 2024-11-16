@@ -1,4 +1,5 @@
 import { atom } from "jotai";
+import { atomWithReset } from "jotai/utils";
 
 export type NewsAtom = {
 	id: number;
@@ -8,4 +9,4 @@ export type NewsAtom = {
 	category: string;
 };
 
-export const newsAtom = atom<NewsAtom[] | undefined>(undefined);
+export const newsAtom = atomWithReset<NewsAtom[] | undefined>(undefined);
