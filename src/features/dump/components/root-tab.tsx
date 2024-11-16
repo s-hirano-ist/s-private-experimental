@@ -43,7 +43,7 @@ export function RootTab({ news, contents, dump, image }: Props) {
 			router.replace(`?${params.toString()}`);
 			setTab(DEFAULT_TAB);
 		}
-	}, [searchParams, router.replace]);
+	}, [searchParams, router]);
 
 	return (
 		<Tabs

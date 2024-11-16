@@ -2,10 +2,7 @@
 import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
-import {
-	getUserId,
-	hasUpdateStatusPermissionOrThrow,
-} from "@/features/auth/utils/get-session";
+import { hasUpdateStatusPermissionOrThrow } from "@/features/auth/utils/get-session";
 import { loggerInfo } from "@/pino";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";
@@ -20,8 +17,6 @@ export async function deleteContents(
 ): Promise<ServerAction<ToastMessage>> {
 	try {
 		await hasUpdateStatusPermissionOrThrow();
-
-		const userId = await getUserId();
 
 		await prisma.contents.update({
 			where: { id },

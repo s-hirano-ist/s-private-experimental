@@ -41,7 +41,7 @@ export function RootTab({ books, notes, images }: Props) {
 			router.replace(`?${params.toString()}`);
 			setTab(DEFAULT_TAB);
 		}
-	}, [searchParams, router.replace]);
+	}, [searchParams, router]);
 
 	return (
 		<Tabs

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { UnexpectedError } from "@/error-classes";
+import { deleteNews } from "@/features/dump/actions/delete-news";
 import { useToast } from "@/hooks/use-toast";
-import { deleteNews } from "../actions/delete-news";
 
 type Props = { id: number | undefined };
 

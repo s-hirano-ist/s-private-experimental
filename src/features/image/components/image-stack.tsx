@@ -30,6 +30,7 @@ export function ImageStack({ images }: Props) {
 	if (images.length === 0) return <StatusCodeView statusCode="204" />;
 
 	return (
+		// eslint-disable-next-line
 		<div className="pswp-gallery" id="image-preview">
 			<div className="grid grid-cols-4 gap-2 p-2 sm:p-4">
 				{images.map((image) => (
