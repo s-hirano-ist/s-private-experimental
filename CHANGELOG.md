@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.1](https://github.com/s-hirano-ist/s-private/compare/v2.7.0...v2.7.1) (2024-11-16)
+
+
+### Bug Fixes
+
+* 🐛 reset atoms on signout ([fd9bc81](https://github.com/s-hirano-ist/s-private/commit/fd9bc81cf4b6289f835a7a895552b49c6c012437))
+
 ## [2.7.0](https://github.com/s-hirano-ist/s-private/compare/v2.6.0...v2.7.0) (2024-11-16)
 
 
