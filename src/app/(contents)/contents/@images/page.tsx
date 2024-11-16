@@ -1,10 +1,10 @@
-import { ImageSkeleton } from "@/components/stack/image-skeleton";
 import { StatusCodeView } from "@/components/status-code-view";
 import { Unauthorized } from "@/components/unauthorized";
 import { ERROR_MESSAGES } from "@/constants";
 import { checkAdminPermission } from "@/features/auth/utils/role";
-import { ImagePage } from "@/features/contents/components/image-page";
 import { ImagePagination } from "@/features/contents/components/image-pagination";
+import { ImageStackProvider } from "@/features/contents/components/image-stack-provider";
+import { ImageStackSkeleton } from "@/features/image/components/image-stack-skeleton";
 import { loggerError } from "@/pino";
 import { Suspense } from "react";
 
@@ -27,8 +27,8 @@ export default async function Page({
 				{hasAdminPermission ? (
 					<>
 						<ImagePagination currentPage={currentPage} />
-						<Suspense key={currentPage} fallback={<ImageSkeleton />}>
-							<ImagePage page={currentPage} />
+						<Suspense key={currentPage} fallback={<ImageStackSkeleton />}>
+							<ImageStackProvider page={currentPage} />
 						</Suspense>
 					</>
 				) : (

@@ -1,3 +1,5 @@
+"use server";
+import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { env } from "@/env.mjs";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
@@ -5,7 +7,7 @@ import { hasSelfPostPermissionOrThrow } from "@/features/auth/utils/get-session"
 import { minioClient } from "@/minio";
 import type { ServerAction } from "@/types";
 
-export async function GenerateUrl(
+export async function generateUrl(
 	fileName: string,
 ): Promise<ServerAction<string>> {
 	try {
