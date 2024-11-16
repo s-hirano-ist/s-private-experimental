@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/s-hirano-ist/s-private/compare/v2.4.0...v2.5.0) (2024-11-16)
+
+
+### Features
+
+* 🎸 add page preview ([d860681](https://github.com/s-hirano-ist/s-private/commit/d860681829f47ce85b29a75685e910651ce57d60))
+* 🎸 add page preview ([fdfb6bc](https://github.com/s-hirano-ist/s-private/commit/fdfb6bc93b70cd2071a113cc33e7ff0e75b3a0ed))
+
 ## [2.4.0](https://github.com/s-hirano-ist/s-private/compare/v2.3.0...v2.4.0) (2024-11-16)
 
 
