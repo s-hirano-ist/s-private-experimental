@@ -7,5 +7,5 @@ fi
 
 TAG=$1
 
-docker build -t s0hirano/s-storybook:$TAG -f docker/storybook.Dockerfile .
+docker build --platform linux/amd64 -t s0hirano/s-storybook:$TAG -f docker/storybook.Dockerfile .
 docker push s0hirano/s-storybook:$TAG
