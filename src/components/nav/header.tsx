@@ -2,8 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { DEFAULT_SIGN_OUT_REDIRECT } from "@/constants";
 import { signOut } from "@/features/auth/actions/sign-out";
+import { contentsAtom } from "@/features/contents/stores/contents-atom";
+import { newsAtom } from "@/features/news/stores/news-atom";
 import { useToast } from "@/hooks/use-toast";
 import { sanitizeHref } from "@/utils/sanitize-href";
+import { useResetAtom } from "jotai/utils";
 import { LogOutIcon } from "lucide-react";
 import { Link, useTransitionRouter } from "next-view-transitions";
 // import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
@@ -20,9 +23,14 @@ export function Header({ title, url }: Props) {
 	const { toast } = useToast();
 	const router = useTransitionRouter();
 
+	const resetNews = useResetAtom(newsAtom);
+	const resetContents = useResetAtom(contentsAtom);
+
 	async function onSignOutSubmit() {
 		const response = await signOut();
 		if (response.success) {
+			resetNews();
+			resetContents();
 			router.push(DEFAULT_SIGN_OUT_REDIRECT);
 		} else {
 			toast({
