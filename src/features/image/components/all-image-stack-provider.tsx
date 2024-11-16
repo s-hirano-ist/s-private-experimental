@@ -9,7 +9,7 @@ type Props = {
 	page: number;
 };
 
-export async function ImageStackProvider({ page }: Props) {
+export async function AllImageStackProvider({ page }: Props) {
 	const userId = await getUserId();
 
 	const _images = await prisma.images.findMany({

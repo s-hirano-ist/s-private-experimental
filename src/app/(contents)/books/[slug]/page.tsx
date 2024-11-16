@@ -4,10 +4,10 @@ import { MARKDOWN_PATHS, PAGE_NAME } from "@/constants";
 import { checkAdminPermission } from "@/features/auth/utils/role";
 import {
 	/*getAllSlugs,*/ getContentsBySlug,
-} from "@/features/contents/actions/fetch-contents";
-import { ContentBody } from "@/features/contents/components/content-body";
-import type { ContentsType } from "@/features/contents/types";
-import { markdownToReact } from "@/features/contents/utils/markdownToReact";
+} from "@/features/markdown/actions/fetch-contents";
+import { ContentBody } from "@/features/markdown/components/content-body";
+import type { ContentsType } from "@/features/markdown/types";
+import { markdownToReact } from "@/features/markdown/utils/markdownToReact";
 import type { Metadata } from "next";
 
 const path = "books";
