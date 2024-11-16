@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/s-hirano-ist/s-private/compare/v2.2.0...v2.3.0) (2024-11-15)
+
+
+### Features
+
+* 🎸 add docker deploy for storage ([c24aa9a](https://github.com/s-hirano-ist/s-private/commit/c24aa9afe5ea1467657f30d29d26546d6e065d49))
+
 ## [2.2.0](https://github.com/s-hirano-ist/s-private/compare/v2.1.0...v2.2.0) (2024-11-14)
 
 
