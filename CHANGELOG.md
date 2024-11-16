@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/s-hirano-ist/s-private/compare/v2.6.0...v2.7.0) (2024-11-16)
+
+
+### Features
+
+* 🎸 add login locks ([68f862f](https://github.com/s-hirano-ist/s-private/commit/68f862f22a26df08e6955fc85909fb5ab6770bec))
+
 ## [2.6.0](https://github.com/s-hirano-ist/s-private/compare/v2.5.0...v2.6.0) (2024-11-16)
 
 
