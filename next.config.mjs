@@ -10,13 +10,10 @@ await import("./src/env.mjs");
 
 // MEMO: worker-src 'self' blob:; for Sentry
 
-// FIXME: CSP alerts won't work
-// MEMO: CSP report to for Sentry report
-// https://docs.sentry.io/security-legal-pii/security/security-policy-reporting/
-
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline';
+	connect-src 'self' https://www.google-analytics.com;
+	script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: http://localhost:9000;
     font-src 'self';
