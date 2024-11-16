@@ -6,8 +6,8 @@ import {
 	getUserId,
 	hasSelfPostPermissionOrThrow,
 } from "@/features/auth/utils/get-session";
-import type { ContentsAtom } from "@/features/con/stores/contents-atom";
-import { validateContents } from "@/features/con/utils/validate-contents";
+import type { ContentsAtom } from "@/features/contents/stores/contents-atom";
+import { validateContents } from "@/features/contents/utils/validate-contents";
 import { loggerInfo } from "@/pino";
 import prisma from "@/prisma";
 import type { ServerAction } from "@/types";

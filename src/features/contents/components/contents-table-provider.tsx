@@ -2,7 +2,7 @@
 import { StatusCodeView } from "@/components/status-code-view";
 import { ERROR_MESSAGES } from "@/constants";
 import { hasAdminPermissionOrThrow } from "@/features/auth/utils/get-session";
-import { ContentsTable } from "@/features/con/components/contents-table";
+import { ContentsTable } from "@/features/contents/components/contents-table";
 import { loggerError } from "@/pino";
 import prisma from "@/prisma";
 

@@ -2,7 +2,7 @@ import { TableSkeleton } from "@/components/table/table-skeleton";
 import { Separator } from "@/components/ui/separator";
 import { Unauthorized } from "@/components/unauthorized";
 import { checkAdminPermission } from "@/features/auth/utils/role";
-import { ContentsTableProvider } from "@/features/con/components/contents-table-provider";
+import { ContentsTableProvider } from "@/features/contents/components/contents-table-provider";
 import { NewsTableProvider } from "@/features/news/components/news-table-provider";
 import { Suspense } from "react";
 

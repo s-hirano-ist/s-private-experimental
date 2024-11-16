@@ -1,8 +1,8 @@
 import { StackSkeleton } from "@/components/stack/stack-skeleton";
 import { Separator } from "@/components/ui/separator";
 import { checkPostPermission } from "@/features/auth/utils/role";
-import { AddContentsProvider } from "@/features/con/components/add-contents-provider";
-import { ContentsStackProvider } from "@/features/con/components/contents-stack-provider";
+import { AddContentsProvider } from "@/features/contents/components/add-contents-provider";
+import { ContentsStackProvider } from "@/features/contents/components/contents-stack-provider";
 import { AddFormSkeleton } from "@/features/dump/components/add-form-skeleton";
 import { Suspense } from "react";
 

@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { changeContentsStatus } from "@/features/con/actions/change-contents-status";
+import { changeContentsStatus } from "@/features/contents/actions/change-contents-status";
 import { changeNewsStatus } from "@/features/news/actions/change-news-status";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";

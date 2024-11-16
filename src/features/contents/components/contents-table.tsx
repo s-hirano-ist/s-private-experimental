@@ -16,9 +16,9 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { contentsColumns } from "@/features/con/components/contents-columns";
-import { DeleteContentsButton } from "@/features/con/components/delete-contents-button";
-import type { ContentsAtom } from "@/features/con/stores/contents-atom";
+import { contentsColumns } from "@/features/contents/components/contents-columns";
+import { DeleteContentsButton } from "@/features/contents/components/delete-contents-button";
+import type { ContentsAtom } from "@/features/contents/stores/contents-atom";
 import {
 	type ColumnFiltersState,
 	type SortingState,

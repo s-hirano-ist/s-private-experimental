@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import type { ContentsAtom } from "@/features/con/stores/contents-atom";
+import type { ContentsAtom } from "@/features/contents/stores/contents-atom";
 import { sanitizeHref } from "@/utils/sanitize-href";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Link as LinkIcon } from "lucide-react";

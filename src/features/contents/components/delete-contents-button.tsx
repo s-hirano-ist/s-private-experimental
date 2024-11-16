@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { UnexpectedError } from "@/error-classes";
-import { deleteContents } from "@/features/con/actions/delete-contents";
+import { deleteContents } from "@/features/contents/actions/delete-contents";
 import { useToast } from "@/hooks/use-toast";
 
 type Props = { id: number | undefined };

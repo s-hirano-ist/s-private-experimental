@@ -5,7 +5,7 @@ import { StatusCodeView } from "@/components/status-code-view";
 import {
 	type ContentsAtom,
 	contentsAtom,
-} from "@/features/con/stores/contents-atom";
+} from "@/features/contents/stores/contents-atom";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
 
