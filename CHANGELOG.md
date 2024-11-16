@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.3](https://github.com/s-hirano-ist/s-private/compare/v2.7.2...v2.7.3) (2024-11-16)
+
+
+### Bug Fixes
+
+* 🐛 docker build script for mac pcs ([5d7eb3c](https://github.com/s-hirano-ist/s-private/commit/5d7eb3cf0b6b2bac79993132f15ef13a2bb07df6))
+
 ## [2.7.2](https://github.com/s-hirano-ist/s-private/compare/v2.7.1...v2.7.2) (2024-11-16)
 
 
