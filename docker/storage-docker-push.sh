@@ -7,5 +7,5 @@ fi
 
 TAG=$1
 
-docker build -t s0hirano/s-storage:$TAG -f docker/storage.Dockerfile .
+docker build --platform linux/amd64 -t s0hirano/s-storage:$TAG -f docker/storage.Dockerfile .
 docker push s0hirano/s-storage:$TAG
