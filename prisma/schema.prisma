@@ -29,11 +29,15 @@ enum Scope {
 }
 
 model Users {
-  id           String           @id @default(uuid(7))
-  username     String           @unique
-  password     String
-  role         Role             @default(VIEWER)
-  scope        Scope            @default(PUBLIC)
+  id       String @id @default(uuid(7))
+  username String @unique
+  password String
+  role     Role   @default(VIEWER)
+  scope    Scope  @default(PUBLIC)
+
+  failedLoginAttempts Int     @default(0) @map("failed_login_attempts")
+  isLocked            Boolean @default(false) @map("is_locked")
+
   LoginHistory LoginHistories[]
   Profile      Profiles?
   createdAt    DateTime         @default(now()) @map("created_at")

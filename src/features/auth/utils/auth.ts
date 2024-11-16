@@ -49,12 +49,40 @@ export const {
 							username: true,
 							role: true,
 							password: true,
+							isLocked: true,
+							failedLoginAttempts: true,
 						},
 					});
-					if (!user) return null;
-					const passwordMatch = await bcrypt.compare(password, user.password);
-					if (!passwordMatch) return null;
 
+					if (!user) return null;
+
+					// log attempts of auth
+					await prisma.loginHistories.create({
+						data: { userId: user.id },
+					});
+
+					if (user.isLocked) return null;
+
+					const passwordMatch = await bcrypt.compare(password, user.password);
+
+					if (!passwordMatch) {
+						await prisma.users.update({
+							where: { username },
+							data: { failedLoginAttempts: user.failedLoginAttempts + 1 },
+						});
+
+						if (user.failedLoginAttempts + 1 >= 3) {
+							await prisma.users.update({
+								where: { username },
+								data: { isLocked: true },
+							});
+						}
+						return null;
+					}
+					await prisma.users.update({
+						where: { username },
+						data: { failedLoginAttempts: 0 },
+					});
 					return { id: user.id, role: user.role, username: user.username };
 				}
 				return null;
