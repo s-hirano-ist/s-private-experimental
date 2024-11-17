@@ -50,7 +50,7 @@ jobs:
       - run: pnpm test
       - name: Show coverage
         if: always()
-        uses: davelosert/vitest-coverage-report-action@edb1ad1e6a02b1dd761ddd26739a396ee537c08e # v2
+        uses: davelosert/vitest-coverage-report-action@5a78cb16e761204097ad8a39369ea5d0ff7c8a5d # v2
         with:
           json-summary-path: ./.vitest-coverage/coverage-summary.json
           json-final-path: ./.vitest-coverage/coverage-final.json
