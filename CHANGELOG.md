@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.4](https://github.com/s-hirano-ist/s-private/compare/v2.7.3...v2.7.4) (2024-11-24)
+
+
+### Bug Fixes
+
+* 🐛 csp error on google analytics ([bf05056](https://github.com/s-hirano-ist/s-private/commit/bf05056e7bd90f7ad98d9882ca0221a799f0d832))
+* 🐛 generate url data ([e8c47d3](https://github.com/s-hirano-ist/s-private/commit/e8c47d309aa4720d3014fc2c454af64e2e526d48))
+* 🐛 redirect to throw error ([a8d9581](https://github.com/s-hirano-ist/s-private/commit/a8d9581a26811c6e4ca66720985309275149bc1d))
+* 🐛 ssl option on minio ([7b98bc0](https://github.com/s-hirano-ist/s-private/commit/7b98bc0bae41c587e7fc915ef1346c5fc0ba147a))
+
 ## [2.7.3](https://github.com/s-hirano-ist/s-private/compare/v2.7.2...v2.7.3) (2024-11-16)
 
 
