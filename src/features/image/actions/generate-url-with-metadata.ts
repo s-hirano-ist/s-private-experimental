@@ -25,7 +25,6 @@ export async function generateUrlWithMetadata(
 			fileName,
 			24 * 60 * 60,
 		);
-		console.log("url", url);
 
 		const response = await fetch(url);
 		if (!response.ok) throw new UnexpectedError();
