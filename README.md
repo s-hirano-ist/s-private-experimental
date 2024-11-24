@@ -12,6 +12,7 @@
 **Package Manager** - [pnpm](https://pnpm.io/)  
 **Styling** - [Shadcn/ui](https://ui.shadcn.com/)  
 **Database** - [PostgreSQL](https://www.postgresql.org/)  
+**Object Storage** [MinIO](https://min.io/)  
 **ORM** - [Prisma](https://www.prisma.io/)  
 **Vulnerabilities Check** - [npm-audit](https://docs.npmjs.com/cli/v10/commands/npm-audit)  [Dependabot alert](https://docs.github.com/ja/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)  
 
@@ -20,6 +21,9 @@
 ```bash
 git clone --recursive https://github.com/s-hirano-ist/s-private.git
 cd s-private
+cd minio
+./minio-keygen.sh
+cd ..
 ```
 
 ## DockerImageのビルドとプッシュ

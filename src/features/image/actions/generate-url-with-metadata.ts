@@ -2,14 +2,21 @@
 import "server-only";
 import { SUCCESS_MESSAGES } from "@/constants";
 import { env } from "@/env.mjs";
+import { UnexpectedError } from "@/error-classes";
 import { wrapServerSideErrorForClient } from "@/error-wrapper";
 import { hasSelfPostPermissionOrThrow } from "@/features/auth/utils/get-session";
 import { minioClient } from "@/minio";
 import type { ServerAction } from "@/types";
+import sharp, { type Metadata } from "sharp";
 
-export async function generateUrl(
+type GenerateUrl = {
+	url: string;
+	metadata: Metadata;
+};
+
+export async function generateUrlWithMetadata(
 	fileName: string,
-): Promise<ServerAction<string>> {
+): Promise<ServerAction<GenerateUrl>> {
 	try {
 		await hasSelfPostPermissionOrThrow();
 
@@ -19,10 +26,16 @@ export async function generateUrl(
 			24 * 60 * 60,
 		);
 
+		const response = await fetch(url);
+		if (!response.ok) throw new UnexpectedError();
+
+		const imageBuffer = await response.arrayBuffer();
+		const metadata = await sharp(imageBuffer).metadata();
+
 		return {
 			success: true,
 			message: SUCCESS_MESSAGES.INSERTED,
-			data: url,
+			data: { url, metadata },
 		};
 	} catch (error) {
 		return await wrapServerSideErrorForClient(error);

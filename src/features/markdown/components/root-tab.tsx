@@ -6,7 +6,7 @@ import { type ReactNode, useEffect, useState } from "react";
 
 const TABS = {
 	books: "BOOKS",
-	notes: "notes",
+	notes: "NOTES",
 	images: "IMAGES",
 };
 

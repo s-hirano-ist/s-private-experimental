@@ -1,6 +1,7 @@
 import { Header } from "@/components/nav/header";
 import { Unauthorized } from "@/components/unauthorized";
 import { MARKDOWN_PATHS, PAGE_NAME } from "@/constants";
+import { checkSelfAuthOrRedirectToAuth } from "@/features/auth/utils/get-session";
 import { checkAdminPermission } from "@/features/auth/utils/role";
 import {
 	/*getAllSlugs,*/ getContentsBySlug,
@@ -24,6 +25,8 @@ export function generateMetadata({ params }: Props): Metadata {
 }
 
 export default async function Page({ params }: Props) {
+	await checkSelfAuthOrRedirectToAuth();
+
 	const hasAdminPermission = await checkAdminPermission();
 
 	const decordedSlug = decodeURIComponent(params.slug);
