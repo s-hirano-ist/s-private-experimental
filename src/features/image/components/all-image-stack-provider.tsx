@@ -1,7 +1,6 @@
 import { PAGE_SIZE } from "@/constants";
 import { getUserId } from "@/features/auth/utils/get-session";
-import { fetchMetadata } from "@/features/image/actions/fetch-metadata";
-import { generateUrl } from "@/features/image/actions/generate-url";
+import { generateUrlWithMetadata } from "@/features/image/actions/generate-url-with-metadata";
 import { ImageStack } from "@/features/image/components/image-stack";
 import prisma from "@/prisma";
 
@@ -24,16 +23,13 @@ export async function AllImageStackProvider({ page }: Props) {
 
 	const images = await Promise.all(
 		_images.map(async (image) => {
-			const url = await generateUrl(image.id);
-			if (!url.success) return { src: "/not-found.png" };
-
-			const metadata = await fetchMetadata(url.data);
-			if (!metadata.success) return { src: "/not-found.png" };
+			const response = await generateUrlWithMetadata(image.id);
+			if (!response.success) return { src: "/not-found.png" };
 
 			return {
-				src: url.data,
-				width: metadata.data.width,
-				height: metadata.data.height,
+				src: response.data.url,
+				width: response.data.metadata.width,
+				height: response.data.metadata.height,
 			};
 		}),
 	);
