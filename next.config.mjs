@@ -15,7 +15,7 @@ const cspHeader = `
 	connect-src 'self' https://www.google-analytics.com;
 	script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: http://localhost:9000;
+	img-src 'self' blob: data: https://localhost:9000 https://private.s-hirano.com:9000 https://www.googletagmanager.com;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
@@ -31,13 +31,7 @@ const cspHeader = `
 const nextConfig = {
 	experimental: { typedRoutes: true },
 	output: "standalone",
-	images: {
-		remotePatterns: [
-			{
-				hostname: env.MINIO_HOST,
-			},
-		],
-	},
+	images: { remotePatterns: [{ hostname: env.MINIO_HOST }] },
 	async headers() {
 		return [
 			{

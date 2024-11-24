@@ -51,6 +51,7 @@ services:
       - "9001:9001"  # for console access
     volumes:
       - dev-storage-data:/data
+      - ./minio/certs:/root/.minio/certs
     networks:
       - s-dev-network
     env_file:
