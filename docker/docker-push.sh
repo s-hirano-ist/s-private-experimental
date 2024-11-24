@@ -1,3 +1,5 @@
+#!/bin/sh
+
 if [ -z "$1" ]; then
   echo "usage: $0 <tag>"
   exit 1

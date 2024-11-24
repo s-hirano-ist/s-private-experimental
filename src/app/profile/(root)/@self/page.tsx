@@ -34,6 +34,7 @@ async function getSelfScope() {
 
 export default async function Page() {
 	await checkSelfAuthOrRedirectToAuth();
+
 	const profile = await getSelfProfile();
 	const scope = await getSelfScope();
 

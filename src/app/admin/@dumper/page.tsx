@@ -1,6 +1,7 @@
 import { TableSkeleton } from "@/components/table/table-skeleton";
 import { Separator } from "@/components/ui/separator";
 import { Unauthorized } from "@/components/unauthorized";
+import { checkSelfAuthOrRedirectToAuth } from "@/features/auth/utils/get-session";
 import { checkAdminPermission } from "@/features/auth/utils/role";
 import { ContentsTableProvider } from "@/features/contents/components/contents-table-provider";
 import { NewsTableProvider } from "@/features/news/components/news-table-provider";
@@ -9,6 +10,8 @@ import { Suspense } from "react";
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
+	await checkSelfAuthOrRedirectToAuth();
+
 	const hasAdminPermission = await checkAdminPermission();
 
 	return (

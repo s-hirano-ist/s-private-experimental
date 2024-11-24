@@ -4,6 +4,7 @@ import { StackSkeleton } from "@/components/stack/stack-skeleton";
 import { Separator } from "@/components/ui/separator";
 import { Unauthorized } from "@/components/unauthorized";
 import { PAGE_NAME } from "@/constants";
+import { checkSelfAuthOrRedirectToAuth } from "@/features/auth/utils/get-session";
 import { checkViewStatus } from "@/features/auth/utils/role";
 import { Profile } from "@/features/profile/components/profile";
 import { ProfileContents } from "@/features/profile/components/profile-contents";
@@ -22,6 +23,8 @@ export function generateMetadata({ params }: Props): Metadata {
 }
 
 export default async function Page({ params }: Props) {
+	await checkSelfAuthOrRedirectToAuth();
+
 	const viewStatus = await checkViewStatus(params.username);
 	const username = params.username;
 

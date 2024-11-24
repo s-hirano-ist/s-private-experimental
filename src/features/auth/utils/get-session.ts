@@ -1,6 +1,6 @@
 import "server-only";
 import { ERROR_MESSAGES } from "@/constants";
-import { NotAllowedError /*, UnauthorizedError*/ } from "@/error-classes";
+import { NotAllowedError, UnauthorizedError } from "@/error-classes";
 import { loggerWarn } from "@/pino";
 import { redirect } from "next/navigation";
 import { auth } from "./auth";
@@ -10,14 +10,25 @@ import {
 	checkUpdateStatusPermission,
 } from "./role";
 
+export async function checkSelfAuthOrThrow() {
+	const session = await auth();
+	if (!session) {
+		loggerWarn(ERROR_MESSAGES.UNAUTHORIZED, {
+			caller: "Unauthorized on checkSelfAuth or throw",
+			status: 401,
+		});
+		throw new UnauthorizedError();
+	}
+	return session;
+}
+
 export async function checkSelfAuthOrRedirectToAuth() {
 	const session = await auth();
 	if (!session) {
 		loggerWarn(ERROR_MESSAGES.UNAUTHORIZED, {
-			caller: "Unauthorized on checkSelfAuth",
+			caller: "Unauthorized on checkSelfAuth or redirect",
 			status: 401,
 		});
-		// throw new UnauthorizedError();
 		// FIXME: https://github.com/s-hirano-ist/s-private/issues/440
 		redirect("/auth"); // WHEN MIDDLEWARE DO NOT WORK
 	}
@@ -40,11 +51,11 @@ export async function hasUpdateStatusPermissionOrThrow() {
 }
 
 export async function getUserId() {
-	const { user } = await checkSelfAuthOrRedirectToAuth();
+	const { user } = await checkSelfAuthOrThrow();
 	return user.id;
 }
 
 export async function getSelfRole() {
-	const { user } = await checkSelfAuthOrRedirectToAuth();
+	const { user } = await checkSelfAuthOrThrow();
 	return user.role;
 }
