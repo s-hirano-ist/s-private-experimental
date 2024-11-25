@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { changeContentsStatus } from "@/features/contents/actions/change-contents-status";
+import { changeImagesStatus } from "@/features/image/actions/change-images-status";
 import { changeNewsStatus } from "@/features/news/actions/change-news-status";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
@@ -13,7 +14,6 @@ export function ChangeStatusButtons() {
 	const handleNewsUpdateStatus = async () => {
 		setButtonDisabled(true);
 		const response = await changeNewsStatus("UPDATE");
-		// TODO: revalidate path
 		toast({
 			variant: response.success ? "default" : "destructive",
 			description: response.message,
@@ -24,7 +24,6 @@ export function ChangeStatusButtons() {
 	const handleNewsRevertStatus = async () => {
 		setButtonDisabled(true);
 		const response = await changeNewsStatus("REVERT");
-		// TODO: revalidate path
 		toast({
 			variant: response.success ? "default" : "destructive",
 			description: response.message,
@@ -35,7 +34,6 @@ export function ChangeStatusButtons() {
 	const handleContentsUpdateStatus = async () => {
 		setButtonDisabled(true);
 		const response = await changeContentsStatus("UPDATE");
-		// TODO: revalidate path
 		toast({
 			variant: response.success ? "default" : "destructive",
 			description: response.message,
@@ -46,7 +44,26 @@ export function ChangeStatusButtons() {
 	const handleContentsRevertStatus = async () => {
 		setButtonDisabled(true);
 		const response = await changeContentsStatus("REVERT");
-		// TODO: revalidate path
+		toast({
+			variant: response.success ? "default" : "destructive",
+			description: response.message,
+		});
+		setButtonDisabled(false);
+	};
+
+	const handleImagesUpdateStatus = async () => {
+		setButtonDisabled(true);
+		const response = await changeImagesStatus("UPDATE");
+		toast({
+			variant: response.success ? "default" : "destructive",
+			description: response.message,
+		});
+		setButtonDisabled(false);
+	};
+
+	const handleImagesRevertStatus = async () => {
+		setButtonDisabled(true);
+		const response = await changeImagesStatus("REVERT");
 		toast({
 			variant: response.success ? "default" : "destructive",
 			description: response.message,
@@ -67,6 +84,12 @@ export function ChangeStatusButtons() {
 			</Button>
 			<Button onClick={handleContentsRevertStatus} disabled={buttonDisabled}>
 				CONTENTS REVERT
+			</Button>
+			<Button onClick={handleImagesUpdateStatus} disabled={buttonDisabled}>
+				IMAGES UPDATE
+			</Button>
+			<Button onClick={handleImagesRevertStatus} disabled={buttonDisabled}>
+				IMAGES REVERT
 			</Button>
 		</div>
 	);

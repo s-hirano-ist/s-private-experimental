@@ -1,4 +1,4 @@
-export type ContentName = "NEWS" | "CONTENTS";
+export type ContentName = "NEWS" | "CONTENTS" | "IMAGES";
 
 export type Status = {
 	unexported: number;
