@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/s-hirano-ist/s-private/compare/v2.7.4...v3.0.0) (2024-11-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* 🧨 !
+
+### Features
+
+* 🎸 update image button ([d74ad62](https://github.com/s-hirano-ist/s-private/commit/d74ad62e03e6652d5dedf6d0cd61310fe41a7147))
+
+
+### Bug Fixes
+
+* 🐛 build on tsconfig ([f7a84ac](https://github.com/s-hirano-ist/s-private/commit/f7a84ac6f5254cfb257e76bc1e066abdf7545a0b))
+
 ## [2.7.4](https://github.com/s-hirano-ist/s-private/compare/v2.7.3...v2.7.4) (2024-11-24)
 
 
