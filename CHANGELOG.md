@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.1](https://github.com/s-hirano-ist/s-private/compare/v3.0.0...v3.0.1) (2024-11-27)
+
+
+### Bug Fixes
+
+* 🐛 design of footer and header ([fdac653](https://github.com/s-hirano-ist/s-private/commit/fdac653fcbecd452465acce79aa62884c59d27d4))
+
 ## [3.0.0](https://github.com/s-hirano-ist/s-private/compare/v2.7.4...v3.0.0) (2024-11-26)
 
 
