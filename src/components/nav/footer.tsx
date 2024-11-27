@@ -30,9 +30,9 @@ export function Footer() {
 	};
 
 	return (
-		<footer className="sticky bottom-4 z-50 mx-auto w-full max-w-lg rounded-3xl border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700 ">
+		<footer className="sticky bottom-0 z-50 mx-auto w-full max-w-lg border border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-700 sm:rounded-3xl ">
 			<Drawer open={open} onOpenChange={setOpen} snapPoints={[0.5]}>
-				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 rounded-3xl bg-gradient-to-r from-primary to-primary-grad text-white">
+				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 bg-gradient-to-r from-primary to-primary-grad text-white sm:rounded-3xl">
 					{/* FIXME: bug with parallel routes
 					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
 					<Link href={"/" as Route} scroll={false}>
@@ -40,7 +40,7 @@ export function Footer() {
 							variant="navSide"
 							size="navSide"
 							className={cn(
-								"rounded-s-3xl",
+								"sm:rounded-s-3xl",
 								pathname === "/" ? "bg-black/40" : "",
 							)}
 						>
@@ -90,7 +90,7 @@ export function Footer() {
 							variant="navSide"
 							size="navSide"
 							className={cn(
-								"rounded-e-3xl",
+								"sm:rounded-e-3xl",
 								pathname === "/admin" ? "bg-black/40" : "",
 							)}
 						>
