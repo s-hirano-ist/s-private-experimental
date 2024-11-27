@@ -1,24 +1,22 @@
 "use client";
+import AnimatedGradientText from "@/components/animata/animated-gradient-text";
 import { Button } from "@/components/ui/button";
 import { DEFAULT_SIGN_OUT_REDIRECT } from "@/constants";
 import { signOut } from "@/features/auth/actions/sign-out";
 import { contentsAtom } from "@/features/contents/stores/contents-atom";
 import { newsAtom } from "@/features/news/stores/news-atom";
 import { useToast } from "@/hooks/use-toast";
-import { sanitizeHref } from "@/utils/sanitize-href";
 import { useResetAtom } from "jotai/utils";
 import { LogOutIcon } from "lucide-react";
-import { Link, useTransitionRouter } from "next-view-transitions";
+import { useTransitionRouter } from "next-view-transitions";
 // import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 type Props = {
 	title: string;
-	url?: string;
 };
 
-export function Header({ title, url }: Props) {
+export function Header({ title }: Props) {
 	const pathname = usePathname();
 	const { toast } = useToast();
 	const router = useTransitionRouter();
@@ -45,19 +43,9 @@ export function Header({ title, url }: Props) {
 			<div className="flex items-center justify-between sm:px-2">
 				<div className="flex items-center justify-start">
 					{/* FIXME: scroll behavior causes warning: https://zenn.dev/tk_c/articles/5205f44777903b */}
-					{url ? (
-						<Link
-							href={new URL(sanitizeHref(url))}
-							target="_blank"
-							scroll={false}
-						>
-							<Button variant="link" className="text-xl font-semibold">
-								{title}
-							</Button>
-						</Link>
-					) : (
-						<p className="px-4 py-1 text-xl font-semibold">{title}</p>
-					)}
+					<AnimatedGradientText className="px-4 py-1 text-xl font-semibold">
+						{title}
+					</AnimatedGradientText>
 				</div>
 				{/* TODO: add theme button */}
 				<nav>
