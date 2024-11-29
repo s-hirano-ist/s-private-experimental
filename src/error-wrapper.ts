@@ -20,7 +20,7 @@ export async function wrapServerSideErrorForClient<T>(
 ): Promise<ServerAction<T>> {
 	if (error instanceof LineNotifyError) {
 		loggerError(error.message, {
-			caller: "wrapServerSideErrorForClient",
+			caller: "wrapServerSideErrorForClient lineNotify",
 			status: 500,
 		});
 		//MEMO: 右記は意味なし await sendLineNotifyMessage(error.message);
@@ -35,7 +35,7 @@ export async function wrapServerSideErrorForClient<T>(
 		error instanceof FileNotAllowedError
 	) {
 		loggerWarn(error.message, {
-			caller: "wrapServerSideErrorForClient",
+			caller: "wrapServerSideErrorForClient custom",
 			status: 500,
 		});
 		await sendLineNotifyMessage(error.message);
@@ -43,7 +43,7 @@ export async function wrapServerSideErrorForClient<T>(
 	}
 	if (error instanceof AuthError) {
 		loggerWarn(error.message, {
-			caller: "wrapServerSideErrorForClient",
+			caller: "wrapServerSideErrorForClient auth",
 			status: 500,
 		});
 		await sendLineNotifyMessage(error.message);
@@ -68,7 +68,7 @@ export async function wrapServerSideErrorForClient<T>(
 		error instanceof Prisma.PrismaClientInitializationError
 	) {
 		loggerError(error.message, {
-			caller: "wrapServerSideErrorForClient",
+			caller: "wrapServerSideErrorForClient prisma 1",
 			status: 500,
 		});
 		await sendLineNotifyMessage(error.message);
@@ -76,7 +76,7 @@ export async function wrapServerSideErrorForClient<T>(
 	}
 	if (error instanceof Prisma.PrismaClientKnownRequestError) {
 		loggerWarn(error.message, {
-			caller: "wrapServerSideErrorForClient",
+			caller: "wrapServerSideErrorForClient prisma 2",
 			status: 500,
 		});
 		await sendLineNotifyMessage(error.message);
@@ -85,7 +85,7 @@ export async function wrapServerSideErrorForClient<T>(
 
 	if (error instanceof Error) {
 		loggerError(error.message, {
-			caller: "wrapServerSideErrorForClient",
+			caller: "wrapServerSideErrorForClient unknown error",
 			status: 500,
 		});
 		await sendLineNotifyMessage(error.message);
@@ -93,7 +93,7 @@ export async function wrapServerSideErrorForClient<T>(
 		loggerError(
 			ERROR_MESSAGES.UNEXPECTED,
 			{
-				caller: "wrapServerSideErrorForClient",
+				caller: "wrapServerSideErrorForClient not error errors ",
 				status: 500,
 			},
 			error,
