@@ -24,7 +24,6 @@ export function Footer() {
 			<div className="flex flex-col items-center">
 				{icon}
 				<div className="text-xs font-thin">{name}</div>
-				<span className="sr-only">{name}</span>
 			</div>
 		);
 	};

@@ -16,6 +16,7 @@ export default defineConfig({
 			include: ["src/**"],
 			exclude: [
 				"**/*.stories.tsx",
+				"src/**/*.test.ts?(x)",
 				"src/app/**", // FIXME: delete this line
 			],
 			reporter: ["text", "json-summary", "json"],

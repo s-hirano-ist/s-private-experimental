@@ -7,12 +7,12 @@ vi.mock("@/pino", () => ({
 	loggerError: vi.fn(),
 }));
 
+vi.mock("server-only", () => {
+	return {};
+});
+
 describe("sendLineNotifyMessage", () => {
 	const mockFetch = vi.fn();
-
-	vi.mock("server-only", () => {
-		return {};
-	});
 
 	beforeEach(() => {
 		global.fetch = mockFetch;

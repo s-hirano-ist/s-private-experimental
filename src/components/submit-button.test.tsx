@@ -4,7 +4,6 @@ import { useFormStatus } from "react-dom";
 import { type Mock, beforeEach, describe, expect, it, vi } from "vitest";
 import { SubmitButton } from "./submit-button";
 
-// モックの設定
 vi.mock("react-dom", () => ({
 	useFormStatus: vi.fn(),
 }));
