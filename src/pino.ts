@@ -16,7 +16,8 @@ export const loggerError = (
 	option: Option,
 	error?: unknown,
 ) => {
-	console.error("Unknown error on logger error:", error);
+	if (error !== undefined)
+		console.error("Unknown error on logger error:", error);
 	return logger.error(option, message);
 };
 
