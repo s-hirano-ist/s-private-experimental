@@ -35,7 +35,7 @@ export function Footer() {
 				<div className="mx-auto grid h-16 max-w-lg grid-cols-5 bg-gradient-to-r from-primary to-primary-grad text-white sm:rounded-3xl">
 					{/* FIXME: bug with parallel routes
 					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
-					<Link href={"/" as Route} scroll={false}>
+					<Link href={"/" as Route}>
 						<Button
 							variant="navSide"
 							size="navSide"
@@ -50,7 +50,7 @@ export function Footer() {
 
 					{/* FIXME: bug with parallel routes
 					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
-					<Link href={"/contents" as Route} scroll={false}>
+					<Link href={"/contents" as Route}>
 						<Button
 							variant="navSide"
 							size="navSide"
@@ -72,7 +72,7 @@ export function Footer() {
 
 					{/* FIXME: bug with parallel routes
 					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
-					<Link href={"/profile" as Route} scroll={false}>
+					<Link href={"/profile" as Route}>
 						<Button
 							variant="navSide"
 							size="navSide"
@@ -85,7 +85,7 @@ export function Footer() {
 
 					{/* FIXME: bug with parallel routes
 					 * https://nextjs.org/docs/app/building-your-application/routing/parallel-routes */}
-					<Link href={"/admin" as Route} scroll={false}>
+					<Link href={"/admin" as Route}>
 						<Button
 							variant="navSide"
 							size="navSide"
