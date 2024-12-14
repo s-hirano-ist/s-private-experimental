@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export function SmallCardSkeleton() {
 	return (
-		<Card className="hover:bg-primary/10">
+		<Card className="hover:bg-primary/10" data-testid="small-card-skeleton">
 			<CardHeader>
 				<div className="flex gap-4">
 					<Skeleton className="h-6 w-8" />

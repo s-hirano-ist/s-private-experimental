@@ -14,6 +14,10 @@ export default defineConfig({
 			reportOnFailure: true,
 			reportsDirectory: "./.vitest-coverage",
 			include: ["src/**"],
+			exclude: [
+				"**/*.stories.tsx",
+				"src/app/**", // FIXME: delete this line
+			],
 			reporter: ["text", "json-summary", "json"],
 		},
 		include: ["./src/**/*.test.?(c|m)[jt]s?(x)"],
