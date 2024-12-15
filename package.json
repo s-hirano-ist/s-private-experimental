@@ -8,8 +8,6 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint",
-		"lint:fix": "next lint --fix",
 		"check:ci": "biome ci *",
 		"check:fix": "biome check --write *",
 		"prisma:generate": "prisma generate",
@@ -17,11 +15,7 @@
 		"prisma:deploy": "prisma migrate deploy",
 		"prisma:seed": "prisma db seed",
 		"prisma:studio": "prisma studio",
-		"postinstall": "prisma generate",
-		"commit": "git-cz",
-		"security": "pnpm audit",
-		"actionlint": "actionlint",
-		"ghalint": "ghalint run"
+		"postinstall": "prisma generate"
 	},
 	"prisma": {
 		"seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -79,12 +73,7 @@
 		"@types/react": "18.3.12",
 		"@types/react-dom": "18.3.1",
 		"@types/uuid": "10.0.0",
-		"@typescript-eslint/eslint-plugin": "8.15.0",
 		"autoprefixer": "10.4.20",
-		"eslint": "8.57.1",
-		"eslint-config-next": "14.2.18",
-		"eslint-plugin-tailwindcss": "3.17.5",
-		"eslint-plugin-unused-imports": "4.1.4",
 		"git-cz": "4.9.0",
 		"postcss": "8.4.49",
 		"rehype": "13.0.2",

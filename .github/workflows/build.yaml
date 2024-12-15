@@ -43,10 +43,6 @@ jobs:
             ${{ runner.os }}-node-
       - run: pnpm i --frozen-lockfile
       - run: pnpm check:ci
-      - run: pnpm lint
-        env:
-          SKIP_ENV_VALIDATION: true
-          MINIO_HOST: ${{ secrets.MINIO_HOST }}
 
       - run: pnpm build
         env:
