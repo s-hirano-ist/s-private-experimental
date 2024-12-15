@@ -1,7 +1,6 @@
 "use client"; // Error components must be Client Components
 import { StatusCodeView } from "@/components/status-code-view";
 import { Button } from "@/components/ui/button";
-import { captureException } from "@sentry/nextjs";
 // biome-ignore lint: auto-gen
 import type Error from "next/error";
 import { useEffect } from "react";
@@ -13,9 +12,6 @@ export default function Page({
 	error: Error & { digest?: string };
 	reset: () => void;
 }) {
-	useEffect(() => {
-		captureException(error);
-	}, [error]);
 
 	return (
 		<html lang="ja">
