@@ -21,8 +21,6 @@ export const env = createEnv({
 			process.env.NODE_ENV === "production"
 				? z.string()
 				: z.string().optional(),
-		SENTRY_AUTH_TOKEN: z.string(),
-		SENTRY_REPORT_URL: z.string(),
 		MINIO_HOST: z.string(),
 		MINIO_PORT: z.number(),
 		MINIO_BUCKET_NAME: z.string(),
@@ -34,7 +32,6 @@ export const env = createEnv({
 	 * Specify your client-side environment variables schema here. This way you can ensure the app isn't built with invalid env vars. To expose them to the client, prefix them with `NEXT_PUBLIC_`.
 	 */
 	client: {
-		NEXT_PUBLIC_SENTRY_DSN: z.string(),
 		NEXT_PUBLIC_G_TAG: z.string(),
 	},
 
@@ -47,14 +44,11 @@ export const env = createEnv({
 		LINE_NOTIFY_SECRET_TOKEN: process.env.LINE_NOTIFY_SECRET_TOKEN,
 		AUTH_URL: process.env.AUTH_URL,
 		AUTH_SECRET: process.env.AUTH_SECRET,
-		SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
-		SENTRY_REPORT_URL: process.env.SENTRY_REPORT_URL,
 		MINIO_HOST: process.env.MINIO_HOST,
 		MINIO_PORT: Number(process.env.MINIO_PORT),
 		MINIO_BUCKET_NAME: process.env.MINIO_BUCKET_NAME,
 		MINIO_ACCESS_KEY: process.env.MINIO_ACCESS_KEY,
 		MINIO_SECRET_KEY: process.env.MINIO_SECRET_KEY,
-		NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN, // MEMO: ok to leak
 		NEXT_PUBLIC_G_TAG: process.env.NEXT_PUBLIC_G_TAG,
 	},
 	/**
