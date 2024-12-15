@@ -53,7 +53,6 @@ describe("getContentsBySlug", () => {
 
 describe("getAllSlugs", () => {
 	const mockPath = "test-path";
-	const mockDirectory = "s-contents/markdown/test-path";
 	const mockSlugs = ["file1.md", "file2.md", ".DS_Store"];
 
 	beforeEach(() => {
