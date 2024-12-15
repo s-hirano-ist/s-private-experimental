@@ -3,6 +3,3 @@ node_modules
 
 .next
 .playwright-output
-.storybook-coverage
-.storybook-static
-.vitest-coverage

@@ -14,7 +14,6 @@
 		"lint:mark:fix": "markdownlint-cli2-fix _markdown/*",
 		"check:ci": "biome ci *",
 		"check:fix": "biome check --write *",
-		"test": "vitest",
 		"test:e2e": "playwright test",
 		"test:storybook": "test-storybook --coverage --coverageDirectory .storybook-coverage",
 		"prisma:generate": "prisma generate",
@@ -97,19 +96,13 @@
 		"@storybook/react": "8.4.6",
 		"@storybook/test": "8.4.6",
 		"@storybook/test-runner": "0.19.1",
-		"@testing-library/jest-dom": "6.6.3",
-		"@testing-library/react": "16.0.1",
-		"@testing-library/user-event": "14.5.2",
 		"@types/bcryptjs": "2.4.6",
 		"@types/node": "22.9.3",
 		"@types/react": "18.3.12",
 		"@types/react-dom": "18.3.1",
 		"@types/uuid": "10.0.0",
 		"@typescript-eslint/eslint-plugin": "8.15.0",
-		"@vitejs/plugin-react": "4.3.4",
-		"@vitest/coverage-v8": "2.1.6",
 		"autoprefixer": "10.4.20",
-		"dotenv": "16.4.7",
 		"eslint": "8.57.1",
 		"eslint-config-next": "14.2.18",
 		"eslint-plugin-storybook": "0.11.1",
@@ -130,7 +123,6 @@
 		"storybook-dark-mode": "4.0.2",
 		"tailwindcss": "3.4.15",
 		"ts-node": "10.9.2",
-		"typescript": "5.7.2",
-		"vitest": "2.1.6"
+		"typescript": "5.7.2"
 	}
 }
