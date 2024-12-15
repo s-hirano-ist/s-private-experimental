@@ -1,6 +1,6 @@
 import { StatusCodeView } from "@/components/status-code-view";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 
 export function NotFound() {
 	return (
@@ -10,9 +10,7 @@ export function NotFound() {
 				お探しのコンテンツが見つかりませんでした。
 			</p>
 			<Button className="mx-auto flex flex-col">
-				<Link href="/auth" scroll={false}>
-					HOMEへ戻る
-				</Link>
+				<Link href="/auth">HOMEへ戻る</Link>
 			</Button>
 		</div>
 	);

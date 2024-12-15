@@ -1,7 +1,9 @@
 import "server-only";
 import { env } from "@/env.mjs";
 import { LineNotifyError } from "@/error-classes";
+import { loggerError } from "@/pino";
 
+// MEMO: do not throw error here due to error handling wrapper error loop
 export async function sendLineNotifyMessage(message: string) {
 	try {
 		const LINE_NOTIFY_URL = env.LINE_NOTIFY_URL;
@@ -20,6 +22,20 @@ export async function sendLineNotifyMessage(message: string) {
 		});
 		if (result.status !== 200) throw new LineNotifyError();
 	} catch (error) {
-		console.error("Send line message failed with error", error);
+		if (error instanceof LineNotifyError) {
+			loggerError(error.message, {
+				caller: "sendLineMessageError",
+				status: 500,
+			});
+		} else {
+			loggerError(
+				"Send line message failed with unknown error",
+				{
+					caller: "sendLineMessageUnknownError",
+					status: 500,
+				},
+				error,
+			);
+		}
 	}
 }

@@ -93,7 +93,7 @@ export async function wrapServerSideErrorForClient<T>(
 		loggerError(
 			ERROR_MESSAGES.UNEXPECTED,
 			{
-				caller: "wrapServerSideErrorForClient not error errors ",
+				caller: "wrapServerSideErrorForClient not error errors",
 				status: 500,
 			},
 			error,

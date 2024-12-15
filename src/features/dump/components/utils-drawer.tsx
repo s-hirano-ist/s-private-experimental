@@ -22,7 +22,7 @@ export function UtilsDrawer() {
 			<div className="grid grid-cols-2 gap-2 px-2">
 				{UTIL_URLS.map((url) => {
 					return (
-						<Link href={url.url} scroll={false} key={url.name}>
+						<Link href={url.url} key={url.name}>
 							<Button className="w-full">{url.name}</Button>
 						</Link>
 					);

@@ -4,7 +4,7 @@ import { sanitizeHref } from "@/utils/sanitize-href";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, Link as LinkIcon } from "lucide-react";
 import type { Route } from "next";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 
 export const newsColumns = (): ColumnDef<NewsAtom>[] => [
 	{
@@ -68,11 +68,7 @@ export const newsColumns = (): ColumnDef<NewsAtom>[] => [
 		header: () => <></>,
 		cell: ({ row }) => {
 			return (
-				<Link
-					href={sanitizeHref(row.getValue("url")) as Route}
-					target="_blank"
-					scroll={false}
-				>
+				<Link href={sanitizeHref(row.getValue("url")) as Route} target="_blank">
 					<LinkIcon />
 				</Link>
 			);

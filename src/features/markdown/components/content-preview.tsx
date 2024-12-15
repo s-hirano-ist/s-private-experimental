@@ -25,7 +25,7 @@ export function ContentPreview({ path, slug, imagePath }: Props) {
 	const href = `${path}/${slug}` as Route;
 
 	return (
-		<Link href={href} scroll={false}>
+		<Link href={href}>
 			<Card className="flex h-full flex-col justify-evenly">
 				<CardHeader>
 					<CardTitle className="text-center">{slug}</CardTitle>

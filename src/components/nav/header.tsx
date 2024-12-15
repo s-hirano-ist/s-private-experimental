@@ -50,7 +50,11 @@ export function Header({ title }: Props) {
 				{/* TODO: add theme button */}
 				<nav>
 					{pathname !== "/auth" && (
-						<Button variant="ghost" onClick={onSignOutSubmit}>
+						<Button
+							variant="ghost"
+							onClick={onSignOutSubmit}
+							data-testid="log-out-button"
+						>
 							<LogOutIcon className="size-6" />
 						</Button>
 					)}
