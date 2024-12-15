@@ -3,7 +3,6 @@ import { StatusCodeView } from "@/components/status-code-view";
 import { Button } from "@/components/ui/button";
 // biome-ignore lint: auto-gen
 import type Error from "next/error";
-import { useEffect } from "react";
 
 export default function Page({
 	error,
@@ -12,7 +11,6 @@ export default function Page({
 	error: Error & { digest?: string };
 	reset: () => void;
 }) {
-
 	return (
 		<html lang="ja">
 			<body>
