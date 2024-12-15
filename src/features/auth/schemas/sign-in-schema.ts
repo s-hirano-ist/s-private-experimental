@@ -3,13 +3,13 @@ import { z } from "zod";
 
 export const signInSchema = z.object({
 	username: z
-		.string()
+		.string({ message: FORM_ERROR_MESSAGES.REQUIRED })
 		.trim()
-		.regex(/^[A-Za-z-]+$/, FORM_ERROR_MESSAGES.ALPHABET_ONLY)
 		.min(1, { message: FORM_ERROR_MESSAGES.REQUIRED })
-		.max(32, { message: FORM_ERROR_MESSAGES.TOO_LONG }),
+		.max(32, { message: FORM_ERROR_MESSAGES.TOO_LONG })
+		.regex(/^[A-Za-z-]+$/, FORM_ERROR_MESSAGES.ALPHABET_ONLY),
 	password: z
-		.string()
+		.string({ message: FORM_ERROR_MESSAGES.REQUIRED })
 		.trim()
 		.min(1, { message: FORM_ERROR_MESSAGES.REQUIRED })
 		.max(256, { message: FORM_ERROR_MESSAGES.TOO_LONG }),

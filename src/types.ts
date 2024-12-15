@@ -1,6 +1,3 @@
-"use server";
-import "server-only";
-
 type Action = {
 	success: boolean;
 	message: string;

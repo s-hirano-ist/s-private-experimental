@@ -17,6 +17,12 @@ beforeEach(() => {
 			);
 		}
 	};
+	// FIXME: uncomment on refactoring
+	// vi.mock("@/pino", () => ({
+	// 	loggerInfo: vi.fn(),
+	// 	loggerWarn: vi.fn(),
+	// 	loggerError: vi.fn(),
+	// }));
 });
 
 Object.defineProperty(window, "matchMedia", {
