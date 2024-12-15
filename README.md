@@ -1,4 +1,4 @@
-# s-private
+# s-private-experimental
 
 ![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)
 ![Build status](https://img.shields.io/github/actions/workflow/status/s-hirano-ist/s-private/build.yaml?branch=main)
@@ -6,6 +6,7 @@
 
 > [!IMPORTANT]
 > This is a sample app made by s-hirano. Some codes are not best practices due to trying experimental features and new techs.
+> See [s-hirano-ist/s-private](https://github.com/s-hirano-ist/s-private) for production used versions.
 
 **Main Framework** - [Next.js](https://nextjs.org/)  
 **Type Checking** - [TypeScript](https://www.typescriptlang.org/)  
@@ -19,14 +20,14 @@
 ## 初期設定
 
 ```bash
-git clone --recursive https://github.com/s-hirano-ist/s-private.git
-cd s-private
+git clone --recursive https://github.com/s-hirano-ist/s-private-experimental.git
+cd s-private-experimental
 cd minio
 ./minio-keygen.sh
 cd ..
 ```
 
-## DockerImageのビルドとプッシュ
+## Docker Imageのビルドとプッシュ
 
 詳細は[DockerHub](https://hub.docker.com/repository/docker/s0hirano/s-private/general)を参照願う。
 
@@ -62,7 +63,7 @@ Licensed under the AGPL-3.0 License, Copyright © 2024
 
 ### Licenses of used libraries
 
-See [library-license.txt](https://github.com/s-hirano-ist/s-private/blob/main/library-license.txt) for summary of used licenses.
+See [library-license.txt](https://github.com/s-hirano-ist/s-private-experimental/blob/main/library-license.txt) for summary of used licenses.
 
 ## 🔒 Security
 
