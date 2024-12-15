@@ -21,7 +21,6 @@
 		"prisma:studio": "prisma studio",
 		"postinstall": "prisma generate",
 		"commit": "git-cz",
-		"license:summary": "license-checker --summary> library-license.txt",
 		"security": "pnpm audit",
 		"actionlint": "actionlint",
 		"ghalint": "ghalint run"
@@ -89,7 +88,6 @@
 		"eslint-plugin-tailwindcss": "3.17.5",
 		"eslint-plugin-unused-imports": "4.1.4",
 		"git-cz": "4.9.0",
-		"license-checker": "25.0.1",
 		"markdownlint-cli2": "0.15.0",
 		"postcss": "8.4.49",
 		"rehype": "13.0.2",

@@ -56,11 +56,3 @@ Add commits to main branch using `git-cz` command will automatically create a ta
 ## 📜 License
 
 Licensed under the AGPL-3.0 License, Copyright © 2024
-
-### Licenses of used libraries
-
-See [library-license.txt](https://github.com/s-hirano-ist/s-private-experimental/blob/main/library-license.txt) for summary of used licenses.
-
-## 🔒 Security
-
-[s-hirano.com/summary/coding-security](https://s-hirano.com/summary/coding-security)を参照。
